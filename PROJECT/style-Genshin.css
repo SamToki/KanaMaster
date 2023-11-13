@@ -1,0 +1,20 @@
+/* For SamToki.github.io/KanaMaster */
+	/* This is a theme variant, so only colors along with few things are configured. */
+
+/* Main */
+	/* Game */
+		/* GameStats */
+		#CtrlGroup_GameStats2 #ProgringFg_GameTimeLeft {
+			stroke: #00C000;
+		}
+		#CtrlGroup_GameStats2 #ProgringFg_GameHP {
+			stroke: #FF8000;
+		}
+		#CtrlGroup_GameStats2 #ProgringFg_GameProgress {
+			stroke: #00A0E0;
+		}
+
+		/* GameAnswerBoard */
+		#Label_AnswerFeedback {
+			color: #00A0E0; filter: drop-shadow(0 0 10px #FFFFFF);
+		}
