@@ -2,8 +2,10 @@
 
 假名征服者 (KanaMaster)，一款日文假名记忆训练游戏，结合了音游的元素。<br>
 本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。<br>
-KanaMaster is a quiz game helping you memorize Japanese Kana (Gojuon). It has been inspired by rhythm games.<br>
-This game is designed for Japanese language beginners, but masters are also welcomed to challenge high difficulties.
+KanaMaster is a quiz game helping you memorize Japanese Kana (Gojuon).<br>
+It has been inspired by rhythm games.<br>
+This game is designed for Japanese language beginners,<br>
+but masters are also welcomed to challenge high difficulties.
 
 ![封面 Cover](/PREVIEW/Cover.png)
 
@@ -13,7 +15,7 @@ This game is designed for Japanese language beginners, but masters are also welc
 
 # 教程 Tutorial
 
-[快速入门](/PROJECT/docs/假名征服者%20(KanaMaster)%20快速入门.pdf)
+[快速入门](/PROJECT/docs/假名征服者%20(KanaMaster)%20快速入门.pdf)<br>
 [完整说明文档](/PROJECT/docs/假名征服者%20(KanaMaster)%20说明文档.pdf)
 
 # 注意 Caution
