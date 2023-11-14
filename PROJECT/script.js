@@ -77,9 +77,9 @@
 				IsRunning: false, IsCoolingDown: false, IsPaused: false
 			},
 			Stats: {
-				TotalCount: 0, Combo: 0, MaxCombo: 0, MissCount: 0,
-				StartTime: 0, ElapsedTime: 0, CurrentTimeLimit: 0, AvgReactionTime: 0, Accuracy: 0,
-				StartTime2: 0, TimeLeft: 0, HP: 0, Progress: 0, Score: 0
+				TotalCount: 0, MissCount: 0, Combo: 0, MaxCombo: 0,
+				StartTime: 0, ElapsedTime: 0, CurrentTimeLimit: 0, Accuracy: 0, AvgReactionTime: 0,
+				StartTime2: 0, Score: 0, Progress: 0, HP: 0, TimeLeft: 0
 			},
 			Lottery: {
 				Question: [
@@ -320,12 +320,12 @@
 		// Stats
 			// Stats 1
 			ChangeText("Label_GameTotalCountValue", Game.Stats.TotalCount + "x");
+			ChangeText("Label_GameMissCountValue", Game.Stats.MissCount + "x");
 			ChangeText("Label_GameComboValue", Game.Stats.Combo + "x");
 			if(Game.Stats.Combo > Game.Stats.MaxCombo) {
 				Game.Stats.MaxCombo = Game.Stats.Combo;
 			}
 			ChangeText("Label_GameMaxComboValue", Game.Stats.MaxCombo + "x");
-			ChangeText("Label_GameMissCountValue", Game.Stats.MissCount + "x");
 			if(Game.Status.IsRunning == true) {
 				if(Game.Status.IsPaused == false) {
 					Game.Stats.ElapsedTime = Date.now() - Game.Stats.StartTime;
@@ -340,44 +340,20 @@
 				Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Normal;
 			}
 			ChangeText("Label_GameCurrentTimeLimitValue", (Game.Stats.CurrentTimeLimit / 1000).toFixed(1) + "s");
-			ChangeText("Label_GameAvgReactionTimeValue", (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s");
 			ChangeText("Label_GameAccuracyValue", Game.Stats.Accuracy.toFixed(2) + "%");
+			ChangeText("Label_GameAvgReactionTimeValue", (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s");
 
 			// Stats 2
-				// Time Left
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
-					if(Game.Status.IsCoolingDown == false) {
-						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit - (Date.now() - Game.Stats.StartTime2);
-					} else {
-						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit * ((Date.now() - Game.Stats.StartTime2) / Game.Difficulty.Cooldown);
-					}
-					if(System.Display.Anim.Speed != 0) {
-						ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
-						ChangeAnim("ProgringFg_GameHP", "100ms");
-					}
+				// Score
+				if(System.Display.Anim.Speed == 0) {
+					GameScoreDisplay = Game.Stats.Score;
 				} else {
-					Game.Stats.TimeLeft = 0;
-					ChangeAnim("ProgringFg_GameTimeLeft", "");
-					ChangeAnim("ProgringFg_GameHP", "");
-				}
-				ChangeProgring("ProgringFg_GameTimeLeft", 289.03 * (1 - Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit));
-				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
-					ChangeClassAdd("ProgringText_GameTimeLeft", "Emphasis");
-				} else {
-					ChangeClassRemove("ProgringText_GameTimeLeft", "Emphasis");
-				}
-
-				// HP
-				if(Game.Status.IsRunning == true) {
-					if(Game.Status.IsPaused == false) {
-						Game.Stats.HP = Game.Stats.HP - 0.02; // Lose 1 HP every second.
+					GameScoreDisplay = GameScoreDisplay + (Game.Stats.Score - GameScoreDisplay) / 5;
+					if(Math.abs(Game.Stats.Score - GameScoreDisplay) < 0.01) {
+						GameScoreDisplay = Game.Stats.Score;
 					}
-				} else {
-					Game.Stats.HP = 0;
 				}
-				ChangeProgring("ProgringFg_GameHP", 289.03 * (1 - Game.Stats.HP / 100));
-				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
+				ChangeText("Label_GameScore", GameScoreDisplay.toFixed(0).toString().padStart(8, "0"));
 
 				// Progress
 				switch(Game.Mode.Progressing) {
@@ -394,16 +370,40 @@
 				ChangeProgring("ProgringFg_GameProgress", 289.03 * (1 - Game.Stats.Progress / 100));
 				ChangeText("ProgringText_GameProgress", Game.Stats.Progress.toFixed(0) + "%");
 
-				// Score
-				if(System.Display.Anim.Speed == 0) {
-					GameScoreDisplay = Game.Stats.Score;
-				} else {
-					GameScoreDisplay = GameScoreDisplay + (Game.Stats.Score - GameScoreDisplay) / 5;
-					if(Math.abs(Game.Stats.Score - GameScoreDisplay) < 0.01) {
-						GameScoreDisplay = Game.Stats.Score;
+				// HP
+				if(Game.Status.IsRunning == true) {
+					if(Game.Status.IsPaused == false) {
+						Game.Stats.HP = Game.Stats.HP - 0.02; // Lose 1 HP every second.
 					}
+				} else {
+					Game.Stats.HP = 0;
 				}
-				ChangeText("Label_GameScore", GameScoreDisplay.toFixed(0).toString().padStart(8, "0"));
+				ChangeProgring("ProgringFg_GameHP", 289.03 * (1 - Game.Stats.HP / 100));
+				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
+
+				// Time Left
+				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+					if(Game.Status.IsCoolingDown == false) {
+						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit - (Date.now() - Game.Stats.StartTime2);
+					} else {
+						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit * ((Date.now() - Game.Stats.StartTime2) / Game.Difficulty.Cooldown);
+					}
+					if(System.Display.Anim.Speed != 0) {
+						ChangeAnim("ProgringFg_GameHP", "100ms");
+						ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
+					}
+				} else {
+					Game.Stats.TimeLeft = 0;
+					ChangeAnim("ProgringFg_GameHP", "");
+					ChangeAnim("ProgringFg_GameTimeLeft", "");
+				}
+				ChangeProgring("ProgringFg_GameTimeLeft", 289.03 * (1 - Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit));
+				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
+				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
+					ChangeClassAdd("ProgringText_GameTimeLeft", "Emphasis");
+				} else {
+					ChangeClassRemove("ProgringText_GameTimeLeft", "Emphasis");
+				}
 
 		// Question Board & Answer Board
 			// Text
@@ -735,9 +735,9 @@
 				IsRunning: false, IsCoolingDown: false, IsPaused: false
 			};
 			Game.Stats = {
-				TotalCount: 0, Combo: 0, MaxCombo: 0, MissCount: 0,
-				StartTime: 0, ElapsedTime: 0, CurrentTimeLimit: 0, AvgReactionTime: 0, Accuracy: 0,
-				StartTime2: 0, TimeLeft: 0, HP: 0, Progress: 0, Score: 0
+				TotalCount: 0, MissCount: 0, Combo: 0, MaxCombo: 0,
+				StartTime: 0, ElapsedTime: 0, CurrentTimeLimit: 0, Accuracy: 0, AvgReactionTime: 0,
+				StartTime2: 0, Score: 0, Progress: 0, HP: 0, TimeLeft: 0
 			};
 			Game.Lottery = {
 				Question: [
@@ -771,7 +771,6 @@
 			if(Selector == Game.Lottery.CorrectAnswer) {
 				Game.Stats.TotalCount++;
 				Game.Stats.Combo++;
-				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
 				switch(true) {
 					case (Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.5):
 						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1) + 100) / Game.Stats.TotalCount;
@@ -792,17 +791,18 @@
 						alert("Error: The value of Game.Stats.TimeLeft in function GameAnswer is out of expectation.");
 						break;
 				}
-				Game.Stats.HP = Game.Stats.HP + 10;
-				if(Game.Stats.HP > 100) {
-					Game.Stats.HP = 100;
-				}
+				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
 				Game.Stats.Score = Game.Stats.Score + Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
 				if(Game.Stats.Score > 99999999) {
 					Game.Stats.Score = 99999999;
 				}
+				Game.Stats.HP = Game.Stats.HP + 10;
+				if(Game.Stats.HP > 100) {
+					Game.Stats.HP = 100;
+				}
 			} else {
-				Game.Stats.Combo = 0;
 				Game.Stats.MissCount++;
+				Game.Stats.Combo = 0;
 				if(Game.Stats.TotalCount == 0) { // When wrongly answering the first question...
 					Game.Stats.Accuracy = 0;
 				} else {

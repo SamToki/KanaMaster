@@ -3,12 +3,12 @@
 
 /* Main */
 	/* Game */
-		/* GameStats */
+		/* Game Stats 2 */
 		#CtrlGroup_GameStats2 #ProgringFg_GameTimeLeft, #CtrlGroup_GameStats2 #ProgringFg_GameHP, #CtrlGroup_GameStats2 #ProgringFg_GameProgress {
 			stroke: #00E000;
 		}
 
-		/* GameAnswerBoard */
+		/* Game Answer Board */
 		#Label_AnswerFeedback {
 			color: #FFFF00 !important; filter: none;
 		}
