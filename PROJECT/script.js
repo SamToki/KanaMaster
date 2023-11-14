@@ -567,7 +567,7 @@
 			if(Counter < 2) {
 				PopupDialogAppear("Game_QuestionRangeBelowMinimumRequirement",
 					"Termination",
-					"出题范围过小，请至少选择两项。将恢复至默认范围。",
+					"出题范围过小，请至少选择两项。已恢复至默认范围。",
 					"", "", "确定");
 				SetQuestionRangeSelectDefaultRange();
 			}
