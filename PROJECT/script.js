@@ -118,6 +118,7 @@
 		}
 		switch(System.I18n.Language) {
 			case "zh-CN":
+				// ChangeCursorOverall("wait");
 				// window.location.replace("index.html");
 				break;
 			case "en-US":
@@ -984,6 +985,7 @@
 		function SetUserDataImport() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != null) {
 				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\"") == true) {
+					ChangeCursorOverall("wait");
 					Elements = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
 					Object.keys(Elements).forEach(function(Looper) {
 						localStorage.setItem(Looper, JSON.stringify(Elements[Looper]));
@@ -1035,6 +1037,7 @@
 			case "System_ConfirmClearUserData":
 				switch(Selector) {
 					case 2:
+						ChangeCursorOverall("wait");
 						localStorage.clear();
 						window.location.reload();
 						break;
