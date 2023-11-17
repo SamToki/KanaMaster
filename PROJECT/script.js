@@ -720,6 +720,7 @@
 				Game.Status.IsRunning = true; Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
 				Game.Stats.StartTime = Date.now(); Game.Stats.StartTime2 = Date.now(); Game.Stats.HP = 100;
 				Game.Lottery.Question[1] = [0, 0, 1];
+				Click("TopbarLinkbtn_Game");
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
