@@ -48,7 +48,12 @@
 			[0, "wi",   "we",   "wo",   "va",   "vi",   "v",    "ve",   "vo",   "kwa",  "kwi",  "kwo",  "she",  "je",   "che",  "ti",   "di",   "fa",   "fi",   "fe",   "fo"],
 			[0, "wi",   "we",   "wi",   "we",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
 		];
-		var Looper2 = 0, GameScoreDisplay = 0;
+		var Looper2 = 0,
+		Game0 = {
+			Stats: {
+				ScoreDisplay: 0
+			}
+		};
 		Automation.ClockGame = 0; Automation.StartButtonGlow = 0;
 		
 		// Saved
@@ -118,8 +123,8 @@
 		}
 		switch(System.I18n.Language) {
 			case "zh-CN":
-				// ChangeCursorOverall("wait");
-				// window.location.replace("index.html");
+				/* ChangeCursorOverall("wait");
+				window.location.replace("index.html"); */
 				break;
 			case "en-US":
 				PopupDialogAppear("System_LanguageUnsupported",
@@ -349,14 +354,14 @@
 			// Stats 2
 				// Score
 				if(System.Display.Anim.Speed == 0) {
-					GameScoreDisplay = Game.Stats.Score;
+					Game0.Stats.ScoreDisplay = Game.Stats.Score;
 				} else {
-					GameScoreDisplay = GameScoreDisplay + (Game.Stats.Score - GameScoreDisplay) / 5;
-					if(Math.abs(Game.Stats.Score - GameScoreDisplay) < 0.01) {
-						GameScoreDisplay = Game.Stats.Score;
+					Game0.Stats.ScoreDisplay = Game0.Stats.ScoreDisplay + (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
+					if(Math.abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.01) {
+						Game0.Stats.ScoreDisplay = Game.Stats.Score;
 					}
 				}
-				ChangeText("Label_GameScore", GameScoreDisplay.toFixed(0).toString().padStart(8, "0"));
+				ChangeText("Label_GameScore", Game0.Stats.ScoreDisplay.toFixed(0).toString().padStart(8, "0"));
 
 				// Progress
 				switch(Game.Mode.Progressing) {
@@ -762,7 +767,7 @@
 				],
 				CorrectAnswer: 0
 			};
-			GameScoreDisplay = 0;
+			Game0.Stats.ScoreDisplay = 0;
 			RefreshGame();
 		}
 
