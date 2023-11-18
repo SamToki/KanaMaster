@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="假名征服者 (KanaMaster)，一款日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
+		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 假名征服者, KanaMaster, かなマスター" />
+		<meta name="version" content="v0.52 (2023/11/16) Beta Test. Since 2023/11/05." />
+		<meta name="author" content="Sam Toki" />
+		<meta name="copyright" content="(C) 2015-2023 SAM TOKI STUDIO" />
+		<title>假名征服者</title>
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<link rel="stylesheet" href="../common.css" />
+		<link id="ThemeVariant_Common" rel="stylesheet" href="../common-Dark.css" media="(prefers-color-scheme: dark)" />
+		<link id="ThemeVariant_Common_HighContrast" rel="stylesheet" href="../common-HighContrast.css" media="(prefers-contrast: more)" />
+		<link rel="stylesheet" href="style.css" />
+		<link id="ThemeVariant_Style" rel="stylesheet" href="style-Dark.css" media="(prefers-color-scheme: dark)" />
+		<link id="ThemeVariant_Style_HighContrast" rel="stylesheet" href="style-HighContrast.css" media="(prefers-contrast: more)" />
+		<script defer src="../common.js"></script>
+		<script defer src="script.js"></script>
+	</head>
+
+	<body>
+		<header id="Topbar">
+			<h1 class="Title"><a href="https://SamToki.github.io/KanaMaster">假名征服者</a></h1>
+			<nav>
+				<ul class="CtrlGroup">
+					<li class="Ctrl">
+						<a class="TopbarLinkbtn" id="TopbarLinkbtn_Game" href="#Game">
+							<svg class="Icon" viewBox="0 0 16 16">
+								<path d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2z"/>
+								<path d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23z"/>
+							</svg>
+							<span class="LabelAfterIcon">游戏</span>
+						</a>
+					</li>
+					<li class="Ctrl">
+						<a class="TopbarLinkbtn" id="TopbarLinkbtn_Highscore" href="#Highscore">
+							<svg class="Icon" viewBox="0 0 16 16">
+								<path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>
+							</svg>
+							<span class="LabelAfterIcon">高分榜</span>
+						</a>
+					</li>
+					<li class="Ctrl">
+						<a class="TopbarLinkbtn" id="TopbarLinkbtn_Settings" href="#Settings">
+							<svg class="Icon" viewBox="0 0 16 16">
+								<path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+							</svg>
+							<span class="LabelAfterIcon">设定</span>
+						</a>
+					</li>
+					<li class="Ctrl">
+						<a class="TopbarLinkbtn" id="TopbarLinkbtn_Help" href="#Help">
+							<svg class="Icon" viewBox="0 0 16 16">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+							</svg>
+							<span class="LabelAfterIcon">帮助</span>
+						</a>
+					</li>
+					<li class="Ctrl">
+						<a class="TopbarLinkbtn" id="TopbarLinkbtn_BackToMainPage" href="../index.html#ToyStore">
+							<svg class="Icon" viewBox="0 0 16 16">
+								<path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+							</svg>
+							<span class="LabelAfterIcon">返回主页</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<section id="Game">
+				<h1 class="SectionTitleAboveViewport" id="SectionTitleBelowTopbar">游戏</h1>
+				<div class="Viewport" id="ViewportBelowTopbar">
+					<div id="Ctnr_GameStats1">
+						<ul class="CtrlGroup" id="CtrlGroup_GameStats1">
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameTotalCount">总数</span>
+								<span class="GameStats1Value" id="Label_GameTotalCountValue">0x</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameMissCount">失误</span>
+								<span class="GameStats1Value" id="Label_GameMissCountValue">0x</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameCombo">连击</span>
+								<span class="GameStats1Value" id="Label_GameComboValue">0x</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameMaxCombo">最大连击</span>
+								<span class="GameStats1Value" id="Label_GameMaxComboValue">0x</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameElapsedTime">总时长</span>
+								<span class="GameStats1Value" id="Label_GameElapsedTimeValue">00:00</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameCurrentTimeLimit">当前时限</span>
+								<span class="GameStats1Value" id="Label_GameCurrentTimeLimitValue">0.0s</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameAccuracy">准确率</span>
+								<span class="GameStats1Value" id="Label_GameAccuracyValue">0.00%</span>
+							</li>
+							<li class="Ctrl">
+								<span class="GameStats1Title" id="Label_GameAvgReactionTime">平均反应用时</span>
+								<span class="GameStats1Value" id="Label_GameAvgReactionTimeValue">0.000s</span>
+							</li>
+						</ul>
+					</div>
+					<div id="Ctnr_GameStats2">
+						<ul class="CtrlGroup" id="CtrlGroup_GameStats2">
+							<li class="Ctrl" id="Ctrl_GameScore">
+								<span id="Label_GameScore">总分</span>
+							</li>
+							<li class="Ctrl">
+								<svg class="Progring" id="Progring_GameProgress" viewBox="0 0 100 100">
+									<circle class="ProgringBg" id="ProgringBg_GameProgress" cx="50" cy="50" r="46" />
+									<circle class="ProgringFg" id="ProgringFg_GameProgress" cx="50" cy="50" r="46" />
+								</svg>
+								<span class="ProgringText" id="ProgringText_GameProgress">进度</span>
+							</li>
+							<li class="Ctrl">
+								<svg class="Progring" id="Progring_GameHP" viewBox="0 0 100 100">
+									<circle class="ProgringBg" id="ProgringBg_GameHP" cx="50" cy="50" r="46" />
+									<circle class="ProgringFg" id="ProgringFg_GameHP" cx="50" cy="50" r="46" />
+								</svg>
+								<span class="ProgringText" id="ProgringText_GameHP">血量</span>
+							</li>
+							<li class="Ctrl">
+								<svg class="Progring" id="Progring_GameTimeLeft" viewBox="0 0 100 100">
+									<circle class="ProgringBg" id="ProgringBg_GameTimeLeft" cx="50" cy="50" r="46" />
+									<circle class="ProgringFg" id="ProgringFg_GameTimeLeft" cx="50" cy="50" r="46" />
+								</svg>
+								<span class="ProgringText" id="ProgringText_GameTimeLeft">时间</span>
+							</li>
+						</ul>
+					</div>
+					<div id="Ctnr_GameQuestionBoard">
+						<div class="Ctrl Box" id="Ctrl_GameQuestionBoard">
+							<span id="Label_GameQuestionBoard" lang="ja-JP">题目</span>
+						</div>
+					</div>
+					<div id="Ctnr_GameAnswerBoard">
+						<ul class="CtrlGroup" id="CtrlGroup_GameAnswerBoard">
+							<li class="Ctrl">
+								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption1" lang="ja-JP" onclick="GameAnswer(1)">选项1</button>
+								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameAnswerOption1">1</span>
+							</li>
+							<li class="Ctrl">
+								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption2" lang="ja-JP" onclick="GameAnswer(2)">选项2</button>
+								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameAnswerOption2">2</span>
+							</li>
+							<li class="Ctrl">
+								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption3" lang="ja-JP" onclick="GameAnswer(3)">选项3</button>
+								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameAnswerOption3">3</span>
+							</li>
+						</ul>
+						<span class="Faded" id="Label_AnswerFeedback">回答反馈</span>
+					</div>
+					<div id="Ctnr_GameCtrl">
+						<ul class="CtrlGroup" id="CtrlGroup_GameCtrl">
+							<li class="Ctrl">
+								<button class="Cmdbtn" id="Cmdbtn_GameCtrlStart" onclick="GameStart()">开始</button>
+								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameCtrlStart">S</span>
+							</li>
+							<li class="Ctrl">
+								<button class="Cmdbtn" id="Cmdbtn_GameCtrlReset" onclick="GameReset()">重置</button>
+								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameCtrlReset">R</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			
+			<section id="Highscore">
+				<h1 class="SectionTitle">高分榜</h1>
+				<ul class="ItemGroup" id="ItemGroup_Highscore">
+					<li class="Item TableHeader">
+						<span class="HighscoreTableSequence" id="Label_HighscoreTableRowHeaderSequence">名次</span>
+						<span class="HighscoreTableDate" id="Label_HighscoreTableRowHeaderDate">日期</span>
+						<span class="HighscoreTableScore" id="Label_HighscoreTableRowHeaderScore">总分</span>
+						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRowHeaderMaxCombo">最大连击</span>
+						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRowHeaderAccuracy">准确率</span>
+						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRowHeaderAvgReactionTime">平均反应用时</span>
+					</li>
+					<li class="Item" id="Item_HighscoreTableRow1">
+						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow1Sequence">名次</span>
+						<span class="HighscoreTableDate" id="Label_HighscoreTableRow1Date">日期</span>
+						<span class="HighscoreTableScore" id="Label_HighscoreTableRow1Score">总分</span>
+						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow1MaxCombo">最大连击</span>
+						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow1Accuracy">准确率</span>
+						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow1AvgReactionTime">平均反应用时</span>
+					</li>
+					<li class="Item" id="Item_HighscoreTableRow2">
+						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow2Sequence">名次</span>
+						<span class="HighscoreTableDate" id="Label_HighscoreTableRow2Date">日期</span>
+						<span class="HighscoreTableScore" id="Label_HighscoreTableRow2Score">总分</span>
+						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow2MaxCombo">最大连击</span>
+						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow2Accuracy">准确率</span>
+						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow2AvgReactionTime">平均反应用时</span>
+					</li>
+					<li class="Item" id="Item_HighscoreTableRow3">
+						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow3Sequence">名次</span>
+						<span class="HighscoreTableDate" id="Label_HighscoreTableRow3Date">日期</span>
+						<span class="HighscoreTableScore" id="Label_HighscoreTableRow3Score">总分</span>
+						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow3MaxCombo">最大连击</span>
+						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow3Accuracy">准确率</span>
+						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow3AvgReactionTime">平均反应用时</span>
+					</li>
+					<li class="Item" id="Item_HighscoreTableRow4">
+						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow4Sequence">名次</span>
+						<span class="HighscoreTableDate" id="Label_HighscoreTableRow4Date">日期</span>
+						<span class="HighscoreTableScore" id="Label_HighscoreTableRow4Score">总分</span>
+						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow4MaxCombo">最大连击</span>
+						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow4Accuracy">准确率</span>
+						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow4AvgReactionTime">平均反应用时</span>
+					</li>
+					<li class="Item" id="Item_HighscoreTableRow5">
+						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow5Sequence">名次</span>
+						<span class="HighscoreTableDate" id="Label_HighscoreTableRow5Date">日期</span>
+						<span class="HighscoreTableScore" id="Label_HighscoreTableRow5Score">总分</span>
+						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow5MaxCombo">最大连击</span>
+						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow5Accuracy">准确率</span>
+						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow5AvgReactionTime">平均反应用时</span>
+					</li>
+					<li class="Item" id="Item_HighscoreTableRow6">
+						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow6Sequence">名次</span>
+						<span class="HighscoreTableDate" id="Label_HighscoreTableRow6Date">日期</span>
+						<span class="HighscoreTableScore" id="Label_HighscoreTableRow6Score">总分</span>
+						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow6MaxCombo">最大连击</span>
+						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow6Accuracy">准确率</span>
+						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow6AvgReactionTime">平均反应用时</span>
+					</li>
+				</ul>
+			</section>
+
+			<section id="Settings">
+				<h1 class="SectionTitle">设定</h1>
+				<ul class="ItemGroup">
+					<li class="Item">
+						<fieldset id="Fieldset_SettingsGameMode">
+							<legend>游戏模式</legend>
+							<ul class="CtrlGroup" id="CtrlGroup_SettingsGameMode">
+								<li class="Ctrl">
+									<label for="Combobox_SettingsGameModeQuestioning">
+										<span>出题：</span>
+										<select class="Combobox" id="Combobox_SettingsGameModeQuestioning" onchange="SetGameModeQuestioning()">
+											<option value="Kana" selected>假名</option>
+											<option value="Romaji">罗马字</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsGameModeProgressing">
+										<span>进度：</span>
+										<select class="Combobox" id="Combobox_SettingsGameModeProgressing" onchange="SetGameModeProgressing()">
+											<option value="Quantity" selected>答题数量</option>
+											<option value="Duration">答题时长</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsGameModeQuantity">
+									<label for="Combobox_SettingsGameModeQuantity">
+										<span>答题数量：</span>
+										<input class="Textbox" id="Textbox_SettingsGameModeQuantity" type="number" min="5" max="999" step="1" value="50" placeholder="5~999" onclick="document.getElementById('Textbox_SettingsGameModeQuantity').select()" onchange="SetGameModeQuantity()" />
+									</label>
+								</li>
+								<li class="Ctrl Hidden" id="Ctrl_SettingsGameModeDuration">
+									<label for="Combobox_SettingsGameModeDuration">
+										<span>答题时长：</span>
+										<input class="Textbox" id="Textbox_SettingsGameModeDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="document.getElementById('Textbox_SettingsGameModeDuration').select()" onchange="SetGameModeDuration()" />
+										<span>分钟</span>
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset id="Fieldset_SettingsQuestionRange">
+							<legend>出题范围</legend>
+							<ul class="CtrlGroup" id="CtrlGroup_SettingsQuestionRange">
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange1">
+									<label for="Checkbox_SettingsQuestionRange1">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange1" type="checkbox" checked="true" onchange="SetQuestionRange(1)" />
+										<span>あ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange2">
+									<label for="Checkbox_SettingsQuestionRange2">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange2" type="checkbox" checked="true" onchange="SetQuestionRange(2)" />
+										<span>い</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange3">
+									<label for="Checkbox_SettingsQuestionRange3">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange3" type="checkbox" checked="true" onchange="SetQuestionRange(3)" />
+										<span>う</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange4">
+									<label for="Checkbox_SettingsQuestionRange4">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange4" type="checkbox" checked="true" onchange="SetQuestionRange(4)" />
+										<span>え</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange5">
+									<label for="Checkbox_SettingsQuestionRange5">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange5" type="checkbox" checked="true" onchange="SetQuestionRange(5)" />
+										<span>お</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange6">
+									<label for="Checkbox_SettingsQuestionRange6">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange6" type="checkbox" checked="true" onchange="SetQuestionRange(6)" />
+										<span>ア</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange7">
+									<label for="Checkbox_SettingsQuestionRange7">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange7" type="checkbox" checked="true" onchange="SetQuestionRange(7)" />
+										<span>イ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange8">
+									<label for="Checkbox_SettingsQuestionRange8">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange8" type="checkbox" checked="true" onchange="SetQuestionRange(8)" />
+										<span>ウ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange9">
+									<label for="Checkbox_SettingsQuestionRange9">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange9" type="checkbox" checked="true" onchange="SetQuestionRange(9)" />
+										<span>エ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange10">
+									<label for="Checkbox_SettingsQuestionRange10">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange10" type="checkbox" checked="true" onchange="SetQuestionRange(10)" />
+										<span>オ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange11">
+									<label for="Checkbox_SettingsQuestionRange11">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange11" type="checkbox" checked="true" onchange="SetQuestionRange(11)" />
+										<span>拨音：ん ン</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange12">
+									<label for="Checkbox_SettingsQuestionRange12">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange12" type="checkbox" checked="false" onchange="SetQuestionRange(12)" />
+										<span>きゃ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange13">
+									<label for="Checkbox_SettingsQuestionRange13">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange13" type="checkbox" checked="false" onchange="SetQuestionRange(13)" />
+										<span>きゅ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange14">
+									<label for="Checkbox_SettingsQuestionRange14">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange14" type="checkbox" checked="false" onchange="SetQuestionRange(14)" />
+										<span>きょ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange15">
+									<label for="Checkbox_SettingsQuestionRange15">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange15" type="checkbox" checked="false" onchange="SetQuestionRange(15)" />
+										<span>キャ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange16">
+									<label for="Checkbox_SettingsQuestionRange16">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange16" type="checkbox" checked="false" onchange="SetQuestionRange(16)" />
+										<span>キュ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange17">
+									<label for="Checkbox_SettingsQuestionRange17">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange17" type="checkbox" checked="false" onchange="SetQuestionRange(17)" />
+										<span>キョ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange18">
+									<label for="Checkbox_SettingsQuestionRange18">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange18" type="checkbox" checked="false" onchange="SetQuestionRange(18)" />
+										<span>外来语新拗音：ヴ シェ ファ 等</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRange19">
+									<label for="Checkbox_SettingsQuestionRange19">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange19" type="checkbox" checked="false" onchange="SetQuestionRange(19)" />
+										<span>废弃假名：ゐ ゑ ヰ ヱ</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRangeSelectDefaultRange">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectDefaultRange" onclick="SetQuestionRangeSelectDefaultRange()">默认范围</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRangeSelectBasicHiragana">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectBasicHiragana" onclick="SetQuestionRangeSelectBasicHiragana()">基本平假名</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRangeSelectBasicKatakana">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectBasicKatakana" onclick="SetQuestionRangeSelectBasicKatakana()">基本片假名</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRangeSelectExceptObsoleteKana">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectExceptObsoleteKana" onclick="SetQuestionRangeSelectExceptObsoleteKana()">废弃假名除外</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRangeSelectAll">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectAll" onclick="SetQuestionRangeSelectAll()">全选</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset id="Fieldset_SettingsDifficulty">
+							<legend>难度</legend>
+							<ul class="CtrlGroup" id="CtrlGroup_SettingsDifficulty">
+								<li class="Ctrl" id="Ctrl_SettingsDifficultyTimeLimit">
+									<label for="Combobox_SettingsDifficultyTimeLimitInitial">
+										<span>时限：从</span>
+										<input class="Textbox" id="Textbox_SettingsDifficultyTimeLimitInitial" type="number" min="1" max="10" step="0.1" value="8.0" placeholder="1~10" onclick="document.getElementById('Textbox_SettingsDifficultyTimeLimitInitial').select()" onchange="SetDifficultyTimeLimitInitial()" />
+										<span>至</span>
+										<input class="Textbox" id="Textbox_SettingsDifficultyTimeLimitNormal" type="number" min="1" max="10" step="0.1" value="6.0" placeholder="1~初始时限" onclick="document.getElementById('Textbox_SettingsDifficultyTimeLimitNormal').select()" onchange="SetDifficultyTimeLimitNormal()" />
+										<span>秒</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsDifficultyCooldown">
+										<span>冷却：</span>
+										<input class="Textbox" id="Textbox_SettingsDifficultyCooldown" type="number" min="0.2" max="10" step="0.1" value="1.0" placeholder="0.2~10" onclick="document.getElementById('Textbox_SettingsDifficultyCooldown').select()" onchange="SetDifficultyCooldown()" />
+										<span>秒</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsDifficultyHPDrain">
+										<span>失误掉血：</span>
+										<input class="Textbox" id="Textbox_SettingsDifficultyHPDrain" type="number" min="5" max="100" step="1" value="10" placeholder="5~100" onclick="document.getElementById('Textbox_SettingsDifficultyHPDrain').select()" onchange="SetDifficultyHPDrain()" />
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>显示</legend>
+							<ul class="CtrlGroup" id="CtrlGroup_SettingsDisplay">
+								<li class="Ctrl">
+									<label for="Combobox_SettingsDisplayTheme">
+										<span>主题：</span>
+										<select class="Combobox" id="Combobox_SettingsDisplayTheme" onchange="SetDisplayTheme()">
+											<option value="Auto" selected>自动</option>
+											<option value="Default">默认</option>
+											<option value="Dark">深色</option>
+											<option value="Genshin">原神</option>
+											<option value="HighContrast">高对比度 (无障碍)</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsDisplayCursor">
+										<span>鼠标指针：</span>
+										<select class="Combobox" id="Combobox_SettingsDisplayCursor" onchange="SetDisplayCursor()">
+											<option value="Default" selected>默认</option>
+											<option value="BTRAhoge">孤独摇滚！</option>
+											<option value="Genshin">原神</option>
+											<option value="GenshinNahida">原神-纳西妲</option>
+											<option value="GenshinFurina">原神-芙宁娜</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsDisplayShowTopbar">
+										<input class="Checkbox" id="Checkbox_SettingsDisplayShowTopbar" type="checkbox" checked="true" onchange="SetDisplayShowTopbar()" />
+										<span>显示顶栏</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsDisplayGameFont">
+										<span>游戏字体：</span>
+										<select class="Combobox" id="Combobox_SettingsDisplayGameFont" onchange="SetDisplayGameFont()">
+											<option value="Default" selected>默认</option>
+											<option value="Sans">黑体 (Sans)</option>
+											<option value="Serif">明朝体 (Serif)</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsDisplayHotkeyIndicator">
+										<span>快捷键提示：</span>
+										<select class="Combobox" id="Combobox_SettingsDisplayHotkeyIndicator" onchange="SetDisplayHotkeyIndicator()">
+											<option value="Disabled">禁用</option>
+											<option value="ShowOnWrongKeyPress">按下无关按键时显示</option>
+											<option value="ShowOnAnyKeyPress" selected>按下任意按键时显示</option>
+											<option value="AlwaysShow">始终显示</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Combobox_SettingsDisplayAnimSpeed">
+										<span>动画速度：</span>
+										<select class="Combobox" id="Combobox_SettingsDisplayAnimSpeed" onchange="SetDisplayAnimSpeed()">
+											<option value="500">慢 (500ms)</option>
+											<option value="300" selected>中 (300ms)</option>
+											<option value="100">快 (100ms)</option>
+											<option value="0">关闭动画 (无障碍)</option>
+										</select>
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>开发者选项</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsDevCheat">
+										<input class="Checkbox" id="Checkbox_SettingsDevCheat" type="checkbox" checked="false" onchange="SetDevCheat()" />
+										<span>作弊</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsDevShowAllBorders">
+										<input class="Checkbox" id="Checkbox_SettingsDevShowAllBorders" type="checkbox" checked="false" onchange="SetDevShowAllBorders()" />
+										<span>显示所有元素的边框</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsDevUseOldTypeface">
+										<input class="Checkbox" id="Checkbox_SettingsDevUseOldTypeface" type="checkbox" checked="false" onchange="SetDevUseOldTypeface()" />
+										<span>使用 ja-JP 旧字形</span>
+									</label>
+								</li>
+								<li class="Ctrl">
+									<label for="Textbox_SettingsDevFont">
+										<span>字体：</span>
+										<input class="Textbox" id="Textbox_SettingsDevFont" type="text" placeholder="" onchange="SetDevFont()" />
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>用户数据</legend>
+							<ul class="CtrlGroup" id="CtrlGroup_SettingsUserData">
+								<li class="Ctrl">
+									<label for="Textbox_SettingsUserDataImport">
+										<span>导入：</span>
+										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="document.getElementById('Textbox_SettingsUserDataImport').select()" onchange="SetUserDataImport()" />
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsUserDataExport">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="SetUserDataExport()">导出</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsUserDataClear">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="SetUserDataClear()">清空</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+				</ul>
+			</section>
+
+			<section id="Help">
+				<h1 class="SectionTitle">帮助</h1>
+				<ul class="ItemGroup">
+					<li class="Item">
+						<fieldset>
+							<legend>简介</legend>
+							<p>假名征服者 (KanaMaster)，一款日文假名记忆训练游戏，结合了音游的元素。</p>
+							<p>本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。</p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>教程</legend>
+							<p>本游戏的教程以 PDF 文档的形式提供，方便您保存至本地，还可以打印出来备用。</p>
+							<p><a href="docs/假名征服者%20(KanaMaster)%20快速入门.pdf">快速入门</a>　<a href="docs/假名征服者%20(KanaMaster)%20说明文档.pdf">完整说明文档</a></p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>参与进来</legend>
+							<p>您可使用 <a href="https://github.com/SamToki/Web---KanaMaster/issues">GitHub Issues</a> 或<a href="https://message.bilibili.com/#whisper/mid1557377413">哔哩哔哩 (B站) 私信</a>来向我提供反馈，感谢您的支持！推荐使用前者，我能第一时间收到您的反馈，但注意需要梯子才能访问。</p>
+							<p>Help me translate the webpage into your language! Please contact me on GitHub if you are interested.</p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>隐私权声明</legend>
+							<p>本站为 <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a> 静态网站，只使用浏览器的 Local Storage 功能在本地存储用户数据，您可随时手动删除。本站不使用 <a href="https://zh.wikipedia.org/wiki/Cookie">Cookies</a>，不收集任何个人信息。</p>
+							<p>出于安全考虑，<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection">GitHub 的服务器可能会记录您的 IP 地址</a>，但我无法访问这些数据。</p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>版权说明</legend>
+							<p>本站的源代码遵循 <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL v3 软件开源协议</a>。本站中的部分图像、图标、音频、视频为他人作品，版权为原作者所有，本站遵循 <a href="https://zh.wikipedia.org/wiki/%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8">fair use</a> 原则使用并标注来源。</p>
+							<p>除上述内容之外，本站所有内容以及排版、美术设计均保留版权。</p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>Credits</legend>
+							<h4>图像</h4>
+							<p>背景插画：Pixiv ID <a href="https://pixiv.net/en/artworks/78892781">78892781</a><br />
+								背景插画主题：<a href="https://bgm.tv/subject/41658">ヤマノススメ</a><br />
+								背景插画会不定期更换。</p>
+							<h4>图标</h4>
+							<p>UI图标：<a href="https://icons.getbootstrap.com">Bootstrap Icons</a></p>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>关于</legend>
+							<p>假名征服者</p>
+							<p>版本 v0.52 (<time datetime="2023-11-16" pubdate="pubdate">2023/11/16</time>) Beta Test<br />
+								始于 2023/11/05</p>
+							<p><a href="https://github.com/SamToki/Web---KanaMaster">查看 GitHub 项目</a></p>
+						</fieldset>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer>
+			<p id="Copyright">© 2015-2023 SAM TOKI STUDIO</p>
+		</footer>
+
+		<div class="ToastMessage Hidden Faded" id="Ctnr_ToastMessage">
+			<span id="Label_ToastMessage">浮动提示信息</span>
+		</div>
+
+		<div class="ScreenFilter Faded" id="Ctnr_PopupDialog">
+			<div class="Window Hidden" id="Window_PopupDialog" tabindex="-1">
+				<ul class="CtrlGroup" id="CtrlGroup_PopupDialogPrompt">
+					<li class="Ctrl" id="Ctrl_PopupDialogIconCompletion">
+						<svg class="PopupDialogIcon" id="PopupDialogIcon_Completion" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+							<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+						</svg>
+					</li>
+					<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconQuestion">
+						<svg class="PopupDialogIcon" id="PopupDialogIcon_Question" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+							<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+						</svg>
+					</li>
+					<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconCaution">
+						<svg class="PopupDialogIcon" id="PopupDialogIcon_Caution" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+							<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+						</svg>
+					</li>
+					<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconTermination">
+						<svg class="PopupDialogIcon" id="PopupDialogIcon_Termination" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+					</li>
+					<li class="Ctrl" id="Ctrl_PopupDialogText">对话框文字</li>
+				</ul>
+				<ul class="CtrlGroup" id="CtrlGroup_PopupDialogOptions">
+					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption1">
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption1" disabled="true" onclick="PopupDialogAnswer(1)">选项1</button>
+					</li>
+					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption2">
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption2" disabled="true" onclick="PopupDialogAnswer(2)">选项2</button>
+					</li>
+					<li class="Ctrl" id="Ctrl_PopupDialogOption3">
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption3" disabled="true" onclick="PopupDialogAnswer(3)">选项3</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
