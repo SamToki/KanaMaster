@@ -383,6 +383,11 @@
 				}
 				ChangeProgring("ProgringFg_GameHP", 289.03 * (1 - Game.Stats.HP / 100));
 				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
+				if(Game.Status.IsRunning == true && Game.Stats.HP <= 20) {
+					ChangeClassAdd("ProgringText_GameHP", "Emphasis");
+				} else {
+					ChangeClassRemove("ProgringText_GameHP", "Emphasis");
+				}
 
 				// Time Left
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
