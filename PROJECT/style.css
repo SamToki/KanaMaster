@@ -1,0 +1,238 @@
+/* For SamToki.github.io/KanaMaster */
+
+/* Header */
+.Title {
+	width: 295px;
+}
+.Title a {
+	background-image: url(images/Title.png);
+}
+nav {
+	width: 600px;
+}
+nav li {
+	width: calc(100% / 5);
+}
+
+/* Main */
+	/* Game */
+	#Game {
+		height: 100vh;
+	}
+		/* Game Stats 1 */
+		#Ctnr_GameStats1 {
+			position: absolute; top: 0; left: 0;
+			width: 320px;
+		}
+		#CtrlGroup_GameStats1 {
+			width: 100%;
+		}
+		#CtrlGroup_GameStats1 .Ctrl {
+			width: 160px; height: 90px; padding: 5px;
+			display: flex; flex-direction: column; justify-content: center; align-items: center;
+		}
+		#CtrlGroup_GameStats1 .GameStats1Value, #CtrlGroup_GameStats2 .ProgringText {
+			font-size: 24px;
+		}
+
+		/* Game Stats 2 */
+		#Ctnr_GameStats2 {
+			position: absolute; top: 0; right: 0;
+			width: 320px;
+		}
+		#CtrlGroup_GameStats2 {
+			width: 100%;
+			flex-direction: column;
+		}
+		#CtrlGroup_GameStats2 .Ctrl {
+			height: 100px; margin: 0 0 20px 0;
+		}
+		#CtrlGroup_GameStats2 #Ctrl_GameScore {
+			height: 60px;
+			display: flex; justify-content: center; align-items: center;
+		}
+		#CtrlGroup_GameStats2 #Label_GameScore {
+			font-size: 32px;
+		}
+		#CtrlGroup_GameStats2 .ProgringFg {
+			stroke-dasharray: 289.03 289.03; stroke-dashoffset: 144.51;
+		}
+		#CtrlGroup_GameStats2 #ProgringFg_GameProgress {
+			stroke: #0080C0;
+		}
+		#CtrlGroup_GameStats2 #ProgringFg_GameHP {
+			stroke: #E06000;
+		}
+		#CtrlGroup_GameStats2 #ProgringFg_GameTimeLeft {
+			stroke: #00A000;
+		}
+
+		/* Game Question Board */
+		#Ctnr_GameQuestionBoard {
+			position: absolute; top: 0; left: 350px;
+			width: calc(100% - 700px); height: calc(100% - 200px);
+		}
+		#Ctrl_GameQuestionBoard {
+			width: 100%; height: 100%;
+			display: flex; justify-content: center; align-items: center;
+		}
+		#Label_GameQuestionBoard {
+			font-size: 180px;
+		}
+
+		/* Game Answer Board */
+		#Ctnr_GameAnswerBoard {
+			position: absolute; bottom: 0; left: 350px;
+			width: calc(100% - 700px); height: 200px;
+		}
+		#CtrlGroup_GameAnswerBoard {
+			height: calc(100% - 30px); margin: 30px 0 0 0;
+		}
+		#CtrlGroup_GameAnswerBoard .Ctrl {
+			width: calc((100% - 20px) / 3); height: 100%;
+		}
+		#CtrlGroup_GameAnswerBoard .Ctrl .Cmdbtn {
+			font-size: 48px;
+		}
+		#Label_AnswerFeedback {
+			position: absolute; top: 0; left: 0; z-index: 10;
+			width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
+			color: #00A0E0; filter: drop-shadow(0 0 10px #FFFFFF); font-size: 32px;
+			display: flex; justify-content: center; align-items: center;
+			pointer-events: none;
+		}
+
+		/* Game Ctrl */
+		#Ctnr_GameCtrl {
+			position: absolute; bottom: 0; right: 0;
+			width: 320px; height: 40px;
+		}
+		#CtrlGroup_GameCtrl {
+			justify-content: right;
+		}
+		#CtrlGroup_GameCtrl .Ctrl {
+			width: 120px; margin: 0 0 0 10px;
+		}
+	
+	/* Highscore */
+	#ItemGroup_Highscore {
+		margin: 0;
+		flex-direction: column; align-items: center;
+	}
+	#ItemGroup_Highscore .Item {
+		width: unset; height: 50px; margin: 0;
+		display: flex; justify-content: space-between;
+	}
+	#ItemGroup_Highscore .Item span {
+		display: flex; justify-content: center; align-items: center;
+	}
+	.HighscoreTableSequence {
+		width: 70px;
+	}
+	.HighscoreTableDate {
+		width: 120px;
+	}
+	.HighscoreTableScore {
+		width: 100px;
+	}
+	.HighscoreTableMaxCombo {
+		width: 100px;
+	}
+	.HighscoreTableAccuracy {
+		width: 100px;
+	}
+	.HighscoreTableAvgReactionTime {
+		width: 130px;
+	}
+
+	/* Settings */
+	#Fieldset_SettingsGameMode {
+		overflow: hidden;
+	}
+	#CtrlGroup_SettingsGameMode .Textbox, #CtrlGroup_SettingsDifficulty .Textbox {
+		width: 120px;
+	}
+	#CtrlGroup_SettingsDifficulty #Ctrl_SettingsDifficultyTimeLimit .Textbox {
+		width: 80px;
+	}
+	#Ctrl_SettingsQuestionRange1, #Ctrl_SettingsQuestionRange2, #Ctrl_SettingsQuestionRange3, #Ctrl_SettingsQuestionRange4, #Ctrl_SettingsQuestionRange5, #Ctrl_SettingsQuestionRange6, #Ctrl_SettingsQuestionRange7, #Ctrl_SettingsQuestionRange8, #Ctrl_SettingsQuestionRange9, #Ctrl_SettingsQuestionRange10 {
+		width: calc((100% - 40px) / 5);
+	}
+	#Ctrl_SettingsQuestionRange12, #Ctrl_SettingsQuestionRange13, #Ctrl_SettingsQuestionRange14, #Ctrl_SettingsQuestionRange15, #Ctrl_SettingsQuestionRange16, #Ctrl_SettingsQuestionRange17 {
+		width: calc((100% - 20px) / 3);
+	}
+	#Ctrl_SettingsQuestionRangeSelectBasicHiragana, #Ctrl_SettingsQuestionRangeSelectBasicKatakana, #Ctrl_SettingsQuestionRangeSelectExceptObsoleteKana, #Ctrl_SettingsQuestionRangeSelectAll {
+		width: calc((100% - 10px) / 2);
+	}
+
+	/* Help */
+	#CtrlGroup_HelpTutorial {
+		margin: 10px 0 0 0;
+	}
+	#CtrlGroup_HelpTutorial .Ctrl {
+		width: calc((100% - 10px) / 2);
+	}
+
+/* Responsive Web Design */
+@media (max-width: 1150px) {
+	.Title {
+		width: 40px;
+	}
+	nav {
+		width: calc(100% - 70px);
+	}
+	#Ctnr_GameStats1, #Ctnr_GameStats2, #Ctnr_GameQuestionBoard, #Ctnr_GameAnswerBoard, #Ctnr_GameCtrl {
+		left: 0; right: unset;
+		width: 100%;
+	}
+	#CtrlGroup_GameStats1 .Ctrl {
+		width: 25%; height: 50px;
+	}
+	#CtrlGroup_GameStats1 .GameStats1Title { /* .Tiny */
+		font-size: 12px;
+	}
+	#CtrlGroup_GameStats1 .GameStats1Value, #CtrlGroup_GameStats2 .ProgringText {
+		font-size: 16px;
+	}
+	#Ctnr_GameStats2 {
+		top: 115px;
+	}
+	#CtrlGroup_GameStats2 {
+		flex-direction: row-reverse;
+	}
+	#CtrlGroup_GameStats2 .Ctrl {
+		height: 60px; margin: 0;
+	}
+	#CtrlGroup_GameStats2 #Ctrl_GameScore {
+		width: calc(100% - 210px);
+		justify-content: right;
+	}
+	#CtrlGroup_GameStats2 #Label_GameScore {
+		font-size: 24px;
+	}
+	#Ctnr_GameQuestionBoard {
+		top: 200px;
+		height: calc(100% - 390px);
+	}
+	#Label_GameQuestionBoard {
+		font-size: 80px;
+	}
+	#Ctnr_GameAnswerBoard {
+		bottom: 70px;
+		height: 120px;
+	}
+	#CtrlGroup_GameAnswerBoard .Ctrl .Cmdbtn {
+		font-size: 32px;
+	}
+	#CtrlGroup_GameCtrl {
+		justify-content: space-between;
+	}
+	#CtrlGroup_GameCtrl .Ctrl {
+		width: calc((100% - 10px) / 2); margin: 0;
+	}
+	.HighscoreTableAccuracy, .HighscoreTableMaxCombo, .HighscoreTableAvgReactionTime { /* .Hidden-Horizontal */
+		width: 0 !important; border: 0 !important; padding: 0 !important; margin: 0 !important;
+		overflow: hidden !important;
+		pointer-events: none !important;
+	}
+}
