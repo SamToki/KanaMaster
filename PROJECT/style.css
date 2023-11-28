@@ -165,6 +165,14 @@ nav li {
 		width: calc((100% - 10px) / 2);
 	}
 
+	/* Help */
+	#CtrlGroup_HelpTutorial {
+		margin: 10px 0 0 0;
+	}
+	#CtrlGroup_HelpTutorial .Ctrl {
+		width: calc((100% - 10px) / 2);
+	}
+
 /* Responsive Web Design */
 @media (max-width: 1150px) {
 	.Title {
