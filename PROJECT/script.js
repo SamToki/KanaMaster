@@ -237,12 +237,12 @@
 			ChangeChecked("Checkbox_SettingsDisplayShowTopbar", System.Display.ShowTopbar);
 			if(System.Display.ShowTopbar == true) {
 				ChangeShow("Topbar");
-				ChangeShow("SectionTitleBelowTopbar");
-				ChangeHeight("ViewportBelowTopbar", "");
+				ChangeShow("SectionTitleAboveViewport");
+				ChangeHeightByClass("Viewport", "");
 			} else {
 				ChangeHide("Topbar");
-				ChangeHide("SectionTitleBelowTopbar");
-				ChangeHeight("ViewportBelowTopbar", "calc(100% - 30px)");
+				ChangeHide("SectionTitleAboveViewport");
+				ChangeHeightByClass("Viewport", "calc(100% - 30px)");
 			}
 			ChangeValue("Combobox_SettingsDisplayHotkeyIndicator", System.Display.HotkeyIndicator);
 			switch(System.Display.HotkeyIndicator) {
