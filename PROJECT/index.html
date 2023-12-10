@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="假名征服者 (KanaMaster)，日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
 		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 假名征服者, KanaMaster, かなマスター, 日语学习, 日语入门, 五十音图" />
-		<meta name="version" content="v1.01 (2023/12/02). Since 2023/11/05." />
+		<meta name="version" content="v1.02 (2023/12/10). Since 2023/11/05." />
 		<meta name="author" content="Sam Toki" />
 		<meta name="copyright" content="(C) 2015-2023 SAM TOKI STUDIO" />
 		<title>假名征服者</title>
@@ -263,13 +263,13 @@
 									</label>
 								</li>
 								<li class="Ctrl" id="Ctrl_SettingsGameModeQuantity">
-									<label for="Combobox_SettingsGameModeQuantity">
+									<label for="Textbox_SettingsGameModeQuantity">
 										<span>答题数量：</span>
 										<input class="Textbox" id="Textbox_SettingsGameModeQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="document.getElementById('Textbox_SettingsGameModeQuantity').select()" onchange="SetGameModeQuantity()" />
 									</label>
 								</li>
 								<li class="Ctrl Hidden" id="Ctrl_SettingsGameModeDuration">
-									<label for="Combobox_SettingsGameModeDuration">
+									<label for="Textbox_SettingsGameModeDuration">
 										<span>答题时长：</span>
 										<input class="Textbox" id="Textbox_SettingsGameModeDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="document.getElementById('Textbox_SettingsGameModeDuration').select()" onchange="SetGameModeDuration()" />
 										<span>分钟</span>
@@ -419,7 +419,7 @@
 							<legend>难度</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_SettingsDifficulty">
 								<li class="Ctrl" id="Ctrl_SettingsDifficultyTimeLimit">
-									<label for="Combobox_SettingsDifficultyTimeLimitInitial">
+									<label for="Textbox_SettingsDifficultyTimeLimitInitial">
 										<span>时限：从</span>
 										<input class="Textbox" id="Textbox_SettingsDifficultyTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="document.getElementById('Textbox_SettingsDifficultyTimeLimitInitial').select()" onchange="SetDifficultyTimeLimitInitial()" />
 										<span>至</span>
@@ -428,14 +428,14 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDifficultyCooldown">
+									<label for="Textbox_SettingsDifficultyCooldown">
 										<span>冷却：</span>
 										<input class="Textbox" id="Textbox_SettingsDifficultyCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="document.getElementById('Textbox_SettingsDifficultyCooldown').select()" onchange="SetDifficultyCooldown()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDifficultyHPDrain">
+									<label for="Textbox_SettingsDifficultyHPDrain">
 										<span>失误掉血：</span>
 										<input class="Textbox" id="Textbox_SettingsDifficultyHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="document.getElementById('Textbox_SettingsDifficultyHPDrain').select()" onchange="SetDifficultyHPDrain()" />
 									</label>
@@ -632,7 +632,7 @@
 						<fieldset>
 							<legend>关于</legend>
 							<p>假名征服者</p>
-							<p>版本 v1.01 (<time datetime="2023-12-02" pubdate="pubdate">2023/12/02</time>)<br />
+							<p>版本 v1.02 (<time datetime="2023-12-10" pubdate="pubdate">2023/12/10</time>)<br />
 								始于 2023/11/05</p>
 							<ul class="CtrlGroup" id="CtrlGroup_HelpAbout">
 								<li class="Ctrl">
