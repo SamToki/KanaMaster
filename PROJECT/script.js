@@ -54,7 +54,7 @@
 				ScoreDisplay: 0
 			}
 		};
-		Automation.ClockGame = 0; Automation.StartButtonGlow = 0;
+		Automation.ClockGame = 0; Automation.GlowStartButton = 0;
 		
 		// Saved
 		var Subsystem = {
@@ -127,25 +127,25 @@
 				window.location.replace("index.html"); */
 				break;
 			case "en-US":
-				PopupDialogAppear("System_LanguageUnsupported",
+				ShowPopupDialog("System_LanguageUnsupported",
 					"Termination",
 					"<span lang='en-US'>Sorry, this page currently does not support English (US).</span>",
 					"", "", "<span lang='en-US'>OK</span>");
 				break;
 			case "ja-JP":
-				PopupDialogAppear("System_LanguageUnsupported",
+				ShowPopupDialog("System_LanguageUnsupported",
 					"Termination",
 					"<span lang='ja-JP'>すみません。このページは日本語にまだサポートしていません。</span>",
 					"", "", "<span lang='ja-JP'>OK</span>");
 				break;
 			case "zh-TW":
-				PopupDialogAppear("System_LanguageUnsupported",
+				ShowPopupDialog("System_LanguageUnsupported",
 					"Termination",
 					"<span lang='zh-TW'>抱歉，本頁面暫不支援繁體中文。</span>",
 					"", "", "<span lang='zh-TW'>確定</span>");
 				break;
 			default:
-				alert("Error: The value of System.I18n.Language in function window.onload is out of expectation.");
+				alert("Error: The value of System.I18n.Language in function Load is out of expectation.");
 				break;
 		}
 		RefreshSystem();
@@ -236,24 +236,24 @@
 			}
 			ChangeChecked("Checkbox_SettingsDisplayShowTopbar", System.Display.ShowTopbar);
 			if(System.Display.ShowTopbar == true) {
-				ChangeShow("Topbar");
-				ChangeShow("SectionTitleAboveViewport");
+				Show("Topbar");
+				Show("SectionTitleAboveViewport");
 				ChangeHeightByClass("Viewport", "");
 			} else {
-				ChangeHide("Topbar");
-				ChangeHide("SectionTitleAboveViewport");
+				Hide("Topbar");
+				Hide("SectionTitleAboveViewport");
 				ChangeHeightByClass("Viewport", "calc(100% - 30px)");
 			}
 			ChangeValue("Combobox_SettingsDisplayHotkeyIndicator", System.Display.HotkeyIndicator);
 			switch(System.Display.HotkeyIndicator) {
 				case "Disabled":
-					HotkeyIndicatorDisappear();
+					FadeHotkeyIndicator();
 					break;
 				case "ShowOnWrongKeyPress":
 				case "ShowOnAnyKeyPress":
 					break;
 				case "AlwaysShow":
-					HotkeyIndicatorAppear();
+					ShowHotkeyIndicator();
 					break;
 				default:
 					alert("Error: The value of System.Display.HotkeyIndicator in function RefreshSystem is out of expectation.");
@@ -389,9 +389,9 @@
 				ChangeProgring("ProgringFg_GameHP", 289.03 * (1 - Game.Stats.HP / 100));
 				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
 				if(Game.Status.IsRunning == true && Game.Stats.HP <= 20) {
-					ChangeClassAdd("ProgringText_GameHP", "Emphasis");
+					AddClass("ProgringText_GameHP", "Emphasis");
 				} else {
-					ChangeClassRemove("ProgringText_GameHP", "Emphasis");
+					RemoveClass("ProgringText_GameHP", "Emphasis");
 				}
 
 				// Time Left
@@ -413,9 +413,9 @@
 				ChangeProgring("ProgringFg_GameTimeLeft", 289.03 * (1 - Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit));
 				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
-					ChangeClassAdd("ProgringText_GameTimeLeft", "Emphasis");
+					AddClass("ProgringText_GameTimeLeft", "Emphasis");
 				} else {
-					ChangeClassRemove("ProgringText_GameTimeLeft", "Emphasis");
+					RemoveClass("ProgringText_GameTimeLeft", "Emphasis");
 				}
 
 		// Question Board & Answer Board
@@ -451,10 +451,10 @@
 
 			// Cheat
 			for(Looper = 1; Looper <= 3; Looper++) {
-				ChangeClassRemove("Cmdbtn_GameAnswerOption" + Looper, "Emphasis");
+				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "Emphasis");
 			}
 			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer != 0) {
-				ChangeClassAdd("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Emphasis");
+				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Emphasis");
 			}
 
 		// Time Up
@@ -462,13 +462,13 @@
 			if(Game.Status.IsCoolingDown == false) {
 				if(Game.Stats.TimeLeft < 0) {
 					Game.Stats.TimeLeft = 0;
-					GameAnswer(4);
+					AnswerGame(4);
 				}
 			} else {
 				if(Game.Stats.TimeLeft > Game.Stats.CurrentTimeLimit) {
 					Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit;
 					Questioner();
-					ToastMessageDisappear();
+					HideToastMessage();
 				}
 			}
 		} else {
@@ -484,14 +484,14 @@
 			// Show Toast Message & Update Highscore
 			if(Game.Stats.Combo == Game.Stats.TotalCount) {
 				if(Game.Stats.Accuracy == 100) {
-					ToastMessageAppear("ALL PERFECT!");
+					ShowToastMessage("ALL PERFECT!");
 					Highscore[6][4] = Game.Stats.MaxCombo + "x (AP)";
 				} else {
-					ToastMessageAppear("FULL COMBO!");
+					ShowToastMessage("FULL COMBO!");
 					Highscore[6][4] = Game.Stats.MaxCombo + "x (FC)";
 				}
 			} else {
-				ToastMessageAppear("胜利!");
+				ShowToastMessage("胜利!");
 				Highscore[6][4] = Game.Stats.MaxCombo + "x";
 			}
 			Highscore[6][1] = "最新";
@@ -503,7 +503,7 @@
 
 			// Reset Game and Scroll to Highscore
 			setTimeout(function() {
-				GameReset();
+				ResetGame();
 				Click("TopbarLinkbtn_Highscore");
 			}, System.Display.Anim.Speed * 2 + 1000);
 		}
@@ -515,7 +515,7 @@
 			Game.Status.IsPaused = true;
 
 			// Show Toast Message
-			ToastMessageAppear("游戏结束");
+			ShowToastMessage("游戏结束");
 
 			// Reset Game
 			setTimeout(GameReset, System.Display.Anim.Speed * 2 + 1000);
@@ -552,15 +552,15 @@
 			switch(Game.Mode.Progressing) {
 				case "Quantity":
 					ChangeDisabled("Textbox_SettingsGameModeDuration", true);
-					ChangeHide("Ctrl_SettingsGameModeDuration");
+					Hide("Ctrl_SettingsGameModeDuration");
 					ChangeDisabled("Textbox_SettingsGameModeQuantity", false);
-					ChangeShow("Ctrl_SettingsGameModeQuantity");
+					Show("Ctrl_SettingsGameModeQuantity");
 					break;
 				case "Duration":
 					ChangeDisabled("Textbox_SettingsGameModeQuantity", true);
-					ChangeHide("Ctrl_SettingsGameModeQuantity");
+					Hide("Ctrl_SettingsGameModeQuantity");
 					ChangeDisabled("Textbox_SettingsGameModeDuration", false);
-					ChangeShow("Ctrl_SettingsGameModeDuration");
+					Show("Ctrl_SettingsGameModeDuration");
 					break;
 				default:
 					alert("Error: The value of Game.Mode.Progressing in function RefreshGame is out of expectation.");
@@ -578,7 +578,7 @@
 				}
 			}
 			if(Counter < 2) {
-				PopupDialogAppear("Game_QuestionRangeBelowMinimumRequirement",
+				ShowPopupDialog("Game_QuestionRangeBelowMinimumRequirement",
 					"Termination",
 					"出题范围过小，请至少选择两项。已恢复至默认范围。",
 					"", "", "确定");
@@ -672,14 +672,14 @@
 			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]]
 		);
 	}
-	function StartButtonGlow() {
+	function GlowStartButton() {
 		if(
 			(Game.Status.IsRunning == false || (Game.Status.IsRunning == true && Game.Status.IsPaused == true)) &&
-			ReadClassContain("Cmdbtn_GameCtrlStart", "Glow") == false
+			IsClassContained("Cmdbtn_GameCtrlStart", "Glow") == false
 		) {
-			ChangeClassAdd("Cmdbtn_GameCtrlStart", "Glow");
+			AddClass("Cmdbtn_GameCtrlStart", "Glow");
 		} else {
-			ChangeClassRemove("Cmdbtn_GameCtrlStart", "Glow");
+			RemoveClass("Cmdbtn_GameCtrlStart", "Glow");
 		}
 	}
 
@@ -704,9 +704,9 @@
 
 		// Refresh
 		for(Looper = 1; Looper <= 6; Looper++) {
-			ChangeClassRemove("Item_HighscoreTableRow" + Looper, "Box");
+			RemoveClass("Item_HighscoreTableRow" + Looper, "Box");
 			if(Highscore[Looper][1] == "最新") {
-				ChangeClassAdd("Item_HighscoreTableRow" + Looper, "Box");
+				AddClass("Item_HighscoreTableRow" + Looper, "Box");
 			} else {
 				Highscore[Looper][1] = "#" + Looper;
 			}
@@ -725,9 +725,9 @@
 // Cmds
 	// Game
 		// Ctrls
-		function GameStart() {
+		function StartGame() {
 			if(Game.Status.IsRunning == false) {
-				GameReset();
+				ResetGame();
 				Game.Status.IsRunning = true; Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
 				Game.Stats.StartTime = Date.now(); Game.Stats.StartTime2 = Date.now(); Game.Stats.HP = 100;
 				Game.Lottery.Question[1] = [0, 0, 1];
@@ -735,7 +735,7 @@
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
-					// ToastMessageAppear("游戏暂停");
+					// ShowToastMessage("游戏暂停");
 				} else {
 					Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
@@ -744,7 +744,7 @@
 			}
 			RefreshGame();
 		}
-		function GameReset() {
+		function ResetGame() {
 			Game.Status = {
 				IsRunning: false, IsCoolingDown: false, IsPaused: false
 			};
@@ -772,12 +772,12 @@
 		}
 
 		// Answer
-		function GameAnswer(Selector) {
+		function AnswerGame(Selector) {
 			if(Game.Status.IsRunning != true || Game.Status.IsPaused == true) {
 				return;
 			}
 			if(Game.Status.IsCoolingDown == true) {
-				ToastMessageAppear("正在冷却");
+				ShowToastMessage("正在冷却...");
 				return;
 			}
 
@@ -802,7 +802,7 @@
 						ChangeFgColor("Label_AnswerFeedback", "#FF8000");
 						break;
 					default:
-						alert("Error: The value of Game.Stats.TimeLeft in function GameAnswer is out of expectation.");
+						alert("Error: The value of Game.Stats.TimeLeft in function AnswerGame is out of expectation.");
 						break;
 				}
 				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
@@ -830,7 +830,7 @@
 			// Answer Feedback Animation
 				// Initialization
 				ChangeAnim("Label_AnswerFeedback", "none");
-				ChangeClassAdd("Label_AnswerFeedback", "Faded");
+				Fade("Label_AnswerFeedback");
 				ChangeTop("Label_AnswerFeedback", 0);
 				switch(Game.Lottery.CorrectAnswer) {
 					case 1:
@@ -843,7 +843,7 @@
 						ChangeLeft("Label_AnswerFeedback", "calc(100% - " + document.getElementById("Label_AnswerFeedback").offsetWidth * 5 / 4 + "px)");
 						break;
 					default:
-						alert("Error: The value of Game.Lottery.CorrectAnswer in function GameAnswer is out of expectation.");
+						alert("Error: The value of Game.Lottery.CorrectAnswer in function AnswerGame is out of expectation.");
 						break;
 				}
 				ChangeScale("Label_AnswerFeedback", 1.5);
@@ -851,14 +851,14 @@
 				// Phase 1
 				setTimeout(function() {
 					ChangeAnim("Label_AnswerFeedback", System.Display.Anim.Speed + "ms");
-					ChangeClassRemove("Label_AnswerFeedback", "Faded");
+					Show("Label_AnswerFeedback");
 					ChangeScale("Label_AnswerFeedback", 1);
 				}, 10);
 
 				// Phase 2
 				setTimeout(function() {
 					ChangeAnim("Label_AnswerFeedback", System.Display.Anim.Speed * 3 + "ms");
-					ChangeClassAdd("Label_AnswerFeedback", "Faded");
+					Fade("Label_AnswerFeedback");
 					ChangeTop("Label_AnswerFeedback", "-10px");
 				}, 110 + System.Display.Anim.Speed);
 
@@ -992,7 +992,7 @@
 		}
 
 		// User Data
-		function SetUserDataImport() {
+		function ImportUserData() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != null) {
 				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\"") == true) {
 					ChangeCursorOverall("wait");
@@ -1002,7 +1002,7 @@
 					});
 					window.location.reload();
 				} else {
-					PopupDialogAppear("System_JSONStringFormatMismatch",
+					ShowPopupDialog("System_JSONStringFormatMismatch",
 						"Termination",
 						"JSON 字符串格式不匹配。请检查您粘贴的文本的来源。",
 						"", "", "确定");
@@ -1010,27 +1010,27 @@
 				}
 			}
 		}
-		function SetUserDataExport() {
+		function ExportUserData() {
 			navigator.clipboard.writeText("{" +
 				"\"System\":" + JSON.stringify(System) + "," +
 				"\"KanaMaster_Subsystem\":" + JSON.stringify(Subsystem) + "," +
 				"\"KanaMaster_Game\":" + JSON.stringify(Game) + "," +
 				"\"KanaMaster_Highscore\":" + JSON.stringify(Highscore) +
 				"}");
-			PopupDialogAppear("System_UserDataExported",
+			ShowPopupDialog("System_UserDataExported",
 				"Completion",
 				"已将用户数据以 JSON 字符串的形式导出至剪贴板。若要分享，请注意其中是否包含个人信息。",
 				"", "", "确定");
 		}
-		function SetUserDataClear() {
-			PopupDialogAppear("System_ConfirmClearUserData",
+		function ClearUserData() {
+			ShowPopupDialog("System_ConfirmClearUserData",
 				"Caution",
 				"您确认要清空用户数据？",
 				"", "清空", "取消");
 		}
 
 	// Popup Dialog
-	function PopupDialogAnswer(Selector) {
+	function AnswerPopupDialog(Selector) {
 		switch(Interaction.PopupDialogEvent) {
 			case "System_LanguageUnsupported":
 			case "System_JSONStringFormatMismatch":
@@ -1040,7 +1040,7 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function PopupDialogAnswer is out of expectation.");
+						alert("Error: The value of Selector in function AnswerPopupDialog is out of expectation.");
 						break;
 				}
 				break;
@@ -1054,17 +1054,17 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function PopupDialogAnswer is out of expectation.");
+						alert("Error: The value of Selector in function AnswerPopupDialog is out of expectation.");
 						break;
 				}
 				break;
 			case "":
 				break;
 			default:
-				alert("Error: The value of Interaction.PopupDialogEvent in function PopupDialogAnswer is out of expectation.");
+				alert("Error: The value of Interaction.PopupDialogEvent in function AnswerPopupDialog is out of expectation.");
 				break;
 		}
-		PopupDialogDisappear();
+		HidePopupDialog();
 	}
 
 // Listeners
@@ -1077,26 +1077,26 @@
 				case "3":
 					Click("Cmdbtn_GameAnswerOption" + Hotkey.key);
 					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
-						HotkeyIndicatorAppear();
+						ShowHotkeyIndicator();
 					}
 					break;
 				case "S":
 				case "s":
 					Click("Cmdbtn_GameCtrlStart");
 					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
-						HotkeyIndicatorAppear();
+						ShowHotkeyIndicator();
 					}
 					break;
 				case "R":
 				case "r":
 					Click("Cmdbtn_GameCtrlReset");
 					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
-						HotkeyIndicatorAppear();
+						ShowHotkeyIndicator();
 					}
 					break;
 				default:
 					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicator == "ShowOnWrongKeyPress") {
-						HotkeyIndicatorAppear();
+						ShowHotkeyIndicator();
 					}
 					break;
 			}
@@ -1104,4 +1104,4 @@
 	});
 
 // Automations
-Automation.StartButtonGlow = setInterval(StartButtonGlow, 500);
+Automation.GlowStartButton = setInterval(GlowStartButton, 500);

@@ -146,15 +146,15 @@
 					<div id="Ctnr_GameAnswerBoard">
 						<ul class="CtrlGroup" id="CtrlGroup_GameAnswerBoard">
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption1" lang="ja-JP" onclick="GameAnswer(1)">选项1</button>
+								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption1" lang="ja-JP" onclick="AnswerGame(1)">选项1</button>
 								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameAnswerOption1">1</span>
 							</li>
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption2" lang="ja-JP" onclick="GameAnswer(2)">选项2</button>
+								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption2" lang="ja-JP" onclick="AnswerGame(2)">选项2</button>
 								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameAnswerOption2">2</span>
 							</li>
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption3" lang="ja-JP" onclick="GameAnswer(3)">选项3</button>
+								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption3" lang="ja-JP" onclick="AnswerGame(3)">选项3</button>
 								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameAnswerOption3">3</span>
 							</li>
 						</ul>
@@ -163,11 +163,11 @@
 					<div id="Ctnr_GameCtrl">
 						<ul class="CtrlGroup" id="CtrlGroup_GameCtrl">
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameCtrlStart" onclick="GameStart()">开始</button>
+								<button class="Cmdbtn" id="Cmdbtn_GameCtrlStart" onclick="StartGame()">开始</button>
 								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameCtrlStart">S</span>
 							</li>
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameCtrlReset" onclick="GameReset()">重置</button>
+								<button class="Cmdbtn" id="Cmdbtn_GameCtrlReset" onclick="ResetGame()">重置</button>
 								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameCtrlReset">R</span>
 							</li>
 						</ul>
@@ -550,14 +550,14 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsUserDataImport">
 										<span>导入：</span>
-										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="document.getElementById('Textbox_SettingsUserDataImport').select()" onchange="SetUserDataImport()" />
+										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="document.getElementById('Textbox_SettingsUserDataImport').select()" onchange="ImportUserData()" />
 									</label>
 								</li>
 								<li class="Ctrl" id="Ctrl_SettingsUserDataExport">
-									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="SetUserDataExport()">导出</button>
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="ExportUserData()">导出</button>
 								</li>
 								<li class="Ctrl" id="Ctrl_SettingsUserDataClear">
-									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="SetUserDataClear()">清空</button>
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="ClearUserData()">清空</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -684,13 +684,13 @@
 				</ul>
 				<ul class="CtrlGroup" id="CtrlGroup_PopupDialogOptions">
 					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption1">
-						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption1" disabled="true" onclick="PopupDialogAnswer(1)">选项1</button>
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption1" disabled="true" onclick="AnswerPopupDialog(1)">选项1</button>
 					</li>
 					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption2">
-						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption2" disabled="true" onclick="PopupDialogAnswer(2)">选项2</button>
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption2" disabled="true" onclick="AnswerPopupDialog(2)">选项2</button>
 					</li>
 					<li class="Ctrl" id="Ctrl_PopupDialogOption3">
-						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption3" disabled="true" onclick="PopupDialogAnswer(3)">选项3</button>
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption3" disabled="true" onclick="AnswerPopupDialog(3)">选项3</button>
 					</li>
 				</ul>
 			</div>
