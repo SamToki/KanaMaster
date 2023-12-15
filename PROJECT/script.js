@@ -5,7 +5,7 @@
 	"use strict";
 		// Unsaved
 		const KanaGrid = [
-			["", "准备"],
+			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
 			[0, "い",   "き",   "し",   "ち",   "に",   "ひ",   "み",   "",     "り",   "",     "ぎ",   "じ",   "ぢ",   "び",   "ぴ",   "",     "",     "",     "",     ""],
 			[0, "う",   "く",   "す",   "つ",   "ぬ",   "ふ",   "む",   "ゆ",   "る",   "",     "ぐ",   "ず",   "づ",   "ぶ",   "ぷ",   "",     "",     "",     "",     ""],
@@ -27,7 +27,7 @@
 			[0, "ゐ",   "ゑ",   "ヰ",   "ヱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
 		],
 		RomajiGrid = [
-			["", "准备"],
+			["", "准备", "暂停"],
 			[0, "a",    "ka",   "sa",   "ta",   "na",   "ha",   "ma",   "ya",   "ra",   "wa",   "ga",   "za",   "da",   "ba",   "pa",   "",     "",     "",     "",     ""],
 			[0, "i",    "ki",   "shi",  "chi",  "ni",   "hi",   "mi",   "",     "ri",   "",     "gi",   "ji",   "ji",   "bi",   "pi",   "",     "",     "",     "",     ""],
 			[0, "u",    "ku",   "su",   "tsu",  "nu",   "fu",   "mu",   "yu",   "ru",   "",     "gu",   "zu",   "zu",   "bu",   "pu",   "",     "",     "",     "",     ""],
@@ -731,15 +731,36 @@
 				Game.Status.IsRunning = true; Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
 				Game.Stats.StartTime = Date.now(); Game.Stats.StartTime2 = Date.now(); Game.Stats.HP = 100;
 				Game.Lottery.Question[1] = [0, 0, 1];
+				Game.Lottery.Answer = [
+					0,
+					[0, 0, 0],
+					[0, 0, 0],
+					[0, 0, 0]
+				];
 				Click("TopbarLinkbtn_Game");
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
+					Game.Lottery.Question[1] = [0, 0, 2];
+					Game.Lottery.Answer = [
+						0,
+						[0, 0, 0],
+						[0, 0, 0],
+						[0, 0, 0]
+					];
 					// ShowToastMessage("游戏暂停");
 				} else {
 					Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 					Game.Stats.StartTime2 = Date.now();
+					Game.Lottery.Question[1] = [0, 0, 1];
+					Game.Lottery.Answer = [
+						0,
+						[0, 0, 0],
+						[0, 0, 0],
+						[0, 0, 0]
+					];
+					Click("TopbarLinkbtn_Game");
 				}
 			}
 			RefreshGame();
