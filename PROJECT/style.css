@@ -215,6 +215,7 @@ nav li {
 	}
 	.HighscoreTableAccuracy, .HighscoreTableMaxCombo, .HighscoreTableAvgReactionTime { /* .Hidden-Horizontal */
 		width: 0 !important; border: 0 !important; padding: 0 !important; margin: 0 !important;
+		box-shadow: none !important;
 		overflow: hidden !important;
 		pointer-events: none !important;
 	}

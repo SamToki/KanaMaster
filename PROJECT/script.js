@@ -852,7 +852,7 @@
 				// Initialization
 				ChangeAnim("Label_AnswerFeedback", "none");
 				Fade("Label_AnswerFeedback");
-				ChangeTop("Label_AnswerFeedback", 0);
+				ChangeTop("Label_AnswerFeedback", "0");
 				switch(Game.Lottery.CorrectAnswer) {
 					case 1:
 						ChangeLeft("Label_AnswerFeedback", document.getElementById("Label_AnswerFeedback").offsetWidth / 4 + "px");
