@@ -1,0 +1,23 @@
+/* For SamToki.github.io/KanaMaster */
+/* Released under GNU GPL v3 open source license. */
+/* (C) 2015-2023 SAM TOKI STUDIO */
+
+/* This is a theme variant, so only colors along with few things are configured. */
+
+/* Main */
+	/* Game */
+		/* Game Stats 2 */
+		#CtrlGroup_GameStats2 #ProgringFg_GameProgress {
+			stroke: #00A0E0;
+		}
+		#CtrlGroup_GameStats2 #ProgringFg_GameHP {
+			stroke: #FF8000;
+		}
+		#CtrlGroup_GameStats2 #ProgringFg_GameTimeLeft {
+			stroke: #00C000;
+		}
+
+		/* Game Answer Board */
+		#Label_AnswerFeedback {
+			color: #00A0E0; filter: drop-shadow(0 0 10px #FFFFFF);
+		}
