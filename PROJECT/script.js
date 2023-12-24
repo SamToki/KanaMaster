@@ -391,9 +391,9 @@
 				ChangeProgring("ProgringFg_GameHP", 289.03 * (1 - Game.Stats.HP / 100));
 				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
 				if(Game.Status.IsRunning == true && Game.Stats.HP <= 20) {
-					AddClass("ProgringText_GameHP", "Emphasis");
+					AddClass("ProgringText_GameHP", "EmphasizedText");
 				} else {
-					RemoveClass("ProgringText_GameHP", "Emphasis");
+					RemoveClass("ProgringText_GameHP", "EmphasizedText");
 				}
 
 				// Time Left
@@ -415,9 +415,9 @@
 				ChangeProgring("ProgringFg_GameTimeLeft", 289.03 * (1 - Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit));
 				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
-					AddClass("ProgringText_GameTimeLeft", "Emphasis");
+					AddClass("ProgringText_GameTimeLeft", "EmphasizedText");
 				} else {
-					RemoveClass("ProgringText_GameTimeLeft", "Emphasis");
+					RemoveClass("ProgringText_GameTimeLeft", "EmphasizedText");
 				}
 
 		// Question Board & Answer Board
@@ -453,10 +453,10 @@
 
 			// Cheat
 			for(Looper = 1; Looper <= 3; Looper++) {
-				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "Emphasis");
+				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "EmphasizedText");
 			}
 			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer != 0) {
-				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Emphasis");
+				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "EmphasizedText");
 			}
 
 		// Time Up

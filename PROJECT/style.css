@@ -74,7 +74,10 @@ nav li {
 			position: absolute; top: 0; left: 350px;
 			width: calc(100% - 700px); height: calc(100% - 200px);
 		}
-		#Ctrl_GameQuestionBoard {
+		#Ctnr_GameQuestionBoard .CtrlGroup {
+			width: 100%; height: 100%;
+		}
+		#Ctnr_GameQuestionBoard .Ctrl {
 			width: 100%; height: 100%;
 			display: flex; justify-content: center; align-items: center;
 		}
