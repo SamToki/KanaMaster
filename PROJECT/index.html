@@ -142,15 +142,15 @@
 							</li>
 						</ul>
 					</div>
-					<div id="Ctnr_GameQuestionBoard">
+					<div id="Ctnr_GameQuestion">
 						<ul class="CtrlGroup">
 							<li class="Ctrl Box">
-								<span id="Label_GameQuestionBoard" lang="ja-JP">题目</span>
+								<span id="Label_GameQuestion" lang="ja-JP">题目</span>
 							</li>
 						</ul>
 					</div>
-					<div id="Ctnr_GameAnswerBoard">
-						<ul class="CtrlGroup" id="CtrlGroup_GameAnswerBoard">
+					<div id="Ctnr_GameAnswer">
+						<ul class="CtrlGroup" id="CtrlGroup_GameAnswer">
 							<li class="Ctrl WidthDivideBy3">
 								<button class="Cmdbtn" id="Cmdbtn_GameAnswerOption1" lang="ja-JP" onclick="AnswerGame(1)">选项1</button>
 								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameAnswerOption1">1</span>
@@ -169,12 +169,12 @@
 					<div id="Ctnr_GameCtrl">
 						<ul class="CtrlGroup" id="CtrlGroup_GameCtrl">
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameCtrlStart" onclick="StartGame()">开始</button>
-								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameCtrlStart">S</span>
+								<button class="Cmdbtn" id="Cmdbtn_GameStart" onclick="StartGame()">开始</button>
+								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameStart">S</span>
 							</li>
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameCtrlReset" onclick="ResetGame()">重置</button>
-								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameCtrlReset">R</span>
+								<button class="Cmdbtn" id="Cmdbtn_GameReset" onclick="ResetGame()">重置</button>
+								<span class="HotkeyIndicator Faded" id="HotkeyIndicator_GameReset">R</span>
 							</li>
 						</ul>
 					</div>
@@ -185,60 +185,60 @@
 				<h1 class="SectionTitle">高分榜</h1>
 				<ul class="ItemGroup" id="ItemGroup_Highscore">
 					<li class="Item TableHeader">
-						<span class="HighscoreTableSequence" id="Label_HighscoreTableRowHeaderSequence">名次</span>
-						<span class="HighscoreTableDate" id="Label_HighscoreTableRowHeaderDate">日期</span>
-						<span class="HighscoreTableScore" id="Label_HighscoreTableRowHeaderScore">总分</span>
-						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRowHeaderMaxCombo">最大连击</span>
-						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRowHeaderAccuracy">准确率</span>
-						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRowHeaderAvgReactionTime">平均反应用时</span>
+						<span class="HighscoreSequence" id="Label_HighscoreRowHeaderSequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRowHeaderDate">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRowHeaderScore">总分</span>
+						<span class="HighscoreMaxCombo" id="Label_HighscoreRowHeaderMaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRowHeaderAccuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRowHeaderAvgReactionTime">平均反应用时</span>
 					</li>
-					<li class="Item" id="Item_HighscoreTableRow1">
-						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow1Sequence">名次</span>
-						<span class="HighscoreTableDate" id="Label_HighscoreTableRow1Date">日期</span>
-						<span class="HighscoreTableScore" id="Label_HighscoreTableRow1Score">总分</span>
-						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow1MaxCombo">最大连击</span>
-						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow1Accuracy">准确率</span>
-						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow1AvgReactionTime">平均反应用时</span>
+					<li class="Item" id="Item_HighscoreRow1">
+						<span class="HighscoreSequence" id="Label_HighscoreRow1Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow1Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow1Score">总分</span>
+						<span class="HighscoreMaxCombo" id="Label_HighscoreRow1MaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow1Accuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRow1AvgReactionTime">平均反应用时</span>
 					</li>
-					<li class="Item" id="Item_HighscoreTableRow2">
-						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow2Sequence">名次</span>
-						<span class="HighscoreTableDate" id="Label_HighscoreTableRow2Date">日期</span>
-						<span class="HighscoreTableScore" id="Label_HighscoreTableRow2Score">总分</span>
-						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow2MaxCombo">最大连击</span>
-						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow2Accuracy">准确率</span>
-						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow2AvgReactionTime">平均反应用时</span>
+					<li class="Item" id="Item_HighscoreRow2">
+						<span class="HighscoreSequence" id="Label_HighscoreRow2Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow2Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow2Score">总分</span>
+						<span class="HighscoreMaxCombo" id="Label_HighscoreRow2MaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow2Accuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRow2AvgReactionTime">平均反应用时</span>
 					</li>
-					<li class="Item" id="Item_HighscoreTableRow3">
-						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow3Sequence">名次</span>
-						<span class="HighscoreTableDate" id="Label_HighscoreTableRow3Date">日期</span>
-						<span class="HighscoreTableScore" id="Label_HighscoreTableRow3Score">总分</span>
-						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow3MaxCombo">最大连击</span>
-						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow3Accuracy">准确率</span>
-						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow3AvgReactionTime">平均反应用时</span>
+					<li class="Item" id="Item_HighscoreRow3">
+						<span class="HighscoreSequence" id="Label_HighscoreRow3Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow3Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow3Score">总分</span>
+						<span class="HighscoreMaxCombo" id="Label_HighscoreRow3MaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow3Accuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRow3AvgReactionTime">平均反应用时</span>
 					</li>
-					<li class="Item" id="Item_HighscoreTableRow4">
-						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow4Sequence">名次</span>
-						<span class="HighscoreTableDate" id="Label_HighscoreTableRow4Date">日期</span>
-						<span class="HighscoreTableScore" id="Label_HighscoreTableRow4Score">总分</span>
-						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow4MaxCombo">最大连击</span>
-						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow4Accuracy">准确率</span>
-						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow4AvgReactionTime">平均反应用时</span>
+					<li class="Item" id="Item_HighscoreRow4">
+						<span class="HighscoreSequence" id="Label_HighscoreRow4Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow4Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow4Score">总分</span>
+						<span class="HighscoreMaxCombo" id="Label_HighscoreRow4MaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow4Accuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRow4AvgReactionTime">平均反应用时</span>
 					</li>
-					<li class="Item" id="Item_HighscoreTableRow5">
-						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow5Sequence">名次</span>
-						<span class="HighscoreTableDate" id="Label_HighscoreTableRow5Date">日期</span>
-						<span class="HighscoreTableScore" id="Label_HighscoreTableRow5Score">总分</span>
-						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow5MaxCombo">最大连击</span>
-						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow5Accuracy">准确率</span>
-						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow5AvgReactionTime">平均反应用时</span>
+					<li class="Item" id="Item_HighscoreRow5">
+						<span class="HighscoreSequence" id="Label_HighscoreRow5Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow5Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow5Score">总分</span>
+						<span class="HighscoreMaxCombo" id="Label_HighscoreRow5MaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow5Accuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRow5AvgReactionTime">平均反应用时</span>
 					</li>
-					<li class="Item" id="Item_HighscoreTableRow6">
-						<span class="HighscoreTableSequence" id="Label_HighscoreTableRow6Sequence">名次</span>
-						<span class="HighscoreTableDate" id="Label_HighscoreTableRow6Date">日期</span>
-						<span class="HighscoreTableScore" id="Label_HighscoreTableRow6Score">总分</span>
-						<span class="HighscoreTableMaxCombo" id="Label_HighscoreTableRow6MaxCombo">最大连击</span>
-						<span class="HighscoreTableAccuracy" id="Label_HighscoreTableRow6Accuracy">准确率</span>
-						<span class="HighscoreTableAvgReactionTime" id="Label_HighscoreTableRow6AvgReactionTime">平均反应用时</span>
+					<li class="Item" id="Item_HighscoreRow6">
+						<span class="HighscoreSequence" id="Label_HighscoreRow6Sequence">名次</span>
+						<span class="HighscoreDate" id="Label_HighscoreRow6Date">日期</span>
+						<span class="HighscoreScore" id="Label_HighscoreRow6Score">总分</span>
+						<span class="HighscoreMaxCombo" id="Label_HighscoreRow6MaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy" id="Label_HighscoreRow6Accuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRow6AvgReactionTime">平均反应用时</span>
 					</li>
 				</ul>
 			</section>
@@ -251,33 +251,33 @@
 							<legend>游戏模式</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_SettingsGameMode">
 								<li class="Ctrl">
-									<label for="Combobox_SettingsGameModeQuestioning">
+									<label for="Combobox_SettingsQuestioning">
 										<span>出题：</span>
-										<select class="Combobox" id="Combobox_SettingsGameModeQuestioning" onchange="SetGameModeQuestioning()">
+										<select class="Combobox" id="Combobox_SettingsQuestioning" onchange="SetQuestioning()">
 											<option value="Kana" selected>假名</option>
 											<option value="Romaji">罗马字</option>
 										</select>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsGameModeProgressing">
+									<label for="Combobox_SettingsProgressing">
 										<span>进度：</span>
-										<select class="Combobox" id="Combobox_SettingsGameModeProgressing" onchange="SetGameModeProgressing()">
+										<select class="Combobox" id="Combobox_SettingsProgressing" onchange="SetProgressing()">
 											<option value="Quantity" selected>答题数量</option>
 											<option value="Duration">答题时长</option>
 										</select>
 									</label>
 								</li>
-								<li class="Ctrl" id="Ctrl_SettingsGameModeQuantity">
-									<label for="Textbox_SettingsGameModeQuantity">
+								<li class="Ctrl" id="Ctrl_SettingsQuantity">
+									<label for="Textbox_SettingsQuantity">
 										<span>答题数量：</span>
-										<input class="Textbox" id="Textbox_SettingsGameModeQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="document.getElementById('Textbox_SettingsGameModeQuantity').select()" onchange="SetGameModeQuantity()" />
+										<input class="Textbox" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="document.getElementById('Textbox_SettingsQuantity').select()" onchange="SetQuantity()" />
 									</label>
 								</li>
-								<li class="Ctrl Hidden" id="Ctrl_SettingsGameModeDuration">
-									<label for="Textbox_SettingsGameModeDuration">
+								<li class="Ctrl Hidden" id="Ctrl_SettingsDuration">
+									<label for="Textbox_SettingsDuration">
 										<span>答题时长：</span>
-										<input class="Textbox" id="Textbox_SettingsGameModeDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="document.getElementById('Textbox_SettingsGameModeDuration').select()" onchange="SetGameModeDuration()" />
+										<input class="Textbox" id="Textbox_SettingsDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="document.getElementById('Textbox_SettingsDuration').select()" onchange="SetDuration()" />
 										<span>分钟</span>
 									</label>
 								</li>
@@ -402,17 +402,17 @@
 										<span>废弃假名：ゐ ゑ ヰ ヱ</span>
 									</label>
 								</li>
-								<li class="Ctrl" id="Ctrl_SettingsQuestionRangeSelectDefaultRange">
-									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectDefaultRange" onclick="SetQuestionRangeSelectDefaultRange()">默认范围</button>
+								<li class="Ctrl" id="Ctrl_SettingsQuestionRangeDefaultRange">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeDefaultRange" onclick="SetQuestionRangeDefaultRange()">默认范围</button>
 								</li>
-								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsQuestionRangeSelectBasicHiragana">
-									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectBasicHiragana" onclick="SetQuestionRangeSelectBasicHiragana()">基本平假名</button>
+								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsQuestionRangeBasicHiragana">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeBasicHiragana" onclick="SetQuestionRangeBasicHiragana()">基本平假名</button>
 								</li>
-								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsQuestionRangeSelectBasicKatakana">
-									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectBasicKatakana" onclick="SetQuestionRangeSelectBasicKatakana()">基本片假名</button>
+								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsQuestionRangeBasicKatakana">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeBasicKatakana" onclick="SetQuestionRangeBasicKatakana()">基本片假名</button>
 								</li>
-								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsQuestionRangeSelectExceptObsoleteKana">
-									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectExceptObsoleteKana" onclick="SetQuestionRangeSelectExceptObsoleteKana()">废弃假名除外</button>
+								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsQuestionRangeExceptObsoleteKana">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeExceptObsoleteKana" onclick="SetQuestionRangeExceptObsoleteKana()">废弃假名除外</button>
 								</li>
 								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsQuestionRangeSelectAll">
 									<button class="Cmdbtn" id="Cmdbtn_SettingsQuestionRangeSelectAll" onclick="SetQuestionRangeSelectAll()">全选</button>
@@ -424,26 +424,26 @@
 						<fieldset id="Fieldset_SettingsDifficulty">
 							<legend>难度</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_SettingsDifficulty">
-								<li class="Ctrl" id="Ctrl_SettingsDifficultyTimeLimit">
-									<label for="Textbox_SettingsDifficultyTimeLimitInitial">
+								<li class="Ctrl" id="Ctrl_SettingsTimeLimit">
+									<label for="Textbox_SettingsTimeLimitInitial">
 										<span>时限：从</span>
-										<input class="Textbox" id="Textbox_SettingsDifficultyTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="document.getElementById('Textbox_SettingsDifficultyTimeLimitInitial').select()" onchange="SetDifficultyTimeLimitInitial()" />
+										<input class="Textbox" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="document.getElementById('Textbox_SettingsTimeLimitInitial').select()" onchange="SetTimeLimitInitial()" />
 										<span>至</span>
-										<input class="Textbox" id="Textbox_SettingsDifficultyTimeLimitNormal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="document.getElementById('Textbox_SettingsDifficultyTimeLimitNormal').select()" onchange="SetDifficultyTimeLimitNormal()" />
+										<input class="Textbox" id="Textbox_SettingsTimeLimitNormal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="document.getElementById('Textbox_SettingsTimeLimitNormal').select()" onchange="SetTimeLimitNormal()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Textbox_SettingsDifficultyCooldown">
+									<label for="Textbox_SettingsCooldown">
 										<span>冷却：</span>
-										<input class="Textbox" id="Textbox_SettingsDifficultyCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="document.getElementById('Textbox_SettingsDifficultyCooldown').select()" onchange="SetDifficultyCooldown()" />
+										<input class="Textbox" id="Textbox_SettingsCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="document.getElementById('Textbox_SettingsCooldown').select()" onchange="SetCooldown()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Textbox_SettingsDifficultyHPDrain">
+									<label for="Textbox_SettingsHPDrain">
 										<span>失误掉血：</span>
-										<input class="Textbox" id="Textbox_SettingsDifficultyHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="document.getElementById('Textbox_SettingsDifficultyHPDrain').select()" onchange="SetDifficultyHPDrain()" />
+										<input class="Textbox" id="Textbox_SettingsHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="document.getElementById('Textbox_SettingsHPDrain').select()" onchange="SetHPDrain()" />
 									</label>
 								</li>
 							</ul>
@@ -454,9 +454,9 @@
 							<legend>显示</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_SettingsDisplay">
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayTheme">
+									<label for="Combobox_SettingsTheme">
 										<span>主题：</span>
-										<select class="Combobox" id="Combobox_SettingsDisplayTheme" onchange="SetDisplayTheme()">
+										<select class="Combobox" id="Combobox_SettingsTheme" onchange="SetTheme()">
 											<option value="Auto" selected>自动</option>
 											<option value="Default">默认</option>
 											<option value="Dark">深色</option>
@@ -466,9 +466,9 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayCursor">
+									<label for="Combobox_SettingsCursor">
 										<span>鼠标指针：</span>
-										<select class="Combobox" id="Combobox_SettingsDisplayCursor" onchange="SetDisplayCursor()">
+										<select class="Combobox" id="Combobox_SettingsCursor" onchange="SetCursor()">
 											<option value="Default" selected>默认</option>
 											<option value="BTRAhoge">孤独摇滚！</option>
 											<option value="Genshin">原神</option>
@@ -478,15 +478,15 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Checkbox_SettingsDisplayShowTopbar">
-										<input class="Checkbox" id="Checkbox_SettingsDisplayShowTopbar" type="checkbox" checked="true" onchange="SetDisplayShowTopbar()" />
+									<label for="Checkbox_SettingsShowTopbar">
+										<input class="Checkbox" id="Checkbox_SettingsShowTopbar" type="checkbox" checked="true" onchange="SetShowTopbar()" />
 										<span>显示顶栏</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayGameFont">
+									<label for="Combobox_SettingsGameFont">
 										<span>游戏字体：</span>
-										<select class="Combobox" id="Combobox_SettingsDisplayGameFont" onchange="SetDisplayGameFont()">
+										<select class="Combobox" id="Combobox_SettingsGameFont" onchange="SetGameFont()">
 											<option value="Default" selected>默认</option>
 											<option value="Sans">黑体 (Sans)</option>
 											<option value="Serif">明朝体 (Serif)</option>
@@ -494,9 +494,9 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayHotkeyIndicator">
+									<label for="Combobox_SettingsHotkeyIndicator">
 										<span>快捷键提示：</span>
-										<select class="Combobox" id="Combobox_SettingsDisplayHotkeyIndicator" onchange="SetDisplayHotkeyIndicator()">
+										<select class="Combobox" id="Combobox_SettingsHotkeyIndicator" onchange="SetHotkeyIndicator()">
 											<option value="Disabled">禁用</option>
 											<option value="ShowOnWrongKeyPress">按下无关按键时显示</option>
 											<option value="ShowOnAnyKeyPress" selected>按下任意按键时显示</option>
@@ -505,13 +505,13 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayAnimSpeed">
-										<span>动画速度：</span>
-										<select class="Combobox" id="Combobox_SettingsDisplayAnimSpeed" onchange="SetDisplayAnimSpeed()">
-											<option value="500">慢 (500ms)</option>
-											<option value="250" selected>中 (250ms)</option>
-											<option value="100">快 (100ms)</option>
-											<option value="0">关闭动画 (无障碍)</option>
+									<label for="Combobox_SettingsAnim">
+										<span>动画：</span>
+										<select class="Combobox" id="Combobox_SettingsAnim" onchange="SetAnim()">
+											<option value="500">慢速 (500ms)</option>
+											<option value="250" selected>中速 (250ms)</option>
+											<option value="100">快速 (100ms)</option>
+											<option value="0">关闭 (无障碍)</option>
 										</select>
 									</label>
 								</li>
@@ -523,27 +523,27 @@
 							<legend>开发者选项</legend>
 							<ul class="CtrlGroup">
 								<li class="Ctrl">
-									<label for="Checkbox_SettingsDevCheat">
-										<input class="Checkbox" id="Checkbox_SettingsDevCheat" type="checkbox" checked="false" onchange="SetDevCheat()" />
+									<label for="Checkbox_SettingsCheat">
+										<input class="Checkbox" id="Checkbox_SettingsCheat" type="checkbox" checked="false" onchange="SetCheat()" />
 										<span>作弊</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Checkbox_SettingsDevShowAllBorders">
-										<input class="Checkbox" id="Checkbox_SettingsDevShowAllBorders" type="checkbox" checked="false" onchange="SetDevShowAllBorders()" />
+									<label for="Checkbox_SettingsShowAllBorders">
+										<input class="Checkbox" id="Checkbox_SettingsShowAllBorders" type="checkbox" checked="false" onchange="SetShowAllBorders()" />
 										<span>显示所有元素的边框</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Checkbox_SettingsDevUseOldTypeface">
-										<input class="Checkbox" id="Checkbox_SettingsDevUseOldTypeface" type="checkbox" checked="false" onchange="SetDevUseOldTypeface()" />
+									<label for="Checkbox_SettingsUseOldTypeface">
+										<input class="Checkbox" id="Checkbox_SettingsUseOldTypeface" type="checkbox" checked="false" onchange="SetUseOldTypeface()" />
 										<span>使用 ja-JP 旧字形</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Textbox_SettingsDevFont">
+									<label for="Textbox_SettingsFont">
 										<span>字体：</span>
-										<input class="Textbox" id="Textbox_SettingsDevFont" type="text" placeholder="" onchange="SetDevFont()" />
+										<input class="Textbox" id="Textbox_SettingsFont" type="text" placeholder="" onchange="SetFont()" />
 									</label>
 								</li>
 							</ul>
@@ -563,7 +563,7 @@
 									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="ExportUserData()">导出</button>
 								</li>
 								<li class="Ctrl WidthDivideBy2" id="Ctrl_SettingsUserDataClear">
-									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="ClearUserData()">清空...</button>
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="ConfirmClearUserData()">清空...</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -584,7 +584,7 @@
 						<fieldset>
 							<legend>教程</legend>
 							<p>本游戏的教程以 PDF 文档的形式提供，方便您保存至本地，还可以打印出来备用。</p>
-							<ul class="CtrlGroup BelowParagraph" id="CtrlGroup_HelpTutorialDocs">
+							<ul class="CtrlGroup BelowParagraph" id="CtrlGroup_HelpDocs">
 								<li class="Ctrl WidthDivideBy2">
 									<a class="Linkbtn" href="docs/假名征服者%20(KanaMaster)%20快速入门.pdf">快速入门</a>
 								</li>
@@ -598,7 +598,7 @@
 						<fieldset>
 							<legend>参与进来</legend>
 							<p>您可通过以下渠道向我提供反馈：</p>
-							<ul class="CtrlGroup BelowParagraph" id="CtrlGroup_HelpGetInvolvedFeedback">
+							<ul class="CtrlGroup BelowParagraph" id="CtrlGroup_HelpFeedback">
 								<li class="Ctrl WidthDivideBy2">
 									<a class="Linkbtn" href="https://github.com/SamToki/Web---KanaMaster/issues">GitHub Issues</a>
 								</li>
@@ -662,31 +662,31 @@
 		<div class="ScreenFilter Faded" id="ScreenFilter_PopupDialog" onclick="AnswerPopupDialog(3)"></div>
 		<div class="Window Hidden Faded" id="Window_PopupDialog" tabindex="-1">
 			<ul class="CtrlGroup" id="CtrlGroup_PopupDialogPrompt">
-				<li class="Ctrl" id="Ctrl_PopupDialogPromptIconCompletion">
-					<svg class="PopupDialogPromptIcon" id="PopupDialogPromptIcon_Completion" viewBox="0 0 16 16">
+				<li class="Ctrl" id="Ctrl_PopupDialogIconCompletion">
+					<svg class="PopupDialogIcon" id="PopupDialogIcon_Completion" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
 					</svg>
 				</li>
-				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogPromptIconQuestion">
-					<svg class="PopupDialogPromptIcon" id="PopupDialogPromptIcon_Question" viewBox="0 0 16 16">
+				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconQuestion">
+					<svg class="PopupDialogIcon" id="PopupDialogIcon_Question" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
 					</svg>
 				</li>
-				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogPromptIconCaution">
-					<svg class="PopupDialogPromptIcon" id="PopupDialogPromptIcon_Caution" viewBox="0 0 16 16">
+				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconCaution">
+					<svg class="PopupDialogIcon" id="PopupDialogIcon_Caution" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
 					</svg>
 				</li>
-				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogPromptIconTermination">
-					<svg class="PopupDialogPromptIcon" id="PopupDialogPromptIcon_Termination" viewBox="0 0 16 16">
+				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconTermination">
+					<svg class="PopupDialogIcon" id="PopupDialogIcon_Termination" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
 				</li>
-				<li class="Ctrl" id="Ctrl_PopupDialogPromptText">对话框文字</li>
+				<li class="Ctrl" id="Ctrl_PopupDialogText">对话框文字</li>
 			</ul>
 			<ul class="CtrlGroup" id="CtrlGroup_PopupDialogOptions">
 				<li class="Ctrl Faded" id="Ctrl_PopupDialogOption1">

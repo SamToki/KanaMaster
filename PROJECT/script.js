@@ -179,7 +179,7 @@
 	function RefreshSystem() {
 		// Settings
 			// Display
-			ChangeValue("Combobox_SettingsDisplayTheme", System.Display.Theme);
+			ChangeValue("Combobox_SettingsTheme", System.Display.Theme);
 			switch(System.Display.Theme) {
 				case "Auto":
 					document.getElementById("ThemeVariant_Common").href = "../common-Dark.css";
@@ -215,7 +215,7 @@
 					alert("Error: The value of System.Display.Theme in function RefreshSystem is out of expectation.");
 					break;
 			}
-			ChangeValue("Combobox_SettingsDisplayCursor", System.Display.Cursor);
+			ChangeValue("Combobox_SettingsCursor", System.Display.Cursor);
 			switch(System.Display.Cursor) {
 				case "Default":
 					ChangeCursorOverall("");
@@ -236,7 +236,7 @@
 					alert("Error: The value of System.Display.Cursor in function RefreshSystem is out of expectation.");
 					break;
 			}
-			ChangeChecked("Checkbox_SettingsDisplayShowTopbar", System.Display.ShowTopbar);
+			ChangeChecked("Checkbox_SettingsShowTopbar", System.Display.ShowTopbar);
 			if(System.Display.ShowTopbar == true) {
 				Show("Topbar");
 				Show("SectionTitleAboveViewport");
@@ -246,7 +246,7 @@
 				Hide("SectionTitleAboveViewport");
 				ChangeHeightByClass("Viewport", "calc(100% - 30px)");
 			}
-			ChangeValue("Combobox_SettingsDisplayHotkeyIndicator", System.Display.HotkeyIndicator);
+			ChangeValue("Combobox_SettingsHotkeyIndicator", System.Display.HotkeyIndicator);
 			switch(System.Display.HotkeyIndicator) {
 				case "Disabled":
 					FadeHotkeyIndicator();
@@ -261,20 +261,20 @@
 					alert("Error: The value of System.Display.HotkeyIndicator in function RefreshSystem is out of expectation.");
 					break;
 			}
-			ChangeValue("Combobox_SettingsDisplayAnimSpeed", System.Display.Anim.Speed);
-			ChangeAnimSpeedOverall(System.Display.Anim.Speed);
+			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
+			ChangeAnimOverall(System.Display.Anim);
 
 			// Dev
-			ChangeChecked("Checkbox_SettingsDevShowAllBorders", System.Dev.ShowAllBorders);
+			ChangeChecked("Checkbox_SettingsShowAllBorders", System.Dev.ShowAllBorders);
 			ChangeShowAllBorders(System.Dev.ShowAllBorders);
-			ChangeChecked("Checkbox_SettingsDevUseOldTypeface", System.Dev.UseOldTypeface);
+			ChangeChecked("Checkbox_SettingsUseOldTypeface", System.Dev.UseOldTypeface);
 			Elements = document.getElementsByTagName("html");
 			if(System.Dev.UseOldTypeface == true) {
 				Elements[0].lang = "ja-JP";
 			} else {
 				Elements[0].lang = "zh-CN";
 			}
-			ChangeValue("Textbox_SettingsDevFont", System.Dev.Font);
+			ChangeValue("Textbox_SettingsFont", System.Dev.Font);
 			ChangeFontOverall(System.Dev.Font);
 
 			// User Data
@@ -286,17 +286,17 @@
 	function RefreshSubsystem() {
 		// Settings
 			// Display
-			ChangeValue("Combobox_SettingsDisplayGameFont", Subsystem.Display.GameFont);
+			ChangeValue("Combobox_SettingsGameFont", Subsystem.Display.GameFont);
 			switch(Subsystem.Display.GameFont) {
 				case "Default":
-					ChangeFont("Label_GameQuestionBoard", "");
+					ChangeFont("Label_GameQuestion", "");
 					for(Looper = 1; Looper <= 3; Looper++) {
 						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, "");
 					}
 					break;
 				case "Sans":
 				case "Serif":
-					ChangeFont("Label_GameQuestionBoard", Subsystem.Display.GameFont);
+					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont);
 					for(Looper = 1; Looper <= 3; Looper++) {
 						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, Subsystem.Display.GameFont);
 					}
@@ -307,7 +307,7 @@
 			}
 
 			// Dev
-			ChangeChecked("Checkbox_SettingsDevCheat", Subsystem.Dev.Cheat);
+			ChangeChecked("Checkbox_SettingsCheat", Subsystem.Dev.Cheat);
 			Elements = document.getElementsByTagName("html");
 			if(Subsystem.Dev.Cheat == true) {
 				Elements[0].style.fontStyle = "oblique 15deg";
@@ -355,7 +355,7 @@
 
 			// Stats 2
 				// Score
-				if(System.Display.Anim.Speed == 0) {
+				if(System.Display.Anim == 0) {
 					Game0.Stats.ScoreDisplay = Game.Stats.Score;
 				} else {
 					Game0.Stats.ScoreDisplay = Game0.Stats.ScoreDisplay + (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
@@ -403,7 +403,7 @@
 					} else {
 						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit * ((Date.now() - Game.Stats.StartTime2) / Game.Difficulty.Cooldown);
 					}
-					if(System.Display.Anim.Speed != 0) {
+					if(System.Display.Anim != 0) {
 						ChangeAnim("ProgringFg_GameHP", "100ms");
 						ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
 					}
@@ -424,13 +424,13 @@
 			// Text
 			switch(Game.Mode.Questioning) {
 				case "Kana":
-					ChangeText("Label_GameQuestionBoard", KanaGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
+					ChangeText("Label_GameQuestion", KanaGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
 					for(Looper = 1; Looper <= 3; Looper++) {
 						ChangeText("Cmdbtn_GameAnswerOption" + Looper, RomajiGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
 					}
 					break;
 				case "Romaji":
-					ChangeText("Label_GameQuestionBoard", RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
+					ChangeText("Label_GameQuestion", RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
 					for(Looper = 1; Looper <= 3; Looper++) {
 						ChangeText("Cmdbtn_GameAnswerOption" + Looper, KanaGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
 					}
@@ -507,7 +507,7 @@
 			setTimeout(function() {
 				ResetGame();
 				Click("TopbarLinkbtn_Highscore");
-			}, System.Display.Anim.Speed * 2 + 1000);
+			}, System.Display.Anim * 2 + 1000);
 		}
 
 		// Game Over
@@ -520,7 +520,7 @@
 			ShowToastMessage("游戏结束");
 
 			// Reset Game
-			setTimeout(GameReset, System.Display.Anim.Speed * 2 + 1000);
+			setTimeout(GameReset, System.Display.Anim * 2 + 1000);
 		}
 	}
 	function RefreshGame() {
@@ -529,18 +529,18 @@
 
 		// Ctrls
 		if(Game.Status.IsRunning == false) {
-			ChangeText("Cmdbtn_GameCtrlStart", "开始");
-			ChangeDisabled("Cmdbtn_GameCtrlReset", false);
+			ChangeText("Cmdbtn_GameStart", "开始");
+			ChangeDisabled("Cmdbtn_GameReset", false);
 			ChangeDisabled("Fieldset_SettingsGameMode", false);
 			ChangeDisabled("Fieldset_SettingsQuestionRange", false);
 			ChangeDisabled("Fieldset_SettingsDifficulty", false);
 		} else {
 			if(Game.Status.IsPaused == false) {
-				ChangeText("Cmdbtn_GameCtrlStart", "暂停");
-				ChangeDisabled("Cmdbtn_GameCtrlReset", true);
+				ChangeText("Cmdbtn_GameStart", "暂停");
+				ChangeDisabled("Cmdbtn_GameReset", true);
 			} else {
-				ChangeText("Cmdbtn_GameCtrlStart", "继续");
-				ChangeDisabled("Cmdbtn_GameCtrlReset", false);
+				ChangeText("Cmdbtn_GameStart", "继续");
+				ChangeDisabled("Cmdbtn_GameReset", false);
 			}
 			ChangeDisabled("Fieldset_SettingsGameMode", true);
 			ChangeDisabled("Fieldset_SettingsQuestionRange", true);
@@ -549,27 +549,27 @@
 
 		// Settings
 			// Game Mode
-			ChangeValue("Combobox_SettingsGameModeQuestioning", Game.Mode.Questioning);
-			ChangeValue("Combobox_SettingsGameModeProgressing", Game.Mode.Progressing);
+			ChangeValue("Combobox_SettingsQuestioning", Game.Mode.Questioning);
+			ChangeValue("Combobox_SettingsProgressing", Game.Mode.Progressing);
 			switch(Game.Mode.Progressing) {
 				case "Quantity":
-					ChangeDisabled("Textbox_SettingsGameModeDuration", true);
-					Hide("Ctrl_SettingsGameModeDuration");
-					ChangeDisabled("Textbox_SettingsGameModeQuantity", false);
-					Show("Ctrl_SettingsGameModeQuantity");
+					ChangeDisabled("Textbox_SettingsDuration", true);
+					Hide("Ctrl_SettingsDuration");
+					ChangeDisabled("Textbox_SettingsQuantity", false);
+					Show("Ctrl_SettingsQuantity");
 					break;
 				case "Duration":
-					ChangeDisabled("Textbox_SettingsGameModeQuantity", true);
-					Hide("Ctrl_SettingsGameModeQuantity");
-					ChangeDisabled("Textbox_SettingsGameModeDuration", false);
-					Show("Ctrl_SettingsGameModeDuration");
+					ChangeDisabled("Textbox_SettingsQuantity", true);
+					Hide("Ctrl_SettingsQuantity");
+					ChangeDisabled("Textbox_SettingsDuration", false);
+					Show("Ctrl_SettingsDuration");
 					break;
 				default:
 					alert("Error: The value of Game.Mode.Progressing in function RefreshGame is out of expectation.");
 					break;
 			}
-			ChangeValue("Textbox_SettingsGameModeQuantity", Game.Mode.Quantity);
-			ChangeValue("Textbox_SettingsGameModeDuration", Game.Mode.Duration);
+			ChangeValue("Textbox_SettingsQuantity", Game.Mode.Quantity);
+			ChangeValue("Textbox_SettingsDuration", Game.Mode.Duration);
 
 			// Question Range
 			Counter = 0;
@@ -584,14 +584,14 @@
 					"Termination",
 					"出题范围过小，请至少选择两项。已恢复至默认范围。",
 					"", "", "确定");
-				SetQuestionRangeSelectDefaultRange();
+				SetQuestionRangeDefaultRange();
 			}
 
 			// Difficulty
-			ChangeValue("Textbox_SettingsDifficultyTimeLimitInitial", (Game.Difficulty.TimeLimit.Initial / 1000).toFixed(1));
-			ChangeValue("Textbox_SettingsDifficultyTimeLimitNormal", (Game.Difficulty.TimeLimit.Normal / 1000).toFixed(1));
-			ChangeValue("Textbox_SettingsDifficultyCooldown", (Game.Difficulty.Cooldown / 1000).toFixed(1));
-			ChangeValue("Textbox_SettingsDifficultyHPDrain", Game.Difficulty.HPDrain);
+			ChangeValue("Textbox_SettingsTimeLimitInitial", (Game.Difficulty.TimeLimit.Initial / 1000).toFixed(1));
+			ChangeValue("Textbox_SettingsTimeLimitNormal", (Game.Difficulty.TimeLimit.Normal / 1000).toFixed(1));
+			ChangeValue("Textbox_SettingsCooldown", (Game.Difficulty.Cooldown / 1000).toFixed(1));
+			ChangeValue("Textbox_SettingsHPDrain", Game.Difficulty.HPDrain);
 		
 		// Save User Data
 		localStorage.setItem("KanaMaster_Game", JSON.stringify(Game));
@@ -677,11 +677,11 @@
 	function GlowStartButton() {
 		if(
 			(Game.Status.IsRunning == false || (Game.Status.IsRunning == true && Game.Status.IsPaused == true)) &&
-			IsClassContained("Cmdbtn_GameCtrlStart", "Glow") == false
+			IsClassContained("Cmdbtn_GameStart", "Glow") == false
 		) {
-			AddClass("Cmdbtn_GameCtrlStart", "Glow");
+			AddClass("Cmdbtn_GameStart", "Glow");
 		} else {
-			RemoveClass("Cmdbtn_GameCtrlStart", "Glow");
+			RemoveClass("Cmdbtn_GameStart", "Glow");
 		}
 	}
 
@@ -706,18 +706,18 @@
 
 		// Refresh
 		for(Looper = 1; Looper <= 6; Looper++) {
-			RemoveClass("Item_HighscoreTableRow" + Looper, "Box");
+			RemoveClass("Item_HighscoreRow" + Looper, "Box");
 			if(Highscore[Looper][1] == "最新") {
-				AddClass("Item_HighscoreTableRow" + Looper, "Box");
+				AddClass("Item_HighscoreRow" + Looper, "Box");
 			} else {
 				Highscore[Looper][1] = "#" + Looper;
 			}
-			ChangeText("Label_HighscoreTableRow" + Looper + "Sequence", Highscore[Looper][1]);
-			ChangeText("Label_HighscoreTableRow" + Looper + "Date", Highscore[Looper][2]);
-			ChangeText("Label_HighscoreTableRow" + Looper + "Score", Highscore[Looper][3]);
-			ChangeText("Label_HighscoreTableRow" + Looper + "MaxCombo", Highscore[Looper][4]);
-			ChangeText("Label_HighscoreTableRow" + Looper + "Accuracy", Highscore[Looper][5]);
-			ChangeText("Label_HighscoreTableRow" + Looper + "AvgReactionTime", Highscore[Looper][6]);
+			ChangeText("Label_HighscoreRow" + Looper + "Sequence", Highscore[Looper][1]);
+			ChangeText("Label_HighscoreRow" + Looper + "Date", Highscore[Looper][2]);
+			ChangeText("Label_HighscoreRow" + Looper + "Score", Highscore[Looper][3]);
+			ChangeText("Label_HighscoreRow" + Looper + "MaxCombo", Highscore[Looper][4]);
+			ChangeText("Label_HighscoreRow" + Looper + "Accuracy", Highscore[Looper][5]);
+			ChangeText("Label_HighscoreRow" + Looper + "AvgReactionTime", Highscore[Looper][6]);
 		}
 
 		// Save User Data
@@ -873,17 +873,17 @@
 
 				// Phase 1
 				setTimeout(function() {
-					ChangeAnim("Label_AnswerFeedback", System.Display.Anim.Speed + "ms");
+					ChangeAnim("Label_AnswerFeedback", System.Display.Anim + "ms");
 					Show("Label_AnswerFeedback");
 					ChangeScale("Label_AnswerFeedback", 1);
 				}, 10);
 
 				// Phase 2
 				setTimeout(function() {
-					ChangeAnim("Label_AnswerFeedback", System.Display.Anim.Speed * 3 + "ms");
+					ChangeAnim("Label_AnswerFeedback", System.Display.Anim * 3 + "ms");
 					Fade("Label_AnswerFeedback");
 					ChangeTop("Label_AnswerFeedback", "-10px");
-				}, 110 + System.Display.Anim.Speed);
+				}, 110 + System.Display.Anim);
 
 			// Start Cooldown
 			Game.Status.IsCoolingDown = true;
@@ -893,16 +893,16 @@
 
 	// Settings
 		// Game Mode
-		function SetGameModeQuestioning() {
-			Game.Mode.Questioning = ReadValue("Combobox_SettingsGameModeQuestioning");
+		function SetQuestioning() {
+			Game.Mode.Questioning = ReadValue("Combobox_SettingsQuestioning");
 			RefreshGame();
 		}
-		function SetGameModeProgressing() {
-			Game.Mode.Progressing = ReadValue("Combobox_SettingsGameModeProgressing");
+		function SetProgressing() {
+			Game.Mode.Progressing = ReadValue("Combobox_SettingsProgressing");
 			RefreshGame();
 		}
-		function SetGameModeQuantity() {
-			Game.Mode.Quantity = parseInt(Number(ReadValue("Textbox_SettingsGameModeQuantity")));
+		function SetQuantity() {
+			Game.Mode.Quantity = parseInt(Number(ReadValue("Textbox_SettingsQuantity")));
 			if(Game.Mode.Quantity < 5) {
 				Game.Mode.Quantity = 5;
 			}
@@ -911,8 +911,8 @@
 			}
 			RefreshGame();
 		}
-		function SetGameModeDuration() {
-			Game.Mode.Duration = parseInt(Number(ReadValue("Textbox_SettingsGameModeDuration")));
+		function SetDuration() {
+			Game.Mode.Duration = parseInt(Number(ReadValue("Textbox_SettingsDuration")));
 			if(Game.Mode.Duration < 1) {
 				Game.Mode.Duration = 1;
 			}
@@ -927,19 +927,19 @@
 			Game.QuestionRange[Selector] = ReadChecked("Checkbox_SettingsQuestionRange" + Selector);
 			RefreshGame();
 		}
-		function SetQuestionRangeSelectDefaultRange() {
+		function SetQuestionRangeDefaultRange() {
 			Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false];
 			RefreshGame();
 		}
-		function SetQuestionRangeSelectBasicHiragana() {
+		function SetQuestionRangeBasicHiragana() {
 			Game.QuestionRange = [0, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 			RefreshGame();
 		}
-		function SetQuestionRangeSelectBasicKatakana() {
+		function SetQuestionRangeBasicKatakana() {
 			Game.QuestionRange = [0, false, false, false, false, false, true, true, true, true, true, false, false, false, false, false, false, false, false, false];
 			RefreshGame();
 		}
-		function SetQuestionRangeSelectExceptObsoleteKana() {
+		function SetQuestionRangeExceptObsoleteKana() {
 			Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false];
 			RefreshGame();
 		}
@@ -949,8 +949,8 @@
 		}
 
 		// Difficulty
-		function SetDifficultyTimeLimitInitial() {
-			Game.Difficulty.TimeLimit.Initial = parseInt(Number(ReadValue("Textbox_SettingsDifficultyTimeLimitInitial")) * 10) / 10 * 1000;
+		function SetTimeLimitInitial() {
+			Game.Difficulty.TimeLimit.Initial = parseInt(Number(ReadValue("Textbox_SettingsTimeLimitInitial")) * 10) / 10 * 1000;
 			if(Game.Difficulty.TimeLimit.Initial < 1000) {
 				Game.Difficulty.TimeLimit.Initial = 1000;
 			}
@@ -965,8 +965,8 @@
 			}
 			RefreshGame();
 		}
-		function SetDifficultyTimeLimitNormal() {
-			Game.Difficulty.TimeLimit.Normal = parseInt(Number(ReadValue("Textbox_SettingsDifficultyTimeLimitNormal")) * 10) / 10 * 1000;
+		function SetTimeLimitNormal() {
+			Game.Difficulty.TimeLimit.Normal = parseInt(Number(ReadValue("Textbox_SettingsTimeLimitNormal")) * 10) / 10 * 1000;
 			if(Game.Difficulty.TimeLimit.Normal < 1000) {
 				Game.Difficulty.TimeLimit.Normal = 1000;
 			}
@@ -981,8 +981,8 @@
 			}
 			RefreshGame();
 		}
-		function SetDifficultyCooldown() {
-			Game.Difficulty.Cooldown = parseInt(Number(ReadValue("Textbox_SettingsDifficultyCooldown")) * 10) / 10 * 1000;
+		function SetCooldown() {
+			Game.Difficulty.Cooldown = parseInt(Number(ReadValue("Textbox_SettingsCooldown")) * 10) / 10 * 1000;
 			if(Game.Difficulty.Cooldown < 200) {
 				Game.Difficulty.Cooldown = 200;
 			}
@@ -991,8 +991,8 @@
 			}
 			RefreshGame();
 		}
-		function SetDifficultyHPDrain() {
-			Game.Difficulty.HPDrain = parseInt(Number(ReadValue("Textbox_SettingsDifficultyHPDrain")));
+		function SetHPDrain() {
+			Game.Difficulty.HPDrain = parseInt(Number(ReadValue("Textbox_SettingsHPDrain")));
 			if(Game.Difficulty.HPDrain < 5) {
 				Game.Difficulty.HPDrain = 5;
 			}
@@ -1003,14 +1003,14 @@
 		}
 
 		// Display
-		function SetDisplayGameFont() {
-			Subsystem.Display.GameFont = ReadValue("Combobox_SettingsDisplayGameFont");
+		function SetGameFont() {
+			Subsystem.Display.GameFont = ReadValue("Combobox_SettingsGameFont");
 			RefreshSubsystem();
 		}
 
 		// Dev
-		function SetDevCheat() {
-			Subsystem.Dev.Cheat = ReadChecked("Checkbox_SettingsDevCheat");
+		function SetCheat() {
+			Subsystem.Dev.Cheat = ReadChecked("Checkbox_SettingsCheat");
 			RefreshSubsystem();
 		}
 
@@ -1044,12 +1044,6 @@
 				"Completion",
 				"已将用户数据以 JSON 字符串的形式导出至剪贴板。若要分享，请注意其中是否包含个人信息。",
 				"", "", "确定");
-		}
-		function ClearUserData() {
-			ShowPopupDialog("System_ConfirmClearUserData",
-				"Caution",
-				"您确认要清空用户数据？",
-				"", "清空", "取消");
 		}
 
 	// Popup Dialog
@@ -1105,14 +1099,14 @@
 					break;
 				case "S":
 				case "s":
-					Click("Cmdbtn_GameCtrlStart");
+					Click("Cmdbtn_GameStart");
 					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
 						ShowHotkeyIndicator();
 					}
 					break;
 				case "R":
 				case "r":
-					Click("Cmdbtn_GameCtrlReset");
+					Click("Cmdbtn_GameReset");
 					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
 						ShowHotkeyIndicator();
 					}

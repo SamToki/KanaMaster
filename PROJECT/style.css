@@ -67,33 +67,33 @@ nav li {
 		}
 
 		/* Game Question Board */
-		#Ctnr_GameQuestionBoard {
+		#Ctnr_GameQuestion {
 			position: absolute; top: 0; left: 350px;
 			width: calc(100% - 700px); height: calc(100% - 200px);
 		}
-		#Ctnr_GameQuestionBoard .CtrlGroup {
+		#Ctnr_GameQuestion .CtrlGroup {
 			width: 100%; height: 100%;
 		}
-		#Ctnr_GameQuestionBoard .Ctrl {
+		#Ctnr_GameQuestion .Ctrl {
 			width: 100%; height: 100%;
 			display: flex; justify-content: center; align-items: center;
 		}
-		#Label_GameQuestionBoard {
+		#Label_GameQuestion {
 			font-size: 180px;
 		}
 
 		/* Game Answer Board */
-		#Ctnr_GameAnswerBoard {
+		#Ctnr_GameAnswer {
 			position: absolute; bottom: 0; left: 350px;
 			width: calc(100% - 700px); height: 200px;
 		}
-		#CtrlGroup_GameAnswerBoard {
+		#CtrlGroup_GameAnswer {
 			height: calc(100% - 30px); margin: 30px 0 0 0;
 		}
-		#CtrlGroup_GameAnswerBoard .Ctrl {
+		#CtrlGroup_GameAnswer .Ctrl {
 			height: 100%;
 		}
-		#CtrlGroup_GameAnswerBoard .Ctrl .Cmdbtn {
+		#CtrlGroup_GameAnswer .Ctrl .Cmdbtn {
 			font-size: 48px;
 		}
 		#Label_AnswerFeedback {
@@ -128,22 +128,22 @@ nav li {
 	#ItemGroup_Highscore .Item span {
 		display: flex; justify-content: center; align-items: center;
 	}
-	.HighscoreTableSequence {
+	.HighscoreSequence {
 		width: 70px;
 	}
-	.HighscoreTableDate {
+	.HighscoreDate {
 		width: 120px;
 	}
-	.HighscoreTableScore {
+	.HighscoreScore {
 		width: 100px;
 	}
-	.HighscoreTableMaxCombo {
+	.HighscoreMaxCombo {
 		width: 100px;
 	}
-	.HighscoreTableAccuracy {
+	.HighscoreAccuracy {
 		width: 100px;
 	}
-	.HighscoreTableAvgReactionTime {
+	.HighscoreAvgReactionTime {
 		width: 130px;
 	}
 
@@ -154,7 +154,7 @@ nav li {
 	#CtrlGroup_SettingsGameMode .Textbox, #CtrlGroup_SettingsDifficulty .Textbox {
 		width: 120px;
 	}
-	#CtrlGroup_SettingsDifficulty #Ctrl_SettingsDifficultyTimeLimit .Textbox {
+	#CtrlGroup_SettingsDifficulty #Ctrl_SettingsTimeLimit .Textbox {
 		width: 80px;
 	}
 
@@ -166,7 +166,7 @@ nav li {
 	nav {
 		width: calc(100% - 70px);
 	}
-	#Ctnr_GameStats1, #Ctnr_GameStats2, #Ctnr_GameQuestionBoard, #Ctnr_GameAnswerBoard, #Ctnr_GameCtrl {
+	#Ctnr_GameStats1, #Ctnr_GameStats2, #Ctnr_GameQuestion, #Ctnr_GameAnswer, #Ctnr_GameCtrl {
 		left: 0; right: unset;
 		width: 100%;
 	}
@@ -195,18 +195,18 @@ nav li {
 	#CtrlGroup_GameStats2 #Label_GameScore {
 		font-size: 24px;
 	}
-	#Ctnr_GameQuestionBoard {
+	#Ctnr_GameQuestion {
 		top: 200px;
 		height: calc(100% - 390px);
 	}
-	#Label_GameQuestionBoard {
+	#Label_GameQuestion {
 		font-size: 80px;
 	}
-	#Ctnr_GameAnswerBoard {
+	#Ctnr_GameAnswer {
 		bottom: 70px;
 		height: 120px;
 	}
-	#CtrlGroup_GameAnswerBoard .Ctrl .Cmdbtn {
+	#CtrlGroup_GameAnswer .Ctrl .Cmdbtn {
 		font-size: 32px;
 	}
 	#CtrlGroup_GameCtrl {
@@ -215,7 +215,7 @@ nav li {
 	#CtrlGroup_GameCtrl .Ctrl {
 		width: calc((100% - 10px) / 2); margin: 0;
 	}
-	.HighscoreTableAccuracy, .HighscoreTableMaxCombo, .HighscoreTableAvgReactionTime { /* .Hidden-Horizontal */
+	.HighscoreAccuracy, .HighscoreMaxCombo, .HighscoreAvgReactionTime { /* .Hidden-Horizontal */
 		width: 0 !important; border: 0 !important; padding: 0 !important; margin: 0 !important;
 		box-shadow: none !important;
 		overflow: hidden !important;
