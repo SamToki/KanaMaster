@@ -18,9 +18,6 @@ nav li {
 
 /* Main */
 	/* Game */
-	#Game {
-		height: 100vh;
-	}
 		/* Game Stats 1 */
 		#Ctnr_GameStats1 {
 			position: absolute; top: 0; left: 0;
