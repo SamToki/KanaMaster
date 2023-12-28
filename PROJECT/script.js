@@ -163,6 +163,7 @@
 			Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 		}
 		RefreshHighscore();
+		HideToastMessage();
 	}
 
 	// Pause Before Quitting
