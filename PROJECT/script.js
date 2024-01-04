@@ -882,11 +882,19 @@
 				}, 10);
 
 				// Phase 2
-				setTimeout(function() {
-					ChangeAnim("Label_AnswerFeedback", System.Display.Anim * 3 + "ms");
-					Fade("Label_AnswerFeedback");
-					ChangeTop("Label_AnswerFeedback", "-10px");
-				}, 110 + System.Display.Anim);
+				if(System.Display.Anim == 0) {
+					setTimeout(function() {
+						ChangeAnim("Label_AnswerFeedback", "none");
+						Fade("Label_AnswerFeedback");
+						ChangeTop("Label_AnswerFeedback", "-10px");
+					}, 1010);
+				} else {
+					setTimeout(function() {
+						ChangeAnim("Label_AnswerFeedback", System.Display.Anim * 3 + "ms");
+						Fade("Label_AnswerFeedback");
+						ChangeTop("Label_AnswerFeedback", "-10px");
+					}, 10 + System.Display.Anim);
+				}
 
 			// Start Cooldown
 			Game.Status.IsCoolingDown = true;
