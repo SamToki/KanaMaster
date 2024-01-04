@@ -887,13 +887,13 @@
 						ChangeAnim("Label_AnswerFeedback", "none");
 						Fade("Label_AnswerFeedback");
 						ChangeTop("Label_AnswerFeedback", "-10px");
-					}, 1010);
+					}, 1020);
 				} else {
 					setTimeout(function() {
 						ChangeAnim("Label_AnswerFeedback", System.Display.Anim * 3 + "ms");
 						Fade("Label_AnswerFeedback");
 						ChangeTop("Label_AnswerFeedback", "-10px");
-					}, 10 + System.Display.Anim);
+					}, 20 + System.Display.Anim);
 				}
 
 			// Start Cooldown
