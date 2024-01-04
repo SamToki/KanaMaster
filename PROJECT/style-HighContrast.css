@@ -13,5 +13,5 @@
 
 		/* Game Answer Board */
 		#Label_AnswerFeedback {
-			color: #FFFF00 !important; filter: none;
+			color: #FFFF00 !important; text-shadow: none;
 		}

@@ -99,7 +99,7 @@ nav li {
 		#Label_AnswerFeedback {
 			position: absolute; top: 0; left: 0; z-index: 10;
 			width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
-			color: #00A0E0; filter: drop-shadow(0 0 10px #FFFFFF); font-size: 32px;
+			color: #00A0E0; text-shadow: 0 0 10px #FFFFFF; font-size: 32px;
 			display: flex; justify-content: center; align-items: center;
 			pointer-events: none;
 		}
