@@ -173,7 +173,7 @@ nav li {
 	#CtrlGroup_GameStats1 .Ctrl {
 		width: 25%; height: 50px;
 	}
-	#CtrlGroup_GameStats1 .GameStats1Title { /* .Tiny */
+	#CtrlGroup_GameStats1 .GameStats1Title {
 		font-size: 12px;
 	}
 	#CtrlGroup_GameStats1 .GameStats1Value, #CtrlGroup_GameStats2 .ProgringText {
