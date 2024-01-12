@@ -3,16 +3,16 @@
 /* (C) 2015-2023 SAM TOKI STUDIO */
 
 /* Header */
-.Title {
+#Title {
 	width: 236px;
 }
-.Title a {
+#Title a {
 	background-image: url(images/Title.png);
 }
 nav {
 	width: 600px;
 }
-nav li {
+nav .Ctrl {
 	width: calc(100% / 5);
 }
 
@@ -30,7 +30,7 @@ nav li {
 			width: 160px; height: 90px; padding: 5px;
 			display: flex; flex-direction: column; justify-content: center; align-items: center;
 		}
-		#CtrlGroup_GameStats1 .GameStats1Value, #CtrlGroup_GameStats2 .ProgringText {
+		.GameStats1Value, .ProgringText {
 			font-size: 24px;
 		}
 
@@ -46,23 +46,23 @@ nav li {
 		#CtrlGroup_GameStats2 .Ctrl {
 			height: 100px; margin: 0 0 20px 0;
 		}
-		#CtrlGroup_GameStats2 #Ctrl_GameScore {
+		#Ctrl_GameScore {
 			height: 60px;
 			display: flex; justify-content: center; align-items: center;
 		}
-		#CtrlGroup_GameStats2 #Label_GameScore {
+		#Label_GameScore {
 			font-size: 32px;
 		}
-		#CtrlGroup_GameStats2 .ProgringFg {
+		.ProgringFg {
 			stroke-dasharray: 289.03 289.03; stroke-dashoffset: 144.51;
 		}
-		#CtrlGroup_GameStats2 #ProgringFg_GameProgress {
+		#ProgringFg_GameProgress {
 			stroke: #0080C0;
 		}
-		#CtrlGroup_GameStats2 #ProgringFg_GameHP {
+		#ProgringFg_GameHP {
 			stroke: #E06000;
 		}
-		#CtrlGroup_GameStats2 #ProgringFg_GameTimeLeft {
+		#ProgringFg_GameTimeLeft {
 			stroke: #00A000;
 		}
 
@@ -93,7 +93,7 @@ nav li {
 		#CtrlGroup_GameAnswer .Ctrl {
 			height: 100%;
 		}
-		#CtrlGroup_GameAnswer .Ctrl .Cmdbtn {
+		#CtrlGroup_GameAnswer .Cmdbtn {
 			font-size: 48px;
 		}
 		#Label_AnswerFeedback {
@@ -154,13 +154,13 @@ nav li {
 	#CtrlGroup_SettingsGameMode .Textbox, #CtrlGroup_SettingsDifficulty .Textbox {
 		width: 120px;
 	}
-	#CtrlGroup_SettingsDifficulty #Ctrl_SettingsTimeLimit .Textbox {
+	#Ctrl_SettingsTimeLimit .Textbox {
 		width: 80px;
 	}
 
 /* Responsive Web Design */
 @media (max-width: 1060px) {
-	.Title {
+	#Title {
 		width: 40px;
 	}
 	nav {
@@ -173,10 +173,10 @@ nav li {
 	#CtrlGroup_GameStats1 .Ctrl {
 		width: 25%; height: 50px;
 	}
-	#CtrlGroup_GameStats1 .GameStats1Title {
+	.GameStats1Title {
 		font-size: 12px;
 	}
-	#CtrlGroup_GameStats1 .GameStats1Value, #CtrlGroup_GameStats2 .ProgringText {
+	.GameStats1Value, .ProgringText {
 		font-size: 16px;
 	}
 	#Ctnr_GameStats2 {
@@ -188,16 +188,16 @@ nav li {
 	#CtrlGroup_GameStats2 .Ctrl {
 		height: 60px; margin: 0;
 	}
-	#CtrlGroup_GameStats2 #Ctrl_GameScore {
+	#Ctrl_GameScore {
 		width: calc(100% - 210px);
 		justify-content: right;
 	}
-	#CtrlGroup_GameStats2 #Label_GameScore {
+	#Label_GameScore {
 		font-size: 24px;
 	}
 	#Ctnr_GameQuestion {
-		top: 200px;
-		height: calc(100% - 390px);
+		top: 205px;
+		height: calc(100% - 395px);
 	}
 	#Label_GameQuestion {
 		font-size: 80px;
@@ -206,7 +206,7 @@ nav li {
 		bottom: 70px;
 		height: 120px;
 	}
-	#CtrlGroup_GameAnswer .Ctrl .Cmdbtn {
+	#CtrlGroup_GameAnswer .Cmdbtn {
 		font-size: 32px;
 	}
 	#CtrlGroup_GameCtrl {

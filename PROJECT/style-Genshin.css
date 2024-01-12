@@ -7,13 +7,13 @@
 /* Main */
 	/* Game */
 		/* Game Stats 2 */
-		#CtrlGroup_GameStats2 #ProgringFg_GameProgress {
+		#ProgringFg_GameProgress {
 			stroke: #00A0E0;
 		}
-		#CtrlGroup_GameStats2 #ProgringFg_GameHP {
+		#ProgringFg_GameHP {
 			stroke: #FF8000;
 		}
-		#CtrlGroup_GameStats2 #ProgringFg_GameTimeLeft {
+		#ProgringFg_GameTimeLeft {
 			stroke: #00C000;
 		}
 
