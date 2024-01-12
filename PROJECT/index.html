@@ -529,9 +529,9 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Checkbox_SettingsShowAllBorders">
-										<input class="Checkbox" id="Checkbox_SettingsShowAllBorders" type="checkbox" checked="false" onchange="SetShowAllBorders()" />
-										<span>显示所有元素的边框</span>
+									<label for="Checkbox_SettingsShowDebugOutlines">
+										<input class="Checkbox" id="Checkbox_SettingsShowDebugOutlines" type="checkbox" checked="false" onchange="SetShowDebugOutlines()" />
+										<span>显示调试用描边</span>
 									</label>
 								</li>
 								<li class="Ctrl">
@@ -686,7 +686,9 @@
 						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
 				</li>
-				<li class="Ctrl" id="Ctrl_PopupDialogText">对话框文字</li>
+				<li class="Ctrl" id="Ctrl_PopupDialogText">
+					<span id="Label_PopupDialogText">对话框文字</span>
+				</li>
 			</ul>
 			<ul class="CtrlGroup" id="CtrlGroup_PopupDialogOptions">
 				<li class="Ctrl Faded" id="Ctrl_PopupDialogOption1">
