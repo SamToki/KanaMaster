@@ -2,161 +2,162 @@
 /* Released under GNU GPL v3 open source license. */
 /* (C) 2015-2023 SAM TOKI STUDIO */
 
-/* Header */
-#Title {
-	width: 236px;
-}
-#Title a {
-	background-image: url(images/Title.png);
-}
-nav {
-	width: 600px;
-}
-nav .Ctrl {
-	width: calc(100% / 5);
-}
+/* Area Specific */
+	/* Header */
+	#Title {
+		width: 236px;
+	}
+	#Title a {
+		background-image: url(images/Title.png);
+	}
+	nav {
+		width: 600px;
+	}
+	nav .Ctrl {
+		width: calc(100% / 5);
+	}
 
-/* Main */
-	/* Game */
-		/* Game Stats 1 */
-		#Ctnr_GameStats1 {
-			position: absolute; top: 0; left: 0;
-			width: 320px;
-		}
-		#CtrlGroup_GameStats1 {
-			width: 100%;
-		}
-		#CtrlGroup_GameStats1 .Ctrl {
-			width: 160px; height: 90px; padding: 5px;
-			display: flex; flex-direction: column; justify-content: center; align-items: center;
-		}
-		.GameStats1Value, .ProgringText {
-			font-size: 24px;
-		}
+	/* Main */
+		/* Game */
+			/* Game Stats 1 */
+			#Ctnr_GameStats1 {
+				position: absolute; top: 0; left: 0;
+				width: 320px;
+			}
+			#CtrlGroup_GameStats1 {
+				width: 100%;
+			}
+			#CtrlGroup_GameStats1 .Ctrl {
+				width: 160px; height: 90px; padding: 5px;
+				display: flex; flex-direction: column; justify-content: center; align-items: center;
+			}
+			.GameStats1Value, .ProgringText {
+				font-size: 24px;
+			}
 
-		/* Game Stats 2 */
-		#Ctnr_GameStats2 {
-			position: absolute; top: 0; right: 0;
-			width: 320px;
+			/* Game Stats 2 */
+			#Ctnr_GameStats2 {
+				position: absolute; top: 0; right: 0;
+				width: 320px;
+			}
+			#CtrlGroup_GameStats2 {
+				width: 100%;
+				flex-direction: column;
+			}
+			#CtrlGroup_GameStats2 .Ctrl {
+				height: 100px; margin: 0 0 20px 0;
+			}
+			#Ctrl_GameScore {
+				height: 60px;
+				display: flex; justify-content: center; align-items: center;
+			}
+			#Label_GameScore {
+				font-size: 32px;
+			}
+			.ProgringFg {
+				stroke-dasharray: 289.03 289.03; stroke-dashoffset: 144.51;
+			}
+			#ProgringFg_GameProgress {
+				stroke: #0080C0;
+			}
+			#ProgringFg_GameHP {
+				stroke: #E06000;
+			}
+			#ProgringFg_GameTimeLeft {
+				stroke: #00A000;
+			}
+
+			/* Game Question Board */
+			#Ctnr_GameQuestion {
+				position: absolute; top: 0; left: 350px;
+				width: calc(100% - 700px); height: calc(100% - 200px);
+			}
+			#Ctnr_GameQuestion .CtrlGroup {
+				width: 100%; height: 100%;
+			}
+			#Ctnr_GameQuestion .Ctrl {
+				width: 100%; height: 100%;
+				display: flex; justify-content: center; align-items: center;
+			}
+			#Label_GameQuestion {
+				font-size: 180px;
+			}
+
+			/* Game Answer Board */
+			#Ctnr_GameAnswer {
+				position: absolute; bottom: 0; left: 350px;
+				width: calc(100% - 700px); height: 200px;
+			}
+			#CtrlGroup_GameAnswer {
+				height: calc(100% - 30px); margin: 30px 0 0 0;
+			}
+			#CtrlGroup_GameAnswer .Ctrl {
+				height: 100%;
+			}
+			#CtrlGroup_GameAnswer .Cmdbtn {
+				font-size: 48px;
+			}
+			#Label_AnswerFeedback {
+				position: absolute; top: 0; left: 0; z-index: 10;
+				width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
+				color: #00A0E0; text-shadow: 0 0 10px #FFFFFF; font-size: 32px;
+				display: flex; justify-content: center; align-items: center;
+				pointer-events: none;
+			}
+
+			/* Game Ctrl */
+			#Ctnr_GameCtrl {
+				position: absolute; bottom: 0; right: 0;
+				width: 320px; height: 40px;
+			}
+			#CtrlGroup_GameCtrl {
+				justify-content: right;
+			}
+			#CtrlGroup_GameCtrl .Ctrl {
+				width: 120px; margin: 0 0 0 10px;
+			}
+		
+		/* Highscore */
+		#ItemGroup_Highscore {
+			margin: 0;
+			flex-direction: column; align-items: center;
 		}
-		#CtrlGroup_GameStats2 {
-			width: 100%;
-			flex-direction: column;
+		#ItemGroup_Highscore .Item {
+			width: unset; height: 50px; margin: 0;
+			display: flex; justify-content: space-between;
 		}
-		#CtrlGroup_GameStats2 .Ctrl {
-			height: 100px; margin: 0 0 20px 0;
-		}
-		#Ctrl_GameScore {
-			height: 60px;
+		#ItemGroup_Highscore .Item span {
 			display: flex; justify-content: center; align-items: center;
 		}
-		#Label_GameScore {
-			font-size: 32px;
+		.HighscoreSequence {
+			width: 70px;
 		}
-		.ProgringFg {
-			stroke-dasharray: 289.03 289.03; stroke-dashoffset: 144.51;
+		.HighscoreDate {
+			width: 120px;
 		}
-		#ProgringFg_GameProgress {
-			stroke: #0080C0;
+		.HighscoreScore {
+			width: 100px;
 		}
-		#ProgringFg_GameHP {
-			stroke: #E06000;
+		.HighscoreMaxCombo {
+			width: 100px;
 		}
-		#ProgringFg_GameTimeLeft {
-			stroke: #00A000;
+		.HighscoreAccuracy {
+			width: 100px;
 		}
-
-		/* Game Question Board */
-		#Ctnr_GameQuestion {
-			position: absolute; top: 0; left: 350px;
-			width: calc(100% - 700px); height: calc(100% - 200px);
-		}
-		#Ctnr_GameQuestion .CtrlGroup {
-			width: 100%; height: 100%;
-		}
-		#Ctnr_GameQuestion .Ctrl {
-			width: 100%; height: 100%;
-			display: flex; justify-content: center; align-items: center;
-		}
-		#Label_GameQuestion {
-			font-size: 180px;
+		.HighscoreAvgReactionTime {
+			width: 130px;
 		}
 
-		/* Game Answer Board */
-		#Ctnr_GameAnswer {
-			position: absolute; bottom: 0; left: 350px;
-			width: calc(100% - 700px); height: 200px;
+		/* Settings */
+		#Fieldset_SettingsGameMode {
+			overflow: hidden;
 		}
-		#CtrlGroup_GameAnswer {
-			height: calc(100% - 30px); margin: 30px 0 0 0;
+		#CtrlGroup_SettingsGameMode .Textbox, #CtrlGroup_SettingsDifficulty .Textbox {
+			width: 120px;
 		}
-		#CtrlGroup_GameAnswer .Ctrl {
-			height: 100%;
+		#Ctrl_SettingsTimeLimit .Textbox {
+			width: 80px;
 		}
-		#CtrlGroup_GameAnswer .Cmdbtn {
-			font-size: 48px;
-		}
-		#Label_AnswerFeedback {
-			position: absolute; top: 0; left: 0; z-index: 10;
-			width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
-			color: #00A0E0; text-shadow: 0 0 10px #FFFFFF; font-size: 32px;
-			display: flex; justify-content: center; align-items: center;
-			pointer-events: none;
-		}
-
-		/* Game Ctrl */
-		#Ctnr_GameCtrl {
-			position: absolute; bottom: 0; right: 0;
-			width: 320px; height: 40px;
-		}
-		#CtrlGroup_GameCtrl {
-			justify-content: right;
-		}
-		#CtrlGroup_GameCtrl .Ctrl {
-			width: 120px; margin: 0 0 0 10px;
-		}
-	
-	/* Highscore */
-	#ItemGroup_Highscore {
-		margin: 0;
-		flex-direction: column; align-items: center;
-	}
-	#ItemGroup_Highscore .Item {
-		width: unset; height: 50px; margin: 0;
-		display: flex; justify-content: space-between;
-	}
-	#ItemGroup_Highscore .Item span {
-		display: flex; justify-content: center; align-items: center;
-	}
-	.HighscoreSequence {
-		width: 70px;
-	}
-	.HighscoreDate {
-		width: 120px;
-	}
-	.HighscoreScore {
-		width: 100px;
-	}
-	.HighscoreMaxCombo {
-		width: 100px;
-	}
-	.HighscoreAccuracy {
-		width: 100px;
-	}
-	.HighscoreAvgReactionTime {
-		width: 130px;
-	}
-
-	/* Settings */
-	#Fieldset_SettingsGameMode {
-		overflow: hidden;
-	}
-	#CtrlGroup_SettingsGameMode .Textbox, #CtrlGroup_SettingsDifficulty .Textbox {
-		width: 120px;
-	}
-	#Ctrl_SettingsTimeLimit .Textbox {
-		width: 80px;
-	}
 
 /* Responsive Web Design */
 @media (max-width: 1060px) {

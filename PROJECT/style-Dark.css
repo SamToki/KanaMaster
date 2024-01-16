@@ -4,20 +4,21 @@
 
 /* This is a theme variant, so only colors along with few things are configured. */
 
-/* Main */
-	/* Game */
-		/* Game Stats 2 */
-		#ProgringFg_GameProgress {
-			stroke: #00A0E0;
-		}
-		#ProgringFg_GameHP {
-			stroke: #FF8000;
-		}
-		#ProgringFg_GameTimeLeft {
-			stroke: #00C000;
-		}
+/* Area Specific */
+	/* Main */
+		/* Game */
+			/* Game Stats 2 */
+			#ProgringFg_GameProgress {
+				stroke: #00A0E0;
+			}
+			#ProgringFg_GameHP {
+				stroke: #FF8000;
+			}
+			#ProgringFg_GameTimeLeft {
+				stroke: #00C000;
+			}
 
-		/* Game Answer Board */
-		#Label_AnswerFeedback {
-			color: #00A0E0; text-shadow: 0 0 10px #000000;
-		}
+			/* Game Answer Board */
+			#Label_AnswerFeedback {
+				color: #00A0E0; text-shadow: 0 0 10px #000000;
+			}
