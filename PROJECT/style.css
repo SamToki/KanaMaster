@@ -111,7 +111,7 @@
 				width: 320px; height: 40px;
 			}
 			#CtrlGroup_GameCtrl {
-				justify-content: right;
+				justify-content: end;
 			}
 			#CtrlGroup_GameCtrl .Ctrl {
 				width: 120px; margin: 0 0 0 10px;
@@ -127,6 +127,7 @@
 			display: flex; justify-content: space-between;
 		}
 		#ItemGroup_Highscore .Item span {
+			text-align: center;
 			display: flex; justify-content: center; align-items: center;
 		}
 		.HighscoreSequence {
@@ -191,7 +192,7 @@
 	}
 	#Ctrl_GameScore {
 		width: calc(100% - 210px);
-		justify-content: right;
+		justify-content: end;
 	}
 	#Label_GameScore {
 		font-size: 24px;
