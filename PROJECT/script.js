@@ -950,7 +950,7 @@
 			Game.QuestionRange = [0, false, false, false, false, false, true, true, true, true, true, false, false, false, false, false, false, false, false, false];
 			RefreshGame();
 		}
-		function SetQuestionRangeExceptObsoleteKana() {
+		function SetQuestionRangeExcludeObsolete() {
 			Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false];
 			RefreshGame();
 		}
