@@ -299,7 +299,7 @@
 					break;
 				case "Sans":
 				case "Serif":
-					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont);
+					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont.toLowerCase());
 					for(Looper = 1; Looper <= 3; Looper++) {
 						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, Subsystem.Display.GameFont);
 					}
