@@ -9,7 +9,7 @@
 		/* Game */
 			/* Game Stats 2 */
 			#ProgringFg_GameTimeLeft, #ProgringFg_GameHP, #ProgringFg_GameProgress {
-				stroke: #00E000;
+				stroke: #00FF00;
 			}
 
 			/* Game Answer Board */
