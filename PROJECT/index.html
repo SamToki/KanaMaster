@@ -32,7 +32,7 @@
 				<ul class="CtrlGroup">
 					<li class="Ctrl">
 						<a class="TopbarLinkbtn" id="TopbarLinkbtn_Game" href="#Game">
-							<svg class="Icon-Large" viewBox="0 0 512 512">
+							<svg class="Icon Larger" viewBox="0 0 512 512">
 								<path d="M510.441,322.894l-29.76-126.56c-15.073-56.252-66.047-95.363-124.286-95.363H155.604 c-58.239,0-109.212,39.11-124.285,95.363l-29.76,126.56c-7.618,36.303,13.34,72.524,48.626,84.001l1.74,0.558 c32.658,10.632,68.288-3.07,85.429-32.831l25.894-38.289c6.502-11.288,18.538-18.25,31.55-18.25h122.406 c13.012,0,25.048,6.962,31.549,18.25l25.894,38.289c17.142,29.761,52.779,43.463,85.438,32.831l1.732-0.558 C497.1,395.418,518.06,359.197,510.441,322.894z M191.046,238.081h-41.689v41.696h-36.295v-41.696H71.373v-36.279h41.689v-41.68 h36.295v41.68h41.689V238.081z M374.728,151.436c12.626,0,22.847,10.221,22.847,22.848c0,12.61-10.221,22.831-22.847,22.831 c-12.61,0-22.831-10.221-22.831-22.831C351.897,161.656,362.118,151.436,374.728,151.436z M329.049,242.801 c-12.61,0-22.839-10.23-22.839-22.856c0-12.602,10.229-22.831,22.839-22.831c12.618,0,22.839,10.229,22.839,22.831 C351.889,232.572,341.668,242.801,329.049,242.801z M374.728,288.471c-12.61,0-22.831-10.221-22.831-22.831 c0-12.627,10.221-22.848,22.831-22.848c12.626,0,22.847,10.221,22.847,22.848C397.575,278.25,387.354,288.471,374.728,288.471z M420.406,242.801c-12.61,0-22.832-10.23-22.832-22.856c0-12.602,10.222-22.831,22.832-22.831 c12.618,0,22.847,10.229,22.847,22.831C443.253,232.572,433.024,242.801,420.406,242.801z"/>
 							</svg>
 							<span class="LabelAfterIcon">游戏</span>
@@ -169,7 +169,7 @@
 					<div id="Ctnr_GameCtrl">
 						<ul class="CtrlGroup" id="CtrlGroup_GameCtrl">
 							<li class="Ctrl">
-								<button class="Cmdbtn" id="Cmdbtn_GameStart" onclick="StartGame()">开始</button>
+								<button class="Cmdbtn Glow" id="Cmdbtn_GameStart" onclick="StartGame()">开始</button>
 								<span class="HotkeyIndicator Faded">S</span>
 							</li>
 							<li class="Ctrl">
@@ -249,7 +249,7 @@
 					<li class="Item">
 						<fieldset id="Fieldset_SettingsGameMode">
 							<legend>游戏模式</legend>
-							<ul class="CtrlGroup" id="CtrlGroup_SettingsGameMode">
+							<ul class="CtrlGroup">
 								<li class="Ctrl">
 									<label for="Combobox_SettingsQuestioning">
 										<span>出题：</span>
@@ -271,13 +271,13 @@
 								<li class="Ctrl" id="Ctrl_SettingsQuantity">
 									<label for="Textbox_SettingsQuantity">
 										<span>答题数量：</span>
-										<input class="Textbox" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="document.getElementById('Textbox_SettingsQuantity').select()" onchange="SetQuantity()" />
+										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="document.getElementById('Textbox_SettingsQuantity').select()" onchange="SetQuantity()" />
 									</label>
 								</li>
 								<li class="Ctrl Hidden" id="Ctrl_SettingsDuration">
 									<label for="Textbox_SettingsDuration">
 										<span>答题时长：</span>
-										<input class="Textbox" id="Textbox_SettingsDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" disabled="true" onclick="document.getElementById('Textbox_SettingsDuration').select()" onchange="SetDuration()" />
+										<input class="Textbox Width120" id="Textbox_SettingsDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" disabled="true" onclick="document.getElementById('Textbox_SettingsDuration').select()" onchange="SetDuration()" />
 										<span>分钟</span>
 									</label>
 								</li>
@@ -423,27 +423,27 @@
 					<li class="Item">
 						<fieldset id="Fieldset_SettingsDifficulty">
 							<legend>难度</legend>
-							<ul class="CtrlGroup" id="CtrlGroup_SettingsDifficulty">
-								<li class="Ctrl" id="Ctrl_SettingsTimeLimit">
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
 									<label for="Textbox_SettingsTimeLimitInitial">
 										<span>时限：从</span>
-										<input class="Textbox" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="document.getElementById('Textbox_SettingsTimeLimitInitial').select()" onchange="SetTimeLimitInitial()" />
+										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="document.getElementById('Textbox_SettingsTimeLimitInitial').select()" onchange="SetTimeLimitInitial()" />
 										<span>至</span>
-										<input class="Textbox" id="Textbox_SettingsTimeLimitNormal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="document.getElementById('Textbox_SettingsTimeLimitNormal').select()" onchange="SetTimeLimitNormal()" />
+										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitNormal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="document.getElementById('Textbox_SettingsTimeLimitNormal').select()" onchange="SetTimeLimitNormal()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsCooldown">
 										<span>冷却：</span>
-										<input class="Textbox" id="Textbox_SettingsCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="document.getElementById('Textbox_SettingsCooldown').select()" onchange="SetCooldown()" />
+										<input class="Textbox Width120" id="Textbox_SettingsCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="document.getElementById('Textbox_SettingsCooldown').select()" onchange="SetCooldown()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsHPDrain">
 										<span>失误掉血：</span>
-										<input class="Textbox" id="Textbox_SettingsHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="document.getElementById('Textbox_SettingsHPDrain').select()" onchange="SetHPDrain()" />
+										<input class="Textbox Width120" id="Textbox_SettingsHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="document.getElementById('Textbox_SettingsHPDrain').select()" onchange="SetHPDrain()" />
 									</label>
 								</li>
 							</ul>
@@ -496,7 +496,7 @@
 								<li class="Ctrl">
 									<label for="Combobox_SettingsHotkeyIndicator">
 										<span>快捷键提示：</span>
-										<select class="Combobox" id="Combobox_SettingsHotkeyIndicator" onchange="SetHotkeyIndicator()">
+										<select class="Combobox Width200" id="Combobox_SettingsHotkeyIndicator" onchange="SetHotkeyIndicator()">
 											<option value="Disabled">禁用</option>
 											<option value="ShowOnWrongKeyPress">按下无关按键时显示</option>
 											<option value="ShowOnAnyKeyPress" selected>按下任意按键时显示</option>
@@ -668,19 +668,19 @@
 						<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
 					</svg>
 				</li>
-				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconQuestion">
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_PopupDialogIconQuestion">
 					<svg class="PopupDialogIcon" id="PopupDialogIcon_Question" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
 					</svg>
 				</li>
-				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconCaution">
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_PopupDialogIconCaution">
 					<svg class="PopupDialogIcon" id="PopupDialogIcon_Caution" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
 					</svg>
 				</li>
-				<li class="Ctrl Hidden-Horizontal" id="Ctrl_PopupDialogIconTermination">
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_PopupDialogIconTermination">
 					<svg class="PopupDialogIcon" id="PopupDialogIcon_Termination" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>

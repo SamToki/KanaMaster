@@ -153,12 +153,6 @@
 		#Fieldset_SettingsGameMode {
 			overflow: hidden;
 		}
-		#CtrlGroup_SettingsGameMode .Textbox, #CtrlGroup_SettingsDifficulty .Textbox {
-			width: 120px;
-		}
-		#Ctrl_SettingsTimeLimit .Textbox {
-			width: 80px;
-		}
 
 /* Responsive Web Design */
 @media (max-width: 1060px) {
@@ -217,7 +211,7 @@
 	#CtrlGroup_GameCtrl .Ctrl {
 		width: calc((100% - 10px) / 2); margin: 0;
 	}
-	.HighscoreAccuracy, .HighscoreMaxCombo, .HighscoreAvgReactionTime { /* .Hidden-Horizontal */
+	.HighscoreAccuracy, .HighscoreMaxCombo, .HighscoreAvgReactionTime { /* .HiddenHorizontally */
 		width: 0 !important; border: 0 !important; padding: 0 !important; margin: 0 !important;
 		box-shadow: none !important;
 		overflow: hidden !important;
