@@ -240,11 +240,15 @@
 			ChangeChecked("Checkbox_SettingsShowTopbar", System.Display.ShowTopbar);
 			if(System.Display.ShowTopbar == true) {
 				Show("Topbar");
+				Elements = document.getElementsByTagName("html");
+				Elements[0].style.scrollPaddingTop = "";
 				Elements = document.getElementsByTagName("main");
 				Elements[0].style.padding = "";
 				ChangeHeightByClass("SectionWithViewport", "");
 			} else {
 				Hide("Topbar");
+				Elements = document.getElementsByTagName("html");
+				Elements[0].style.scrollPaddingTop = "0";
 				Elements = document.getElementsByTagName("main");
 				Elements[0].style.padding = "0 0 15px 0";
 				ChangeHeightByClass("SectionWithViewport", "100vh");
