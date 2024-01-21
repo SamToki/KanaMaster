@@ -4,16 +4,16 @@
 
 /* Area Specific */
 	/* Header */
-	#Title {
+	#Ctrl_Title {
 		width: 236px;
 	}
-	#Title a {
+	#Ctrl_Title a {
 		background-image: url(images/Title.png);
 	}
-	nav {
+	#Ctrl_Navbar {
 		width: 600px;
 	}
-	nav .Ctrl {
+	#Ctrl_Navbar .Ctrl {
 		width: calc(100% / 5);
 	}
 
@@ -156,11 +156,11 @@
 
 /* Responsive Web Design */
 @media (max-width: 1060px) {
-	#Title {
+	#Ctrl_Title {
 		width: 40px;
 	}
-	nav {
-		width: calc(100% - 70px);
+	#Ctrl_Navbar {
+		width: calc(100% - 50px);
 	}
 	#Ctnr_GameStats1, #Ctnr_GameStats2, #Ctnr_GameQuestion, #Ctnr_GameAnswer, #Ctnr_GameCtrl {
 		left: 0; right: unset;
