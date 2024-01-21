@@ -1090,6 +1090,18 @@
 						break;
 				}
 				break;
+			case "System_ConfirmGoToTutorial":
+				switch(Selector) {
+					case 2:
+						window.location.replace("index.html#Item_HelpTutorial");
+						break;
+					case 3:
+						break;
+					default:
+						alert("Error: The value of Selector in function AnswerPopupDialog is out of expectation.");
+						break;
+				}
+				break;
 			case "":
 				break;
 			default:
@@ -1121,6 +1133,15 @@
 				case "R":
 					Click("Cmdbtn_GameReset");
 					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
+						ShowHotkeyIndicator();
+					}
+					break;
+				case "F1":
+					ShowPopupDialog("System_ConfirmGoToTutorial",
+						"Question",
+						"您按下了 F1 键。是否前往教程？",
+						"", "前往", "取消");
+					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicator == "ShowOnWrongKeyPress") {
 						ShowHotkeyIndicator();
 					}
 					break;
