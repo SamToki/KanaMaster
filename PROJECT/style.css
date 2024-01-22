@@ -149,72 +149,83 @@
 			width: 130px;
 		}
 
-		/* Settings */
-		#Fieldset_SettingsGameMode {
-			overflow: hidden;
-		}
-
 /* Responsive Web Design */
 @media (max-width: 1060px) {
-	#Ctrl_Title {
-		width: 40px;
-	}
-	#Ctrl_Navbar {
-		width: calc(100% - 50px);
-	}
-	#Ctnr_GameStats1, #Ctnr_GameStats2, #Ctnr_GameQuestion, #Ctnr_GameAnswer, #Ctnr_GameCtrl {
-		left: 0; right: unset;
-		width: 100%;
-	}
-	#CtrlGroup_GameStats1 .Ctrl {
-		width: 25%; height: 50px;
-	}
-	.GameStats1Title {
-		font-size: 12px;
-	}
-	.GameStats1Value, .ProgringText {
-		font-size: 16px;
-	}
-	#Ctnr_GameStats2 {
-		top: 115px;
-	}
-	#CtrlGroup_GameStats2 {
-		flex-direction: row-reverse;
-	}
-	#CtrlGroup_GameStats2 .Ctrl {
-		height: 60px; margin: 0;
-	}
-	#Ctrl_GameScore {
-		width: calc(100% - 210px);
-		justify-content: end;
-	}
-	#Label_GameScore {
-		font-size: 24px;
-	}
-	#Ctnr_GameQuestion {
-		top: 205px;
-		height: calc(100% - 395px);
-	}
-	#Label_GameQuestion {
-		font-size: 80px;
-	}
-	#Ctnr_GameAnswer {
-		bottom: 70px;
-		height: 120px;
-	}
-	#CtrlGroup_GameAnswer .Cmdbtn {
-		font-size: 32px;
-	}
-	#CtrlGroup_GameCtrl {
-		justify-content: space-between;
-	}
-	#CtrlGroup_GameCtrl .Ctrl {
-		width: calc((100% - 10px) / 2); margin: 0;
-	}
-	.HighscoreAccuracy, .HighscoreMaxCombo, .HighscoreAvgReactionTime { /* .HiddenHorizontally */
-		width: 0 !important; border: 0 !important; padding: 0 !important; margin: 0 !important;
-		box-shadow: none !important;
-		overflow: hidden !important;
-		pointer-events: none !important;
-	}
+	/* Area Specific */
+		/* Header */
+		#Ctrl_Title {
+			width: 40px;
+		}
+		#Ctrl_Navbar {
+			width: calc(100% - 50px);
+		}
+
+		/* Main */
+			/* Game */
+			#Ctnr_GameStats1, #Ctnr_GameStats2, #Ctnr_GameQuestion, #Ctnr_GameAnswer, #Ctnr_GameCtrl {
+				left: 0; right: unset;
+				width: 100%;
+			}
+				/* Game Stats 1 */
+				#CtrlGroup_GameStats1 .Ctrl {
+					width: 25%; height: 50px;
+				}
+				.GameStats1Title {
+					font-size: 12px;
+				}
+				.GameStats1Value, .ProgringText {
+					font-size: 16px;
+				}
+
+				/* Game Stats 2 */
+				#Ctnr_GameStats2 {
+					top: 115px;
+				}
+				#CtrlGroup_GameStats2 {
+					flex-direction: row-reverse;
+				}
+				#CtrlGroup_GameStats2 .Ctrl {
+					height: 60px; margin: 0;
+				}
+				#Ctrl_GameScore {
+					width: calc(100% - 210px);
+					justify-content: end;
+				}
+				#Label_GameScore {
+					font-size: 24px;
+				}
+				
+				/* Game Question Board */
+				#Ctnr_GameQuestion {
+					top: 205px;
+					height: calc(100% - 395px);
+				}
+				#Label_GameQuestion {
+					font-size: 80px;
+				}
+				
+				/* Game Answer Board */
+				#Ctnr_GameAnswer {
+					bottom: 70px;
+					height: 120px;
+				}
+				#CtrlGroup_GameAnswer .Cmdbtn {
+					font-size: 32px;
+				}
+				
+				/* Game Ctrl */
+				#CtrlGroup_GameCtrl {
+					justify-content: space-between;
+				}
+				#CtrlGroup_GameCtrl .Ctrl {
+					width: calc((100% - 10px) / 2); margin: 0;
+				}
+
+			/* Highscore */
+			.HighscoreAccuracy, .HighscoreMaxCombo, .HighscoreAvgReactionTime { /* .HiddenHorizontally */
+				width: 0 !important; border: 0 !important; padding: 0 !important; margin: 0 !important;
+				box-shadow: none !important;
+				overflow: hidden !important;
+				pointer-events: none !important;
+			}
 }
