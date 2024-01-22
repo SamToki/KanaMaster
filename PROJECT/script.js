@@ -1060,6 +1060,12 @@
 				"已将用户数据导出至剪贴板。若要分享，请注意其中是否包含个人信息。",
 				"", "", "确定");
 		}
+		function ConfirmClearUserData() {
+			ShowPopupDialog("System_ConfirmClearUserData",
+				"Caution",
+				"您确认要清空用户数据？",
+				"", "清空", "取消");
+		}
 
 	// Popup Dialog
 	function AnswerPopupDialog(Selector) {
