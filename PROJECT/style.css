@@ -32,7 +32,7 @@
 				display: flex; flex-direction: column; justify-content: center; align-items: center;
 			}
 			.GameStats1Value, .ProgringText {
-				font-size: 24px;
+				font-size: 1.50em;
 			}
 
 			/* Game Stats 2 */
@@ -52,7 +52,7 @@
 				display: flex; justify-content: center; align-items: center;
 			}
 			#Label_GameScore {
-				font-size: 32px;
+				font-size: 2.00em;
 			}
 			.ProgringFg {
 				stroke-dasharray: 289.03 289.03; stroke-dashoffset: 144.51;
@@ -80,7 +80,7 @@
 				display: flex; justify-content: center; align-items: center;
 			}
 			#Label_GameQuestion {
-				font-size: 180px;
+				font-size: 10.00em;
 			}
 
 			/* Game Answer Board */
@@ -95,12 +95,12 @@
 				height: 100%;
 			}
 			#CtrlGroup_GameAnswer .Cmdbtn {
-				font-size: 48px;
+				font-size: 3.00em;
 			}
 			#Label_AnswerFeedback {
 				position: absolute; top: 0; left: 0; z-index: 10;
 				width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
-				color: #00A0E0; text-shadow: 0 0 10px #FFFFFF; font-size: 32px;
+				color: #00A0E0; text-shadow: 0 0 10px #FFFFFF; font-size: 2.50em;
 				display: flex; justify-content: center; align-items: center;
 				pointer-events: none;
 			}
@@ -171,10 +171,10 @@
 					width: 25%; height: 50px;
 				}
 				.GameStats1Title {
-					font-size: 12px;
+					font-size: 0.75em;
 				}
 				.GameStats1Value, .ProgringText {
-					font-size: 16px;
+					font-size: 1.00em;
 				}
 
 				/* Game Stats 2 */
@@ -192,7 +192,7 @@
 					justify-content: end;
 				}
 				#Label_GameScore {
-					font-size: 24px;
+					font-size: 1.50em;
 				}
 				
 				/* Game Question Board */
@@ -201,7 +201,7 @@
 					height: calc(100% - 395px);
 				}
 				#Label_GameQuestion {
-					font-size: 80px;
+					font-size: 5.00em;
 				}
 				
 				/* Game Answer Board */
@@ -210,7 +210,10 @@
 					height: 120px;
 				}
 				#CtrlGroup_GameAnswer .Cmdbtn {
-					font-size: 32px;
+					font-size: 2.00em;
+				}
+				#Label_AnswerFeedback {
+					font-size: 1.50em;
 				}
 				
 				/* Game Ctrl */

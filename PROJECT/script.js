@@ -1108,8 +1108,6 @@
 						break;
 				}
 				break;
-			case "":
-				break;
 			default:
 				alert("Error: The value of Interaction.PopupDialogEvent in function AnswerPopupDialog is out of expectation.");
 				break;
@@ -1143,6 +1141,17 @@
 					}
 					break;
 				case "F1":
+					if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the popup dialog.
+						Game.Status.IsPaused = true;
+						Game.Lottery.Question[1] = [0, 0, 2];
+						Game.Lottery.Answer = [
+							0,
+							[0, 0, 0],
+							[0, 0, 0],
+							[0, 0, 0]
+						];
+						RefreshGame();
+					}
 					ShowPopupDialog("System_ConfirmGoToTutorial",
 						"Question",
 						"您按下了 F1 键。是否前往教程？",
