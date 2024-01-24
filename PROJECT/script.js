@@ -883,7 +883,7 @@
 					ChangeAnim("Label_AnswerFeedback", System.Display.Anim + "ms");
 					Show("Label_AnswerFeedback");
 					ChangeScale("Label_AnswerFeedback", 1);
-				}, 10);
+				}, 20);
 
 				// Phase 2
 				if(System.Display.Anim == 0) {
@@ -891,13 +891,13 @@
 						ChangeAnim("Label_AnswerFeedback", "none");
 						Fade("Label_AnswerFeedback");
 						ChangeTop("Label_AnswerFeedback", "-10px");
-					}, 1020);
+					}, 1040);
 				} else {
 					setTimeout(function() {
 						ChangeAnim("Label_AnswerFeedback", System.Display.Anim * 3 + "ms");
 						Fade("Label_AnswerFeedback");
 						ChangeTop("Label_AnswerFeedback", "-10px");
-					}, 20 + System.Display.Anim);
+					}, 40 + System.Display.Anim);
 				}
 
 			// Start Cooldown
