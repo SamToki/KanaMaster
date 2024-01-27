@@ -14,7 +14,7 @@
 
 			/* Game Answer Board */
 			#Label_AnswerFeedback {
-				border: 1px solid #FFFF00; border-radius: 10px;
-				background-color: #000000;
-				color: #FFFF00 !important; text-shadow: none;
+				border: 1px solid #FFFFFF; border-radius: 10px;
+				background-color: #202020;
+				color: #FFFFFF !important; text-shadow: none;
 			}

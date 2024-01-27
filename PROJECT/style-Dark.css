@@ -20,5 +20,5 @@
 
 			/* Game Answer Board */
 			#Label_AnswerFeedback {
-				color: #00A0E0; text-shadow: 0 0 10px #000000;
+				color: #00A0E0; text-shadow: 0 0 10px #00000080;
 			}
