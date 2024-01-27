@@ -534,7 +534,7 @@
 			ShowToastMessage("游戏结束");
 
 			// Reset Game
-			setTimeout(GameReset, System.Display.Anim * 2 + 1000);
+			setTimeout(ResetGame, System.Display.Anim * 2 + 1000);
 		}
 	}
 	function RefreshGame() {
