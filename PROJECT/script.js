@@ -171,6 +171,13 @@
 	function Quit() {
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 			Game.Status.IsPaused = true;
+			Game.Lottery.Question[1] = [0, 0, 2];
+			Game.Lottery.Answer = [
+				0,
+				[0, 0, 0],
+				[0, 0, 0],
+				[0, 0, 0]
+			];
 			RefreshGame();
 		}
 	}
