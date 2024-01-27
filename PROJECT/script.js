@@ -163,7 +163,7 @@
 			Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 		}
 		RefreshHighscore();
-		HideToastMessage();
+		setTimeout(HideToastMessage, 20);
 	}
 
 	// Pause Before Quitting
@@ -476,8 +476,8 @@
 			} else {
 				if(Game.Stats.TimeLeft > Game.Stats.CurrentTimeLimit) {
 					Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit;
-					Questioner();
 					HideToastMessage();
+					Questioner();
 				}
 			}
 		} else {
@@ -560,15 +560,11 @@
 			ChangeValue("Combobox_SettingsProgressing", Game.Mode.Progressing);
 			switch(Game.Mode.Progressing) {
 				case "Quantity":
-					ChangeDisabled("Textbox_SettingsDuration", true);
 					Hide("Ctrl_SettingsDuration");
-					ChangeDisabled("Textbox_SettingsQuantity", false);
 					Show("Ctrl_SettingsQuantity");
 					break;
 				case "Duration":
-					ChangeDisabled("Textbox_SettingsQuantity", true);
 					Hide("Ctrl_SettingsQuantity");
-					ChangeDisabled("Textbox_SettingsDuration", false);
 					Show("Ctrl_SettingsDuration");
 					break;
 				default:
