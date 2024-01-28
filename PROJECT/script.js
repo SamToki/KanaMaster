@@ -864,7 +864,7 @@
 				// Initialization
 				ChangeAnim("Label_AnswerFeedback", "none");
 				Fade("Label_AnswerFeedback");
-				ChangeTop("Label_AnswerFeedback", "0");
+				ChangeTop("Label_AnswerFeedback", "-30px");
 				switch(Game.Lottery.CorrectAnswer) {
 					case 1:
 						ChangeLeft("Label_AnswerFeedback", document.getElementById("Label_AnswerFeedback").offsetWidth / 4 + "px");
@@ -883,7 +883,7 @@
 
 				// Phase 1
 				setTimeout(function() {
-					ChangeAnim("Label_AnswerFeedback", System.Display.Anim + "ms");
+					ChangeAnim("Label_AnswerFeedback", "");
 					Show("Label_AnswerFeedback");
 					ChangeScale("Label_AnswerFeedback", 1);
 				}, 20);
@@ -893,13 +893,13 @@
 					setTimeout(function() {
 						ChangeAnim("Label_AnswerFeedback", "none");
 						Fade("Label_AnswerFeedback");
-						ChangeTop("Label_AnswerFeedback", "-10px");
+						ChangeTop("Label_AnswerFeedback", "-40px");
 					}, 1040);
 				} else {
 					setTimeout(function() {
-						ChangeAnim("Label_AnswerFeedback", System.Display.Anim * 3 + "ms");
+						ChangeAnim("Label_AnswerFeedback", "750ms");
 						Fade("Label_AnswerFeedback");
-						ChangeTop("Label_AnswerFeedback", "-10px");
+						ChangeTop("Label_AnswerFeedback", "-40px");
 					}, 40 + System.Display.Anim);
 				}
 
