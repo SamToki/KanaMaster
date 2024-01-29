@@ -13,8 +13,12 @@
 			}
 
 			/* Game Answer Board */
-			#Label_AnswerFeedback {
-				border-radius: 10px;
-				background-color: #202020;
-				color: #FFFFFF !important; text-shadow: none;
-			}
+				/* Answer Feedback */
+				#Label_AnswerFeedback {
+					border-radius: 10px;
+					background-color: #202020;
+					text-shadow: none;
+				}
+				#Label_AnswerFeedback.Perfect, #Label_AnswerFeedback.Great, #Label_AnswerFeedback.Good, #Label_AnswerFeedback.Miss {
+					color: #FFFFFF;
+				}

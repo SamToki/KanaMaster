@@ -19,6 +19,13 @@
 			}
 
 			/* Game Answer Board */
-			#Label_AnswerFeedback {
-				color: #00A0E0; text-shadow: 0 0 10px #00000080;
-			}
+				/* Answer Feedback */
+				#Label_AnswerFeedback {
+					text-shadow: 0 0 10px #48526780;
+				}
+				#Label_AnswerFeedback.Perfect, #Label_AnswerFeedback.Great, #Label_AnswerFeedback.Good {
+					color: #96D722;
+				}
+				#Label_AnswerFeedback.Miss {
+					color: #FF5858;
+				}

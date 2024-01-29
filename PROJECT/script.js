@@ -182,6 +182,17 @@
 		}
 	}
 
+// Simplifications
+	// Write
+		// Class
+		function ChangeAnswerFeedbackColor(Value) {
+			RemoveClass("Label_AnswerFeedback", "Perfect");
+			RemoveClass("Label_AnswerFeedback", "Great");
+			RemoveClass("Label_AnswerFeedback", "Good");
+			RemoveClass("Label_AnswerFeedback", "Miss");
+			AddClass("Label_AnswerFeedback", Value);
+		}
+
 // Refresh
 	// System
 	function RefreshSystem() {
@@ -247,14 +258,8 @@
 			ChangeChecked("Checkbox_SettingsShowTopbar", System.Display.ShowTopbar);
 			if(System.Display.ShowTopbar == true) {
 				Show("Topbar");
-				document.getElementById("Html").style.scrollPaddingTop = "";
-				ChangePadding("Main", "");
-				ChangeHeightByClass("SectionWithViewport", "");
 			} else {
 				Hide("Topbar");
-				document.getElementById("Html").style.scrollPaddingTop = "0";
-				ChangePadding("Main", "0 0 15px 0");
-				ChangeHeightByClass("SectionWithViewport", "100vh");
 			}
 			ChangeValue("Combobox_SettingsHotkeyIndicator", System.Display.HotkeyIndicator);
 			switch(System.Display.HotkeyIndicator) {
@@ -318,9 +323,9 @@
 			// Dev
 			ChangeChecked("Checkbox_SettingsCheat", Subsystem.Dev.Cheat);
 			if(Subsystem.Dev.Cheat == true) {
-				document.getElementById("Html").style.fontStyle = "oblique 15deg";
+				AddClass("Html", "Cheat");
 			} else {
-				document.getElementById("Html").style.fontStyle = "";
+				RemoveClass("Html", "Cheat");
 			}
 
 		// Save User Data
@@ -816,17 +821,17 @@
 					case (Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.5):
 						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1) + 100) / Game.Stats.TotalCount;
 						ChangeText("Label_AnswerFeedback", "Perfect");
-						ChangeFgColor("Label_AnswerFeedback", "#00A0E0");
+						ChangeAnswerFeedbackColor("Perfect");
 						break;
 					case (Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.2):
 						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1) + 80) / Game.Stats.TotalCount;
 						ChangeText("Label_AnswerFeedback", "Great");
-						ChangeFgColor("Label_AnswerFeedback", "#00C000");
+						ChangeAnswerFeedbackColor("Great");
 						break;
 					case (Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0):
 						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1) + 60) / Game.Stats.TotalCount;
 						ChangeText("Label_AnswerFeedback", "Good");
-						ChangeFgColor("Label_AnswerFeedback", "#FF8000");
+						ChangeAnswerFeedbackColor("Good");
 						break;
 					default:
 						alert("Error: The value of Game.Stats.TimeLeft in function AnswerGame is out of expectation.");
@@ -851,7 +856,7 @@
 				}
 				Game.Stats.HP = Game.Stats.HP - Game.Difficulty.HPDrain;
 				ChangeText("Label_AnswerFeedback", "Miss!");
-				ChangeFgColor("Label_AnswerFeedback", "#FF4040");
+				ChangeAnswerFeedbackColor("Miss");
 			}
 
 			// Answer Feedback Animation

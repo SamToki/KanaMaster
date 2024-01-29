@@ -2,6 +2,13 @@
 /* Released under GNU GPL v3 open source license. */
 /* (C) 2015-2023 SAM TOKI STUDIO */
 
+/* General */
+	/* Basics */
+		/* Overall */
+		#Html.Cheat {
+			font-style: oblique 15deg;
+		}
+
 /* Area Specific */
 	/* Header */
 	#Ctrl_Title {
@@ -97,13 +104,26 @@
 			#Ctnr_GameAnswer .Cmdbtn {
 				font-size: 3.00em;
 			}
-			#Label_AnswerFeedback {
-				position: absolute; top: -30px; left: 0; z-index: 10;
-				width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
-				color: #00A0E0; text-shadow: 0 0 10px #FFFFFF80; font-size: 2.50em; text-align: center;
-				display: flex; justify-content: center; align-items: center;
-				pointer-events: none;
-			}
+				/* Answer Feedback */
+				#Label_AnswerFeedback {
+					position: absolute; top: -30px; left: 0; z-index: 10;
+					width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
+					text-shadow: 0 0 10px #FFFFFF80; font-size: 2.50em; text-align: center;
+					display: flex; justify-content: center; align-items: center;
+					pointer-events: none;
+				}
+				#Label_AnswerFeedback.Perfect {
+					color: #0090D0;
+				}
+				#Label_AnswerFeedback.Great {
+					color: #00A000;
+				}
+				#Label_AnswerFeedback.Good {
+					color: #E06000;
+				}
+				#Label_AnswerFeedback.Miss {
+					color: #FF0000;
+				}
 
 			/* Game Ctrl */
 			#Ctnr_GameCtrl {
