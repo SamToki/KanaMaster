@@ -125,13 +125,13 @@
 		}
 		switch(System.I18n.Language) {
 			case "en-US":
-				ShowPopupDialog("System_LanguageUnsupported",
+				ShowDialog("System_LanguageUnsupported",
 					"Termination",
 					"<span lang='en-US'>Sorry, this page currently does not support English (US).</span>",
 					"", "", "<span lang='en-US'>OK</span>");
 				break;
 			case "ja-JP":
-				ShowPopupDialog("System_LanguageUnsupported",
+				ShowDialog("System_LanguageUnsupported",
 					"Termination",
 					"<span lang='ja-JP'>すみません。このページは日本語にまだサポートしていません。</span>",
 					"", "", "<span lang='ja-JP'>OK</span>");
@@ -141,7 +141,7 @@
 				window.location.replace("index.html"); */
 				break;
 			case "zh-TW":
-				ShowPopupDialog("System_LanguageUnsupported",
+				ShowDialog("System_LanguageUnsupported",
 					"Termination",
 					"<span lang='zh-TW'>抱歉，本頁面暫不支援繁體中文。</span>",
 					"", "", "<span lang='zh-TW'>確定</span>");
@@ -163,7 +163,7 @@
 			Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 		}
 		RefreshHighscore();
-		setTimeout(HideToastMessage, 0);
+		setTimeout(HideToast, 0);
 	}
 
 	// Pause Before Quitting
@@ -261,19 +261,19 @@
 			} else {
 				Hide("Topbar");
 			}
-			ChangeValue("Combobox_SettingsHotkeyIndicator", System.Display.HotkeyIndicator);
-			switch(System.Display.HotkeyIndicator) {
+			ChangeValue("Combobox_SettingsHotkeyIndicators", System.Display.HotkeyIndicators);
+			switch(System.Display.HotkeyIndicators) {
 				case "Disabled":
-					FadeHotkeyIndicator();
+					FadeHotkeyIndicators();
 					break;
 				case "ShowOnWrongKeyPress":
 				case "ShowOnAnyKeyPress":
 					break;
 				case "AlwaysShow":
-					ShowHotkeyIndicator();
+					ShowHotkeyIndicators();
 					break;
 				default:
-					alert("Error: The value of System.Display.HotkeyIndicator in function RefreshSystem is out of expectation.");
+					alert("Error: The value of System.Display.HotkeyIndicators in function RefreshSystem is out of expectation.");
 					break;
 			}
 			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
@@ -482,7 +482,7 @@
 			} else {
 				if(Game.Stats.TimeLeft > Game.Stats.CurrentTimeLimit) {
 					Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit;
-					HideToastMessage();
+					HideToast();
 					Questioner();
 				}
 			}
@@ -496,17 +496,17 @@
 			Game.Status.Progress = 100;
 			Game.Status.IsPaused = true;
 
-			// Show Toast Message & Update Highscore
+			// Show Toast & Update Highscore
 			if(Game.Stats.Combo == Game.Stats.TotalCount) {
 				if(Game.Stats.Accuracy == 100) {
-					ShowToastMessage("ALL PERFECT!");
+					ShowToast("ALL PERFECT!");
 					Highscore[6][4] = Game.Stats.MaxCombo + "x (AP)";
 				} else {
-					ShowToastMessage("FULL COMBO!");
+					ShowToast("FULL COMBO!");
 					Highscore[6][4] = Game.Stats.MaxCombo + "x (FC)";
 				}
 			} else {
-				ShowToastMessage("胜利!");
+				ShowToast("胜利!");
 				Highscore[6][4] = Game.Stats.MaxCombo + "x";
 			}
 			Highscore[6][1] = "最新";
@@ -529,8 +529,8 @@
 			Game.Stats.HP = 0;
 			Game.Status.IsPaused = true;
 
-			// Show Toast Message
-			ShowToastMessage("游戏结束");
+			// Show Toast
+			ShowToast("游戏结束");
 
 			// Reset Game
 			setTimeout(ResetGame, System.Display.Anim * 2 + 1000);
@@ -589,7 +589,7 @@
 				}
 			}
 			if(Counter < 2) {
-				ShowPopupDialog("Game_QuestionRangeBelowMinimumRequirement",
+				ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
 					"Termination",
 					"出题范围过小，请至少选择两项。已恢复至默认范围。",
 					"", "", "确定");
@@ -759,7 +759,7 @@
 						[0, 0, 0],
 						[0, 0, 0]
 					];
-					// ShowToastMessage("游戏暂停");
+					// ShowToast("游戏暂停");
 				} else {
 					Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
@@ -809,7 +809,7 @@
 				return;
 			}
 			if(Game.Status.IsCoolingDown == true) {
-				ShowToastMessage("正在冷却...");
+				ShowToast("正在冷却...");
 				return;
 			}
 
@@ -1042,7 +1042,7 @@
 					});
 					window.location.reload();
 				} else {
-					ShowPopupDialog("System_JSONStringFormatMismatch",
+					ShowDialog("System_JSONStringFormatMismatch",
 						"Termination",
 						"JSON 字符串格式不匹配。请检查您粘贴的文本的来源。",
 						"", "", "确定");
@@ -1057,21 +1057,21 @@
 				"\"KanaMaster_Game\":" + JSON.stringify(Game) + "," +
 				"\"KanaMaster_Highscore\":" + JSON.stringify(Highscore) +
 				"}");
-			ShowPopupDialog("System_UserDataExported",
+			ShowDialog("System_UserDataExported",
 				"Completion",
 				"已将用户数据导出至剪贴板。若要分享，请注意其中是否包含个人信息。",
 				"", "", "确定");
 		}
 		function ConfirmClearUserData() {
-			ShowPopupDialog("System_ConfirmClearUserData",
+			ShowDialog("System_ConfirmClearUserData",
 				"Caution",
 				"您确认要清空用户数据？",
 				"", "清空", "取消");
 		}
 
-	// Popup Dialog
-	function AnswerPopupDialog(Selector) {
-		switch(Interaction.PopupDialogEvent) {
+	// Dialog
+	function AnswerDialog(Selector) {
+		switch(Interaction.DialogEvent) {
 			case "System_LanguageUnsupported":
 			case "System_JSONStringFormatMismatch":
 			case "System_UserDataExported":
@@ -1080,7 +1080,7 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function AnswerPopupDialog is out of expectation.");
+						alert("Error: The value of Selector in function AnswerDialog is out of expectation.");
 						break;
 				}
 				break;
@@ -1094,7 +1094,7 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function AnswerPopupDialog is out of expectation.");
+						alert("Error: The value of Selector in function AnswerDialog is out of expectation.");
 						break;
 				}
 				break;
@@ -1106,15 +1106,15 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function AnswerPopupDialog is out of expectation.");
+						alert("Error: The value of Selector in function AnswerDialog is out of expectation.");
 						break;
 				}
 				break;
 			default:
-				alert("Error: The value of Interaction.PopupDialogEvent in function AnswerPopupDialog is out of expectation.");
+				alert("Error: The value of Interaction.DialogEvent in function AnswerDialog is out of expectation.");
 				break;
 		}
-		HidePopupDialog();
+		HideDialog();
 	}
 
 // Listeners
@@ -1126,24 +1126,24 @@
 				case "2":
 				case "3":
 					Click("Cmdbtn_GameAnswerOption" + Hotkey.key);
-					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
-						ShowHotkeyIndicator();
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
+						ShowHotkeyIndicators();
 					}
 					break;
 				case "S":
 					Click("Cmdbtn_GameStart");
-					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
-						ShowHotkeyIndicator();
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
+						ShowHotkeyIndicators();
 					}
 					break;
 				case "R":
 					Click("Cmdbtn_GameReset");
-					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress") {
-						ShowHotkeyIndicator();
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
+						ShowHotkeyIndicators();
 					}
 					break;
 				case "F1":
-					if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the popup dialog.
+					if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
 						Game.Status.IsPaused = true;
 						Game.Lottery.Question[1] = [0, 0, 2];
 						Game.Lottery.Answer = [
@@ -1154,17 +1154,17 @@
 						];
 						RefreshGame();
 					}
-					ShowPopupDialog("System_ConfirmGoToTutorial",
+					ShowDialog("System_ConfirmGoToTutorial",
 						"Question",
 						"您按下了 F1 键。是否前往教程？",
 						"", "前往", "取消");
-					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicator == "ShowOnWrongKeyPress") {
-						ShowHotkeyIndicator();
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "ShowOnWrongKeyPress") {
+						ShowHotkeyIndicators();
 					}
 					break;
 				default:
-					if(System.Display.HotkeyIndicator == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicator == "ShowOnWrongKeyPress") {
-						ShowHotkeyIndicator();
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "ShowOnWrongKeyPress") {
+						ShowHotkeyIndicators();
 					}
 					break;
 			}

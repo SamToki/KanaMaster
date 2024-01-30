@@ -502,9 +502,9 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsHotkeyIndicator">
+									<label for="Combobox_SettingsHotkeyIndicators">
 										<span>快捷键提示：</span>
-										<select class="Combobox Width200" id="Combobox_SettingsHotkeyIndicator" onchange="SetHotkeyIndicator()">
+										<select class="Combobox Width200" id="Combobox_SettingsHotkeyIndicators" onchange="SetHotkeyIndicators()">
 											<option value="Disabled">禁用</option>
 											<option value="ShowOnWrongKeyPress">按下无关按键时显示</option>
 											<option value="ShowOnAnyKeyPress" selected>按下任意按键时显示</option>
@@ -663,50 +663,50 @@
 			<span>© 2015-2023 SAM TOKI STUDIO</span>
 		</footer>
 
-		<div class="ToastMessage" id="ToastMessage">
-			<span id="Label_ToastMessage">正在初始化...</span>
+		<div class="Toast" id="Toast">
+			<span id="Label_Toast">正在初始化...</span>
 		</div>
 
-		<div class="ScreenFilter Faded" id="ScreenFilter_PopupDialog" inert="true" onclick="AnswerPopupDialog(3)"></div>
-		<div class="Window Hidden" id="Window_PopupDialog" inert="true">
-			<ul class="CtrlGroup" id="CtrlGroup_PopupDialogPrompt">
-				<li class="Ctrl" id="Ctrl_PopupDialogIconCompletion">
-					<svg class="PopupDialogIcon" id="PopupDialogIcon_Completion" viewBox="0 0 16 16">
+		<div class="ScreenFilter Faded" id="ScreenFilter_Dialog" inert="true" onclick="AnswerDialog(3)"></div>
+		<div class="Window Hidden" id="Window_Dialog" inert="true">
+			<ul class="CtrlGroup" id="CtrlGroup_DialogPrompt">
+				<li class="Ctrl" id="Ctrl_DialogIconCompletion">
+					<svg class="DialogIcon" id="DialogIcon_Completion" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
 					</svg>
 				</li>
-				<li class="Ctrl HiddenHorizontally" id="Ctrl_PopupDialogIconQuestion" inert="true">
-					<svg class="PopupDialogIcon" id="PopupDialogIcon_Question" viewBox="0 0 16 16">
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconQuestion" inert="true">
+					<svg class="DialogIcon" id="DialogIcon_Question" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
 					</svg>
 				</li>
-				<li class="Ctrl HiddenHorizontally" id="Ctrl_PopupDialogIconCaution" inert="true">
-					<svg class="PopupDialogIcon" id="PopupDialogIcon_Caution" viewBox="0 0 16 16">
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconCaution" inert="true">
+					<svg class="DialogIcon" id="DialogIcon_Caution" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
 					</svg>
 				</li>
-				<li class="Ctrl HiddenHorizontally" id="Ctrl_PopupDialogIconTermination" inert="true">
-					<svg class="PopupDialogIcon" id="PopupDialogIcon_Termination" viewBox="0 0 16 16">
+				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconTermination" inert="true">
+					<svg class="DialogIcon" id="DialogIcon_Termination" viewBox="0 0 16 16">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
 				</li>
-				<li class="Ctrl" id="Ctrl_PopupDialogText">
-					<span id="Label_PopupDialogText">对话框文字</span>
+				<li class="Ctrl" id="Ctrl_DialogText">
+					<span id="Label_DialogText">对话框文字</span>
 				</li>
 			</ul>
-			<ul class="CtrlGroup" id="CtrlGroup_PopupDialogOptions">
-				<li class="Ctrl Faded" id="Ctrl_PopupDialogOption1" inert="true">
-					<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption1" onclick="AnswerPopupDialog(1)">选项1</button>
+			<ul class="CtrlGroup" id="CtrlGroup_DialogOptions">
+				<li class="Ctrl Faded" id="Ctrl_DialogOption1" inert="true">
+					<button class="Cmdbtn" id="Cmdbtn_DialogOption1" onclick="AnswerDialog(1)">选项1</button>
 				</li>
-				<li class="Ctrl Faded" id="Ctrl_PopupDialogOption2" inert="true">
-					<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption2" onclick="AnswerPopupDialog(2)">选项2</button>
+				<li class="Ctrl Faded" id="Ctrl_DialogOption2" inert="true">
+					<button class="Cmdbtn" id="Cmdbtn_DialogOption2" onclick="AnswerDialog(2)">选项2</button>
 				</li>
-				<li class="Ctrl" id="Ctrl_PopupDialogOption3">
-					<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption3" onclick="AnswerPopupDialog(3)">选项3</button>
+				<li class="Ctrl" id="Ctrl_DialogOption3">
+					<button class="Cmdbtn" id="Cmdbtn_DialogOption3" onclick="AnswerDialog(3)">选项3</button>
 				</li>
 			</ul>
 		</div>
