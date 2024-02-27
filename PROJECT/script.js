@@ -1120,7 +1120,7 @@
 // Listeners
 	// On Keyboard
 	document.addEventListener("keydown", function(Hotkey) {
-		if(document.activeElement.tagName.toLowerCase() != "input") { // Prevent hotkey activation when inputing text etc.
+		if(document.activeElement.tagName.toLowerCase() != "input" && document.activeElement.tagName.toLowerCase() != "textarea") { // Prevent hotkey activation when inputing text etc.
 			switch(Hotkey.key.toUpperCase()) {
 				case "1":
 				case "2":
