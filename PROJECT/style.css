@@ -14,10 +14,10 @@
 	#Ctrl_Title {
 		width: 236px;
 	}
-	#Ctrl_Navbar {
+	#Ctrl_Nav {
 		width: 600px;
 	}
-	#Ctrl_Navbar .Ctrl {
+	#Ctrl_Nav .Nav {
 		width: calc(100% / 5);
 	}
 
@@ -176,7 +176,7 @@
 		#Ctrl_Title {
 			width: 40px;
 		}
-		#Ctrl_Navbar {
+		#Ctrl_Nav {
 			width: calc(100% - 50px);
 		}
 

@@ -147,7 +147,7 @@
 					"", "", "<span lang='zh-TW'>確定</span>");
 				break;
 			default:
-				alert("Error: The value of System.I18n.Language in function Load is out of expectation.");
+				AlertError("The value of System.I18n.Language in function Load is out of expectation.");
 				break;
 		}
 		RefreshSystem();
@@ -231,7 +231,7 @@
 					document.getElementById("ThemeVariant_Style").media = "";
 					break;
 				default:
-					alert("Error: The value of System.Display.Theme in function RefreshSystem is out of expectation.");
+					AlertError("The value of System.Display.Theme in function RefreshSystem is out of expectation.");
 					break;
 			}
 			ChangeValue("Combobox_SettingsCursor", System.Display.Cursor);
@@ -252,7 +252,7 @@
 					ChangeCursorOverall("url(../cursors/GenshinFurina.cur), auto");
 					break;
 				default:
-					alert("Error: The value of System.Display.Cursor in function RefreshSystem is out of expectation.");
+					AlertError("The value of System.Display.Cursor in function RefreshSystem is out of expectation.");
 					break;
 			}
 			ChangeChecked("Checkbox_SettingsShowTopbar", System.Display.ShowTopbar);
@@ -273,7 +273,7 @@
 					ShowHotkeyIndicators();
 					break;
 				default:
-					alert("Error: The value of System.Display.HotkeyIndicators in function RefreshSystem is out of expectation.");
+					AlertError("The value of System.Display.HotkeyIndicators in function RefreshSystem is out of expectation.");
 					break;
 			}
 			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
@@ -316,7 +316,7 @@
 					}
 					break;
 				default:
-					alert("Error: The value of Subsystem.Display.GameFont in function RefreshSubsystem is out of expectation.");
+					AlertError("The value of Subsystem.Display.GameFont in function RefreshSubsystem is out of expectation.");
 					break;
 			}
 
@@ -387,7 +387,7 @@
 						Game.Stats.Progress = Game.Stats.ElapsedTime / (Game.Mode.Duration * 60000) * 100;
 						break;
 					default:
-						alert("Error: The value of Game.Mode.Progressing in function ClockGame is out of expectation.");
+						AlertError("The value of Game.Mode.Progressing in function ClockGame is out of expectation.");
 						break;
 				}
 				ChangeProgring("ProgringFg_GameProgress", 289.03 * (1 - Game.Stats.Progress / 100));
@@ -449,7 +449,7 @@
 					}
 					break;
 				default:
-					alert("Error: The value of Game.Mode.Questioning in function ClockGame is out of expectation.");
+					AlertError("The value of Game.Mode.Questioning in function ClockGame is out of expectation.");
 					break;
 			}
 
@@ -519,7 +519,7 @@
 			// Reset Game and Scroll to Highscore
 			setTimeout(function() {
 				ResetGame();
-				Click("TopbarLinkbtn_Highscore");
+				Click("NavLinkbtn_Highscore");
 			}, System.Display.Anim * 2 + 1000);
 		}
 
@@ -574,7 +574,7 @@
 					Show("Ctrl_SettingsDuration");
 					break;
 				default:
-					alert("Error: The value of Game.Mode.Progressing in function RefreshGame is out of expectation.");
+					AlertError("The value of Game.Mode.Progressing in function RefreshGame is out of expectation.");
 					break;
 			}
 			ChangeValue("Textbox_SettingsQuantity", Game.Mode.Quantity);
@@ -626,7 +626,7 @@
 				Questioner_GenerateAnswer2();
 				break;
 			default:
-				alert("Error: The value of Game.Lottery.CorrectAnswer in function Questioner is out of expectation.");
+				AlertError("The value of Game.Lottery.CorrectAnswer in function Questioner is out of expectation.");
 				break;
 		}
 		Game.Status.IsCoolingDown = false;
@@ -748,7 +748,7 @@
 					[0, 0, 0],
 					[0, 0, 0]
 				];
-				Click("TopbarLinkbtn_Game");
+				Click("NavLinkbtn_Game");
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
@@ -771,7 +771,7 @@
 						[0, 0, 0],
 						[0, 0, 0]
 					];
-					Click("TopbarLinkbtn_Game");
+					Click("NavLinkbtn_Game");
 				}
 			}
 			RefreshGame();
@@ -834,7 +834,7 @@
 						ChangeAnswerFeedbackColor("Good");
 						break;
 					default:
-						alert("Error: The value of Game.Stats.TimeLeft in function AnswerGame is out of expectation.");
+						AlertError("The value of Game.Stats.TimeLeft in function AnswerGame is out of expectation.");
 						break;
 				}
 				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
@@ -866,16 +866,16 @@
 				ChangeTop("Label_AnswerFeedback", "-30px");
 				switch(Game.Lottery.CorrectAnswer) {
 					case 1:
-						ChangeLeft("Label_AnswerFeedback", document.getElementById("Label_AnswerFeedback").offsetWidth / 4 + "px");
+						ChangeLeft("Label_AnswerFeedback", ReadWidth("Label_AnswerFeedback") / 4 + "px");
 						break;
 					case 2:
-						ChangeLeft("Label_AnswerFeedback", "calc(50% - " + document.getElementById("Label_AnswerFeedback").offsetWidth / 2 + "px)");
+						ChangeLeft("Label_AnswerFeedback", "calc(50% - " + ReadWidth("Label_AnswerFeedback") / 2 + "px)");
 						break;
 					case 3:
-						ChangeLeft("Label_AnswerFeedback", "calc(100% - " + document.getElementById("Label_AnswerFeedback").offsetWidth * 5 / 4 + "px)");
+						ChangeLeft("Label_AnswerFeedback", "calc(100% - " + ReadWidth("Label_AnswerFeedback") * 5 / 4 + "px)");
 						break;
 					default:
-						alert("Error: The value of Game.Lottery.CorrectAnswer in function AnswerGame is out of expectation.");
+						AlertError("The value of Game.Lottery.CorrectAnswer in function AnswerGame is out of expectation.");
 						break;
 				}
 				ChangeScale("Label_AnswerFeedback", 1.5);
@@ -1080,7 +1080,7 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function AnswerDialog is out of expectation.");
+						AlertError("The value of Selector in function AnswerDialog is out of expectation.");
 						break;
 				}
 				break;
@@ -1094,7 +1094,7 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function AnswerDialog is out of expectation.");
+						AlertError("The value of Selector in function AnswerDialog is out of expectation.");
 						break;
 				}
 				break;
@@ -1106,12 +1106,24 @@
 					case 3:
 						break;
 					default:
-						alert("Error: The value of Selector in function AnswerDialog is out of expectation.");
+						AlertError("The value of Selector in function AnswerDialog is out of expectation.");
+						break;
+				}
+				break;
+			case "System_Error":
+				switch(Selector) {
+					case 2:
+						window.location.replace("index.html#Item_SettingsUserData");
+						break;
+					case 3:
+						break;
+					default:
+						AlertError("The value of Selector in function AnswerDialog is out of expectation.");
 						break;
 				}
 				break;
 			default:
-				alert("Error: The value of Interaction.DialogEvent in function AnswerDialog is out of expectation.");
+				AlertError("The value of Interaction.DialogEvent in function AnswerDialog is out of expectation.");
 				break;
 		}
 		HideDialog();
@@ -1173,3 +1185,12 @@
 
 // Automations
 Automation.GlowStartButton = setInterval(GlowStartButton, 500);
+
+// Error Handling
+function AlertError(Message) {
+	LogCon(Message);
+	ShowDialog("System_Error",
+		"Termination",
+		"抱歉，发生了程序错误。您可尝试清空用户数据以解决问题。是否前往用户数据？",
+		"", "前往", "取消");
+}
