@@ -1101,7 +1101,7 @@
 			case "System_ConfirmGoToTutorial":
 				switch(Selector) {
 					case 2:
-						window.location.replace("index.html#Item_HelpTutorial");
+						window.location.replace("#Item_HelpTutorial");
 						break;
 					case 3:
 						break;
@@ -1113,7 +1113,7 @@
 			case "System_Error":
 				switch(Selector) {
 					case 2:
-						window.location.replace("index.html#Item_SettingsUserData");
+						window.location.replace("#Item_SettingsUserData");
 						break;
 					case 3:
 						break;
