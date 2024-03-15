@@ -234,6 +234,12 @@
 					AlertError("The value of System.Display.Theme in function RefreshSystem is out of expectation.");
 					break;
 			}
+			ChangeChecked("Checkbox_SettingsBlurBackground", System.Display.BlurBackground);
+			if(System.Display.BlurBackground == true) {
+				document.getElementById("Main").style.backdropFilter = "blur(20px)";
+			} else {
+				document.getElementById("Main").style.backdropFilter = "";
+			}
 			ChangeValue("Combobox_SettingsCursor", System.Display.Cursor);
 			switch(System.Display.Cursor) {
 				case "Default":
