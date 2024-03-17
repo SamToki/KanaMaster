@@ -234,12 +234,6 @@
 					AlertError("The value of System.Display.Theme in function RefreshSystem is out of expectation.");
 					break;
 			}
-			ChangeChecked("Checkbox_SettingsBlurBackground", System.Display.BlurBackground);
-			if(System.Display.BlurBackground == true) {
-				document.getElementById("Ctnr_BackgroundImage").style.filter = "blur(20px)";
-			} else {
-				document.getElementById("Ctnr_BackgroundImage").style.filter = "";
-			}
 			ChangeValue("Combobox_SettingsCursor", System.Display.Cursor);
 			switch(System.Display.Cursor) {
 				case "Default":
@@ -260,6 +254,12 @@
 				default:
 					AlertError("The value of System.Display.Cursor in function RefreshSystem is out of expectation.");
 					break;
+			}
+			ChangeChecked("Checkbox_SettingsBlurBackground", System.Display.BlurBackground);
+			if(System.Display.BlurBackground == true) {
+				document.getElementById("Ctnr_BackgroundImage").style.filter = "blur(20px)";
+			} else {
+				document.getElementById("Ctnr_BackgroundImage").style.filter = "";
 			}
 			ChangeChecked("Checkbox_SettingsShowTopbar", System.Display.ShowTopbar);
 			if(System.Display.ShowTopbar == true) {
