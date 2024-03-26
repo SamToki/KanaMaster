@@ -1176,12 +1176,12 @@
 						"Question",
 						"您按下了 F1 键。是否前往教程？",
 						"", "前往", "取消");
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "ShowOnWrongKeyPress") {
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
 						ShowHotkeyIndicators();
 					}
 					break;
 				default:
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "ShowOnWrongKeyPress") {
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || (System.Display.HotkeyIndicators == "ShowOnWrongKeyPress" && Hotkey.key != "Escape" && Hotkey.key != "Tab" && Hotkey.key != "Enter" && Hotkey.key != " ")) {
 						ShowHotkeyIndicators();
 					}
 					break;
