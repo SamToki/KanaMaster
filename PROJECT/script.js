@@ -741,7 +741,7 @@
 
 // Cmds
 	// Game
-		// Ctrls
+		// Ctrl
 		function StartGame() {
 			if(Game.Status.IsRunning == false) {
 				ResetGame();
