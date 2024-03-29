@@ -262,7 +262,7 @@
 				document.getElementById("Ctnr_BackgroundImage").style.filter = "";
 			}
 			ChangeChecked("Checkbox_SettingsShowTopbar", System.Display.ShowTopbar);
-			if(System.Display.ShowTopbar == true) {
+			if(System.Display.ShowTopbar == true && document.fullscreenElement == null) {
 				Show("Topbar");
 			} else {
 				Hide("Topbar");
