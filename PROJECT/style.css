@@ -2,13 +2,6 @@
 /* Released under GNU GPL v3 open source license. */
 /* (C) 2015-2023 SAM TOKI STUDIO */
 
-/* General */
-	/* Basics */
-		/* Overall */
-		#Html.Cheat {
-			font-style: oblique 15deg;
-		}
-
 /* Area Specific */
 	/* Header */
 	#Ctrl_Title {
