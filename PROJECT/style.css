@@ -106,7 +106,7 @@
 			}
 				/* Answer Feedback */
 				#Label_AnswerFeedback {
-					position: absolute; top: -30px; left: 0; z-index: 10;
+					position: absolute; top: -30px; left: 0; z-index: 1;
 					width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
 					text-shadow: 0 0 10px #FFFFFF80; font-size: 2.50em; text-align: center;
 					display: flex; justify-content: center; align-items: center;
@@ -250,5 +250,6 @@
 				width: 0 !important; border: none !important; padding: 0 !important; margin: 0 !important;
 				opacity: 0 !important;
 				overflow: hidden !important;
+				pointer-events: none !important;
 			}
 }
