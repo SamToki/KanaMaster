@@ -1194,7 +1194,7 @@ Automation.GlowStartButton = setInterval(GlowStartButton, 500);
 
 // Error Handling
 function AlertError(Message) {
-	LogCon(Message);
+	LogConsole(Message);
 	ShowDialog("System_Error",
 		"Termination",
 		"抱歉，发生了程序错误。您可尝试清空用户数据以解决问题。是否前往用户数据？",
