@@ -70,9 +70,7 @@
 		Game = {
 			Mode: {
 				Questioning: "Kana",
-				Progressing: "Quantity",
-				Quantity: 50,
-				Duration: 3
+				Progressing: "Quantity", Quantity: 50, Duration: 3
 			},
 			QuestionRange: [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false],
 			Difficulty: {
@@ -1194,7 +1192,7 @@ Automation.GlowStartButton = setInterval(GlowStartButton, 500);
 
 // Error Handling
 function AlertError(Message) {
-	LogConsole("● Error\n" +
+	LogConsole("● 错误\n" +
 		Message);
 	ShowDialog("System_Error",
 		"Error",
