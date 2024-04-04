@@ -375,7 +375,7 @@
 				if(System.Display.Anim == 0) {
 					Game0.Stats.ScoreDisplay = Game.Stats.Score;
 				} else {
-					Game0.Stats.ScoreDisplay = Game0.Stats.ScoreDisplay + (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
+					Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
 					if(Math.abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.01) {
 						Game0.Stats.ScoreDisplay = Game.Stats.Score;
 					}
@@ -842,11 +842,11 @@
 						break;
 				}
 				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
-				Game.Stats.Score = Game.Stats.Score + Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
+				Game.Stats.Score += Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
 				if(Game.Stats.Score > 99999999) {
 					Game.Stats.Score = 99999999;
 				}
-				Game.Stats.HP = Game.Stats.HP + 10;
+				Game.Stats.HP += 10;
 				if(Game.Stats.HP > 100) {
 					Game.Stats.HP = 100;
 				}
