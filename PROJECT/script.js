@@ -497,7 +497,7 @@
 		// Victory
 		if(Game.Status.IsRunning == true && Game.Stats.Progress >= 100) {
 			// Freeze Game
-			Game.Status.Progress = 100;
+			Game.Stats.Progress = 100;
 			Game.Status.IsPaused = true;
 
 			// Show Toast & Update Highscore
