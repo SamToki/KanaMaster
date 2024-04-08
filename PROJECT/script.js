@@ -867,7 +867,7 @@
 
 		// Question Range
 		function SetQuestionRange(Selector) {
-			Game.QuestionRange[Selector] = ReadChecked("Checkbox_SettingsQuestionRange" + Selector);
+			Game.QuestionRange[Selector] = IsChecked("Checkbox_SettingsQuestionRange" + Selector);
 			RefreshGame();
 		}
 		function SetQuestionRangeDefaultRange() {
@@ -953,7 +953,7 @@
 
 		// Dev
 		function SetCheat() {
-			Subsystem.Dev.Cheat = ReadChecked("Checkbox_SettingsCheat");
+			Subsystem.Dev.Cheat = IsChecked("Checkbox_SettingsCheat");
 			RefreshSubsystem();
 		}
 
