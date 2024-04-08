@@ -376,7 +376,7 @@
 					Game0.Stats.ScoreDisplay = Game.Stats.Score;
 				} else {
 					Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
-					if(Math.abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.01) {
+					if(Abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.01) {
 						Game0.Stats.ScoreDisplay = Game.Stats.Score;
 					}
 				}
@@ -609,84 +609,6 @@
 		// Save User Data
 		localStorage.setItem("KanaMaster_Game", JSON.stringify(Game));
 	}
-	function Questioner() {
-		Game.Lottery.Question[2] = Game.Lottery.Question[1];
-		Questioner_GenerateQuestion();
-		Game.Lottery.CorrectAnswer = Randomize(1, 3);
-		switch(Game.Lottery.CorrectAnswer) {
-			case 1:
-				Game.Lottery.Answer[1] = Game.Lottery.Question[1];
-				Questioner_GenerateAnswer2();
-				Questioner_GenerateAnswer3();
-				break;
-			case 2:
-				Game.Lottery.Answer[2] = Game.Lottery.Question[1];
-				Questioner_GenerateAnswer1();
-				Questioner_GenerateAnswer3();
-				break;
-			case 3:
-				Game.Lottery.Answer[3] = Game.Lottery.Question[1];
-				Questioner_GenerateAnswer1();
-				Questioner_GenerateAnswer2();
-				break;
-			default:
-				AlertError("The value of Game.Lottery.CorrectAnswer \"" + Game.Lottery.CorrectAnswer + "\" in function Questioner is out of expectation.");
-				break;
-		}
-		Game.Status.IsCoolingDown = false;
-		Game.Stats.StartTime2 = Date.now();
-	}
-	function Questioner_GenerateQuestion() {
-		do {
-			Game.Lottery.Question[1] = [0, Randomize(1, 19), Randomize(1, 20)];
-		} while(
-			// Prevent Out of Question Range
-			Game.QuestionRange[Game.Lottery.Question[1][1]] == false ||
-			// Prevent Blank Entry
-			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == "" ||
-			// Prevent Same with Previous Question
-			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == RomajiGrid[Game.Lottery.Question[2][1]][Game.Lottery.Question[2][2]]
-		);
-	}
-	function Questioner_GenerateAnswer1() {
-		do {
-			Game.Lottery.Answer[1] = [0, Randomize(1, 19), Randomize(1, 20)];
-		} while(
-			// Prevent Out of Question Range
-			Game.QuestionRange[Game.Lottery.Answer[1][1]] == false ||
-			// Prevent Blank Entry
-			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == "" ||
-			// Prevent Duplication
-			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] ||
-			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
-		);
-	}
-	function Questioner_GenerateAnswer2() {
-		do {
-			Game.Lottery.Answer[2] = [0, Randomize(1, 19), Randomize(1, 20)];
-		} while(
-			// Prevent Out of Question Range
-			Game.QuestionRange[Game.Lottery.Answer[2][1]] == false ||
-			// Prevent Blank Entry
-			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == "" ||
-			// Prevent Duplication
-			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
-			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
-		);
-	}
-	function Questioner_GenerateAnswer3() {
-		do {
-			Game.Lottery.Answer[3] = [0, Randomize(1, 19), Randomize(1, 20)];
-		} while(
-			// Prevent Out of Question Range
-			Game.QuestionRange[Game.Lottery.Answer[3][1]] == false ||
-			// Prevent Blank Entry
-			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == "" ||
-			// Prevent Duplication
-			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
-			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]]
-		);
-	}
 	function GlowStartButton() {
 		if(
 			(Game.Status.IsRunning == false || (Game.Status.IsRunning == true && Game.Status.IsPaused == true)) &&
@@ -809,7 +731,7 @@
 
 		// Answer
 		function AnswerGame(Selector) {
-			if(Game.Status.IsRunning != true || Game.Status.IsPaused == true) {
+			if(Game.Status.IsRunning == false || Game.Status.IsPaused == true) {
 				return;
 			}
 			if(Game.Status.IsCoolingDown == true) {
@@ -1189,6 +1111,87 @@
 
 // Automations
 Automation.GlowStartButton = setInterval(GlowStartButton, 500);
+
+// Features
+	// Game
+	function Questioner() {
+		Game.Lottery.Question[2] = Game.Lottery.Question[1];
+		Questioner_GenerateQuestion();
+		Game.Lottery.CorrectAnswer = Randomize(1, 3);
+		switch(Game.Lottery.CorrectAnswer) {
+			case 1:
+				Game.Lottery.Answer[1] = Game.Lottery.Question[1];
+				Questioner_GenerateAnswer2();
+				Questioner_GenerateAnswer3();
+				break;
+			case 2:
+				Game.Lottery.Answer[2] = Game.Lottery.Question[1];
+				Questioner_GenerateAnswer1();
+				Questioner_GenerateAnswer3();
+				break;
+			case 3:
+				Game.Lottery.Answer[3] = Game.Lottery.Question[1];
+				Questioner_GenerateAnswer1();
+				Questioner_GenerateAnswer2();
+				break;
+			default:
+				AlertError("The value of Game.Lottery.CorrectAnswer \"" + Game.Lottery.CorrectAnswer + "\" in function Questioner is out of expectation.");
+				break;
+		}
+		Game.Status.IsCoolingDown = false;
+		Game.Stats.StartTime2 = Date.now();
+	}
+	function Questioner_GenerateQuestion() {
+		do {
+			Game.Lottery.Question[1] = [0, Randomize(1, 19), Randomize(1, 20)];
+		} while(
+			// Prevent Out of Question Range
+			Game.QuestionRange[Game.Lottery.Question[1][1]] == false ||
+			// Prevent Blank Entry
+			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == "" ||
+			// Prevent Same with Previous Question
+			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == RomajiGrid[Game.Lottery.Question[2][1]][Game.Lottery.Question[2][2]]
+		);
+	}
+	function Questioner_GenerateAnswer1() {
+		do {
+			Game.Lottery.Answer[1] = [0, Randomize(1, 19), Randomize(1, 20)];
+		} while(
+			// Prevent Out of Question Range
+			Game.QuestionRange[Game.Lottery.Answer[1][1]] == false ||
+			// Prevent Blank Entry
+			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == "" ||
+			// Prevent Duplication
+			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] ||
+			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
+		);
+	}
+	function Questioner_GenerateAnswer2() {
+		do {
+			Game.Lottery.Answer[2] = [0, Randomize(1, 19), Randomize(1, 20)];
+		} while(
+			// Prevent Out of Question Range
+			Game.QuestionRange[Game.Lottery.Answer[2][1]] == false ||
+			// Prevent Blank Entry
+			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == "" ||
+			// Prevent Duplication
+			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
+			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
+		);
+	}
+	function Questioner_GenerateAnswer3() {
+		do {
+			Game.Lottery.Answer[3] = [0, Randomize(1, 19), Randomize(1, 20)];
+		} while(
+			// Prevent Out of Question Range
+			Game.QuestionRange[Game.Lottery.Answer[3][1]] == false ||
+			// Prevent Blank Entry
+			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == "" ||
+			// Prevent Duplication
+			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
+			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]]
+		);
+	}
 
 // Error Handling
 function AlertError(Message) {
