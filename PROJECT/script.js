@@ -150,7 +150,7 @@
 				break;
 		}
 		if(typeof(System.Version.KanaMaster) != "undefined") {
-			if(RoundDown(CurrentVersion) - RoundDown(System.Version.KanaMaster) >= 1) {
+			if(Math.floor(CurrentVersion) - Math.floor(System.Version.KanaMaster) >= 1) {
 				ShowDialog("System_MajorUpdateDetected",
 					"Info",
 					"检测到大版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。",
@@ -372,7 +372,7 @@
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 				}
 			}
-			ChangeText("Label_GameElapsedTimeValue", RoundDown(Game.Stats.ElapsedTime / 60000).toString().padStart(2, "0") + ":" + RoundDown(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
+			ChangeText("Label_GameElapsedTimeValue", Math.floor(Game.Stats.ElapsedTime / 60000).toString().padStart(2, "0") + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
 			if(Game.Stats.Progress <= 20) {
 				Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Normal) * (Game.Stats.Progress / 20);
 			} else {
@@ -388,7 +388,7 @@
 					Game0.Stats.ScoreDisplay = Game.Stats.Score;
 				} else {
 					Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
-					if(Abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.01) {
+					if(Math.abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.01) {
 						Game0.Stats.ScoreDisplay = Game.Stats.Score;
 					}
 				}
@@ -776,7 +776,7 @@
 						break;
 				}
 				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
-				Game.Stats.Score += RoundDown((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
+				Game.Stats.Score += Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
 				if(Game.Stats.Score > 99999999) {
 					Game.Stats.Score = 99999999;
 				}
@@ -1208,7 +1208,7 @@ Automation.GlowStartButton = setInterval(GlowStartButton, 500);
 
 // Error Handling
 function AlertError(Message) {
-	LogConsole("● 错误\n" +
+	console.log("● 错误\n" +
 		Message);
 	ShowDialog("System_Error",
 		"Error",
