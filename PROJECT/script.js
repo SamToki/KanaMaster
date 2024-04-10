@@ -6,7 +6,8 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		const KanaGrid = [
+		const CurrentVersion = 1.09,
+		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
 			[0, "い",   "き",   "し",   "ち",   "に",   "ひ",   "み",   "",     "り",   "",     "ぎ",   "じ",   "ぢ",   "び",   "ぴ",   "",     "",     "",     "",     ""],
@@ -147,6 +148,17 @@
 			default:
 				AlertError("The value of System.I18n.Language \"" + System.I18n.Language + "\" in function Load is out of expectation.");
 				break;
+		}
+		if(typeof(System.Version.KanaMaster) != "undefined") {
+			if(RoundDown(CurrentVersion) - RoundDown(System.Version.KanaMaster) >= 1) {
+				ShowDialog("System_MajorUpdateDetected",
+					"Info",
+					"检测到大版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。",
+					"", "", "确定");
+				System.Version.KanaMaster = CurrentVersion;
+			}
+		} else {
+			System.Version.KanaMaster = CurrentVersion;
 		}
 		RefreshSystem();
 		if(typeof(localStorage.KanaMaster_Subsystem) != "undefined") {
@@ -360,7 +372,7 @@
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 				}
 			}
-			ChangeText("Label_GameElapsedTimeValue", Math.floor(Game.Stats.ElapsedTime / 60000).toString().padStart(2, "0") + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
+			ChangeText("Label_GameElapsedTimeValue", RoundDown(Game.Stats.ElapsedTime / 60000).toString().padStart(2, "0") + ":" + RoundDown(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
 			if(Game.Stats.Progress <= 20) {
 				Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Normal) * (Game.Stats.Progress / 20);
 			} else {
@@ -593,11 +605,11 @@
 				}
 			}
 			if(Counter < 2) {
+				SetQuestionRangeDefaultRange();
 				ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
 					"Error",
 					"出题范围过小，请至少选择两项。已恢复至默认范围。",
 					"", "", "确定");
-				SetQuestionRangeDefaultRange();
 			}
 
 			// Difficulty
@@ -764,7 +776,7 @@
 						break;
 				}
 				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
-				Game.Stats.Score += Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
+				Game.Stats.Score += RoundDown((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
 				if(Game.Stats.Score > 99999999) {
 					Game.Stats.Score = 99999999;
 				}
@@ -999,6 +1011,7 @@
 	function AnswerDialog(Selector) {
 		switch(Interaction.DialogEvent) {
 			case "System_LanguageUnsupported":
+			case "System_MajorUpdateDetected":
 			case "System_JSONStringFormatMismatch":
 			case "System_UserDataExported":
 			case "Game_QuestionRangeBelowMinimumRequirement":
