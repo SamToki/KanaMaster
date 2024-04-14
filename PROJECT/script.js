@@ -211,34 +211,34 @@
 			ChangeValue("Combobox_SettingsTheme", System.Display.Theme);
 			switch(System.Display.Theme) {
 				case "Auto":
-					document.getElementById("ThemeVariant_Common").href = "../common-Dark.css";
-					document.getElementById("ThemeVariant_Common").media = "(prefers-color-scheme: dark)";
-					document.getElementById("ThemeVariant_Style").href = "style-Dark.css";
-					document.getElementById("ThemeVariant_Style").media = "(prefers-color-scheme: dark)";
+					ChangeLink("ThemeVariant_Common", "../common-Dark.css");
+					ChangeMediaCondition("ThemeVariant_Common", "(prefers-color-scheme: dark)");
+					ChangeLink("ThemeVariant_Style", "style-Dark.css");
+					ChangeMediaCondition("ThemeVariant_Style", "(prefers-color-scheme: dark)");
 					break;
 				case "Default":
-					document.getElementById("ThemeVariant_Common").href = "";
-					document.getElementById("ThemeVariant_Common").media = "";
-					document.getElementById("ThemeVariant_Style").href = "";
-					document.getElementById("ThemeVariant_Style").media = "";
+					ChangeLink("ThemeVariant_Common", "");
+					ChangeMediaCondition("ThemeVariant_Common", "");
+					ChangeLink("ThemeVariant_Style", "");
+					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				case "Dark":
-					document.getElementById("ThemeVariant_Common").href = "../common-Dark.css";
-					document.getElementById("ThemeVariant_Common").media = "";
-					document.getElementById("ThemeVariant_Style").href = "style-Dark.css";
-					document.getElementById("ThemeVariant_Style").media = "";
+					ChangeLink("ThemeVariant_Common", "../common-Dark.css");
+					ChangeMediaCondition("ThemeVariant_Common", "");
+					ChangeLink("ThemeVariant_Style", "style-Dark.css");
+					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				case "Genshin":
-					document.getElementById("ThemeVariant_Common").href = "../common-Genshin.css";
-					document.getElementById("ThemeVariant_Common").media = "";
-					document.getElementById("ThemeVariant_Style").href = "style-Genshin.css";
-					document.getElementById("ThemeVariant_Style").media = "";
+					ChangeLink("ThemeVariant_Common", "../common-Genshin.css");
+					ChangeMediaCondition("ThemeVariant_Common", "");
+					ChangeLink("ThemeVariant_Style", "style-Genshin.css");
+					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				case "HighContrast":
-					document.getElementById("ThemeVariant_Common").href = "../common-HighContrast.css";
-					document.getElementById("ThemeVariant_Common").media = "";
-					document.getElementById("ThemeVariant_Style").href = "style-HighContrast.css";
-					document.getElementById("ThemeVariant_Style").media = "";
+					ChangeLink("ThemeVariant_Common", "../common-HighContrast.css");
+					ChangeMediaCondition("ThemeVariant_Common", "");
+					ChangeLink("ThemeVariant_Style", "style-HighContrast.css");
+					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				default:
 					AlertError("The value of System.Display.Theme \"" + System.Display.Theme + "\" in function RefreshSystem is out of expectation.");
@@ -267,12 +267,12 @@
 			}
 			ChangeChecked("Checkbox_SettingsBlurBackground", System.Display.BlurBackground);
 			if(System.Display.BlurBackground == true) {
-				document.getElementById("Ctnr_BackgroundImage").style.filter = "blur(20px)";
+				ChangeFilter("Ctnr_BackgroundImage", "blur(20px)");
 			} else {
-				document.getElementById("Ctnr_BackgroundImage").style.filter = "";
+				ChangeFilter("Ctnr_BackgroundImage", "");
 			}
 			ChangeChecked("Checkbox_SettingsShowTopbar", System.Display.ShowTopbar);
-			if(System.Display.ShowTopbar == true && document.fullscreenElement == null) {
+			if(System.Display.ShowTopbar == true && IsFullscreen() == false) {
 				Show("Topbar");
 			} else {
 				Hide("Topbar");
