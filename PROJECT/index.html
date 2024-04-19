@@ -282,13 +282,13 @@
 								<li class="Ctrl" id="Ctrl_SettingsQuantity">
 									<label for="Textbox_SettingsQuantity">
 										<span>答题数量：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="document.getElementById('Textbox_SettingsQuantity').select()" onchange="SetQuantity()" />
+										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="SelectText('Textbox_SettingsQuantity')" onchange="SetQuantity()" />
 									</label>
 								</li>
 								<li class="Ctrl Hidden" id="Ctrl_SettingsDuration" inert="true">
 									<label for="Textbox_SettingsDuration">
 										<span>答题时长：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="document.getElementById('Textbox_SettingsDuration').select()" onchange="SetDuration()" />
+										<input class="Textbox Width120" id="Textbox_SettingsDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="SelectText('Textbox_SettingsDuration')" onchange="SetDuration()" />
 										<span>分钟</span>
 									</label>
 								</li>
@@ -438,23 +438,23 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsTimeLimitInitial">
 										<span>时限：从</span>
-										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="document.getElementById('Textbox_SettingsTimeLimitInitial').select()" onchange="SetTimeLimitInitial()" />
+										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="SelectText('Textbox_SettingsTimeLimitInitial')" onchange="SetTimeLimitInitial()" />
 										<span>至</span>
-										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitNormal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="document.getElementById('Textbox_SettingsTimeLimitNormal').select()" onchange="SetTimeLimitNormal()" />
+										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitNormal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="SelectText('Textbox_SettingsTimeLimitNormal')" onchange="SetTimeLimitNormal()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsCooldown">
 										<span>冷却：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="document.getElementById('Textbox_SettingsCooldown').select()" onchange="SetCooldown()" />
+										<input class="Textbox Width120" id="Textbox_SettingsCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="SelectText('Textbox_SettingsCooldown')" onchange="SetCooldown()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsHPDrain">
 										<span>失误掉血：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="document.getElementById('Textbox_SettingsHPDrain').select()" onchange="SetHPDrain()" />
+										<input class="Textbox Width120" id="Textbox_SettingsHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="SelectText('Textbox_SettingsHPDrain')" onchange="SetHPDrain()" />
 									</label>
 								</li>
 							</ul>
@@ -574,7 +574,7 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsUserDataImport">
 										<span>导入：</span>
-										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="document.getElementById('Textbox_SettingsUserDataImport').select()" onchange="ImportUserData()" />
+										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="SelectText('Textbox_SettingsUserDataImport')" onchange="ImportUserData()" />
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy2">

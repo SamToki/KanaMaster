@@ -51,8 +51,7 @@
 			[0, "wi",   "we",   "wo",   "va",   "vi",   "v",    "ve",   "vo",   "kwa",  "kwi",  "kwo",  "she",  "je",   "che",  "ti",   "di",   "fa",   "fi",   "fe",   "fo"],
 			[0, "wi",   "we",   "wi",   "we",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
 		];
-		var Looper2 = 0,
-		Game0 = {
+		var Game0 = {
 			Stats: {
 				ScoreDisplay: 0
 			}
@@ -126,14 +125,14 @@
 			case "en-US":
 				ShowDialog("System_LanguageUnsupported",
 					"Error",
-					"<span lang='en-US'>Sorry, this page currently does not support English (US).</span>",
-					"", "", "<span lang='en-US'>OK</span>");
+					"<span lang=\"en-US\">Sorry, this page currently does not support English (US).</span>",
+					"", "", "<span lang=\"en-US\">OK</span>");
 				break;
 			case "ja-JP":
 				ShowDialog("System_LanguageUnsupported",
 					"Error",
-					"<span lang='ja-JP'>すみません。このページは日本語にまだサポートしていません。</span>",
-					"", "", "<span lang='ja-JP'>OK</span>");
+					"<span lang=\"ja-JP\">すみません。このページは日本語にまだサポートしていません。</span>",
+					"", "", "<span lang=\"ja-JP\">OK</span>");
 				break;
 			case "zh-CN":
 				/* ChangeCursorOverall("wait");
@@ -142,8 +141,8 @@
 			case "zh-TW":
 				ShowDialog("System_LanguageUnsupported",
 					"Error",
-					"<span lang='zh-TW'>抱歉，本頁面暫不支援繁體中文。</span>",
-					"", "", "<span lang='zh-TW'>確定</span>");
+					"<span lang=\"zh-TW\">抱歉，本頁面暫不支援繁體中文。</span>",
+					"", "", "<span lang=\"zh-TW\">確定</span>");
 				break;
 			default:
 				AlertSystemError("The value of System.I18n.Language \"" + System.I18n.Language + "\" in function Load is out of expectation.");
@@ -320,14 +319,14 @@
 			switch(Subsystem.Display.GameFont) {
 				case "Default":
 					ChangeFont("Label_GameQuestion", "");
-					for(Looper = 1; Looper <= 3; Looper++) {
+					for(let Looper = 1; Looper <= 3; Looper++) {
 						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, "");
 					}
 					break;
 				case "Sans":
 				case "Serif":
 					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont.toLowerCase());
-					for(Looper = 1; Looper <= 3; Looper++) {
+					for(let Looper = 1; Looper <= 3; Looper++) {
 						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, Subsystem.Display.GameFont);
 					}
 					break;
@@ -454,13 +453,13 @@
 			switch(Game.Mode.Questioning) {
 				case "Kana":
 					ChangeText("Label_GameQuestion", KanaGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
-					for(Looper = 1; Looper <= 3; Looper++) {
+					for(let Looper = 1; Looper <= 3; Looper++) {
 						ChangeText("Cmdbtn_GameAnswerOption" + Looper, RomajiGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
 					}
 					break;
 				case "Romaji":
 					ChangeText("Label_GameQuestion", RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
-					for(Looper = 1; Looper <= 3; Looper++) {
+					for(let Looper = 1; Looper <= 3; Looper++) {
 						ChangeText("Cmdbtn_GameAnswerOption" + Looper, KanaGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
 					}
 					break;
@@ -471,17 +470,17 @@
 
 			// Functionality
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
-				for(Looper = 1; Looper <= 3; Looper++) {
+				for(let Looper = 1; Looper <= 3; Looper++) {
 					ChangeDisabled("Cmdbtn_GameAnswerOption" + Looper, false);
 				}
 			} else {
-				for(Looper = 1; Looper <= 3; Looper++) {
+				for(let Looper = 1; Looper <= 3; Looper++) {
 					ChangeDisabled("Cmdbtn_GameAnswerOption" + Looper, true);
 				}
 			}
 
 			// Cheat
-			for(Looper = 1; Looper <= 3; Looper++) {
+			for(let Looper = 1; Looper <= 3; Looper++) {
 				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "EmphasizedText");
 			}
 			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer != 0) {
@@ -597,8 +596,8 @@
 			ChangeValue("Textbox_SettingsDuration", Game.Mode.Duration);
 
 			// Question Range
-			Counter = 0;
-			for(Looper = 1; Looper <= 19; Looper++) {
+			let Counter = 0;
+			for(let Looper = 1; Looper <= 19; Looper++) {
 				ChangeChecked("Checkbox_SettingsQuestionRange" + Looper, Game.QuestionRange[Looper]);
 				if(Game.QuestionRange[Looper] == true) {
 					Counter++;
@@ -635,13 +634,13 @@
 	// Highscore
 	function RefreshHighscore() {
 		// Remove "Latest" From Original Highscore Table
-		for(Looper = 1; Looper <= 5; Looper++) {
+		for(let Looper = 1; Looper <= 5; Looper++) {
 			Highscore[Looper][1] = "名次";
 		}
 
 		// Sort (Bubble Sort)
-		for(Looper = 1; Looper <= 5; Looper++) {
-			for(Looper2 = 5; Looper2 >= 1; Looper2--) {
+		for(let Looper = 1; Looper <= 5; Looper++) {
+			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
 				if(parseInt(Number(Highscore[Looper2 + 1][3])) > parseInt(Number(Highscore[Looper2][3]))) {
 					Highscore[0] = Highscore[Looper2];
 					Highscore[Looper2] = Highscore[Looper2 + 1];
@@ -652,7 +651,7 @@
 		Highscore[0] = 0;
 
 		// Refresh
-		for(Looper = 1; Looper <= 6; Looper++) {
+		for(let Looper = 1; Looper <= 6; Looper++) {
 			RemoveClass("Item_HighscoreRow" + Looper, "Box");
 			if(Highscore[Looper][1] == "最新") {
 				AddClass("Item_HighscoreRow" + Looper, "Box");
@@ -973,9 +972,9 @@
 		function ImportUserData() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != "") {
 				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\"") == true) {
-					Elements = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
-					Object.keys(Elements).forEach(function(Looper) {
-						localStorage.setItem(Looper, JSON.stringify(Elements[Looper]));
+					let Objects = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
+					Object.keys(Objects).forEach(function(Looper) {
+						localStorage.setItem(Looper, JSON.stringify(Objects[Looper]));
 					});
 					ChangeCursorOverall("wait");
 					window.location.reload();
