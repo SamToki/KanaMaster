@@ -6,7 +6,7 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.09,
+		const CurrentVersion = 1.10,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -351,7 +351,7 @@
 	function ClockGame() {
 		// Change Self Update Freq
 		clearInterval(Automation.ClockGame);
-		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+		if(Game.Status.IsRunning == true) {
 			Automation.ClockGame = setInterval(ClockGame, 20);
 		}
 
