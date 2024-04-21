@@ -973,8 +973,8 @@
 			if(ReadValue("Textbox_SettingsUserDataImport") != "") {
 				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\":{\"Display\":{\"Theme\":") == true) {
 					let Objects = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
-					Object.keys(Objects).forEach(function(Looper) {
-						localStorage.setItem(Looper, JSON.stringify(Objects[Looper]));
+					Object.keys(Objects).forEach(function(ObjectName) {
+						localStorage.setItem(ObjectName, JSON.stringify(Objects[ObjectName]));
 					});
 					ChangeCursorOverall("wait");
 					window.location.reload();
