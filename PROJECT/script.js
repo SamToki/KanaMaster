@@ -534,7 +534,7 @@
 			// Reset Game and Scroll to Highscore
 			setTimeout(function() {
 				ResetGame();
-				Click("NavLinkbtn_Highscore");
+				window.location.replace("#Highscore");
 			}, System.Display.Anim * 2 + 1000);
 		}
 
@@ -685,7 +685,7 @@
 					[0, 0, 0],
 					[0, 0, 0]
 				];
-				Click("NavLinkbtn_Game");
+				window.location.replace("#Game");
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
@@ -708,7 +708,7 @@
 						[0, 0, 0],
 						[0, 0, 0]
 					];
-					Click("NavLinkbtn_Game");
+					window.location.replace("#Game");
 				}
 			}
 			RefreshGame();
@@ -996,7 +996,7 @@
 				"}");
 			ShowDialog("System_UserDataExported",
 				"Info",
-				"已将用户数据导出至剪贴板。若要分享，请注意其中是否包含个人信息。",
+				"已将用户数据导出至剪贴板。",
 				"", "", "", "确定");
 		}
 		function ConfirmClearUserData() {
