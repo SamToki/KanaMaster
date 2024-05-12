@@ -6,7 +6,7 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.11,
+		const CurrentVersion = 1.12,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -558,7 +558,7 @@
 		// Ctrls
 		if(Game.Status.IsRunning == false) {
 			ChangeText("Cmdbtn_GameStart", "开始");
-			ChangeDisabled("Cmdbtn_GameReset", false);
+			ChangeDisabled("Cmdbtn_GameReset", true);
 			ChangeDisabled("Fieldset_SettingsGameMode", false);
 			ChangeDisabled("Fieldset_SettingsQuestionRange", false);
 			ChangeDisabled("Fieldset_SettingsDifficulty", false);
