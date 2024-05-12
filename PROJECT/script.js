@@ -116,7 +116,7 @@
 	// Load User Data
 	window.onload = Load();
 	function Load() {
-		if(typeof(localStorage.System) != "undefined") {
+		if(localStorage.System != undefined) {
 			System = JSON.parse(localStorage.getItem("System"));
 		} else {
 			System.I18n.Language = "zh-CN";
@@ -148,7 +148,7 @@
 				AlertSystemError("The value of System.I18n.Language \"" + System.I18n.Language + "\" in function Load is out of expectation.");
 				break;
 		}
-		if(typeof(System.Version.KanaMaster) != "undefined") {
+		if(System.Version.KanaMaster != undefined) {
 			if(Math.floor(CurrentVersion) - Math.floor(System.Version.KanaMaster) >= 1) {
 				ShowDialog("System_MajorUpdateDetected",
 					"Info",
@@ -160,15 +160,15 @@
 			System.Version.KanaMaster = CurrentVersion;
 		}
 		RefreshSystem();
-		if(typeof(localStorage.KanaMaster_Subsystem) != "undefined") {
+		if(localStorage.KanaMaster_Subsystem != undefined) {
 			Subsystem = JSON.parse(localStorage.getItem("KanaMaster_Subsystem"));
 		}
 		RefreshSubsystem();
-		if(typeof(localStorage.KanaMaster_Game) != "undefined") {
+		if(localStorage.KanaMaster_Game != undefined) {
 			Game = JSON.parse(localStorage.getItem("KanaMaster_Game"));
 		}
 		RefreshGame();
-		if(typeof(localStorage.KanaMaster_Highscore) != "undefined") {
+		if(localStorage.KanaMaster_Highscore != undefined) {
 			Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 		}
 		RefreshHighscore();
