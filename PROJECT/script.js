@@ -621,10 +621,8 @@
 		localStorage.setItem("KanaMaster_Game", JSON.stringify(Game));
 	}
 	function GlowStartButton() {
-		if(
-			(Game.Status.IsRunning == false || (Game.Status.IsRunning == true && Game.Status.IsPaused == true)) &&
-			IsClassContained("Cmdbtn_GameStart", "Glow") == false
-		) {
+		if((Game.Status.IsRunning == false || (Game.Status.IsRunning == true && Game.Status.IsPaused == true)) &&
+		IsClassContained("Cmdbtn_GameStart", "Glow") == false) {
 			AddClass("Cmdbtn_GameStart", "Glow");
 		} else {
 			RemoveClass("Cmdbtn_GameStart", "Glow");
