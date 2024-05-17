@@ -56,7 +56,7 @@
 				ScoreDisplay: 0
 			}
 		};
-		Automation.ClockGame = 0; Automation.GlowStartButton = 0;
+		Automation.ClockGame = 0;
 		
 		// Saved
 		var Subsystem = {
@@ -417,6 +417,13 @@
 					Game.Stats.HP = 0;
 				}
 				ChangeProgring("ProgringFg_GameHP", 289.03, Game.Stats.HP);
+				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim != 0) {
+					ChangeAnim("ProgringFg_GameHP", "100ms");
+					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
+				} else {
+					ChangeAnim("ProgringFg_GameHP", "");
+					ChangeAnim("ProgringFg_GameTimeLeft", "");
+				}
 				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
 				if(Game.Status.IsRunning == true && Game.Stats.HP <= 20) {
 					AddClass("ProgringText_GameHP", "EmphasizedText");
@@ -431,14 +438,8 @@
 					} else {
 						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit * ((Date.now() - Game.Stats.StartTime2) / Game.Difficulty.Cooldown);
 					}
-					if(System.Display.Anim != 0) {
-						ChangeAnim("ProgringFg_GameHP", "100ms");
-						ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
-					}
 				} else {
 					Game.Stats.TimeLeft = 0;
-					ChangeAnim("ProgringFg_GameHP", "");
-					ChangeAnim("ProgringFg_GameTimeLeft", "");
 				}
 				ChangeProgring("ProgringFg_GameTimeLeft", 289.03, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
 				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
@@ -558,6 +559,7 @@
 		// Ctrls
 		if(Game.Status.IsRunning == false) {
 			ChangeText("Cmdbtn_GameStart", "开始");
+			AddClass("Cmdbtn_GameStart", "Glow");
 			ChangeDisabled("Cmdbtn_GameReset", true);
 			ChangeDisabled("Fieldset_SettingsGameMode", false);
 			ChangeDisabled("Fieldset_SettingsQuestionRange", false);
@@ -565,9 +567,11 @@
 		} else {
 			if(Game.Status.IsPaused == false) {
 				ChangeText("Cmdbtn_GameStart", "暂停");
+				RemoveClass("Cmdbtn_GameStart", "Glow");
 				ChangeDisabled("Cmdbtn_GameReset", true);
 			} else {
 				ChangeText("Cmdbtn_GameStart", "继续");
+				AddClass("Cmdbtn_GameStart", "Glow");
 				ChangeDisabled("Cmdbtn_GameReset", false);
 			}
 			ChangeDisabled("Fieldset_SettingsGameMode", true);
@@ -619,14 +623,6 @@
 		
 		// Save User Data
 		localStorage.setItem("KanaMaster_Game", JSON.stringify(Game));
-	}
-	function GlowStartButton() {
-		if((Game.Status.IsRunning == false || (Game.Status.IsRunning == true && Game.Status.IsPaused == true)) &&
-		IsClassContained("Cmdbtn_GameStart", "Glow") == false) {
-			AddClass("Cmdbtn_GameStart", "Glow");
-		} else {
-			RemoveClass("Cmdbtn_GameStart", "Glow");
-		}
 	}
 
 	// Highscore
@@ -1074,19 +1070,19 @@
 				case "2":
 				case "3":
 					Click("Cmdbtn_GameAnswerOption" + Hotkey.key);
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
 					break;
 				case "S":
 					Click("Cmdbtn_GameStart");
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
 					break;
 				case "R":
 					Click("Cmdbtn_GameReset");
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
 					break;
@@ -1106,21 +1102,18 @@
 						"Question",
 						"您按下了 F1 键。是否前往教程？",
 						"", "", "前往", "取消");
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress") {
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
 					break;
 				default:
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || (System.Display.HotkeyIndicators == "ShowOnWrongKeyPress" && Hotkey.key != "Escape" && Hotkey.key != "Tab" && Hotkey.key != "Enter" && Hotkey.key != " ")) {
+					if((System.Display.HotkeyIndicators == "ShowOnWrongKeyPress" && Hotkey.key != "Escape" && Hotkey.key != "Tab" && Hotkey.key != "Enter" && Hotkey.key != " ") || System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
 					break;
 			}
 		}
 	});
-
-// Automations
-Automation.GlowStartButton = setInterval(GlowStartButton, 500);
 
 // Features
 	// Game
