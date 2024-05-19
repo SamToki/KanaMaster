@@ -56,8 +56,8 @@
 				ScoreDisplay: 0
 			}
 		};
-		Automation.ClockGame = 0;
-		
+		Automation.ClockGame = null;
+
 		// Saved
 		var Subsystem = {
 			Display: {
@@ -175,9 +175,9 @@
 		setTimeout(HideToast, 0);
 	}
 
-	// Pause Before Quitting
-	window.onbeforeunload = Quit();
-	function Quit() {
+	// Pause Before Exiting
+	window.onbeforeunload = Exit();
+	function Exit() {
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 			Game.Status.IsPaused = true;
 			Game.Lottery.Question[1] = [0, 0, 2];
@@ -411,7 +411,7 @@
 				// HP
 				if(Game.Status.IsRunning == true) {
 					if(Game.Status.IsPaused == false) {
-						Game.Stats.HP = Game.Stats.HP - 0.02; // Lose 1 HP every second.
+						Game.Stats.HP -= 0.02; // Lose 1 HP every second.
 					}
 				} else {
 					Game.Stats.HP = 0;
@@ -785,7 +785,7 @@
 				} else {
 					Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1)) / Game.Stats.TotalCount;
 				}
-				Game.Stats.HP = Game.Stats.HP - Game.Difficulty.HPDrain;
+				Game.Stats.HP -= Game.Difficulty.HPDrain;
 				ChangeText("Label_AnswerFeedback", "Miss!");
 				ChangeAnswerFeedbackColor("Miss");
 			}
