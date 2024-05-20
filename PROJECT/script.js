@@ -383,13 +383,13 @@
 
 			// Stats 2
 				// Score
-				if(System.Display.Anim == 0) {
-					Game0.Stats.ScoreDisplay = Game.Stats.Score;
-				} else {
+				if(System.Display.Anim > 0) {
 					Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
 					if(Math.abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.01) {
 						Game0.Stats.ScoreDisplay = Game.Stats.Score;
 					}
+				} else {
+					Game0.Stats.ScoreDisplay = Game.Stats.Score;
 				}
 				ChangeText("Label_GameScore", Game0.Stats.ScoreDisplay.toFixed(0).toString().padStart(8, "0"));
 
@@ -417,7 +417,7 @@
 					Game.Stats.HP = 0;
 				}
 				ChangeProgring("ProgringFg_GameHP", 289.03, Game.Stats.HP);
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim != 0) {
+				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
 					ChangeAnim("ProgringFg_GameHP", "100ms");
 					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
 				} else {
@@ -484,7 +484,7 @@
 			for(let Looper = 1; Looper <= 3; Looper++) {
 				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "EmphasizedText");
 			}
-			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer != 0) {
+			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer > 0) {
 				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "EmphasizedText");
 			}
 
@@ -780,10 +780,10 @@
 			} else {
 				Game.Stats.MissCount++;
 				Game.Stats.Combo = 0;
-				if(Game.Stats.TotalCount == 0) { // When wrongly answering the first question...
-					Game.Stats.Accuracy = 0;
-				} else {
+				if(Game.Stats.TotalCount > 0) {
 					Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1)) / Game.Stats.TotalCount;
+				} else { // When wrongly answering the first question...
+					Game.Stats.Accuracy = 0;
 				}
 				Game.Stats.HP -= Game.Difficulty.HPDrain;
 				ChangeText("Label_AnswerFeedback", "Miss!");
@@ -815,22 +815,22 @@
 				setTimeout(function() {
 					ChangeAnim("Label_AnswerFeedback", "");
 					Show("Label_AnswerFeedback");
-					ChangeScale("Label_AnswerFeedback", 1);
+					ChangeScale("Label_AnswerFeedback", "");
 				}, 20);
 
 				// Phase 2
-				if(System.Display.Anim == 0) {
-					setTimeout(function() {
-						ChangeAnim("Label_AnswerFeedback", "none");
-						Fade("Label_AnswerFeedback");
-						ChangeTop("Label_AnswerFeedback", "-40px");
-					}, 1040);
-				} else {
+				if(System.Display.Anim > 0) {
 					setTimeout(function() {
 						ChangeAnim("Label_AnswerFeedback", "750ms");
 						Fade("Label_AnswerFeedback");
 						ChangeTop("Label_AnswerFeedback", "-40px");
 					}, 40 + System.Display.Anim);
+				} else {
+					setTimeout(function() {
+						ChangeAnim("Label_AnswerFeedback", "none");
+						Fade("Label_AnswerFeedback");
+						ChangeTop("Label_AnswerFeedback", "-40px");
+					}, 1040);
 				}
 
 			// Start Cooldown
