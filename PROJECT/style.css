@@ -101,7 +101,7 @@
 				#Label_AnswerFeedback {
 					position: absolute; top: -30px; left: 0; z-index: 1;
 					width: calc((100% - 20px) * 2 / 9); height: 60px; /* Width 2/9 is actually /3*(2/3). */
-					text-shadow: 0 0 10px #FFFFFF80; font-size: 2.50em; text-align: center;
+					text-shadow: 0 0 5px #FFFFFF; font-size: 2.50em; text-align: center;
 					display: flex; justify-content: center; align-items: center;
 					pointer-events: none;
 				}

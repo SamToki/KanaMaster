@@ -21,7 +21,7 @@
 			/* Game Answer Board */
 				/* Answer Feedback */
 				#Label_AnswerFeedback {
-					text-shadow: 0 0 10px #00000080;
+					text-shadow: 0 0 5px #000000;
 				}
 				#Label_AnswerFeedback.Perfect {
 					color: #00A0E0;
