@@ -371,7 +371,7 @@
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 				}
 			}
-			ChangeText("Label_GameElapsedTimeValue", Math.floor(Game.Stats.ElapsedTime / 60000).toString().padStart(2, "0") + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
+			ChangeText("Label_GameElapsedTimeValue", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
 			if(Game.Stats.Progress <= 20) {
 				Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Normal) * (Game.Stats.Progress / 20);
 			} else {
