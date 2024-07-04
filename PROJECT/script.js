@@ -6,7 +6,7 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.12,
+		const CurrentVersion = 1.13,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -357,13 +357,13 @@
 
 		// Stats
 			// Stats 1
-			ChangeText("Label_GameTotalCountValue", Game.Stats.TotalCount + "x");
-			ChangeText("Label_GameMissCountValue", Game.Stats.MissCount + "x");
-			ChangeText("Label_GameComboValue", Game.Stats.Combo + "x");
+			ChangeText("Label_GameTotalCountValue", Game.Stats.TotalCount);
+			ChangeText("Label_GameMissCountValue", Game.Stats.MissCount);
+			ChangeText("Label_GameComboValue", Game.Stats.Combo);
 			if(Game.Stats.Combo > Game.Stats.MaxCombo) {
 				Game.Stats.MaxCombo = Game.Stats.Combo;
 			}
-			ChangeText("Label_GameMaxComboValue", Game.Stats.MaxCombo + "x");
+			ChangeText("Label_GameMaxComboValue", Game.Stats.MaxCombo);
 			if(Game.Status.IsRunning == true) {
 				if(Game.Status.IsPaused == false) {
 					Game.Stats.ElapsedTime = Date.now() - Game.Stats.StartTime;
@@ -491,13 +491,11 @@
 		// Time Up
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 			if(Game.Status.IsCoolingDown == false) {
-				if(Game.Stats.TimeLeft < 0) {
-					Game.Stats.TimeLeft = 0;
+				if(Game.Stats.TimeLeft <= 0) {
 					AnswerGame(4);
 				}
 			} else {
-				if(Game.Stats.TimeLeft > Game.Stats.CurrentTimeLimit) {
-					Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit;
+				if(Game.Stats.TimeLeft >= Game.Stats.CurrentTimeLimit) {
 					HideToast();
 					Questioner();
 				}
@@ -513,17 +511,17 @@
 			Game.Status.IsPaused = true;
 
 			// Show Toast & Update Highscore
-			if(Game.Stats.Combo == Game.Stats.TotalCount) {
+			if(Game.Stats.MissCount == 0) {
 				if(Game.Stats.Accuracy == 100) {
 					ShowToast("ALL PERFECT!");
-					Highscore[6][4] = Game.Stats.MaxCombo + "x (AP)";
+					Highscore[6][4] = Game.Stats.MaxCombo + " (AP)";
 				} else {
 					ShowToast("FULL COMBO!");
-					Highscore[6][4] = Game.Stats.MaxCombo + "x (FC)";
+					Highscore[6][4] = Game.Stats.MaxCombo + " (FC)";
 				}
 			} else {
 				ShowToast("胜利!");
-				Highscore[6][4] = Game.Stats.MaxCombo + "x";
+				Highscore[6][4] = Game.Stats.MaxCombo;
 			}
 			Highscore[6][1] = "最新";
 			Highscore[6][2] = new Date().getFullYear() + "/" + (new Date().getMonth() + 1).toString().padStart(2, "0") + "/" + new Date().getDate().toString().padStart(2, "0");
@@ -750,17 +748,17 @@
 				Game.Stats.Combo++;
 				switch(true) {
 					case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.5:
-						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1) + 100) / Game.Stats.TotalCount;
+						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 100) / (Game.Stats.TotalCount + Game.Stats.MissCount);
 						ChangeText("Label_AnswerFeedback", "Perfect");
 						ChangeAnswerFeedbackColor("Perfect");
 						break;
 					case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.2:
-						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1) + 80) / Game.Stats.TotalCount;
+						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 80) / (Game.Stats.TotalCount + Game.Stats.MissCount);
 						ChangeText("Label_AnswerFeedback", "Great");
 						ChangeAnswerFeedbackColor("Great");
 						break;
 					case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0:
-						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1) + 60) / Game.Stats.TotalCount;
+						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 60) / (Game.Stats.TotalCount + Game.Stats.MissCount);
 						ChangeText("Label_AnswerFeedback", "Good");
 						ChangeAnswerFeedbackColor("Good");
 						break;
@@ -781,7 +779,7 @@
 				Game.Stats.MissCount++;
 				Game.Stats.Combo = 0;
 				if(Game.Stats.TotalCount > 0) {
-					Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount - 1)) / Game.Stats.TotalCount;
+					Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1)) / (Game.Stats.TotalCount + Game.Stats.MissCount);
 				} else { // When wrongly answering the first question...
 					Game.Stats.Accuracy = 0;
 				}
