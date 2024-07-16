@@ -6,7 +6,7 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.13,
+		const CurrentVersion = 1.14,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -327,7 +327,7 @@
 				case "Serif":
 					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont.toLowerCase());
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, Subsystem.Display.GameFont);
+						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, Subsystem.Display.GameFont.toLowerCase());
 					}
 					break;
 				default:
@@ -500,54 +500,57 @@
 					Questioner();
 				}
 			}
-		} else {
-			return; // Prevent secondly running the codes below when the game is over.
 		}
 
 		// Victory
 		if(Game.Status.IsRunning == true && Game.Stats.Progress >= 100) {
-			// Freeze Game
 			Game.Stats.Progress = 100;
-			Game.Status.IsPaused = true;
+			ChangeDisabled("Cmdbtn_GameStart", true);
+			RemoveClass("Cmdbtn_GameStart", "Glow");
+			ChangeDisabled("Cmdbtn_GameReset", true);
+			if(Game.Status.IsPaused == false) {
+				// Freeze Game
+				Game.Status.IsPaused = true;
 
-			// Show Toast & Update Highscore
-			if(Game.Stats.MissCount == 0) {
-				if(Game.Stats.Accuracy == 100) {
-					ShowToast("ALL PERFECT!");
-					Highscore[6][4] = Game.Stats.MaxCombo + " (AP)";
+				// Show Toast & Update Highscore
+				if(Game.Stats.MissCount == 0) {
+					if(Game.Stats.Accuracy == 100) {
+						ShowToast("ALL PERFECT!");
+						Highscore[6][4] = Game.Stats.MaxCombo + " (AP)";
+					} else {
+						ShowToast("FULL COMBO!");
+						Highscore[6][4] = Game.Stats.MaxCombo + " (FC)";
+					}
 				} else {
-					ShowToast("FULL COMBO!");
-					Highscore[6][4] = Game.Stats.MaxCombo + " (FC)";
+					ShowToast("胜利!");
+					Highscore[6][4] = Game.Stats.MaxCombo;
 				}
-			} else {
-				ShowToast("胜利!");
-				Highscore[6][4] = Game.Stats.MaxCombo;
-			}
-			Highscore[6][1] = "最新";
-			Highscore[6][2] = new Date().getFullYear() + "/" + (new Date().getMonth() + 1).toString().padStart(2, "0") + "/" + new Date().getDate().toString().padStart(2, "0");
-			Highscore[6][3] = Game.Stats.Score.toString().padStart(8, "0");
-			Highscore[6][5] = Game.Stats.Accuracy.toFixed(2) + "%";
-			Highscore[6][6] = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
-			RefreshHighscore();
+				Highscore[6][1] = "最新";
+				Highscore[6][2] = new Date().getFullYear() + "/" + (new Date().getMonth() + 1).toString().padStart(2, "0") + "/" + new Date().getDate().toString().padStart(2, "0");
+				Highscore[6][3] = Game.Stats.Score.toString().padStart(8, "0");
+				Highscore[6][5] = Game.Stats.Accuracy.toFixed(2) + "%";
+				Highscore[6][6] = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
+				RefreshHighscore();
 
-			// Reset Game and Scroll to Highscore
-			setTimeout(function() {
-				ResetGame();
-				window.location.replace("#Highscore");
-			}, System.Display.Anim * 2 + 1000);
+				// Reset Game and Scroll to Highscore
+				setTimeout(function() {
+					ResetGame();
+					window.location.replace("#Highscore");
+				}, System.Display.Anim * 2 + 1000);
+			}
 		}
 
 		// Game Over
 		if(Game.Status.IsRunning == true && Game.Stats.HP <= 0) {
-			// Freeze Game
 			Game.Stats.HP = 0;
-			Game.Status.IsPaused = true;
-
-			// Show Toast
-			ShowToast("游戏结束");
-
-			// Reset Game
-			setTimeout(ResetGame, System.Display.Anim * 2 + 1000);
+			ChangeDisabled("Cmdbtn_GameStart", true);
+			RemoveClass("Cmdbtn_GameStart", "Glow");
+			ChangeDisabled("Cmdbtn_GameReset", true);
+			if(Game.Status.IsPaused == false) {
+				Game.Status.IsPaused = true;
+				ShowToast("游戏结束");
+				setTimeout(ResetGame, System.Display.Anim * 2 + 1000);
+			}
 		}
 	}
 	function RefreshGame() {
@@ -555,6 +558,7 @@
 		ClockGame();
 
 		// Ctrls
+		ChangeDisabled("Cmdbtn_GameStart", false);
 		if(Game.Status.IsRunning == false) {
 			ChangeText("Cmdbtn_GameStart", "开始");
 			AddClass("Cmdbtn_GameStart", "Glow");
@@ -734,107 +738,103 @@
 
 		// Answer
 		function AnswerGame(Selector) {
-			if(Game.Status.IsRunning == false || Game.Status.IsPaused == true) {
-				return;
-			}
-			if(Game.Status.IsCoolingDown == true) {
-				ShowToast("正在冷却...");
-				return;
-			}
-
-			// Stats
-			if(Selector == Game.Lottery.CorrectAnswer) {
-				Game.Stats.TotalCount++;
-				Game.Stats.Combo++;
-				switch(true) {
-					case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.5:
-						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 100) / (Game.Stats.TotalCount + Game.Stats.MissCount);
-						ChangeText("Label_AnswerFeedback", "Perfect");
-						ChangeAnswerFeedbackColor("Perfect");
-						break;
-					case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.2:
-						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 80) / (Game.Stats.TotalCount + Game.Stats.MissCount);
-						ChangeText("Label_AnswerFeedback", "Great");
-						ChangeAnswerFeedbackColor("Great");
-						break;
-					case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0:
-						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 60) / (Game.Stats.TotalCount + Game.Stats.MissCount);
-						ChangeText("Label_AnswerFeedback", "Good");
-						ChangeAnswerFeedbackColor("Good");
-						break;
-					default:
-						AlertSystemError("The value of Game.Stats.TimeLeft \"" + Game.Stats.TimeLeft + "\" in function AnswerGame is invalid.");
-						break;
-				}
-				Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
-				Game.Stats.Score += Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
-				if(Game.Stats.Score > 99999999) {
-					Game.Stats.Score = 99999999;
-				}
-				Game.Stats.HP += 10;
-				if(Game.Stats.HP > 100) {
-					Game.Stats.HP = 100;
-				}
-			} else {
-				Game.Stats.MissCount++;
-				Game.Stats.Combo = 0;
-				if(Game.Stats.TotalCount > 0) {
-					Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1)) / (Game.Stats.TotalCount + Game.Stats.MissCount);
-				} else { // When wrongly answering the first question...
-					Game.Stats.Accuracy = 0;
-				}
-				Game.Stats.HP -= Game.Difficulty.HPDrain;
-				ChangeText("Label_AnswerFeedback", "Miss!");
-				ChangeAnswerFeedbackColor("Miss");
-			}
-
-			// Answer Feedback Animation
-				// Initialization
-				ChangeAnim("Label_AnswerFeedback", "none");
-				Fade("Label_AnswerFeedback");
-				ChangeTop("Label_AnswerFeedback", "-30px");
-				switch(Game.Lottery.CorrectAnswer) {
-					case 1:
-						ChangeLeft("Label_AnswerFeedback", ReadWidth("Label_AnswerFeedback") / 4 + "px");
-						break;
-					case 2:
-						ChangeLeft("Label_AnswerFeedback", "calc(50% - " + ReadWidth("Label_AnswerFeedback") / 2 + "px)");
-						break;
-					case 3:
-						ChangeLeft("Label_AnswerFeedback", "calc(100% - " + ReadWidth("Label_AnswerFeedback") * 5 / 4 + "px)");
-						break;
-					default:
-						AlertSystemError("The value of Game.Lottery.CorrectAnswer \"" + Game.Lottery.CorrectAnswer + "\" in function AnswerGame is invalid.");
-						break;
-				}
-				ChangeScale("Label_AnswerFeedback", 1.5);
-
-				// Phase 1
-				setTimeout(function() {
-					ChangeAnim("Label_AnswerFeedback", "");
-					Show("Label_AnswerFeedback");
-					ChangeScale("Label_AnswerFeedback", "");
-				}, 20);
-
-				// Phase 2
-				if(System.Display.Anim > 0) {
-					setTimeout(function() {
-						ChangeAnim("Label_AnswerFeedback", "750ms");
-						Fade("Label_AnswerFeedback");
-						ChangeTop("Label_AnswerFeedback", "-40px");
-					}, 40 + System.Display.Anim);
+			if(Game.Status.IsCoolingDown == false) {
+				// Stats
+				if(Selector == Game.Lottery.CorrectAnswer) {
+					Game.Stats.TotalCount++;
+					Game.Stats.Combo++;
+					switch(true) {
+						case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.5:
+							Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 100) / (Game.Stats.TotalCount + Game.Stats.MissCount);
+							ChangeText("Label_AnswerFeedback", "Perfect");
+							ChangeAnswerFeedbackColor("Perfect");
+							break;
+						case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.2:
+							Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 80) / (Game.Stats.TotalCount + Game.Stats.MissCount);
+							ChangeText("Label_AnswerFeedback", "Great");
+							ChangeAnswerFeedbackColor("Great");
+							break;
+						case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0:
+							Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 60) / (Game.Stats.TotalCount + Game.Stats.MissCount);
+							ChangeText("Label_AnswerFeedback", "Good");
+							ChangeAnswerFeedbackColor("Good");
+							break;
+						default:
+							AlertSystemError("The value of Game.Stats.TimeLeft \"" + Game.Stats.TimeLeft + "\" in function AnswerGame is invalid.");
+							break;
+					}
+					Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
+					Game.Stats.Score += Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
+					if(Game.Stats.Score > 99999999) {
+						Game.Stats.Score = 99999999;
+					}
+					Game.Stats.HP += 10;
+					if(Game.Stats.HP > 100) {
+						Game.Stats.HP = 100;
+					}
 				} else {
-					setTimeout(function() {
-						ChangeAnim("Label_AnswerFeedback", "none");
-						Fade("Label_AnswerFeedback");
-						ChangeTop("Label_AnswerFeedback", "-40px");
-					}, 1040);
+					Game.Stats.MissCount++;
+					Game.Stats.Combo = 0;
+					if(Game.Stats.TotalCount > 0) {
+						Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1)) / (Game.Stats.TotalCount + Game.Stats.MissCount);
+					} else { // When wrongly answering the first question...
+						Game.Stats.Accuracy = 0;
+					}
+					Game.Stats.HP -= Game.Difficulty.HPDrain;
+					ChangeText("Label_AnswerFeedback", "Miss!");
+					ChangeAnswerFeedbackColor("Miss");
 				}
 
-			// Start Cooldown
-			Game.Status.IsCoolingDown = true;
-			Game.Stats.StartTime2 = Date.now();
-			RefreshGame();
+				// Answer Feedback Animation
+					// Initialization
+					ChangeAnim("Label_AnswerFeedback", "none");
+					Fade("Label_AnswerFeedback");
+					ChangeTop("Label_AnswerFeedback", "-30px");
+					switch(Game.Lottery.CorrectAnswer) {
+						case 1:
+							ChangeLeft("Label_AnswerFeedback", ReadWidth("Label_AnswerFeedback") / 4 + "px");
+							break;
+						case 2:
+							ChangeLeft("Label_AnswerFeedback", "calc(50% - " + ReadWidth("Label_AnswerFeedback") / 2 + "px)");
+							break;
+						case 3:
+							ChangeLeft("Label_AnswerFeedback", "calc(100% - " + ReadWidth("Label_AnswerFeedback") * 5 / 4 + "px)");
+							break;
+						default:
+							AlertSystemError("The value of Game.Lottery.CorrectAnswer \"" + Game.Lottery.CorrectAnswer + "\" in function AnswerGame is invalid.");
+							break;
+					}
+					ChangeScale("Label_AnswerFeedback", 1.5);
+
+					// Phase 1
+					setTimeout(function() {
+						ChangeAnim("Label_AnswerFeedback", "");
+						Show("Label_AnswerFeedback");
+						ChangeScale("Label_AnswerFeedback", "");
+					}, 20);
+
+					// Phase 2
+					if(System.Display.Anim > 0) {
+						setTimeout(function() {
+							ChangeAnim("Label_AnswerFeedback", "750ms");
+							Fade("Label_AnswerFeedback");
+							ChangeTop("Label_AnswerFeedback", "-40px");
+						}, 40 + System.Display.Anim);
+					} else {
+						setTimeout(function() {
+							ChangeAnim("Label_AnswerFeedback", "none");
+							Fade("Label_AnswerFeedback");
+							ChangeTop("Label_AnswerFeedback", "-40px");
+						}, 1040);
+					}
+
+				// Start Cooldown
+				Game.Status.IsCoolingDown = true;
+				Game.Stats.StartTime2 = Date.now();
+				RefreshGame();
+			} else {
+				ShowToast("正在冷却...");
+			}
 		}
 
 	// Settings
