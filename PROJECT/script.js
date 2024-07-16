@@ -1072,6 +1072,26 @@
 // Listeners
 	// On Keyboard
 	document.addEventListener("keydown", function(Hotkey) {
+		if(Hotkey.key == "F1") {
+			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
+				Game.Status.IsPaused = true;
+				Game.Lottery.Question[1] = [0, 0, 2];
+				Game.Lottery.Answer = [
+					0,
+					[0, 0, 0],
+					[0, 0, 0],
+					[0, 0, 0]
+				];
+				RefreshGame();
+			}
+			ShowDialog("System_ConfirmGoToTutorial",
+				"Question",
+				"您按下了 F1 键。是否前往教程？",
+				"", "", "前往", "取消");
+			if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
+				ShowHotkeyIndicators();
+			}
+		}
 		if(document.activeElement.tagName.toLowerCase() != "input" && document.activeElement.tagName.toLowerCase() != "textarea") { // Prevent hotkey activation when inputing text etc.
 			switch(Hotkey.key.toUpperCase()) {
 				case "1":
@@ -1090,26 +1110,6 @@
 					break;
 				case "R":
 					Click("Cmdbtn_GameReset");
-					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
-						ShowHotkeyIndicators();
-					}
-					break;
-				case "F1":
-					if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
-						Game.Status.IsPaused = true;
-						Game.Lottery.Question[1] = [0, 0, 2];
-						Game.Lottery.Answer = [
-							0,
-							[0, 0, 0],
-							[0, 0, 0],
-							[0, 0, 0]
-						];
-						RefreshGame();
-					}
-					ShowDialog("System_ConfirmGoToTutorial",
-						"Question",
-						"您按下了 F1 键。是否前往教程？",
-						"", "", "前往", "取消");
 					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
