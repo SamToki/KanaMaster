@@ -785,8 +785,8 @@
 					ChangeAnswerFeedbackColor("Miss");
 				}
 
-				// Answer Feedback Animation
-					// Initialization
+				// Answer Feedback
+					// Phase 1
 					ChangeAnim("Label_AnswerFeedback", "none");
 					Fade("Label_AnswerFeedback");
 					ChangeTop("Label_AnswerFeedback", "-30px");
@@ -806,14 +806,14 @@
 					}
 					ChangeScale("Label_AnswerFeedback", 1.5);
 
-					// Phase 1
+					// Phase 2
 					setTimeout(function() {
 						ChangeAnim("Label_AnswerFeedback", "");
 						Show("Label_AnswerFeedback");
 						ChangeScale("Label_AnswerFeedback", "");
 					}, 20);
 
-					// Phase 2
+					// Phase 3
 					if(System.Display.Anim > 0) {
 						setTimeout(function() {
 							ChangeAnim("Label_AnswerFeedback", "750ms");
