@@ -15,7 +15,6 @@
 			/* Game Answer Board */
 				/* Answer Feedback */
 				#Label_AnswerFeedback {
-					border-radius: 10px;
 					background-color: #202020;
 					text-shadow: none;
 				}
