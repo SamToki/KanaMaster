@@ -988,7 +988,7 @@
 				"}");
 			ShowDialog("System_UserDataExported",
 				"Info",
-				"已将用户数据导出至剪贴板。",
+				"已导出用户数据至剪贴板。",
 				"", "", "", "确定");
 		}
 		function ConfirmClearUserData() {
