@@ -6,7 +6,7 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.14,
+		const CurrentVersion = 1.15,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -482,10 +482,10 @@
 
 			// Cheat
 			for(let Looper = 1; Looper <= 3; Looper++) {
-				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "EmphasizedText");
+				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "Active");
 			}
 			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer > 0) {
-				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "EmphasizedText");
+				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Active");
 			}
 
 		// Time Up
@@ -610,11 +610,33 @@
 				}
 			}
 			if(Counter < 2) {
-				SetQuestionRangeDefaultRange();
-				ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
-					"Error",
-					"出题范围过小，请至少选择两项。已恢复至默认范围。",
-					"", "", "", "确定");
+				setTimeout(function() {
+					SetQuestionRangeDefaultRange();
+					ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
+						"Error",
+						"出题范围过小，请至少选择两项。已恢复至默认范围。",
+						"", "", "", "确定");
+				}, 0);
+			}
+			RemoveClass("Cmdbtn_SettingsQuestionRangeDefaultRange", "Active");
+			RemoveClass("Cmdbtn_SettingsQuestionRangeBasicHiragana", "Active");
+			RemoveClass("Cmdbtn_SettingsQuestionRangeBasicKatakana", "Active");
+			RemoveClass("Cmdbtn_SettingsQuestionRangeExcludeObsolete", "Active");
+			RemoveClass("Cmdbtn_SettingsQuestionRangeSelectAll", "Active");
+			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false]") {
+				AddClass("Cmdbtn_SettingsQuestionRangeDefaultRange", "Active");
+			}
+			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false]") {
+				AddClass("Cmdbtn_SettingsQuestionRangeBasicHiragana", "Active");
+			}
+			if(JSON.stringify(Game.QuestionRange) == "[0,false,false,false,false,false,true,true,true,true,true,false,false,false,false,false,false,false,false,false]") {
+				AddClass("Cmdbtn_SettingsQuestionRangeBasicKatakana", "Active");
+			}
+			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false]") {
+				AddClass("Cmdbtn_SettingsQuestionRangeExcludeObsolete", "Active");
+			}
+			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]") {
+				AddClass("Cmdbtn_SettingsQuestionRangeSelectAll", "Active");
 			}
 
 			// Difficulty
