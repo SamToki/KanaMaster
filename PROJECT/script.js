@@ -295,6 +295,12 @@
 			ChangeAnimOverall(System.Display.Anim);
 
 			// Dev
+			ChangeChecked("Checkbox_SettingsTryToOptimizePerformance", System.Dev.TryToOptimizePerformance);
+			if(System.Dev.TryToOptimizePerformance == true) {
+				AddClass("Html", "PerformanceOptimization");
+			} else {
+				RemoveClass("Html", "PerformanceOptimization");
+			}
 			ChangeChecked("Checkbox_SettingsShowDebugOutlines", System.Dev.ShowDebugOutlines);
 			ChangeShowDebugOutlines(System.Dev.ShowDebugOutlines);
 			ChangeChecked("Checkbox_SettingsUseOldTypeface", System.Dev.UseOldTypeface);
