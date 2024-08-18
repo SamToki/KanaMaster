@@ -210,9 +210,9 @@
 			ChangeValue("Combobox_SettingsTheme", System.Display.Theme);
 			switch(System.Display.Theme) {
 				case "Auto":
-					ChangeLink("ThemeVariant_Common", "../common_Dark.css");
+					ChangeLink("ThemeVariant_Common", "../styles/common_Dark.css");
 					ChangeMediaCondition("ThemeVariant_Common", "(prefers-color-scheme: dark)");
-					ChangeLink("ThemeVariant_Style", "style_Dark.css");
+					ChangeLink("ThemeVariant_Style", "styles/style_Dark.css");
 					ChangeMediaCondition("ThemeVariant_Style", "(prefers-color-scheme: dark)");
 					break;
 				case "Light":
@@ -222,21 +222,21 @@
 					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				case "Dark":
-					ChangeLink("ThemeVariant_Common", "../common_Dark.css");
+					ChangeLink("ThemeVariant_Common", "../styles/common_Dark.css");
 					ChangeMediaCondition("ThemeVariant_Common", "");
-					ChangeLink("ThemeVariant_Style", "style_Dark.css");
+					ChangeLink("ThemeVariant_Style", "styles/style_Dark.css");
 					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				case "Genshin":
-					ChangeLink("ThemeVariant_Common", "../common_Genshin.css");
+					ChangeLink("ThemeVariant_Common", "../styles/common_Genshin.css");
 					ChangeMediaCondition("ThemeVariant_Common", "");
-					ChangeLink("ThemeVariant_Style", "style_Genshin.css");
+					ChangeLink("ThemeVariant_Style", "styles/style_Genshin.css");
 					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				case "HighContrast":
-					ChangeLink("ThemeVariant_Common", "../common_HighContrast.css");
+					ChangeLink("ThemeVariant_Common", "../styles/common_HighContrast.css");
 					ChangeMediaCondition("ThemeVariant_Common", "");
-					ChangeLink("ThemeVariant_Style", "style_HighContrast.css");
+					ChangeLink("ThemeVariant_Style", "styles/style_HighContrast.css");
 					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
 				default:
