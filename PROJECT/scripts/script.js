@@ -1076,6 +1076,7 @@
 				switch(Selector) {
 					case 2:
 						window.location.replace("#Item_HelpTutorial");
+						ShowIAmHere("Item_HelpTutorial");
 						break;
 					case 3:
 						break;
@@ -1090,6 +1091,7 @@
 				switch(Selector) {
 					case 2:
 						window.location.replace("#Item_SettingsUserData");
+						ShowIAmHere("Item_SettingsUserData");
 						break;
 					case 3:
 						break;
