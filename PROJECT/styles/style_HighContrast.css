@@ -15,7 +15,7 @@
 			/* Game Answer Board */
 				/* Answer Feedback */
 				#Label_AnswerFeedback {
-					background-color: #202020;
+					background-color: #402050;
 					text-shadow: none;
 				}
 				#Label_AnswerFeedback.Perfect, #Label_AnswerFeedback.Great, #Label_AnswerFeedback.Good, #Label_AnswerFeedback.Miss {
