@@ -1072,11 +1072,11 @@
 						break;
 				}
 				break;
-			case "System_ConfirmGoToTutorial":
+			case "System_Error":
 				switch(Selector) {
 					case 2:
-						window.location.replace("#Item_HelpTutorial");
-						ShowIAmHere("Item_HelpTutorial");
+						window.location.replace("#Item_SettingsUserData");
+						ShowIAmHere("Item_SettingsUserData");
 						break;
 					case 3:
 						break;
@@ -1087,11 +1087,11 @@
 						break;
 				}
 				break;
-			case "System_Error":
+			case "Subsystem_ConfirmGoToTutorial":
 				switch(Selector) {
 					case 2:
-						window.location.replace("#Item_SettingsUserData");
-						ShowIAmHere("Item_SettingsUserData");
+						window.location.replace("#Item_HelpTutorial");
+						ShowIAmHere("Item_HelpTutorial");
 						break;
 					case 3:
 						break;
@@ -1126,7 +1126,7 @@
 				];
 				RefreshGame();
 			}
-			ShowDialog("System_ConfirmGoToTutorial",
+			ShowDialog("Subsystem_ConfirmGoToTutorial",
 				"Question",
 				"您按下了 F1 键。是否前往教程？",
 				"", "", "前往", "取消");
