@@ -4,10 +4,10 @@
 
 /* This is a theme variant, so only colors along with few things are configured. */
 
-/* Area Specific */
+/* Area specific */
 	/* Main */
 		/* Game */
-			/* Game Stats 2 */
+			/* Stats 2 */
 			#ProgringFg_GameProgress {
 				stroke: #00A0E0;
 			}
@@ -18,8 +18,8 @@
 				stroke: #00C000;
 			}
 
-			/* Game Answer Board */
-				/* Answer Feedback */
+			/* Answer board */
+				/* Answer feedback */
 				#Label_AnswerFeedback {
 					text-shadow: 0 0 5px #000000;
 				}

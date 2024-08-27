@@ -3,7 +3,7 @@
 // (C) 2023 SAM TOKI STUDIO
 
 // Initialization
-	// Declare Variables
+	// Declare variables
 	"use strict";
 		// Unsaved
 		const CurrentVersion = 1.15,
@@ -113,7 +113,7 @@
 			[0, "#6", "", "", "", "", ""]
 		];
 
-	// Load User Data
+	// Load user data
 	window.onload = Load();
 	function Load() {
 		if(localStorage.System != undefined) {
@@ -175,7 +175,7 @@
 		setTimeout(HideToast, 0);
 	}
 
-	// Pause Before Exiting
+	// Pause before exiting
 	window.onbeforeunload = Exit();
 	function Exit() {
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
@@ -324,10 +324,10 @@
 			ChangeValue("Textbox_SettingsFont", System.Dev.Font);
 			ChangeFont("Html", System.Dev.Font);
 
-			// User Data
+			// User data
 			ChangeValue("Textbox_SettingsUserDataImport", "");
 
-		// Save User Data
+		// Save user data
 		localStorage.setItem("System", JSON.stringify(System));
 	}
 	function RefreshSubsystem() {
@@ -361,13 +361,13 @@
 				RemoveClass("Html", "Cheat");
 			}
 
-		// Save User Data
+		// Save user data
 		localStorage.setItem("KanaMaster_Subsystem", JSON.stringify(Subsystem));
 	}
 
 	// Game
 	function ClockGame() {
-		// Change Self Update Freq
+		// Change self update freq
 		clearInterval(Automation.ClockGame);
 		if(Game.Status.IsRunning == true) {
 			Automation.ClockGame = setInterval(ClockGame, 20);
@@ -449,7 +449,7 @@
 					RemoveClass("ProgringText_GameHP", "EmphasizedText");
 				}
 
-				// Time Left
+				// Time left
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 					if(Game.Status.IsCoolingDown == false) {
 						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit - (Date.now() - Game.Stats.StartTime2);
@@ -467,7 +467,7 @@
 					RemoveClass("ProgringText_GameTimeLeft", "EmphasizedText");
 				}
 
-		// Question Board & Answer Board
+		// Question board & answer board
 			// Text
 			switch(Game.Mode.Questioning) {
 				case "Kana":
@@ -506,7 +506,7 @@
 				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Active");
 			}
 
-		// Time Up
+		// Time up
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 			if(Game.Status.IsCoolingDown == false) {
 				if(Game.Stats.TimeLeft <= 0) {
@@ -527,10 +527,10 @@
 			RemoveClass("Cmdbtn_GameStart", "Glow");
 			ChangeDisabled("Cmdbtn_GameReset", true);
 			if(Game.Status.IsPaused == false) {
-				// Freeze Game
+				// Freeze game
 				Game.Status.IsPaused = true;
 
-				// Show Toast & Update Highscore
+				// Show toast and update highscore
 				if(Game.Stats.MissCount == 0) {
 					if(Game.Stats.Accuracy == 100) {
 						ShowToast("ALL PERFECT!");
@@ -550,7 +550,7 @@
 				Highscore[6][6] = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
 				RefreshHighscore();
 
-				// Reset Game and Scroll to Highscore
+				// Reset game and scroll to highscore
 				setTimeout(function() {
 					ResetGame();
 					window.location.replace("#Highscore");
@@ -558,7 +558,7 @@
 			}
 		}
 
-		// Game Over
+		// Game over
 		if(Game.Status.IsRunning == true && Game.Stats.HP <= 0) {
 			Game.Stats.HP = 0;
 			ChangeDisabled("Cmdbtn_GameStart", true);
@@ -600,7 +600,7 @@
 		}
 
 		// Settings
-			// Game Mode
+			// Game mode
 			ChangeValue("Combobox_SettingsQuestioning", Game.Mode.Questioning);
 			ChangeValue("Combobox_SettingsProgressing", Game.Mode.Progressing);
 			switch(Game.Mode.Progressing) {
@@ -619,7 +619,7 @@
 			ChangeValue("Textbox_SettingsQuantity", Game.Mode.Quantity);
 			ChangeValue("Textbox_SettingsDuration", Game.Mode.Duration);
 
-			// Question Range
+			// Question range
 			let Counter = 0;
 			for(let Looper = 1; Looper <= 19; Looper++) {
 				ChangeChecked("Checkbox_SettingsQuestionRange" + Looper, Game.QuestionRange[Looper]);
@@ -663,18 +663,18 @@
 			ChangeValue("Textbox_SettingsCooldown", (Game.Difficulty.Cooldown / 1000).toFixed(1));
 			ChangeValue("Textbox_SettingsHPDrain", Game.Difficulty.HPDrain);
 		
-		// Save User Data
+		// Save user data
 		localStorage.setItem("KanaMaster_Game", JSON.stringify(Game));
 	}
 
 	// Highscore
 	function RefreshHighscore() {
-		// Remove "Latest" From Original Highscore Table
+		// Remove "Latest" from original highscore table
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			Highscore[Looper][1] = "名次";
 		}
 
-		// Sort (Bubble Sort)
+		// Sort (bubble sort)
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
 				if(parseInt(Number(Highscore[Looper2 + 1][3])) > parseInt(Number(Highscore[Looper2][3]))) {
@@ -702,7 +702,7 @@
 			ChangeText("Label_HighscoreRow" + Looper + "AvgReactionTime", Highscore[Looper][6]);
 		}
 
-		// Save User Data
+		// Save user data
 		localStorage.setItem("KanaMaster_Highscore", JSON.stringify(Highscore));
 	}
 
@@ -825,7 +825,7 @@
 					ChangeAnswerFeedbackColor("Miss");
 				}
 
-				// Answer Feedback
+				// Answer feedback
 					// Phase 1
 					ChangeAnim("Label_AnswerFeedback", "none");
 					Fade("Label_AnswerFeedback");
@@ -868,7 +868,7 @@
 						}, 1040);
 					}
 
-				// Start Cooldown
+				// Start cooldown
 				Game.Status.IsCoolingDown = true;
 				Game.Stats.StartTime2 = Date.now();
 				RefreshGame();
@@ -878,7 +878,7 @@
 		}
 
 	// Settings
-		// Game Mode
+		// Game mode
 		function SetQuestioning() {
 			Game.Mode.Questioning = ReadValue("Combobox_SettingsQuestioning");
 			RefreshGame();
@@ -888,7 +888,7 @@
 			RefreshGame();
 		}
 		function SetQuantity() {
-			Game.Mode.Quantity = parseInt(Number(ReadValue("Textbox_SettingsQuantity")));
+			Game.Mode.Quantity = parseInt(Number(ReadValue("Textbox_SettingsQuantity"))); // Use parseInt(Number()) to force convert value to integer.
 			if(Game.Mode.Quantity < 5) {
 				Game.Mode.Quantity = 5;
 			}
@@ -908,7 +908,7 @@
 			RefreshGame();
 		}
 
-		// Question Range
+		// Question range
 		function SetQuestionRange(Selector) {
 			Game.QuestionRange[Selector] = IsChecked("Checkbox_SettingsQuestionRange" + Selector);
 			RefreshGame();
@@ -1000,7 +1000,7 @@
 			RefreshSubsystem();
 		}
 
-		// User Data
+		// User data
 		function ImportUserData() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != "") {
 				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\":{\"Display\":{\"Theme\":") == true) {
@@ -1112,7 +1112,7 @@
 	}
 
 // Listeners
-	// On Keyboard
+	// On keyboard
 	document.addEventListener("keydown", function(Hotkey) {
 		if(Hotkey.key == "F1") {
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
@@ -1199,11 +1199,11 @@
 		do {
 			Game.Lottery.Question[1] = [0, Randomize(1, 19), Randomize(1, 20)];
 		} while(
-			// Prevent Out of Question Range
+			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Question[1][1]] == false ||
-			// Prevent Blank Entry
+			// Prevent blank entry
 			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == "" ||
-			// Prevent Same with Previous Question
+			// Prevent same with previous question
 			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == RomajiGrid[Game.Lottery.Question[2][1]][Game.Lottery.Question[2][2]]
 		);
 	}
@@ -1211,11 +1211,11 @@
 		do {
 			Game.Lottery.Answer[1] = [0, Randomize(1, 19), Randomize(1, 20)];
 		} while(
-			// Prevent Out of Question Range
+			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Answer[1][1]] == false ||
-			// Prevent Blank Entry
+			// Prevent blank entry
 			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == "" ||
-			// Prevent Duplication
+			// Prevent duplication
 			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] ||
 			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
 		);
@@ -1224,11 +1224,11 @@
 		do {
 			Game.Lottery.Answer[2] = [0, Randomize(1, 19), Randomize(1, 20)];
 		} while(
-			// Prevent Out of Question Range
+			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Answer[2][1]] == false ||
-			// Prevent Blank Entry
+			// Prevent blank entry
 			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == "" ||
-			// Prevent Duplication
+			// Prevent duplication
 			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
 			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
 		);
@@ -1237,17 +1237,17 @@
 		do {
 			Game.Lottery.Answer[3] = [0, Randomize(1, 19), Randomize(1, 20)];
 		} while(
-			// Prevent Out of Question Range
+			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Answer[3][1]] == false ||
-			// Prevent Blank Entry
+			// Prevent blank entry
 			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == "" ||
-			// Prevent Duplication
+			// Prevent duplication
 			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
 			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]]
 		);
 	}
 
-// Error Handling
+// Error handling
 function AlertSystemError(Message) {
 	console.error("● 系统错误\n" +
 		Message);
