@@ -1253,6 +1253,8 @@ function AlertSystemError(Message) {
 		Message);
 	ShowDialog("System_Error",
 		"Error",
-		"抱歉，发生了系统错误。您可在浏览器控制台查看错误信息，或尝试清空用户数据以解决问题。是否前往用户数据？",
+		"抱歉，发生了系统错误。这可能是损坏了的用户数据导致的。是否前往用户数据？<br />" +
+		"<br />" +
+		"错误信息：" + Message,
 		"", "", "前往", "取消");
 }
