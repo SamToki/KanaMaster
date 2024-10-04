@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="假名征服者 (KanaMaster)，日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
 		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 假名征服者, KanaMaster, かなマスター, 日语学习, 日语入门, 五十音图" />
-		<meta name="version" content="v1.16 (2024/09/23). Since 2023/11/05." />
+		<meta name="version" content="v2.00 (2024/10/04). Since 2023/11/05." />
 		<meta name="author" content="Sam Toki" />
 		<meta name="copyright" content="(C) 2023 SAM TOKI STUDIO" />
 		<title>假名征服者</title>
@@ -22,6 +22,7 @@
 		<link id="ThemeVariant_Style" rel="stylesheet" href="styles/style_Dark.css" media="(prefers-color-scheme: dark)" />
 		<link id="ThemeVariant_Style_HighContrast" rel="stylesheet" href="styles/style_HighContrast.css" media="(prefers-contrast: more)" />
 		<script defer src="../scripts/common.js"></script>
+		<script defer src="../scripts/common_UserDataRepairer.js"></script>
 		<script defer src="scripts/script.js"></script>
 	</head>
 
@@ -49,6 +50,16 @@
 										<path d="M407.933,206.247c-11.653,0-21.099,9.453-21.099,21.098c0,11.669,9.446,21.122,21.099,21.122 c11.66,0,21.113-9.453,21.113-21.122C429.046,215.7,419.593,206.247,407.933,206.247z"/>
 									</svg>
 									<span class="LabelAfterIcon">游戏</span>
+								</a>
+							</li>
+							<li class="Ctrl Nav" id="Nav_AnswerLog">
+								<a class="NavLinkbtn" id="NavLinkbtn_AnswerLog" href="#AnswerLog">
+									<svg class="Icon" viewBox="0 0 16 16">
+										<path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+										<path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+										<path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+									</svg>
+									<span class="LabelAfterIcon">答题记录</span>
 								</a>
 							</li>
 							<li class="Ctrl Nav" id="Nav_Highscore">
@@ -198,7 +209,39 @@
 					</div>
 				</div>
 			</section>
-			
+
+			<section id="AnswerLog">
+				<h1 class="SectionTitle">答题记录</h1>
+				<ul class="ItemGroup">
+					<li class="Item">
+						<fieldset>
+							<legend>全部</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl ScrollableLog" id="Ctrl_AnswerLogAll">
+									<p id="Label_AnswerLogAll">记录</p>
+								</li>
+								<li class="Ctrl">
+									<button class="Cmdbtn" id="Cmdbtn_AnswerLogAllCopyToClipboard" onclick="AnswerLogAllCopyToClipboard()">拷贝至剪贴板</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>仅失误</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl ScrollableLog" id="Ctrl_AnswerLogMissesOnly">
+									<p id="Label_AnswerLogMissesOnly">记录</p>
+								</li>
+								<li class="Ctrl">
+									<button class="Cmdbtn" id="Cmdbtn_AnswerLogMissesOnlyCopyToClipboard" onclick="AnswerLogMissesOnlyCopyToClipboard()">拷贝至剪贴板</button>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+				</ul>
+			</section>
+
 			<section id="Highscore">
 				<h1 class="SectionTitle">高分榜</h1>
 				<ul class="ItemGroup" id="ItemGroup_Highscore">
@@ -545,6 +588,32 @@
 					</li>
 					<li class="Item">
 						<fieldset>
+							<legend>声音</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Checkbox_SettingsPlayAudio">
+										<input class="Checkbox" id="Checkbox_SettingsPlayAudio" type="checkbox" checked="true" onchange="SetPlayAudio()" />
+										<span>播放声音</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsVoiceVolume">
+									<label for="Slider_SettingsVoiceVolume">
+										<span>语音：</span>
+										<input class="Slider" id="Slider_SettingsVoiceVolume" type="range" min="0" max="100" step="1" value="0" onpointerup="PreviewVoiceVolume()" oninput="SetVoiceVolume()" />
+										<span id="Label_SettingsVoiceVolume">音量</span>
+									</label>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsAlsoPlayVoiceOnMiss">
+									<label for="Checkbox_SettingsAlsoPlayVoiceOnMiss">
+										<input class="Checkbox" id="Checkbox_SettingsAlsoPlayVoiceOnMiss" type="checkbox" checked="false" onchange="SetAlsoPlayVoiceOnMiss()" />
+										<span>失误时也播放语音 (会播放正确选项)</span>
+									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
 							<legend>开发者选项</legend>
 							<ul class="CtrlGroup">
 								<li class="Ctrl">
@@ -666,6 +735,8 @@
 								背景图像会不定期更换。</p>
 							<h4>图标</h4>
 							<p>UI 图标：<a href="https://icons.getbootstrap.com">Bootstrap Icons</a>, <a href="https://icooon-mono.com">ICOOON MONO</a></p>
+							<h4>音频</h4>
+							<p>语音：Microsoft Ayumi (TTS)</p>
 						</fieldset>
 					</li>
 					<li class="Item">
@@ -673,7 +744,7 @@
 							<legend>关于</legend>
 							<p>假名征服者</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v1.16 (<time datetime="2024-09-23" pubdate="pubdate">2024/09/23</time>)<br />
+							<p>版本 v2.00 (<time datetime="2024-10-04" pubdate="pubdate">2024/10/04</time>)<br />
 								始于 2023/11/05</p>
 							<ul class="CtrlGroup BelowParagraph">
 								<li class="Ctrl">
@@ -744,6 +815,10 @@
 					<button class="Cmdbtn" id="Cmdbtn_DialogOption3" onclick="AnswerDialog(3)">选项</button>
 				</li>
 			</ul>
+		</div>
+
+		<div class="NonInteractiveCtnr">
+			<audio class="Audio" id="Audio_Voice"><source src="../audio/sounds/Beep.mp3" /></audio>
 		</div>
 	</body>
 </html>

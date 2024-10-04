@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 1.16,
+		const CurrentVersion = 2.00,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -63,6 +63,10 @@
 			Display: {
 				GameFont: "Default"
 			},
+			Audio: {
+				VoiceVolume: 0,
+				AlsoPlayVoiceOnMiss: false
+			},
 			Dev: {
 				Cheat: false
 			}
@@ -102,6 +106,9 @@
 				],
 				CorrectAnswer: 0
 			}
+		},
+		AnswerLog = {
+			All: "", MissesOnly: "", Sequence: 1
 		},
 		Highscore = [
 			0,
@@ -168,6 +175,10 @@
 			Game = JSON.parse(localStorage.getItem("KanaMaster_Game"));
 		}
 		RefreshGame();
+		if(localStorage.KanaMaster_AnswerLog != undefined) {
+			AnswerLog = JSON.parse(localStorage.getItem("KanaMaster_AnswerLog"));
+		}
+		RefreshAnswerLog();
 		if(localStorage.KanaMaster_Highscore != undefined) {
 			Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 		}
@@ -306,6 +317,20 @@
 			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
 			ChangeAnimOverall(System.Display.Anim);
 
+			// Audio
+			ChangeChecked("Checkbox_SettingsPlayAudio", System.Audio.PlayAudio);
+			if(System.Audio.PlayAudio == true) {
+				Show("Ctrl_SettingsVoiceVolume");
+			} else {
+				StopAllAudio();
+				Hide("Ctrl_SettingsVoiceVolume");
+			}
+			if(System.Audio.PlayAudio == true && Subsystem.Audio.VoiceVolume > 0) {
+				Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+			} else {
+				Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+			}
+
 			// Dev
 			ChangeChecked("Checkbox_SettingsTryToOptimizePerformance", System.Dev.TryToOptimizePerformance);
 			if(System.Dev.TryToOptimizePerformance == true) {
@@ -352,6 +377,21 @@
 					AlertSystemError("The value of Subsystem.Display.GameFont \"" + Subsystem.Display.GameFont + "\" in function RefreshSubsystem is invalid.");
 					break;
 			}
+
+			// Audio
+			ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
+			if(Subsystem.Audio.VoiceVolume > 0) {
+				ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
+			} else {
+				ChangeText("Label_SettingsVoiceVolume", "禁用");
+			}
+			ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
+			if(System.Audio.PlayAudio == true && Subsystem.Audio.VoiceVolume > 0) {
+				Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+			} else {
+				Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+			}
+			ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
 
 			// Dev
 			ChangeChecked("Checkbox_SettingsCheat", Subsystem.Dev.Cheat);
@@ -550,10 +590,10 @@
 				Highscore[6][6] = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
 				RefreshHighscore();
 
-				// Reset game and scroll to highscore
+				// Reset game and scroll to answer log
 				setTimeout(function() {
 					ResetGame();
-					window.location.replace("#Highscore");
+					window.location.replace("#AnswerLog");
 				}, System.Display.Anim * 2 + 1000);
 			}
 		}
@@ -662,9 +702,29 @@
 			ChangeValue("Textbox_SettingsTimeLimitNormal", (Game.Difficulty.TimeLimit.Normal / 1000).toFixed(1));
 			ChangeValue("Textbox_SettingsCooldown", (Game.Difficulty.Cooldown / 1000).toFixed(1));
 			ChangeValue("Textbox_SettingsHPDrain", Game.Difficulty.HPDrain);
-		
+
 		// Save user data
 		localStorage.setItem("KanaMaster_Game", JSON.stringify(Game));
+	}
+
+	// Answer Log
+	function RefreshAnswerLog() {
+		// Refresh
+		if(AnswerLog.All != "") {
+			ChangeText("Label_AnswerLogAll", AnswerLog.All);
+		} else {
+			ChangeText("Label_AnswerLogAll", "(无记录)");
+		}
+		ScrollToBottom("Ctrl_AnswerLogAll");
+		if(AnswerLog.MissesOnly != "") {
+			ChangeText("Label_AnswerLogMissesOnly", AnswerLog.MissesOnly);
+		} else {
+			ChangeText("Label_AnswerLogMissesOnly", "(无记录)");
+		}
+		ScrollToBottom("Ctrl_AnswerLogMissesOnly");
+
+		// Save user data
+		localStorage.setItem("KanaMaster_AnswerLog", JSON.stringify(AnswerLog));
 	}
 
 	// Highscore
@@ -721,6 +781,9 @@
 					[0, 0, 0],
 					[0, 0, 0]
 				];
+				AnswerLog = {
+					All: "", MissesOnly: "", Sequence: 1
+				};
 				window.location.replace("#Game");
 			} else {
 				if(Game.Status.IsPaused == false) {
@@ -748,6 +811,7 @@
 				}
 			}
 			RefreshGame();
+			RefreshAnswerLog();
 		}
 		function ResetGame() {
 			Game.Status = {
@@ -868,14 +932,82 @@
 						}, 1040);
 					}
 
+				// Answer log
+					// Prepare text
+					let NewEntry = "#" + AnswerLog.Sequence + "　";
+					switch(Game.Mode.Questioning) {
+						case "Kana":
+							NewEntry += KanaGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] + "　" +
+								RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + "　";
+							break;
+						case "Romaji":
+							NewEntry += RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] + "　" +
+								KanaGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + "　";
+							break;
+						default:
+							AlertSystemError("The value of Game.Mode.Questioning \"" + Game.Mode.Questioning + "\" in function AnswerGame is invalid.");
+							break;
+					}
+					if(Selector == Game.Lottery.CorrectAnswer) {
+						NewEntry += "正答　" + ((Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft) / 1000).toFixed(3) + "s";
+					} else {
+						if(Selector <= 3) {
+							switch(Game.Mode.Questioning) {
+								case "Kana":
+									NewEntry += "错答: " + RomajiGrid[Game.Lottery.Answer[Selector][1]][Game.Lottery.Answer[Selector][2]];
+									break;
+								case "Romaji":
+									NewEntry += "错答: " + KanaGrid[Game.Lottery.Answer[Selector][1]][Game.Lottery.Answer[Selector][2]];
+									break;
+								default:
+									AlertSystemError("The value of Game.Mode.Questioning \"" + Game.Mode.Questioning + "\" in function AnswerGame is invalid.");
+									break;
+							}
+						} else {
+							NewEntry += "超时";
+						}
+					}
+					NewEntry += "<br />";
+
+					// Write
+					AnswerLog.All += NewEntry;
+					if(Selector != Game.Lottery.CorrectAnswer) {
+						AnswerLog.MissesOnly += NewEntry;
+					}
+					AnswerLog.Sequence++;
+
+				// Voice
+				if(Selector == Game.Lottery.CorrectAnswer || Subsystem.Audio.AlsoPlayVoiceOnMiss == true) {
+					PlayAudio("Audio_Voice", "audio/voices/Kana_" + RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + ".mp3");
+				}
+
 				// Start cooldown
 				Game.Status.IsCoolingDown = true;
 				Game.Stats.StartTime2 = Date.now();
+
+				// Refresh
 				RefreshGame();
+				RefreshAnswerLog();
 			} else {
 				ShowToast("正在冷却...");
 			}
 		}
+
+	// Answer Log
+	function AnswerLogAllCopyToClipboard() {
+		navigator.clipboard.writeText(AnswerLog.All.replaceAll("<br />", "\n"));
+		ShowDialog("AnswerLog_Copied",
+			"Info",
+			"已拷贝答题记录至剪贴板。",
+			"", "", "", "确定");
+	}
+	function AnswerLogMissesOnlyCopyToClipboard() {
+		navigator.clipboard.writeText(AnswerLog.MissesOnly.replaceAll("<br />", "\n"));
+		ShowDialog("AnswerLog_Copied",
+			"Info",
+			"已拷贝仅含失误的答题记录至剪贴板。",
+			"", "", "", "确定");
+	}
 
 	// Settings
 		// Game mode
@@ -994,6 +1126,19 @@
 			RefreshSubsystem();
 		}
 
+		// Audio
+		function SetVoiceVolume() {
+			Subsystem.Audio.VoiceVolume = ReadValue("Slider_SettingsVoiceVolume");
+			RefreshSubsystem();
+		}
+		function PreviewVoiceVolume() {
+			PlayAudio("Audio_Voice", "audio/voices/Kana_a.mp3");
+		}
+		function SetAlsoPlayVoiceOnMiss() {
+			Subsystem.Audio.AlsoPlayVoiceOnMiss = IsChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss");
+			RefreshSubsystem();
+		}
+
 		// Dev
 		function SetCheat() {
 			Subsystem.Dev.Cheat = IsChecked("Checkbox_SettingsCheat");
@@ -1046,6 +1191,7 @@
 			case "System_JSONStringInvalid":
 			case "System_UserDataExported":
 			case "Game_QuestionRangeBelowMinimumRequirement":
+			case "AnswerLog_Copied":
 				switch(Selector) {
 					case 3:
 						break;

@@ -174,7 +174,7 @@
 	/* Area specific */
 		/* Header */
 		#Ctrl_Nav .Nav {
-			width: calc(100% / 5);
+			width: calc(100% / 6);
 		}
 
 		/* Main */
