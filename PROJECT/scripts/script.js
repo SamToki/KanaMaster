@@ -469,7 +469,7 @@
 				// HP
 				if(Game.Status.IsRunning == true) {
 					if(Game.Status.IsPaused == false) {
-						Game.Stats.HP -= 0.02; // Lose 1 HP every second.
+						Game.Stats.HP -= 0.02; // Approximately lose 1 HP every second.
 					}
 				} else {
 					Game.Stats.HP = 0;
