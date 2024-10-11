@@ -126,8 +126,8 @@
 								<span class="GameStats1Value" id="Label_GameMaxComboValue">最大连击</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameElapsedTime">总时长</span>
-								<span class="GameStats1Value" id="Label_GameElapsedTimeValue">总时长</span>
+								<span class="GameStats1Title" id="Label_GameElapsedTime">时长</span>
+								<span class="GameStats1Value" id="Label_GameElapsedTimeValue">时长</span>
 							</li>
 							<li class="Ctrl">
 								<span class="GameStats1Title" id="Label_GameCurrentTimeLimit">当前时限</span>
@@ -326,14 +326,14 @@
 								<li class="Ctrl">
 									<label for="Radiobtn_SettingsQuantity">
 										<input class="Radiobtn" id="Radiobtn_SettingsQuantity" type="radio" checked="true" onchange="SetProgressing('Quantity')" />
-										<span>答题数量：</span>
+										<span>数量：</span>
 										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="SelectText('Textbox_SettingsQuantity')" onchange="SetQuantity()" />
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Radiobtn_SettingsDuration">
 										<input class="Radiobtn" id="Radiobtn_SettingsDuration" type="radio" checked="false" onchange="SetProgressing('Duration')" />
-										<span>游戏时长：</span>
+										<span>时长：</span>
 										<input class="Textbox Width120" id="Textbox_SettingsDuration" type="number" min="1" max="60" step="1" value="3" placeholder="1~60" onclick="SelectText('Textbox_SettingsDuration')" onchange="SetDuration()" />
 										<span>分钟</span>
 									</label>
