@@ -642,15 +642,14 @@
 		// Settings
 			// Game mode
 			ChangeValue("Combobox_SettingsQuestioning", Game.Mode.Questioning);
-			ChangeValue("Combobox_SettingsProgressing", Game.Mode.Progressing);
 			switch(Game.Mode.Progressing) {
 				case "Quantity":
-					Hide("Ctrl_SettingsDuration");
-					Show("Ctrl_SettingsQuantity");
+					ChangeChecked("Radiobtn_SettingsQuantity", true);
+					ChangeChecked("Radiobtn_SettingsDuration", false);
 					break;
 				case "Duration":
-					Hide("Ctrl_SettingsQuantity");
-					Show("Ctrl_SettingsDuration");
+					ChangeChecked("Radiobtn_SettingsQuantity", false);
+					ChangeChecked("Radiobtn_SettingsDuration", true);
 					break;
 				default:
 					AlertSystemError("The value of Game.Mode.Progressing \"" + Game.Mode.Progressing + "\" in function RefreshGame is invalid.");
@@ -1015,9 +1014,17 @@
 			Game.Mode.Questioning = ReadValue("Combobox_SettingsQuestioning");
 			RefreshGame();
 		}
-		function SetProgressing() {
-			Game.Mode.Progressing = ReadValue("Combobox_SettingsProgressing");
-			RefreshGame();
+		function SetProgressing(Value) {
+			switch(Value) {
+				case "Quantity":
+				case "Duration":
+					Game.Mode.Progressing = Value;
+					RefreshGame();
+					break;
+				default:
+					AlertSystemError("The value of Value \"" + Value + "\" in function SetProgressing is invalid.");
+					break;
+			}
 		}
 		function SetQuantity() {
 			Game.Mode.Quantity = parseInt(Number(ReadValue("Textbox_SettingsQuantity"))); // Use parseInt(Number()) to force convert value to integer.
