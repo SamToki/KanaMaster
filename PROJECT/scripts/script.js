@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 2.00,
+		const CurrentVersion = 3.00,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -79,7 +79,7 @@
 			QuestionRange: [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false],
 			Difficulty: {
 				TimeLimit: {
-					Initial: 8000, Normal: 6000
+					Initial: 8000, Final: 6000
 				},
 				Cooldown: 1000,
 				HPDrain: 10
@@ -430,11 +430,7 @@
 				}
 			}
 			ChangeText("Label_GameElapsedTimeValue", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
-			if(Game.Stats.Progress <= 20) {
-				Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Normal) * (Game.Stats.Progress / 20);
-			} else {
-				Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Normal;
-			}
+			Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Final) * (Game.Stats.Progress / 100);
 			ChangeText("Label_GameCurrentTimeLimitValue", (Game.Stats.CurrentTimeLimit / 1000).toFixed(1) + "s");
 			ChangeText("Label_GameAccuracyValue", Game.Stats.Accuracy.toFixed(2) + "%");
 			ChangeText("Label_GameAvgReactionTimeValue", (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s");
@@ -698,7 +694,7 @@
 
 			// Difficulty
 			ChangeValue("Textbox_SettingsTimeLimitInitial", (Game.Difficulty.TimeLimit.Initial / 1000).toFixed(1));
-			ChangeValue("Textbox_SettingsTimeLimitNormal", (Game.Difficulty.TimeLimit.Normal / 1000).toFixed(1));
+			ChangeValue("Textbox_SettingsTimeLimitFinal", (Game.Difficulty.TimeLimit.Final / 1000).toFixed(1));
 			ChangeValue("Textbox_SettingsCooldown", (Game.Difficulty.Cooldown / 1000).toFixed(1));
 			ChangeValue("Textbox_SettingsHPDrain", Game.Difficulty.HPDrain);
 
@@ -1082,27 +1078,27 @@
 			if(Game.Difficulty.TimeLimit.Initial > 10000) {
 				Game.Difficulty.TimeLimit.Initial = 10000;
 			}
-			if(Game.Difficulty.TimeLimit.Initial < Game.Difficulty.TimeLimit.Normal) {
-				Game.Difficulty.TimeLimit.Normal = Game.Difficulty.TimeLimit.Initial;
+			if(Game.Difficulty.TimeLimit.Initial < Game.Difficulty.TimeLimit.Final) {
+				Game.Difficulty.TimeLimit.Final = Game.Difficulty.TimeLimit.Initial;
 			}
-			if(Game.Difficulty.TimeLimit.Initial > Game.Difficulty.TimeLimit.Normal + 6000) {
-				Game.Difficulty.TimeLimit.Normal = Game.Difficulty.TimeLimit.Initial - 6000;
+			if(Game.Difficulty.TimeLimit.Initial > Game.Difficulty.TimeLimit.Final + 6000) {
+				Game.Difficulty.TimeLimit.Final = Game.Difficulty.TimeLimit.Initial - 6000;
 			}
 			RefreshGame();
 		}
-		function SetTimeLimitNormal() {
-			Game.Difficulty.TimeLimit.Normal = parseInt(Number(ReadValue("Textbox_SettingsTimeLimitNormal")) * 10) / 10 * 1000;
-			if(Game.Difficulty.TimeLimit.Normal < 1000) {
-				Game.Difficulty.TimeLimit.Normal = 1000;
+		function SetTimeLimitFinal() {
+			Game.Difficulty.TimeLimit.Final = parseInt(Number(ReadValue("Textbox_SettingsTimeLimitFinal")) * 10) / 10 * 1000;
+			if(Game.Difficulty.TimeLimit.Final < 1000) {
+				Game.Difficulty.TimeLimit.Final = 1000;
 			}
-			if(Game.Difficulty.TimeLimit.Normal > 10000) {
-				Game.Difficulty.TimeLimit.Normal = 10000;
+			if(Game.Difficulty.TimeLimit.Final > 10000) {
+				Game.Difficulty.TimeLimit.Final = 10000;
 			}
-			if(Game.Difficulty.TimeLimit.Normal > Game.Difficulty.TimeLimit.Initial) {
-				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Normal;
+			if(Game.Difficulty.TimeLimit.Final > Game.Difficulty.TimeLimit.Initial) {
+				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final;
 			}
-			if(Game.Difficulty.TimeLimit.Normal < Game.Difficulty.TimeLimit.Initial - 6000) {
-				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Normal + 6000;
+			if(Game.Difficulty.TimeLimit.Final < Game.Difficulty.TimeLimit.Initial - 6000) {
+				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final + 6000;
 			}
 			RefreshGame();
 		}
