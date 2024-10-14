@@ -5,10 +5,10 @@
 /* Area specific */
 	/* Header */
 	#Ctrl_Title {
-		width: 240px;
+		width: 172px;
 	}
 	#Ctrl_Nav {
-		width: calc(100% - 250px);
+		width: calc(100% - 182px);
 	}
 
 	/* Main */
