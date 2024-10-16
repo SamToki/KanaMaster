@@ -16,13 +16,13 @@
 			/* Stats 1 */
 			#Ctnr_GameStats1 {
 				position: absolute; top: 0; left: 0;
-				width: 320px;
+				width: 320px; height: 360px;
 			}
 			#Ctnr_GameStats1 .CtrlGroup {
-				width: 100%;
+				width: 100%; height: 100%;
 			}
 			#Ctnr_GameStats1 .Ctrl {
-				width: 50%; height: 90px; padding: 5px;
+				width: 50%; height: 25%; padding: 5px;
 				text-align: center;
 				display: flex; flex-direction: column; justify-content: center; align-items: center;
 			}
@@ -33,14 +33,14 @@
 			/* Stats 2 */
 			#Ctnr_GameStats2 {
 				position: absolute; top: 0; right: 0;
-				width: 320px;
+				width: 320px; height: 420px;
 			}
 			#Ctnr_GameStats2 .CtrlGroup {
-				width: 100%;
+				width: 100%; height: 100%;
 				flex-direction: column;
 			}
 			#Ctnr_GameStats2 .Ctrl {
-				width: 100%; height: 100px; margin: 0 0 20px 0;
+				width: 100%; height: 100px;
 			}
 			#Ctnr_GameStats2 #Ctrl_GameScore {
 				height: 60px;
@@ -112,15 +112,9 @@
 			/* Game ctrl */
 			#Ctnr_GameCtrl {
 				position: absolute; bottom: 0; right: 0;
-				width: 320px; height: 40px;
+				width: 250px; height: 40px;
 			}
-			#Ctnr_GameCtrl .CtrlGroup {
-				justify-content: end;
-			}
-			#Ctnr_GameCtrl .Ctrl {
-				width: 120px; margin: 0 0 0 10px;
-			}
-		
+
 		/* Highscore */
 		#ItemGroup_Highscore {
 			margin: 0;
@@ -178,8 +172,11 @@
 				width: 100%;
 			}
 				/* Stats 1 */
+				#Ctnr_GameStats1 {
+					height: 100px;
+				}
 				#Ctnr_GameStats1 .Ctrl {
-					width: 25%; height: 50px;
+					width: 25%; height: 50%;
 				}
 				.GameStats1Title {
 					font-size: 0.75em;
@@ -191,12 +188,13 @@
 				/* Stats 2 */
 				#Ctnr_GameStats2 {
 					top: 115px;
+					height: 60px;
 				}
 				#Ctnr_GameStats2 .CtrlGroup {
 					flex-direction: row-reverse;
 				}
 				#Ctnr_GameStats2 .Ctrl {
-					width: 60px; height: 60px; margin: 0;
+					width: 60px; height: 100%;
 				}
 				#Ctnr_GameStats2 #Ctrl_GameScore {
 					width: calc(100% - 210px);
@@ -226,14 +224,6 @@
 				}
 				#Label_AnswerFeedback {
 					font-size: 1.75em;
-				}
-				
-				/* Game ctrl */
-				#Ctnr_GameCtrl .CtrlGroup {
-					justify-content: space-between;
-				}
-				#Ctnr_GameCtrl .Ctrl {
-					width: calc((100% - 10px) / 2); margin: 0;
 				}
 
 			/* Highscore */
