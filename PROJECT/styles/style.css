@@ -114,6 +114,9 @@
 				position: absolute; bottom: 0; right: 0;
 				width: 250px; height: 40px;
 			}
+			#Ctnr_GameCtrl .CtrlGroup {
+				width: 100%; height: 100%;
+			}
 
 		/* Highscore */
 		#ItemGroup_Highscore {
