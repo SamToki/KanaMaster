@@ -33,7 +33,7 @@
 			/* Stats 2 */
 			#Ctnr_GameStats2 {
 				position: absolute; top: 0; right: 0;
-				width: 320px; height: 420px;
+				width: 320px; height: 415px;
 			}
 			#Ctnr_GameStats2 .CtrlGroup {
 				width: 100%; height: 100%;
@@ -43,7 +43,7 @@
 				width: 100%; height: 100px;
 			}
 			#Ctnr_GameStats2 #Ctrl_GameScore {
-				height: 60px;
+				height: 70px;
 				text-align: center;
 				display: flex; justify-content: center; align-items: center;
 			}
@@ -132,22 +132,22 @@
 			display: flex; justify-content: center; align-items: center;
 		}
 		.HighscoreSequence {
-			width: 70px;
+			width: 65px;
 		}
 		.HighscoreDate {
-			width: 120px;
+			width: 125px;
 		}
 		.HighscoreScore {
-			width: 100px;
+			width: 115px;
 		}
 		.HighscoreMaxCombo {
 			width: 100px;
 		}
 		.HighscoreAccuracy {
-			width: 100px;
+			width: 105px;
 		}
 		.HighscoreAvgReactionTime {
-			width: 130px;
+			width: 125px;
 		}
 
 /* Responsive web design */
