@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.01,
+		const CurrentVersion = 3.02,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -586,10 +586,10 @@
 				Highscore[6][6] = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
 				RefreshHighscore();
 
-				// Reset game and scroll to answer log
+				// Reset game and scroll to highscore
 				setTimeout(function() {
 					ResetGame();
-					window.location.replace("#AnswerLog");
+					window.location.replace("#Highscore");
 				}, System.Display.Anim * 2 + 1000);
 			}
 		}
@@ -1081,8 +1081,8 @@
 			if(Game.Difficulty.TimeLimit.Initial < Game.Difficulty.TimeLimit.Final) {
 				Game.Difficulty.TimeLimit.Final = Game.Difficulty.TimeLimit.Initial;
 			}
-			if(Game.Difficulty.TimeLimit.Initial > Game.Difficulty.TimeLimit.Final + 6000) {
-				Game.Difficulty.TimeLimit.Final = Game.Difficulty.TimeLimit.Initial - 6000;
+			if(Game.Difficulty.TimeLimit.Initial > Game.Difficulty.TimeLimit.Final + 5000) {
+				Game.Difficulty.TimeLimit.Final = Game.Difficulty.TimeLimit.Initial - 5000;
 			}
 			RefreshGame();
 		}
@@ -1097,8 +1097,8 @@
 			if(Game.Difficulty.TimeLimit.Final > Game.Difficulty.TimeLimit.Initial) {
 				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final;
 			}
-			if(Game.Difficulty.TimeLimit.Final < Game.Difficulty.TimeLimit.Initial - 6000) {
-				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final + 6000;
+			if(Game.Difficulty.TimeLimit.Final < Game.Difficulty.TimeLimit.Initial - 5000) {
+				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final + 5000;
 			}
 			RefreshGame();
 		}
