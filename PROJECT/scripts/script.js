@@ -589,7 +589,7 @@
 				// Reset game and scroll to highscore
 				setTimeout(function() {
 					ResetGame();
-					window.location.replace("#Highscore");
+					ScrollIntoView("Highscore");
 				}, System.Display.Anim * 2 + 1000);
 			}
 		}
@@ -779,7 +779,7 @@
 				AnswerLog = {
 					All: "", MissesOnly: "", Sequence: 1
 				};
-				window.location.replace("#Game");
+				ScrollIntoView("Game");
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
@@ -802,7 +802,7 @@
 						[0, 0, 0],
 						[0, 0, 0]
 					];
-					window.location.replace("#Game");
+					ScrollIntoView("Game");
 				}
 			}
 			RefreshGame();
@@ -1224,7 +1224,7 @@
 			case "System_Error":
 				switch(Selector) {
 					case 2:
-						window.location.replace("#Item_SettingsUserData");
+						ScrollIntoView("Item_SettingsUserData");
 						ShowIAmHere("Item_SettingsUserData");
 						break;
 					case 3:
@@ -1239,7 +1239,7 @@
 			case "Subsystem_ConfirmGoToTutorial":
 				switch(Selector) {
 					case 2:
-						window.location.replace("#Item_HelpTutorial");
+						ScrollIntoView("Item_HelpTutorial");
 						ShowIAmHere("Item_HelpTutorial");
 						break;
 					case 3:
