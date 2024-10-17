@@ -767,8 +767,11 @@
 		function StartGame() {
 			if(Game.Status.IsRunning == false) {
 				ResetGame();
-				Game.Status.IsRunning = true; Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
-				Game.Stats.StartTime = Date.now(); Game.Stats.StartTime2 = Date.now(); Game.Stats.HP = 100;
+				Game.Status.IsRunning = true;
+				Game.Status.IsCoolingDown = true;
+				Game.Stats.StartTime = Date.now();
+				Game.Stats.StartTime2 = Date.now();
+				Game.Stats.HP = 100;
 				Game.Lottery.Question[1] = [0, 0, 1];
 				Game.Lottery.Answer = [
 					0,
@@ -792,7 +795,8 @@
 					];
 					// ShowToast("游戏暂停");
 				} else {
-					Game.Status.IsPaused = false; Game.Status.IsCoolingDown = true;
+					Game.Status.IsPaused = false;
+					Game.Status.IsCoolingDown = true;
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 					Game.Stats.StartTime2 = Date.now();
 					Game.Lottery.Question[1] = [0, 0, 1];
