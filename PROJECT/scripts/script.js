@@ -439,9 +439,6 @@
 				// Score
 				if(System.Display.Anim > 0) {
 					Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
-					if(Math.abs(Game.Stats.Score - Game0.Stats.ScoreDisplay) < 0.1) {
-						Game0.Stats.ScoreDisplay = Game.Stats.Score;
-					}
 				} else {
 					Game0.Stats.ScoreDisplay = Game.Stats.Score;
 				}
