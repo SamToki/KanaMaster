@@ -166,22 +166,22 @@
 		} else {
 			System.Version.KanaMaster = CurrentVersion;
 		}
-		RefreshSystem();
 		if(localStorage.KanaMaster_Subsystem != undefined) {
 			Subsystem = JSON.parse(localStorage.getItem("KanaMaster_Subsystem"));
 		}
-		RefreshSubsystem();
 		if(localStorage.KanaMaster_Game != undefined) {
 			Game = JSON.parse(localStorage.getItem("KanaMaster_Game"));
 		}
-		RefreshGame();
 		if(localStorage.KanaMaster_AnswerLog != undefined) {
 			AnswerLog = JSON.parse(localStorage.getItem("KanaMaster_AnswerLog"));
 		}
-		RefreshAnswerLog();
 		if(localStorage.KanaMaster_Highscore != undefined) {
 			Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 		}
+		RefreshSystem();
+		RefreshSubsystem();
+		RefreshGame();
+		RefreshAnswerLog();
 		RefreshHighscore();
 		setTimeout(HideToast, 0);
 	}
