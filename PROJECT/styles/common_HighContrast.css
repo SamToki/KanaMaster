@@ -1,0 +1,273 @@
+/* For SamToki.github.io */
+/* Released under GNU GPL v3 open source license. */
+/* (C) 2023 SAM TOKI STUDIO */
+
+/* This is a theme variant, so only colors along with few things are configured. */
+
+/* General */
+	/* Basics */
+		/* Texts */
+		a {
+			color: #00C0FF; text-decoration: underline;
+		}
+
+		/* Images */
+		img {
+			border: 1px solid #FFFFFF;
+		}
+
+		/* Shapes */
+		.Shape {
+			fill: #000000;
+			stroke: #FFFFFF;
+		}
+
+		/* Group frameworks */
+		fieldset {
+			border: 1px solid #FFFFFF;
+		}
+		legend {
+			color: #FFFFFF;
+		}
+		label {
+			color: #FFFFFF;
+		}
+
+		/* Progress indicators */
+		.Progbar {
+			border: 1px solid #404040;
+			background-color: #404040;
+		}
+		.Progbar.Shaped .Shape {
+			fill: #404040;
+		}
+		.Progbar.Shaped .ProgbarText {
+			color: #FFFFFF;
+		}
+		.ProgbarFg {
+			background-color: #00FF00;
+		}
+		.ProgbarFg.Shaped .Shape {
+			fill: #00A000;
+		}
+		.ProgringBg {
+			stroke: #404040;
+		}
+		.ProgringFg {
+			stroke: #00FF00;
+		}
+		.NeedleFg {
+			background-color: #FFFFFF;
+		}
+
+		/* Indicator lights */
+		.IndicatorLight.Off {
+			background-color: #404040;
+		}
+		.IndicatorLight.Red {
+			background-color: #FF4040;
+		}
+		.IndicatorLight.Orange {
+			background-color: #FF8000;
+		}
+		.IndicatorLight.Green {
+			background-color: #00FF00;
+		}
+		.IndicatorLight.Blue {
+			background-color: #00C0FF;
+		}
+
+		/* Interactive ctrls */
+		.Linkbtn, .Cmdbtn, .Dropbtn, .Combobox {
+			border: 1px solid #FFFFFF;
+			background-color: #000000;
+			color: #FFFFFF;
+		}
+		.Dropbtn {
+			background-color: transparent;
+		}
+		.DropctrlGroup {
+			border: 1px solid #FFFFFF;
+			background-color: #000000;
+		}
+		.Textbox {
+			border: 1px solid #FFFFFF;
+			background-color: #101000;
+			color: #FFFFFF;
+		}
+
+		/* Floating ctrls */
+		.ScreenFilter {
+			background-color: #000000;
+		}
+		.ScreenFilter.AsWindow {
+			background-color: #202020;
+		}
+		.Window {
+			border: 1px solid #FFFFFF;
+			background-color: #202020; box-shadow: none;
+			color: #FFFFFF;
+		}
+			/* Hotkey indicators */
+			.HotkeyIndicator {
+				background-color: #000000; box-shadow: none;
+				color: #FFFF00;
+			}
+
+			/* Toast */
+			#Toast {
+				background-color: #402050;
+				color: #FFFFFF;
+			}
+
+			/* Dialog */
+			#CtrlGroup_DialogPrompt .DialogIcon {
+				fill: #FFFFFF;
+			}
+
+			/* Watermarks */
+			.Watermark {
+				color: #FFFFFF80; text-shadow: 0 0 5px #000000;
+			}
+
+	/* Variants */
+		/* Background */
+		.Box {
+			background-color: #000000;
+		}
+		.Active {
+			background-color: #006000;
+		}
+		.Cmdbtn.Shaped.Active .Shape {
+			fill: #006000;
+		}
+		.IAmHere {
+			background-color: #808080;
+		}
+		.Shadow {
+			box-shadow: 0 0 0 5px #00000080;
+		}
+		.Glow {
+			box-shadow: 0 0 10px 5px #00C0FF;
+		}
+
+		/* Foreground */
+		.EmphasizedText {
+			color: #FF8080;
+		}
+
+	/* Interactions */
+		/* Hover */
+		a:hover, label:hover, .Linkbtn:hover, .Cmdbtn:hover, .Dropbtn:hover /* .Combobox:hover, .Textbox:hover */ {
+			background-color: #00C0FF;
+			color: #000000;
+		}
+		.Active:hover {
+			background-color: #00D800;
+		}
+		.Cmdbtn.Shaped:hover .Shape {
+			fill: #00C0FF;
+		}
+		.Cmdbtn.Shaped.Active:hover .Shape {
+			fill: #00D800;
+		}
+		.Cmdbtn.ShownAsLabel:hover {
+			color: #00C0FF;
+		}
+		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
+			background-color: #101000;
+		}
+
+		/* Click */
+		a:active, label:active, .Linkbtn:active, .Cmdbtn:active, .Dropbtn:active,
+		.Combobox:active, .Textbox:active, .Textbox.ShownAsLabel:active,
+		.Active:active {
+			background-color: #00FFFF;
+			color: #000000;
+		}
+		.Cmdbtn.Shaped:active .Shape, .Cmdbtn.Shaped.Active:active .Shape {
+			fill: #00FFFF;
+		}
+		.Cmdbtn.ShownAsLabel:active {
+			color: #00FFFF;
+		}
+
+		/* Focus */
+		*:focus-visible {
+			box-shadow: 0 0 0 3px #00FFFF !important;
+		}
+		.Cmdbtn.Shaped:focus-visible .Shape {
+			stroke: #00FFFF !important;
+		}
+		.Dropbtn:focus-visible {
+			box-shadow: 0 0 0 3px inset #00FFFF !important;
+		}
+
+		/* Disabled */
+		*:disabled {
+			border: 1px solid #404040 !important;
+			color: #404040 !important;
+		}
+		.Cmdbtn.Shaped:disabled .Shape {
+			fill: none !important;
+		}
+		.Dropbtn:disabled {
+			border: none !important;
+		}
+		*:disabled *, *:active:disabled, *:active:disabled * {
+			background-color: transparent !important;
+			color: #404040 !important;
+		}
+
+		/* Text selection */
+		::selection {
+			background-color: #0040FF;
+			color: #FFFFFF;
+		}
+
+/* Area specific */
+	/* Header */
+	#Topbar {
+		background-color: #402050;
+		color: #FFFFFF;
+	}
+	#Ctrl_Title a:hover {
+		background-color: #0080C0;
+	}
+	#Ctrl_Title a:active {
+		background-color: #00C0C0;
+	}
+	#Topbar a:focus-visible {
+		box-shadow: 0 0 0 3px #00FFFF !important;
+	}
+	.NavLinkbtn {
+		color: #FFFFFF;
+	}
+	#Ctrl_Nav .NavLinkbtn:hover {
+		background-color: #00C0FF;
+		color: #000000;
+	}
+	#Ctrl_Nav .NavLinkbtn:active {
+		background-color: #00FFFF;
+		color: #000000;
+	}
+	#Ctrl_NavUnderline {
+		background-color: #FFFFFF;
+	}
+
+	/* Main */
+	#Main {
+		background-color: #181818;
+		color: #FFFFFF;
+	}
+
+	/* Footer */
+	footer {
+		background-color: #000000;
+		color: #FFFFFF;
+	}
+
+/* Dev */
+.DebugOutline {
+	outline: none !important; /* Disabled in high contrast theme to keep accessibility. */
+}
