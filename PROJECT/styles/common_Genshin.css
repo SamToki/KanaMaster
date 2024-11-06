@@ -251,12 +251,15 @@
 	}
 
 /* Responsive web design */
-@media (max-width: 900px) {
+@media (max-width: 880px) {
 	/* Area specific */
 		/* Header */
 		#CtrlGroup_Nav {
 			border: 1px solid #FFFFFF40;
 			background-color: #485267; box-shadow: 0 0 4px 2px #00000040;
+		}
+		#CtrlGroup_Nav .Linkbtn:hover {
+			box-shadow: 0 0 0 3px inset #DEB76C;
 		}
 }
 

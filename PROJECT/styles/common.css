@@ -271,7 +271,7 @@
 		}
 		.DropctrlGroup {
 			position: absolute; top: unset; left: unset; z-index: 2;
-			width: 120px; border: 1px solid #00000040; border-radius: 5px;
+			width: 122px; border: 1px solid #00000040; border-radius: 5px;
 			background-color: #FFFFFF; box-shadow: 0 0 4px 2px #00000040;
 			display: flex; flex-wrap: wrap; overflow: hidden;
 		}
@@ -684,7 +684,7 @@
 		width: 120px;
 	}
 	#Ctrl_NavUnderline {
-		position: absolute; bottom: 0; left: 4px;
+		position: absolute; top: calc(100% - 2px); left: 4px;
 		width: 0; height: 2px; border-radius: 1px;
 		background-color: #000000;
 	}
@@ -742,7 +742,7 @@
 	}
 
 /* Responsive web design */
-@media (max-width: 900px) {
+@media (max-width: 880px) {
 	/* General */
 		/* Basics */
 			/* Group frameworks */
@@ -771,8 +771,11 @@
 		#Topbar {
 			padding: 10px 15px;
 		}
+		#Ctrl_Title {
+			left: calc(50% - 20px);
+		}
 		#Ctrl_Nav {
-			left: 50px !important;
+			left: 0 !important;
 			width: 40px !important;
 		}
 		#Cmdbtn_Nav {
@@ -792,10 +795,6 @@
 			overflow: hidden !important;
 			pointer-events: none !important;
 		}
-		#Ctrl_NavUnderline { /* .Faded */
-			opacity: 0 !important;
-			pointer-events: none !important;
-		}
 
 		/* Main */
 		section {
@@ -807,7 +806,7 @@
 			padding: 15px;
 		}
 }
-/* @media (min-width: 900px) { // Optimization for long fieldsets far exceeding 600px height.
+/* @media (min-width: 830px) { // Optimization for long fieldsets far exceeding 600px height.
 	// These should be configured in style.css.
 } */
 /* @media (max-aspect-ratio: 0.999) {

@@ -89,7 +89,7 @@
 
 		// Layout
 		function IsMobileLayout() {
-			return window.innerWidth <= 900;
+			return window.innerWidth <= 880;
 		}
 		function IsFullscreen() {
 			return document.fullscreenElement != null;
@@ -611,8 +611,17 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 		}
 		for(let Looper = 0; Looper < Document.NavCtrls.length; Looper++) {
 			if(Document.NavCtrls[Looper].getAttribute("id") == "Nav_" + Document.ActiveSectionID) {
-				ChangeLeft("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetLeft + 4 + "px");
-				ChangeWidth("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetWidth - 8 + "px");
+				if(IsMobileLayout() == false) {
+					ChangeTop("Ctrl_NavUnderline", "calc(100% - 2px)");
+					ChangeLeft("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetLeft + 4 + "px");
+					ChangeWidth("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetWidth - 8 + "px");
+					ChangeHeight("Ctrl_NavUnderline", "2px");
+				} else {
+					ChangeTop("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetTop + 4 + "px");
+					ChangeLeft("Ctrl_NavUnderline", "0");
+					ChangeWidth("Ctrl_NavUnderline", "2px");
+					ChangeHeight("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetHeight - 8 + "px");
+				}
 			}
 		}
 	}
