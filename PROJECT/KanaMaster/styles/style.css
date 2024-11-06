@@ -4,11 +4,9 @@
 
 /* Area specific */
 	/* Header */
-	#Ctrl_Title {
-		width: 172px;
-	}
 	#Ctrl_Nav {
-		width: calc(100% - 182px);
+		left: calc(50% - 300px);
+		width: 600px;
 	}
 
 	/* Main */
@@ -124,7 +122,7 @@
 			flex-direction: column; align-items: center;
 		}
 		#ItemGroup_Highscore .Item {
-			width: unset; height: 50px; margin: 0;
+			width: unset; height: 40px; margin: 5px 0;
 			display: flex; justify-content: space-between;
 		}
 		#ItemGroup_Highscore .Item span {
@@ -151,21 +149,11 @@
 		}
 
 /* Responsive web design */
-@media (max-width: 1070px) {
+@media (max-width: 900px) {
 	/* Area specific */
 		/* Header */
-		#Ctrl_Title {
-			width: 40px;
-		}
-		#Ctrl_Nav {
-			width: calc(100% - 50px);
-		}
-}
-@media (max-width: 830px) {
-	/* Area specific */
-		/* Header */
-		#Ctrl_Nav .Nav {
-			width: calc(100% / 6);
+		#CtrlGroup_Nav {
+			height: 200px;
 		}
 
 		/* Main */

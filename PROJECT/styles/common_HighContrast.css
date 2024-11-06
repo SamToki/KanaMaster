@@ -11,20 +11,15 @@
 			color: #00C0FF; text-decoration: underline;
 		}
 
-		/* Images */
-		img {
-			border: 1px solid #FFFFFF;
-		}
-
 		/* Shapes */
 		.Shape {
-			fill: #000000;
+			fill: #202020;
 			stroke: #FFFFFF;
 		}
 
 		/* Group frameworks */
-		fieldset {
-			border: 1px solid #FFFFFF;
+		.Item {
+			background-color: #101010;
 		}
 		legend {
 			color: #FFFFFF;
@@ -35,7 +30,6 @@
 
 		/* Progress indicators */
 		.Progbar {
-			border: 1px solid #404040;
 			background-color: #404040;
 		}
 		.Progbar.Shaped .Shape {
@@ -80,19 +74,16 @@
 		/* Interactive ctrls */
 		.Linkbtn, .Cmdbtn, .Dropbtn, .Combobox {
 			border: 1px solid #FFFFFF;
-			background-color: #000000;
+			background-color: #202020;
 			color: #FFFFFF;
-		}
-		.Dropbtn {
-			background-color: transparent;
 		}
 		.DropctrlGroup {
 			border: 1px solid #FFFFFF;
-			background-color: #000000;
+			background-color: #202020; box-shadow: none;
 		}
 		.Textbox {
 			border: 1px solid #FFFFFF;
-			background-color: #101000;
+			background-color: #202008;
 			color: #FFFFFF;
 		}
 
@@ -101,16 +92,16 @@
 			background-color: #000000;
 		}
 		.ScreenFilter.AsWindow {
-			background-color: #202020;
+			background-color: #101010;
 		}
 		.Window {
 			border: 1px solid #FFFFFF;
-			background-color: #202020; box-shadow: none;
+			background-color: #101010; box-shadow: none;
 			color: #FFFFFF;
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
-				background-color: #000000; box-shadow: none;
+				background-color: #202020; box-shadow: none;
 				color: #FFFF00;
 			}
 
@@ -133,7 +124,7 @@
 	/* Variants */
 		/* Background */
 		.Box {
-			background-color: #000000;
+			background-color: #101010;
 		}
 		.Active {
 			background-color: #006000;
@@ -175,7 +166,7 @@
 			color: #00C0FF;
 		}
 		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
-			background-color: #101000;
+			background-color: #202008;
 		}
 
 		/* Click */
@@ -203,22 +194,6 @@
 			box-shadow: 0 0 0 3px inset #00FFFF !important;
 		}
 
-		/* Disabled */
-		*:disabled {
-			border: 1px solid #404040 !important;
-			color: #404040 !important;
-		}
-		.Cmdbtn.Shaped:disabled .Shape {
-			fill: none !important;
-		}
-		.Dropbtn:disabled {
-			border: none !important;
-		}
-		*:disabled *, *:active:disabled, *:active:disabled * {
-			background-color: transparent !important;
-			color: #404040 !important;
-		}
-
 		/* Text selection */
 		::selection {
 			background-color: #0040FF;
@@ -228,28 +203,8 @@
 /* Area specific */
 	/* Header */
 	#Topbar {
-		background-color: #402050;
+		background-color: #202020; box-shadow: none;
 		color: #FFFFFF;
-	}
-	#Ctrl_Title a:hover {
-		background-color: #0080C0;
-	}
-	#Ctrl_Title a:active {
-		background-color: #00C0C0;
-	}
-	#Topbar a:focus-visible {
-		box-shadow: 0 0 0 3px #00FFFF !important;
-	}
-	.NavLinkbtn {
-		color: #FFFFFF;
-	}
-	#Ctrl_Nav .NavLinkbtn:hover {
-		background-color: #00C0FF;
-		color: #000000;
-	}
-	#Ctrl_Nav .NavLinkbtn:active {
-		background-color: #00FFFF;
-		color: #000000;
 	}
 	#Ctrl_NavUnderline {
 		background-color: #FFFFFF;
@@ -257,7 +212,7 @@
 
 	/* Main */
 	#Main {
-		background-color: #181818;
+		background-color: #000000;
 		color: #FFFFFF;
 	}
 
@@ -266,6 +221,16 @@
 		background-color: #000000;
 		color: #FFFFFF;
 	}
+
+/* Responsive web design */
+@media (max-width: 900px) {
+	/* Area specific */
+		/* Header */
+		#CtrlGroup_Nav {
+			border: 1px solid #FFFFFF;
+			background-color: #202020; box-shadow: none;
+		}
+}
 
 /* Dev */
 .DebugOutline {

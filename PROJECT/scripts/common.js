@@ -31,7 +31,7 @@
 		var System = {
 			Display: {
 				Theme: "Auto", Cursor: "Default",
-				BlurBgImage: false, ShowTopbar: true,
+				BlurBgImage: true,
 				HotkeyIndicators: "ShowOnAnyKeyPress",
 				Anim: 250
 			},
@@ -89,7 +89,7 @@
 
 		// Layout
 		function IsMobileLayout() {
-			return window.innerWidth <= 830;
+			return window.innerWidth <= 900;
 		}
 		function IsFullscreen() {
 			return document.fullscreenElement != null;
@@ -311,6 +311,7 @@
 			RemoveClass(ID, "Hidden");
 			RemoveClass(ID, "HiddenHorizontally");
 			RemoveClass(ID, "HiddenToCorner");
+			RemoveClass(ID, "HiddenOnMobileView");
 			RemoveClass(ID, "Faded");
 			ChangeInert(ID, false);
 			Interaction.DoNotHide[Interaction.DoNotHide.length] = ID;
@@ -322,6 +323,7 @@
 			RemoveClass(ID, "Hidden");
 			RemoveClass(ID, "HiddenHorizontally");
 			RemoveClass(ID, "HiddenToCorner");
+			RemoveClass(ID, "HiddenOnMobileView");
 			RemoveClass(ID, "Faded");
 			ChangeInert(ID, false);
 		}
@@ -331,6 +333,7 @@
 				Elements[Looper].classList.remove("Hidden");
 				Elements[Looper].classList.remove("HiddenHorizontally");
 				Elements[Looper].classList.remove("HiddenToCorner");
+				Elements[Looper].classList.remove("HiddenOnMobileView");
 				Elements[Looper].classList.remove("Faded");
 				Elements[Looper].inert = false;
 			}
@@ -500,10 +503,6 @@
 			System.Display.BlurBgImage = IsChecked("Checkbox_SettingsBlurBgImage");
 			RefreshSystem();
 		}
-		function SetShowTopbar() {
-			System.Display.ShowTopbar = IsChecked("Checkbox_SettingsShowTopbar");
-			RefreshSystem();
-		}
 		function SetHotkeyIndicators() {
 			System.Display.HotkeyIndicators = ReadValue("Combobox_SettingsHotkeyIndicators");
 			RefreshSystem();
@@ -620,6 +619,9 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 
 	// Hide DropctrlGroups
 	function HideDropctrlGroups() {
+		if(Interaction.DoNotHide.includes("CtrlGroup_Nav") == false) {
+			AddClass("CtrlGroup_Nav", "HiddenOnMobileView");
+		}
 		let Elements = document.getElementsByClassName("DropctrlGroup");
 		for(let Looper = 0; Looper < Elements.length; Looper++) {
 			if(Interaction.DoNotHide.includes(Elements[Looper].id) == false) {

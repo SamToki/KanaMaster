@@ -65,7 +65,7 @@
 
 		/* Images */
 		img {
-			border: 1px solid #00000040; border-radius: 5px;
+			border-radius: 5px;
 			object-fit: cover;
 		}
 
@@ -87,8 +87,8 @@
 		/* Shapes */
 		.Shape {
 			width: 100%; height: 100%;
-			fill: #FFFFFFC0;
-			stroke: #00000080; stroke-width: 1px; stroke-linecap: round; stroke-linejoin: round;
+			fill: #FFFFFF;
+			stroke: #00000040; stroke-width: 1px; stroke-linecap: round; stroke-linejoin: round;
 			overflow: visible;
 		}
 
@@ -101,10 +101,11 @@
 			display: flex; flex-wrap: wrap; justify-content: center;
 		}
 		.Item {
-			width: 390px; border-radius: 5px; padding: 5px; margin: 0 15px 20px 15px;
+			width: 410px; border-radius: 5px; padding: 15px; margin: 0 15px 30px 15px;
+			background-color: #F0F0F0E0;
 		}
 		.Prolog {
-			width: unset; max-width: 770px;
+			width: unset; max-width: 850px;
 			text-align: center;
 		}
 		.CtrlGroup {
@@ -118,8 +119,7 @@
 			height: 40px;
 		}
 		fieldset {
-			width: 100%; border: 1px solid #00000040; border-radius: 5px; padding: 10px 14px;
-			overflow: hidden;
+			width: 100%; border: none; padding: 15px 0 0 0;
 		}
 		legend {
 			color: #000000; font-size: 1.50em; font-weight: bold;
@@ -128,7 +128,7 @@
 			width: 100%;
 		}
 		fieldset > .CtrlGroup > .Ctrl {
-			width: 100%; max-width: 350px; margin: 0 0 10px 0;
+			width: 100%; max-width: 100%; margin: 0 0 10px 0;
 		}
 		fieldset > .CtrlGroup > .Ctrl:has(textarea) {
 			height: 90px;
@@ -168,7 +168,7 @@
 		/* Progress indicators */
 		.Progbar {
 			position: relative;
-			width: 100%; height: 100%; border: 1px solid #00000040; border-radius: 5px;
+			width: 100%; height: 100%; border-radius: 5px;
 			background-color: #00000020;
 		}
 		.Progbar.Shaped {
@@ -248,17 +248,17 @@
 
 		/* Interactive ctrls */
 		.Linkbtn, .Cmdbtn, .Dropbtn, .Combobox {
-			width: 100%; height: 100%; border: 1px solid #00000080; border-radius: 5px; padding: 5px 9px;
-			background-color: #FFFFFFC0;
+			width: 100%; height: 100%; border: 1px solid #00000040; border-radius: 5px; padding: 5px 9px;
+			background-color: #FFFFFF;
 			color: #000000; text-wrap: nowrap;
 			display: flex; justify-content: center; align-items: center; overflow: hidden;
 		}
 		.Linkbtn {
 			text-align: center;
 		}
-		.Cmdbtn.Shaped, .Cmdbtn.ShownAsLabel, .Dropbtn, .Textbox.ShownAsLabel {
+		.Cmdbtn.Shaped, .Cmdbtn.ShownAsLabel, .Textbox.ShownAsLabel {
 			border: none !important;
-			background-color: transparent;
+			background-color: transparent !important;
 		}
 		.Cmdbtn.Shaped, .Cmdbtn.ShownAsLabel {
 			padding: 0;
@@ -271,12 +271,18 @@
 		}
 		.DropctrlGroup {
 			position: absolute; top: unset; left: unset; z-index: 2;
-			width: 120px; border: 1px solid #00000080; border-radius: 5px;
-			background-color: #FFFFFFE0; backdrop-filter: blur(5px);
+			width: 120px; border: 1px solid #00000040; border-radius: 5px;
+			background-color: #FFFFFF; box-shadow: 0 0 4px 2px #00000040;
 			display: flex; flex-wrap: wrap; overflow: hidden;
 		}
 		.Dropctrl {
 			width: 100%; height: 40px;
+		}
+		.Dropbtn {
+			border: none !important;
+		}
+		.Dropbtn:not(:hover):not(:active) {
+			background-color: transparent !important;
 		}
 		.Combobox {
 			padding: 5px;
@@ -285,8 +291,8 @@
 			width: 160px;
 		}
 		.Textbox {
-			width: 100%; height: 100%; border: 1px solid #00000080; border-radius: 5px; padding: 5px;
-			background-color: #FFFFE0C0;
+			width: 100%; height: 100%; border: 1px solid #00000040; border-radius: 5px; padding: 5px;
+			background-color: #FFFFE8;
 			color: #000000;
 		}
 		fieldset .Textbox {
@@ -307,11 +313,11 @@
 			background-color: #00000080;
 		}
 		.ScreenFilter.AsWindow {
-			background-color: #E0E0E0E0; backdrop-filter: blur(5px);
+			background-color: #F0F0F0E0; backdrop-filter: blur(5px);
 		}
 		.Window {
 			border-radius: 5px;
-			background-color: #E0E0E0E0; backdrop-filter: blur(5px); box-shadow: 0 0 10px 5px #00000040;
+			background-color: #F0F0F0E0; backdrop-filter: blur(5px); box-shadow: 0 0 10px 5px #00000040;
 			color: #000000;
 			overflow: hidden;
 		}
@@ -338,7 +344,7 @@
 			#Toast {
 				position: fixed; top: 50vh; left: 0; z-index: 102;
 				width: 100%; height: 60px; padding: 5px 10px;
-				background-color: #E8B8FFE0; backdrop-filter: blur(5px);
+				background-color: #F0D0FFE0; backdrop-filter: blur(5px);
 				color: #000000; font-size: 2.00em; text-align: center; text-wrap: nowrap;
 				display: flex; justify-content: center; align-items: center; overflow: hidden;
 				pointer-events: none;
@@ -450,7 +456,7 @@
 		/* Background */
 		.Box {
 			border-radius: 5px;
-			background-color: #FFFFFFC0;
+			background-color: #F0F0F0E0;
 			overflow: hidden;
 		}
 		.Active {
@@ -460,7 +466,7 @@
 			fill: #C0FFC0C0;
 		}
 		.IAmHere {
-			background-color: #00000040;
+			background-color: #D090F0E0;
 		}
 		.Transparent {
 			opacity: 0.2;
@@ -491,7 +497,7 @@
 			box-shadow: 0 0 10px 5px #00000040;
 		}
 		.Glow {
-			box-shadow: 0 0 10px 5px #E8B8FF;
+			box-shadow: 0 0 10px 5px #F0D0FF;
 			animation: Anim_Glow 1500ms infinite ease-in-out;
 		}
 			@keyframes Anim_Glow {
@@ -571,16 +577,13 @@
 	/* Interactions */
 		/* Hover */
 		a:hover, label:hover, .Linkbtn:hover, .Cmdbtn:hover, .Dropbtn:hover /* .Combobox:hover, .Textbox:hover */ {
-			background-color: #E8B8FF;
+			background-color: #F0D0FF;
 		}
 		.Active:hover {
 			background-color: #A8E8A8;
 		}
-		.Cmdbtn.Shaped:hover, .Cmdbtn.ShownAsLabel:hover {
-			background-color: transparent;
-		}
 		.Cmdbtn.Shaped:hover .Shape {
-			fill: #E8B8FF;
+			fill: #F0D0FF;
 		}
 		.Cmdbtn.Shaped.Active:hover .Shape {
 			fill: #A8E8A8;
@@ -589,7 +592,7 @@
 			color: #8040A0;
 		}
 		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
-			background-color: #FFFFE0C0;
+			background-color: #FFFFE8;
 		}
 
 		/* Click */
@@ -598,9 +601,6 @@
 		.Active:active {
 			background-color: #8040A0;
 			color: #FFFFFF;
-		}
-		.Cmdbtn.Shaped:active, .Cmdbtn.ShownAsLabel:active {
-			background-color: transparent;
 		}
 		.Cmdbtn.Shaped:active .Shape, .Cmdbtn.Shaped.Active:active .Shape {
 			fill: #8040A0;
@@ -627,16 +627,12 @@
 		}
 
 		/* Disabled */
-		*:disabled, *:disabled *, *:active:disabled, *:active:disabled * {
-			background-color: transparent !important;
-			color: #00000080 !important;
-			cursor: not-allowed !important;
+		*:disabled {
+			opacity: 0.4;
+			pointer-events: none;
 		}
-		.Cmdbtn.Shaped:disabled .Shape {
-			fill: none !important;
-		}
-		*:disabled img { /* .Transparent.Less */
-			opacity: 0.6;
+		*:disabled * {
+			opacity: unset;
 		}
 
 		/* Text selection */
@@ -649,71 +645,62 @@
 	/* Header */
 	#Topbar {
 		position: fixed; top: 0; left: 0; z-index: 101;
-		width: 100%; height: 60px;
-		background-color: #8040A0E0; backdrop-filter: blur(5px);
-		color: #FFFFFF;
-		overflow: hidden;
-	}
-	#Topbar .CtrlGroup {
-		width: 100%; height: 100%;
+		width: 100%; height: 60px; padding: 10px 30px;
+		background-color: #FFFFFFE0; backdrop-filter: blur(5px); box-shadow: 0 0 4px 2px #00000040;
+		color: #000000;
 	}
 	#Topbar > .CtrlGroup {
-		padding: 10px 30px;
+		position: relative;
+		width: 100%; height: 100%;
 	}
-	/* #Ctrl_Title {
-		width: 280px;
-	} */
+	#Ctrl_Title {
+		position: absolute; top: 0; left: 0;
+		width: 40px;
+	}
 	#Ctrl_Title a {
 		width: 100%; height: 100%; border-radius: 5px;
 		display: flex; overflow: hidden;
 	}
-	#Topbar a:hover {
-		background-color: #FFFFFF20;
+	#Ctrl_Nav {
+		position: absolute; top: 0; left: unset;
 	}
-	#Ctrl_Title a:active {
-		background-color: #FFFFFF80;
+	#Topbar .Cmdbtn, #Topbar .Linkbtn {
+		border: none;
 	}
-	#Topbar a:focus-visible {
-		box-shadow: 0 0 0 3px #D090F0 !important;
+	#Topbar .Cmdbtn:not(:hover):not(:active), #Topbar .Linkbtn:not(:hover):not(:active) {
+		background-color: transparent;
 	}
-	#Ctrl_Title img {
-		height: 100%; border: none;
+	#Cmdbtn_Nav { /* .HiddenHorizontally */
+		width: 0; border: none; padding: 0; margin: 0;
+		opacity: 0;
+		overflow: hidden;
+		pointer-events: none;
 	}
-	/* #Ctrl_Nav {
-		width: calc(100% - 290px);
-	} */
-	#Ctrl_Nav .CtrlGroup {
+	#CtrlGroup_Nav {
+		position: absolute; top: 0; left: 0;
 		justify-content: start;
 	}
-	#Ctrl_Nav .Nav {
+	.Nav {
 		width: 120px;
-	}
-	#Nav_BackToMainPage {
-		position: absolute; top: unset; right: 0;
-	}
-	.NavLinkbtn {
-		width: 100%; height: 100%; border-radius: 5px; padding: 5px 10px;
-		color: #FFFFFF; text-wrap: nowrap;
-		display: flex; justify-content: center; align-items: center; overflow: hidden;
-	}
-	#Ctrl_Nav .NavLinkbtn:active {
-		background-color: #FFFFFF;
-		color: #8040A0;
 	}
 	#Ctrl_NavUnderline {
 		position: absolute; bottom: 0; left: 4px;
 		width: 0; height: 2px; border-radius: 1px;
-		background-color: #FFFFFF;
+		background-color: #000000;
+	}
+	#Ctrl_BackToMainPage {
+		position: absolute; top: 0; right: 0;
+		width: 40px;
 	}
 
 	/* Main */
 	#Main {
-		padding: 60px 0 15px 0;
-		background-color: #E0E0E0D0;
+		padding: 60px 0 0 0;
+		background-color: #E0E0E0E0;
 		color: #000000;
 	}
 	#Html:has(#Topbar.Hidden) #Main {
-		padding: 0 0 15px 0;
+		padding: 0;
 	}
 	section {
 		padding: 0 30px;
@@ -749,31 +736,21 @@
 	/* Footer */
 	footer {
 		padding: 15px 30px;
-		background-color: #000000E0;
-		color: #FFFFFF80; text-align: center;
+		background-color: #E0E0E0E0;
+		color: #00000080; text-align: center;
 		display: flex; justify-content: center; align-items: center;
 	}
 
 /* Responsive web design */
-@media (max-width: 1070px) {
-	/* Area specific */
-		/* Header */
-		/* #Ctrl_Title {
-			width: 40px;
-		} */
-		/* #Ctrl_Nav {
-			width: calc(100% - 50px);
-		} */
-}
-@media (max-width: 830px) {
+@media (max-width: 900px) {
 	/* General */
 		/* Basics */
 			/* Group frameworks */
 			.ItemGroup {
-				margin: 0 -10px;
+				margin: 0 -7.5px;
 			}
 			.Item {
-				margin: 0 10px 10px 10px;
+				margin: 0 7.5px 15px 7.5px;
 			}
 			.ScrollableList {
 				height: 240px;
@@ -791,13 +768,32 @@
 
 	/* Area specific */
 		/* Header */
-		#Topbar > .CtrlGroup {
-			padding: 10px;
+		#Topbar {
+			padding: 10px 15px;
 		}
-		#Ctrl_Nav .LabelAfterIcon { /* .HiddenHorizontally */
-			width: 0 !important; border: none !important; padding: 0 !important; margin: 0 !important;
+		#Ctrl_Nav {
+			left: 50px !important;
+			width: 40px !important;
+		}
+		#Cmdbtn_Nav {
+			width: 40px; height: 40px; padding: 5px;
+			opacity: unset;
+			pointer-events: unset;
+		}
+		#CtrlGroup_Nav {
+			z-index: 2;
+			width: 120px; border: 1px solid #00000040; border-radius: 5px;
+			background-color: #FFFFFF; box-shadow: 0 0 4px 2px #00000040;
+			overflow: hidden;
+		}
+		.HiddenOnMobileView { /* .HiddenToCorner */
+			width: 0 !important; height: 0 !important; border: none !important; padding: 0 !important; margin: 0 !important;
 			opacity: 0 !important;
 			overflow: hidden !important;
+			pointer-events: none !important;
+		}
+		#Ctrl_NavUnderline { /* .Faded */
+			opacity: 0 !important;
 			pointer-events: none !important;
 		}
 
@@ -811,7 +807,7 @@
 			padding: 15px;
 		}
 }
-/* @media (min-width: 770px) { // Optimization for long fieldsets with more than 11 rows (exceeding 600px height).
+/* @media (min-width: 900px) { // Optimization for long fieldsets far exceeding 600px height.
 	// These should be configured in style.css.
 } */
 /* @media (max-aspect-ratio: 0.999) {

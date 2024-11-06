@@ -11,20 +11,15 @@
 			color: #DEB76C;
 		}
 
-		/* Images */
-		img {
-			border: 1px solid #FFFFFF40;
-		}
-
 		/* Shapes */
 		.Shape {
 			fill: #EEE4D9;
-			stroke: #FFFFFF80;
+			stroke: #FFFFFF40;
 		}
 
 		/* Group frameworks */
-		fieldset {
-			border: 1px solid #FFFFFF40;
+		.Item {
+			background-color: #485267E0;
 		}
 		legend {
 			color: #EEE4D9;
@@ -35,7 +30,6 @@
 
 		/* Progress indicators */
 		.Progbar {
-			border: 1px solid #FFFFFF40;
 			background-color: #FFFFFF20;
 		}
 		.Progbar.Shaped .Shape {
@@ -79,7 +73,7 @@
 
 		/* Interactive ctrls */
 		.Linkbtn, .Cmdbtn, .Dropbtn, .Combobox {
-			border: 1px solid #FFFFFF80; border-radius: 20px; padding: 5px 10px;
+			border: 1px solid #FFFFFF40; border-radius: 20px; padding: 5px 10px;
 			background-color: #EEE4D9;
 			color: #485267;
 		}
@@ -87,15 +81,12 @@
 			border-radius: 5px;
 			color: #EEE4D9;
 		}
-		.Dropbtn {
-			background-color: transparent;
-		}
 		.DropctrlGroup {
-			border: 1px solid #FFFFFF80; border-radius: 20px;
-			background-color: #EEE4D9;
+			border: 1px solid #FFFFFF40; border-radius: 20px;
+			background-color: #EEE4D9; box-shadow: 0 0 4px 2px #00000040;
 		}
 		.Textbox {
-			border: 1px solid #FFFFFF80; border-radius: 20px; padding: 5px 10px;
+			border: 1px solid #FFFFFF40; border-radius: 20px; padding: 5px 10px;
 			background-color: #F5F5F5;
 			color: #323232;
 		}
@@ -140,7 +131,7 @@
 	/* Variants */
 		/* Background */
 		.Box {
-			background-color: #485267C0;
+			background-color: #485267E0;
 		}
 		.Active {
 			background-color: #C8EC86;
@@ -150,7 +141,7 @@
 			fill: #C8EC86;
 		}
 		.IAmHere {
-			background-color: #FFFFFF40;
+			background-color: #DEB76CE0;
 		}
 		.Shadow {
 			box-shadow: 0 0 10px 5px #00000040;
@@ -225,19 +216,6 @@
 			box-shadow: 0 0 0 3px inset #DEB76C !important;
 		}
 
-		/* Disabled */
-		*:disabled, *:disabled *, *:active:disabled, *:active:disabled * {
-			background-color: transparent !important; box-shadow: none !important;
-			color: #FFFFFF80 !important;
-		}
-		.Cmdbtn.Shaped:disabled .Shape {
-			fill: none !important;
-			stroke: #FFFFFF80 !important; stroke-width: 1px !important;
-		}
-		.Dropbtn:disabled {
-			color: #48526780 !important;
-		}
-
 		/* Text selection */
 		::selection {
 			background-color: #FDD662;
@@ -247,27 +225,13 @@
 /* Area specific */
 	/* Header */
 	#Topbar {
-		background-color: #485267E0;
+		background-color: #485267E0; box-shadow: 0 0 4px 2px #00000020;
 		color: #EEE4D9;
 	}
-	#Ctrl_Title a:hover {
-		background-color: #EEE4D940;
+	#Topbar .Cmdbtn, #Topbar .Linkbtn {
+		border-radius: 5px;
 	}
-	#Ctrl_Title a:active {
-		background-color: #D0C6BD;
-	}
-	#Topbar a:focus-visible {
-		box-shadow: 0 0 0 3px #DEB76C !important;
-	}
-	.NavLinkbtn {
-		color: #EEE4D9;
-	}
-	#Ctrl_Nav .NavLinkbtn:hover {
-		background-color: #EEE4D9;
-		color: #485267;
-	}
-	#Ctrl_Nav .NavLinkbtn:active {
-		background-color: #D0C6BD;
+	#Topbar .Cmdbtn:not(:hover):not(:active), #Topbar .Linkbtn:not(:hover):not(:active) {
 		color: #EEE4D9;
 	}
 	#Ctrl_NavUnderline {
@@ -276,15 +240,25 @@
 
 	/* Main */
 	#Main {
-		background-color: #282D38D0;
+		background-color: #282D38E0;
 		color: #EEE4D9;
 	}
 
 	/* Footer */
 	footer {
-		background-color: #000000E0;
+		background-color: #282D38E0;
 		color: #FFFFFF80;
 	}
+
+/* Responsive web design */
+@media (max-width: 900px) {
+	/* Area specific */
+		/* Header */
+		#CtrlGroup_Nav {
+			border: 1px solid #FFFFFF40;
+			background-color: #485267; box-shadow: 0 0 4px 2px #00000040;
+		}
+}
 
 /* Dev */
 .DebugOutline {
