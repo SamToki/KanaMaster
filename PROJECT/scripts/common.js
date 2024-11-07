@@ -408,7 +408,7 @@
 		}
 
 		// Audio
-		function LoadAudio(ID, Value) { // Value example: "audio/sounds/Beep.mp3"
+		function LoadAudio(ID, Value) { // Value example: "audio/Beep.mp3"
 			StopAudio(ID);
 			if(System.Audio.PlayAudio == true && document.getElementById(ID).volume > 0 && Value != "") {
 				ChangeText(ID, "<source src=\"" + Value + "\" />");

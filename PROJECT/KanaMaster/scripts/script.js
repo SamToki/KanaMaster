@@ -962,7 +962,7 @@
 
 				// Voice
 				if(Selector == Game.Lottery.CorrectAnswer || Subsystem.Audio.AlsoPlayVoiceOnMiss == true) {
-					PlayAudio("Audio_Voice", "audio/voices/Kana_" + RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + ".mp3");
+					PlayAudio("Audio_Voice", "audio/Kana_" + RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + ".mp3");
 				}
 
 				// Start cooldown
@@ -1124,7 +1124,7 @@
 			RefreshSubsystem();
 		}
 		function PreviewVoiceVolume() {
-			PlayAudio("Audio_Voice", "audio/voices/Kana_a.mp3");
+			PlayAudio("Audio_Voice", "audio/Kana_a.mp3");
 		}
 		function SetAlsoPlayVoiceOnMiss() {
 			Subsystem.Audio.AlsoPlayVoiceOnMiss = IsChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss");
