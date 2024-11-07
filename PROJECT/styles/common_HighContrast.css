@@ -107,7 +107,7 @@
 
 			/* Toast */
 			#Toast {
-				background-color: #402050;
+				background-color: #402050; box-shadow: none;
 				color: #FFFFFF;
 			}
 
