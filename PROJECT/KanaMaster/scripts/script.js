@@ -1161,11 +1161,12 @@
 				"\"System\":" + JSON.stringify(System) + "," +
 				"\"KanaMaster_Subsystem\":" + JSON.stringify(Subsystem) + "," +
 				"\"KanaMaster_Game\":" + JSON.stringify(Game) + "," +
+				"\"KanaMaster_AnswerLog\":" + JSON.stringify(AnswerLog) + "," +
 				"\"KanaMaster_Highscore\":" + JSON.stringify(Highscore) +
 				"}");
 			ShowDialog("System_UserDataExported",
 				"Info",
-				"已导出用户数据至剪贴板。",
+				"已导出本页的用户数据至剪贴板。",
 				"", "", "", "确定");
 		}
 		function ConfirmClearUserData() {
