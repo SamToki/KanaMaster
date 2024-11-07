@@ -103,7 +103,7 @@
 			background-color: #485267E0;
 		}
 		.Window {
-			background-color: #485267E0; box-shadow: 0 0 10px 5px #00000040;
+			background-color: #485267E0; box-shadow: 0 0 4px 2px #00000040;
 			color: #EEE4D9;
 		}
 			/* Hotkey indicators */
@@ -144,7 +144,7 @@
 			background-color: #DEB76CE0;
 		}
 		.Shadow {
-			box-shadow: 0 0 10px 5px #00000040;
+			box-shadow: 0 0 4px 2px #00000040;
 		}
 		.Glow {
 			box-shadow: unset; filter: drop-shadow(0 0 5px #DEB76C);

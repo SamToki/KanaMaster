@@ -136,7 +136,7 @@
 			background-color: #808080;
 		}
 		.Shadow {
-			box-shadow: 0 0 0 5px #00000080;
+			box-shadow: 0 0 4px 2px #000000;
 		}
 		.Glow {
 			box-shadow: 0 0 10px 5px #00C0FF;
