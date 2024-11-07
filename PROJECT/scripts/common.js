@@ -39,7 +39,7 @@
 				PlayAudio: true
 			},
 			I18n: {
-				Language: "Unset"
+				Language: "Auto"
 			},
 			Dev: {
 				TryToOptimizePerformance: false,

@@ -125,11 +125,14 @@
 	function Load() {
 		if(localStorage.System != undefined) {
 			System = JSON.parse(localStorage.getItem("System"));
-		} else {
-			System.I18n.Language = "zh-CN";
 		}
 		switch(System.I18n.Language) {
+			case "Auto":
+				/* navigator.language ... */
+				break;
 			case "en-US":
+				/* ChangeCursorOverall("wait");
+				window.location.replace("index_" + System.I18n.Language + ".html"); */
 				ShowDialog("System_LanguageUnsupported",
 					"Error",
 					"<span lang=\"en-US\">Sorry, this page currently does not support English (US).</span>",
@@ -142,8 +145,6 @@
 					"", "", "", "<span lang=\"ja-JP\">OK</span>");
 				break;
 			case "zh-CN":
-				/* ChangeCursorOverall("wait");
-				window.location.replace("index.html"); */
 				break;
 			case "zh-TW":
 				ShowDialog("System_LanguageUnsupported",
