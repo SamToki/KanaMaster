@@ -133,14 +133,11 @@
 		.Box {
 			background-color: #202020E0;
 		}
-		.Active {
-			background-color: #004000C0;
+		.Active, .IAmHere {
+			background-color: #004000;
 		}
 		.Cmdbtn.Shaped.Active .Shape {
-			fill: #004000C0;
-		}
-		.IAmHere {
-			background-color: #8040A0E0;
+			fill: #004000;
 		}
 		.Shadow {
 			box-shadow: 0 0 4px 2px #00000040;

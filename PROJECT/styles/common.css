@@ -458,14 +458,11 @@
 			background-color: #F0F0F0E0;
 			overflow: hidden;
 		}
-		.Active {
-			background-color: #C0FFC0C0;
+		.Active, .IAmHere {
+			background-color: #D0FFD0;
 		}
 		.Cmdbtn.Shaped.Active .Shape {
-			fill: #C0FFC0C0;
-		}
-		.IAmHere {
-			background-color: #D090F0E0;
+			fill: #D0FFD0;
 		}
 		.Transparent {
 			opacity: 0.2;
@@ -579,13 +576,13 @@
 			background-color: #F0D0FF;
 		}
 		.Active:hover {
-			background-color: #A8E8A8;
+			background-color: #B8E8B8;
 		}
 		.Cmdbtn.Shaped:hover .Shape {
 			fill: #F0D0FF;
 		}
 		.Cmdbtn.Shaped.Active:hover .Shape {
-			fill: #A8E8A8;
+			fill: #B8E8B8;
 		}
 		.Cmdbtn.ShownAsLabel:hover {
 			color: #8040A0;
