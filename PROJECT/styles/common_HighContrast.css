@@ -182,13 +182,13 @@
 
 		/* Focus */
 		*:focus-visible {
-			box-shadow: 0 0 0 3px #00FFFF !important;
+			box-shadow: 0 0 0 2px #00FFFF !important;
 		}
 		.Cmdbtn.Shaped:focus-visible .Shape {
 			stroke: #00FFFF !important;
 		}
 		.Dropbtn:focus-visible {
-			box-shadow: 0 0 0 3px inset #00FFFF !important;
+			box-shadow: 0 0 0 2px inset #00FFFF !important;
 		}
 
 		/* Text selection */

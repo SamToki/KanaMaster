@@ -49,7 +49,7 @@
 				font-size: 2.00em;
 			}
 			.ProgringFg {
-				stroke-dasharray: 289.03 289.03; stroke-dashoffset: 289.03;
+				stroke-dasharray: 298.45 298.45; stroke-dashoffset: 298.45;
 			}
 			#ProgringFg_GameProgress {
 				stroke: #0080C0;
@@ -84,7 +84,7 @@
 				height: 100%;
 			}
 			#Ctnr_GameAnswer .Cmdbtn {
-				font-size: 3.00em;
+				font-size: 4.00em;
 			}
 				/* Answer feedback */
 				#Label_AnswerFeedback {
@@ -110,7 +110,7 @@
 			/* Game ctrl */
 			#Ctnr_GameCtrl {
 				position: absolute; bottom: 0; right: 0;
-				width: 250px; height: 40px;
+				width: 250px; height: 35px;
 			}
 			#Ctnr_GameCtrl .CtrlGroup {
 				width: 100%; height: 100%;
@@ -122,7 +122,7 @@
 			flex-direction: column; align-items: center;
 		}
 		#ItemGroup_Highscore .Item {
-			width: unset; height: 40px; margin: 5px 0;
+			width: unset; height: 35px; margin: 5px 0;
 			display: flex; justify-content: space-between;
 		}
 		#ItemGroup_Highscore .Item span {
@@ -153,7 +153,7 @@
 	/* Area specific */
 		/* Header */
 		#CtrlGroup_Nav {
-			height: 202px;
+			height: 177px;
 		}
 
 		/* Main */
@@ -188,7 +188,7 @@
 					width: 60px; height: 100%;
 				}
 				#Ctnr_GameStats2 #Ctrl_GameScore {
-					width: calc(100% - 210px);
+					width: calc(100% - 210px); height: 100%;
 					text-align: end;
 					justify-content: end;
 				}
@@ -202,7 +202,7 @@
 					height: calc(100% - 395px);
 				}
 				#Label_GameQuestion {
-					font-size: 5.00em;
+					font-size: 6.00em;
 				}
 				
 				/* Answer board */
@@ -211,10 +211,10 @@
 					height: 120px;
 				}
 				#Ctnr_GameAnswer .Cmdbtn {
-					font-size: 2.00em;
+					font-size: 2.50em;
 				}
 				#Label_AnswerFeedback {
-					font-size: 1.75em;
+					font-size: 2.00em;
 				}
 
 			/* Highscore */

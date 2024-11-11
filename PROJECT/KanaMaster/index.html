@@ -7,14 +7,15 @@
 <html id="Html" lang="zh-CN">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="假名征服者，日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
-		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 假名征服者, KanaMaster, かなマスター, 日语学习, 日语入门, 五十音图" />
-		<meta name="version" content="v3.02 (2024/10/17). Since 2023/11/05." />
-		<meta name="author" content="Sam Toki" />
-		<meta name="copyright" content="(C) 2023 SAM TOKI STUDIO" />
-		<title>假名征服者</title>
 		<link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
+		<title>假名征服者</title>
+		<meta name="author" content="SAM TOKI STUDIO" />
+		<meta name="version" content="v3.02 (2024/10/17). Since 2023/11/05." />
+		<meta name="description" content="日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
+		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 假名征服者, KanaMaster, かなマスター, 日语学习, 日语入门, 五十音图" />
+		<meta name="copyright" content="(C) 2023 SAM TOKI STUDIO" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../styles/common.css" />
 		<link id="ThemeVariant_Common" rel="stylesheet" href="../styles/common_Dark.css" media="(prefers-color-scheme: dark)" />
 		<link id="ThemeVariant_Common_HighContrast" rel="stylesheet" href="../styles/common_HighContrast.css" media="(prefers-contrast: more)" />
@@ -24,10 +25,12 @@
 		<script defer src="../scripts/common.js"></script>
 		<script defer src="../scripts/common_UserDataRepairer.js"></script>
 		<script defer src="scripts/script.js"></script>
+
+		<link rel="manifest" href="manifests/manifest.json">
 	</head>
 
 	<body>
-		<div id="Ctnr_BgImage"></div>
+		<div class="Blur" id="Ctnr_BgImage"></div>
 
 		<header id="Topbar">
 			<ul class="CtrlGroup">
@@ -98,9 +101,9 @@
 					</nav>
 				</li>
 				<li class="Ctrl" id="Ctrl_BackToMainPage">
-					<a class="Linkbtn" id="Linkbtn_BackToMainPage" href="../#ToyStore">
+					<a class="Linkbtn" id="Linkbtn_BackToMainPage" href="..">
 						<svg class="Icon" viewBox="0 0 16 16">
-							<path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+							<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
 						</svg>
 					</a>
 				</li>
@@ -154,22 +157,22 @@
 							</li>
 							<li class="Ctrl">
 								<svg class="Progring" id="Progring_GameProgress" viewBox="0 0 100 100">
-									<circle class="ProgringBg" id="ProgringBg_GameProgress" cx="50" cy="50" r="46" />
-									<circle class="ProgringFg" id="ProgringFg_GameProgress" cx="50" cy="50" r="46" />
+									<circle class="ProgringBg" id="ProgringBg_GameProgress" cx="50" cy="50" r="47.5" />
+									<circle class="ProgringFg" id="ProgringFg_GameProgress" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameProgress">进度</span>
 							</li>
 							<li class="Ctrl">
 								<svg class="Progring" id="Progring_GameHP" viewBox="0 0 100 100">
-									<circle class="ProgringBg" id="ProgringBg_GameHP" cx="50" cy="50" r="46" />
-									<circle class="ProgringFg" id="ProgringFg_GameHP" cx="50" cy="50" r="46" />
+									<circle class="ProgringBg" id="ProgringBg_GameHP" cx="50" cy="50" r="47.5" />
+									<circle class="ProgringFg" id="ProgringFg_GameHP" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameHP">血量</span>
 							</li>
 							<li class="Ctrl">
 								<svg class="Progring" id="Progring_GameTimeLeft" viewBox="0 0 100 100">
-									<circle class="ProgringBg" id="ProgringBg_GameTimeLeft" cx="50" cy="50" r="46" />
-									<circle class="ProgringFg" id="ProgringFg_GameTimeLeft" cx="50" cy="50" r="46" />
+									<circle class="ProgringBg" id="ProgringBg_GameTimeLeft" cx="50" cy="50" r="47.5" />
+									<circle class="ProgringFg" id="ProgringFg_GameTimeLeft" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameTimeLeft">时间</span>
 							</li>
@@ -485,9 +488,9 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsTimeLimitInitial">
 										<span>时限：从</span>
-										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="SelectText('Textbox_SettingsTimeLimitInitial')" onchange="SetTimeLimitInitial()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="SelectText('Textbox_SettingsTimeLimitInitial')" onchange="SetTimeLimitInitial()" />
 										<span>至</span>
-										<input class="Textbox Width80" id="Textbox_SettingsTimeLimitFinal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="SelectText('Textbox_SettingsTimeLimitFinal')" onchange="SetTimeLimitFinal()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitFinal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="SelectText('Textbox_SettingsTimeLimitFinal')" onchange="SetTimeLimitFinal()" />
 										<span>秒</span>
 									</label>
 								</li>
@@ -544,7 +547,7 @@
 								<li class="Ctrl">
 									<label for="Combobox_SettingsHotkeyIndicators">
 										<span>快捷键提示：</span>
-										<select class="Combobox Width200" id="Combobox_SettingsHotkeyIndicators" onchange="SetHotkeyIndicators()">
+										<select class="Combobox" id="Combobox_SettingsHotkeyIndicators" onchange="SetHotkeyIndicators()">
 											<option value="Disabled">禁用</option>
 											<option value="ShowOnWrongKeyPress">按下无关按键时显示</option>
 											<option value="ShowOnAnyKeyPress" selected>按下任意按键时显示</option>
@@ -598,6 +601,17 @@
 										<input class="Checkbox" id="Checkbox_SettingsAlsoPlayVoiceOnMiss" type="checkbox" checked="false" onchange="SetAlsoPlayVoiceOnMiss()" />
 										<span>失误时也播放语音 (会播放正确选项)</span>
 									</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li class="Item">
+						<fieldset>
+							<legend>其他</legend>
+							<p>您可将本网页安装至桌面，以 <a href="https://zh.wikipedia.org/wiki/progressive_web_app">progressive web app</a> (俗称小程序) 的形式更方便地使用。若下面的按钮不可用，请尝试前往浏览器的菜单来安装。</p>
+							<ul class="CtrlGroup BelowParagraph">
+								<li class="Ctrl">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsInstallPWA" disabled="true" onclick="InstallPWA()">安装至桌面</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -706,7 +720,7 @@
 					<li class="Item">
 						<fieldset>
 							<legend>隐私权声明</legend>
-							<p>本站为 <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a> 静态网站，只使用浏览器的 Local Storage 功能在本地存储<a href="#Item_SettingsUserData" onclick="ShowIAmHere('Item_SettingsUserData')">用户数据</a>，您可随时手动删除。本站不使用 <a href="https://zh.wikipedia.org/wiki/Cookie">Cookies</a>，不收集任何个人信息。</p>
+							<p>本站为 <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a> 静态网站，只使用浏览器的 local storage 功能在本地存储<a href="#Item_SettingsUserData" onclick="ShowIAmHere('Item_SettingsUserData')">用户数据</a>，您可随时手动删除。本站不使用 <a href="https://zh.wikipedia.org/wiki/Cookie">Cookies</a>，不收集任何个人信息。</p>
 							<p>出于安全考虑，<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#data-collection">GitHub 的服务器可能会记录您的 IP 地址</a>，但我无法访问这些数据。</p>
 						</fieldset>
 					</li>

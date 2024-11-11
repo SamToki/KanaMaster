@@ -188,13 +188,13 @@
 
 		/* Focus */
 		*:focus-visible {
-			box-shadow: 0 0 0 3px #D090F0 !important;
+			box-shadow: 0 0 0 2px #D090F0 !important;
 		}
 		.Cmdbtn.Shaped:focus-visible .Shape {
 			stroke: #D090F0 !important;
 		}
 		.Dropbtn:focus-visible {
-			box-shadow: 0 0 0 3px inset #D090F0 !important;
+			box-shadow: 0 0 0 2px inset #D090F0 !important;
 		}
 
 		/* Text selection */

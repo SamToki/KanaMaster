@@ -27,7 +27,7 @@
 			transform-origin: center center;
 			box-sizing: border-box;
 			/* font-family: Sarasa UI J, Source Han Sans, Hiragino Sans GB, PingFang SC, Microsoft YaHei UI, Helvetica, Arial, sans; */
-			font-family: ""; font-size: 16px;
+			font-family: "system-ui"; font-size: 14px;
 			scroll-padding-top: 60px;
 			transition: 250ms, z-index 0ms; scroll-behavior: smooth;
 		}
@@ -44,6 +44,9 @@
 			position: fixed; top: 0; left: 0; z-index: -1;
 			width: 100%; height: 100vh;
 			background-color: #808080; background-image: url(../images/Background.jpg); background-attachment: fixed; background-position: top center; background-size: cover; background-repeat: no-repeat;
+		}
+		#Ctnr_BgImage.Blur {
+			filter: blur(10px);
 		}
 
 		/* Non-interactive containers */
@@ -116,7 +119,7 @@
 		}
 		.Ctrl {
 			position: relative;
-			height: 40px;
+			height: 35px;
 		}
 		fieldset {
 			width: 100%; border: none; padding: 15px 0 0 0;
@@ -131,14 +134,14 @@
 			width: 100%; max-width: 100%; margin: 0 0 10px 0;
 		}
 		fieldset > .CtrlGroup > .Ctrl:has(textarea) {
-			height: 90px;
+			height: 80px;
 		}
 		.ScrollableLog {
-			height: unset; max-height: 200px;
+			height: unset; max-height: 180px;
 			overflow: scroll;
 		}
 		.ScrollableList {
-			height: 320px;
+			height: 280px;
 			overflow: scroll;
 		}
 		.ScrollableList .Ctrl {
@@ -205,12 +208,12 @@
 		}
 		.ProgringBg {
 			fill: transparent;
-			stroke: #00000020; stroke-width: 8;
+			stroke: #00000020; stroke-width: 5;
 		}
 		.ProgringFg {
 			transform: rotate(-90deg);
 			fill: transparent;
-			stroke: #8040A0; stroke-width: 8;
+			stroke: #8040A0; stroke-width: 5;
 		}
 		.ProgringText {
 			position: absolute; top: 0; left: 0;
@@ -219,10 +222,10 @@
 			display: flex; justify-content: center; align-items: center;
 		}
 		.Needle {
-			width: 10px; height: 100%;
+			width: 5px; height: 100%;
 		}
 		.NeedleFg {
-			width: 100%; height: 10%; border-radius: 5px;
+			width: 100%; height: 10%; border-radius: 2.5px;
 			background-color: #000000;
 		}
 
@@ -256,12 +259,9 @@
 		.Linkbtn {
 			text-align: center;
 		}
-		.Cmdbtn.Shaped, .Cmdbtn.ShownAsLabel, .Textbox.ShownAsLabel {
-			border: none !important;
-			background-color: transparent !important;
-		}
 		.Cmdbtn.Shaped, .Cmdbtn.ShownAsLabel {
-			padding: 0;
+			border: none; padding: 0;
+			background-color: transparent !important;
 		}
 		.Cmdbtn.Shaped .Shape {
 			position: absolute; top: 0; left: 0;
@@ -276,7 +276,7 @@
 			display: flex; flex-wrap: wrap; overflow: hidden;
 		}
 		.Dropctrl {
-			width: 100%; height: 40px;
+			width: 100%; height: 35px;
 		}
 		.Dropbtn {
 			border: none !important;
@@ -288,22 +288,26 @@
 			padding: 5px;
 		}
 		fieldset .Combobox {
-			width: 160px;
+			width: 200px;
 		}
 		.Textbox {
 			width: 100%; height: 100%; border: 1px solid #00000040; border-radius: 5px; padding: 5px;
 			background-color: #FFFFE8;
 			color: #000000;
 		}
+		.Textbox.ShownAsLabel {
+			border: none;
+			background-color: transparent;
+		}
 		fieldset .Textbox {
-			width: 200px;
+			width: 240px;
 		}
 		textarea {
 			resize: none;
 			tab-size: 4;
 		}
 		.Slider {
-			width: 200px;
+			width: 240px;
 		}
 
 		/* Floating ctrls */
@@ -323,34 +327,34 @@
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
-				position: absolute; bottom: -10px; left: calc(50% - 15px); z-index: 1;
-				width: 30px; height: 20px; border-radius: 5px;
+				position: absolute; bottom: -9px; left: calc(50% - 12.5px); z-index: 1;
+				width: 25px; height: 18px; border-radius: 5px;
 				background-color: #FFFFFF; box-shadow: 0 0 4px 2px #00000040;
-				font-size: 16px; text-align: center; text-wrap: nowrap;
+				font-size: 14px; text-align: center; text-wrap: nowrap;
 				display: flex; justify-content: center; align-items: center; overflow: hidden;
 				pointer-events: none;
 			}
 			.HotkeyIndicator.TopAligned {
-				top: -10px; bottom: unset;
+				top: -9px; bottom: unset;
 			}
 			.HotkeyIndicator.LeftAligned {
-				bottom: calc(50% - 10px); left: -15px;
+				bottom: calc(50% - 9px); left: -12.5px;
 			}
 			.HotkeyIndicator.RightAligned {
-				bottom: calc(50% - 10px); right: -15px; left: unset;
+				bottom: calc(50% - 9px); right: -12.5px; left: unset;
 			}
 
 			/* Toast */
 			#Toast {
 				position: fixed; top: 50vh; left: 0; z-index: 102;
-				width: 100%; height: 60px; padding: 5px 10px;
+				width: 100%; height: 50px; padding: 5px 10px;
 				background-color: #F0D0FFE0; backdrop-filter: blur(5px); box-shadow: 0 0 4px 2px #00000040;
 				color: #000000; font-size: 2.00em; text-align: center; text-wrap: nowrap;
 				display: flex; justify-content: center; align-items: center; overflow: hidden;
 				pointer-events: none;
 			}
 			#Html:has(#Topbar.Hidden) #Toast {
-				top: calc(50vh - 30px);
+				top: calc(50vh - 25px);
 			}
 
 			/* Dialog */
@@ -358,8 +362,8 @@
 				z-index: 110;
 			}
 			#Window_Dialog {
-				position: fixed; top: calc(50vh - 105px); left: calc(50% - 190px); z-index: 111;
-				width: 380px; height: 210px;
+				position: fixed; top: calc(50vh - 100px); left: calc(50% - 190px); z-index: 111;
+				width: 380px; height: 200px;
 				display: flex; flex-wrap: wrap;
 			}
 			#Window_Dialog .HiddenHorizontally {
@@ -369,7 +373,7 @@
 				width: 100%; height: 95px; padding: 15px 15px 0 15px;
 			}
 			.DialogIcon {
-				width: 40px; height: 40px;
+				width: 35px; height: 35px;
 			}
 			#DialogIcon_Info {
 				fill: #00A000;
@@ -384,17 +388,17 @@
 				fill: #FF0000;
 			}
 			#Ctrl_DialogText {
-				width: calc(100% - 40px); height: 100%; padding: 10px 5px 0 10px;
+				width: calc(100% - 35px); height: 100%; padding: 9px 5px 0 10px;
 				overflow: scroll;
 			}
 			#CtrlGroup_DialogCheckboxOption {
-				width: 100%; height: 60px; padding: 10px 15px;
+				width: 100%; height: 55px; padding: 10px 15px;
 			}
 			#CtrlGroup_DialogCheckboxOption .Ctrl {
 				width: 100%;
 			}
 			#CtrlGroup_DialogOptions {
-				width: 100%; height: 55px; padding: 0 15px 15px 15px;
+				width: 100%; height: 50px; padding: 0 15px 15px 15px;
 				flex-wrap: nowrap; justify-content: end;
 			}
 			#CtrlGroup_DialogOptions .Ctrl {
@@ -433,14 +437,14 @@
 		.WidthDividedBy5 {
 			width: calc((100% - 40px) / 5) !important;
 		}
-		.Width40 {
-			width: 40px !important;
-		}
 		.Width60 {
 			width: 60px !important;
 		}
 		.Width80 {
 			width: 80px !important;
+		}
+		.Width100 {
+			width: 100px !important;
 		}
 		.Width120 {
 			width: 120px !important;
@@ -450,6 +454,9 @@
 		}
 		.Width200 {
 			width: 200px !important;
+		}
+		.Width240 {
+			width: 240px !important;
 		}
 
 		/* Background */
@@ -610,16 +617,16 @@
 
 		/* Focus */
 		*:focus-visible {
-			outline: none; box-shadow: 0 0 0 3px #8040A0 !important;
+			outline: none; box-shadow: 0 0 0 2px #8040A0 !important;
 		}
 		.Cmdbtn.Shaped:focus-visible {
 			box-shadow: none !important;
 		}
 		.Cmdbtn.Shaped:focus-visible .Shape {
-			stroke: #8040A0 !important; stroke-width: 3px !important;
+			stroke: #8040A0 !important; stroke-width: 2px !important;
 		}
 		.Dropbtn:focus-visible {
-			box-shadow: 0 0 0 3px inset #8040A0 !important;
+			box-shadow: 0 0 0 2px inset #8040A0 !important;
 		}
 
 		/* Disabled */
@@ -641,7 +648,7 @@
 	/* Header */
 	#Topbar {
 		position: fixed; top: 0; left: 0; z-index: 101;
-		width: 100%; height: 60px; padding: 10px 30px;
+		width: 100%; height: 60px; padding: 12.5px 15px;
 		background-color: #FFFFFFE0; backdrop-filter: blur(5px); box-shadow: 0 0 4px 2px #00000040;
 		color: #000000;
 	}
@@ -651,7 +658,7 @@
 	}
 	#Ctrl_Title {
 		position: absolute; top: 0; left: 0;
-		width: 40px;
+		width: 35px;
 	}
 	#Ctrl_Title a {
 		width: 100%; height: 100%; border-radius: 5px;
@@ -686,7 +693,7 @@
 	}
 	#Ctrl_BackToMainPage {
 		position: absolute; top: 0; right: 0;
-		width: 40px;
+		width: 35px;
 	}
 
 	/* Main */
@@ -699,7 +706,7 @@
 		padding: 0;
 	}
 	section {
-		padding: 0 30px;
+		padding: 0 15px;
 		overflow: hidden;
 	}
 	section:has(.Viewport) {
@@ -709,7 +716,7 @@
 		height: 100vh;
 	}
 	.SectionTitle {
-		padding: 40px 0;
+		padding: 30px 10px;
 		font-size: 2.50em; text-align: center;
 	}
 	.Viewport {
@@ -731,7 +738,7 @@
 
 	/* Footer */
 	footer {
-		padding: 15px 30px;
+		padding: 15px;
 		background-color: #E0E0E0E0;
 		color: #00000080; text-align: center;
 		display: flex; justify-content: center; align-items: center;
@@ -749,39 +756,36 @@
 				margin: 0 7.5px 15px 7.5px;
 			}
 			.ScrollableList {
-				height: 240px;
+				height: 210px;
 			}
 
 			/* Floating ctrls */
 			#Toast {
-				top: calc(50vh + 10px);
-				height: 40px;
+				top: calc(50vh + 12.5px);
+				height: 35px;
 				font-size: 1.25em;
 			}
 			#Html:has(#Topbar.Hidden) #Toast {
-				top: calc(50vh - 20px);
+				top: calc(50vh - 17.5px);
 			}
 
 	/* Area specific */
 		/* Header */
-		#Topbar {
-			padding: 10px 15px;
-		}
 		#Ctrl_Title {
-			left: calc(50% - 20px);
+			left: calc(50% - 17.5px);
 		}
 		#Ctrl_Nav {
 			left: 0 !important;
-			width: 40px !important;
+			width: 35px !important;
 		}
 		#Cmdbtn_Nav {
-			width: 40px; height: 40px; padding: 5px;
+			width: 35px; height: 35px; padding: 5px;
 			opacity: unset;
 			pointer-events: unset;
 		}
 		#CtrlGroup_Nav {
 			z-index: 2;
-			width: 120px; border: 1px solid #00000040; border-radius: 5px;
+			width: 122px; border: 1px solid #00000040; border-radius: 5px;
 			background-color: #FFFFFF; box-shadow: 0 0 4px 2px #00000040;
 			overflow: hidden;
 		}
@@ -791,18 +795,23 @@
 			overflow: hidden !important;
 			pointer-events: none !important;
 		}
+}
+@media (max-width: 440px) {
+	/* General */
+		/* Basics */
+			/* Group frameworks */
+			.Prolog {
+				width: 410px;
+				text-align: start;
+			}
 
+	/* Area specific */
 		/* Main */
-		section {
-			padding: 0 15px;
-		}
-
-		/* Footer */
-		footer {
-			padding: 15px;
+		.SectionTitle {
+			text-align: start;
 		}
 }
-/* @media (min-width: 830px) { // Optimization for long fieldsets far exceeding 600px height.
+/* @media (min-width: 830px) { // Optimization for long fieldsets exceeding 600px height.
 	// These should be configured in style.css.
 } */
 /* @media (max-aspect-ratio: 0.999) {

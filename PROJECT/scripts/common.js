@@ -15,7 +15,8 @@
 		var Document = {
 			NavCtrls: document.getElementsByClassName("Nav"),
 			Sections: document.getElementsByTagName("section"),
-			ActiveSectionID: ""
+			ActiveSectionID: "",
+			PWAInstallation: null
 		},
 		Interaction = {
 			IsPointerDown: false, IsInIMEComposition: false,
@@ -41,13 +42,13 @@
 			I18n: {
 				Language: "Auto"
 			},
+			DontShowAgain: [0],
 			Dev: {
 				TryToOptimizePerformance: false,
 				ShowDebugOutlines: false,
 				UseOldTypeface: false,
 				Font: ""
 			},
-			DontShowAgain: [0],
 			Version: {}
 		};
 
@@ -542,6 +543,13 @@
 			RefreshSystem();
 		}
 
+		// Miscellaneous
+		function InstallPWA() {
+			if(Document.PWAInstallation != null) {
+				Document.PWAInstallation.prompt();
+			}
+		}
+
 // Listeners
 	// On scroll
 	document.addEventListener("scroll", HighlightActiveSectionInNav);
@@ -584,6 +592,14 @@
 	// On toggling fullscreen
 	document.addEventListener("fullscreenchange", function() {
 		RefreshSystem();
+	});
+
+	// When PWA installation is available
+	window.addEventListener("beforeinstallprompt", function(event) { // This does not seem to work.
+		Document.PWAInstallation = event;
+		if(IsElementExisting("Cmdbtn_SettingsInstallPWA") == true) {
+			ChangeDisabled("Cmdbtn_SettingsInstallPWA", false);
+		}
 	});
 
 // Automations

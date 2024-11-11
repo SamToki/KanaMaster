@@ -278,9 +278,9 @@
 			}
 			ChangeChecked("Checkbox_SettingsBlurBgImage", System.Display.BlurBgImage);
 			if(System.Display.BlurBgImage == true) {
-				ChangeFilter("Ctnr_BgImage", "blur(10px)");
+				AddClass("Ctnr_BgImage", "Blur");
 			} else {
-				ChangeFilter("Ctnr_BgImage", "");
+				RemoveClass("Ctnr_BgImage", "Blur");
 			}
 			ChangeValue("Combobox_SettingsHotkeyIndicators", System.Display.HotkeyIndicators);
 			switch(System.Display.HotkeyIndicators) {
@@ -445,7 +445,7 @@
 						AlertSystemError("The value of Game.Mode.Progressing \"" + Game.Mode.Progressing + "\" in function ClockGame is invalid.");
 						break;
 				}
-				ChangeProgring("ProgringFg_GameProgress", 289.03, Game.Stats.Progress);
+				ChangeProgring("ProgringFg_GameProgress", 298.45, Game.Stats.Progress);
 				ChangeText("ProgringText_GameProgress", Game.Stats.Progress.toFixed(0) + "%");
 
 				// HP
@@ -456,7 +456,7 @@
 				} else {
 					Game.Stats.HP = 0;
 				}
-				ChangeProgring("ProgringFg_GameHP", 289.03, Game.Stats.HP);
+				ChangeProgring("ProgringFg_GameHP", 298.45, Game.Stats.HP);
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
 					ChangeAnim("ProgringFg_GameHP", "100ms");
 					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
@@ -481,7 +481,7 @@
 				} else {
 					Game.Stats.TimeLeft = 0;
 				}
-				ChangeProgring("ProgringFg_GameTimeLeft", 289.03, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
+				ChangeProgring("ProgringFg_GameTimeLeft", 298.45, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
 				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
 					AddClass("ProgringText_GameTimeLeft", "EmphasizedText");
@@ -887,7 +887,7 @@
 							ChangeLeft("Label_AnswerFeedback", "calc(50% - " + ReadWidth("Label_AnswerFeedback") / 2 + "px)");
 							break;
 						case 3:
-							ChangeLeft("Label_AnswerFeedback", "calc(100% - " + ReadWidth("Label_AnswerFeedback") * 5 / 4 + "px)");
+							ChangeLeft("Label_AnswerFeedback", "calc(100% - " + ReadWidth("Label_AnswerFeedback") / 4 * 5 + "px)");
 							break;
 						default:
 							AlertSystemError("The value of Game.Lottery.CorrectAnswer \"" + Game.Lottery.CorrectAnswer + "\" in function AnswerGame is invalid.");

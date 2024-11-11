@@ -1,0 +1,27 @@
+{
+	"name": "假名征服者",
+	"short_name": "假名征服者",
+	"icons": [
+		{
+			"src": "../images/Title.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "../images/Title_512px.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+
+	"description": "日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。",
+	"screenshots": [
+		{
+			"src": "../images/Preview.jpg",
+			"type": "image/jpg",
+			"sizes": "1280x720"
+		}
+	],
+
+	"display": "standalone"
+}
