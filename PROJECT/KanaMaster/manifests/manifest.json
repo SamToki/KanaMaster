@@ -3,14 +3,20 @@
 	"short_name": "假名征服者",
 	"icons": [
 		{
-			"src": "../images/Title.png",
+			"src": "../images/Icon.png",
 			"type": "image/png",
 			"sizes": "192x192"
 		},
 		{
-			"src": "../images/Title_512px.png",
+			"src": "../images/Icon_Large.png",
 			"type": "image/png",
 			"sizes": "512x512"
+		},
+		{
+			"src": "../images/Icon_Maskable.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "maskable"
 		}
 	],
 
@@ -23,5 +29,6 @@
 		}
 	],
 
-	"display": "standalone"
+	"display": "standalone",
+	"background_color": "#FFC0C0"
 }
