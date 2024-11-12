@@ -27,7 +27,7 @@
 			transform-origin: center center;
 			box-sizing: border-box;
 			/* font-family: Sarasa UI J, Source Han Sans, Hiragino Sans GB, PingFang SC, Microsoft YaHei UI, Helvetica, Arial, sans; */
-			font-family: "system-ui"; font-size: 14px;
+			font-family: ""; font-size: 14px;
 			scroll-padding-top: 60px;
 			transition: 250ms, z-index 0ms; scroll-behavior: smooth;
 		}
