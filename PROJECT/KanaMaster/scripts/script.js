@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.03,
+		const CurrentVersion = 3.04,
 		KanaGrid = [
 			["", "准备", "暂停"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
@@ -566,7 +566,7 @@
 					Highscore[6][4] = Game.Stats.MaxCombo;
 				}
 				Highscore[6][1] = "最新";
-				Highscore[6][2] = new Date(Date.now()).toLocaleDateString(System.I18n.Language);
+				Highscore[6][2] = new Date(Date.now()).toLocaleDateString(ReadLanguage("Html"));
 				Highscore[6][3] = Game.Stats.Score.toString().padStart(8, "0");
 				Highscore[6][5] = Game.Stats.Accuracy.toFixed(2) + "%";
 				Highscore[6][6] = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";

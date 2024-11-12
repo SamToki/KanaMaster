@@ -71,6 +71,9 @@
 		function ReadValue(ID) {
 			return document.getElementById(ID).value;
 		}
+		function ReadLanguage(ID) {
+			return document.getElementById(ID).lang;
+		}
 
 		// Position
 		function ReadTop(ID) {
