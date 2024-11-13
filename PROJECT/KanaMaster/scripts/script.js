@@ -403,9 +403,9 @@
 
 			// PWA
 			if(window.matchMedia("(display-mode: standalone)").matches == true) {
-				ChangeText("Label_SettingsPWAMode", "是");
+				ChangeText("Label_SettingsPWAStandaloneDisplay", "是");
 			} else {
-				ChangeText("Label_SettingsPWAMode", "否");
+				ChangeText("Label_SettingsPWAStandaloneDisplay", "否");
 			}
 
 			// Dev
