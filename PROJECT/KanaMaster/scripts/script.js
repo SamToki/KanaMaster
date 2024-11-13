@@ -6,50 +6,50 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.04,
+		const CurrentVersion = 3.05,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
-			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     ""],
-			[0, "い",   "き",   "し",   "ち",   "に",   "ひ",   "み",   "",     "り",   "",     "ぎ",   "じ",   "ぢ",   "び",   "ぴ",   "",     "",     "",     "",     ""],
-			[0, "う",   "く",   "す",   "つ",   "ぬ",   "ふ",   "む",   "ゆ",   "る",   "",     "ぐ",   "ず",   "づ",   "ぶ",   "ぷ",   "",     "",     "",     "",     ""],
-			[0, "え",   "け",   "せ",   "て",   "ね",   "へ",   "め",   "",     "れ",   "",     "げ",   "ぜ",   "で",   "べ",   "ぺ",   "",     "",     "",     "",     ""],
-			[0, "お",   "こ",   "そ",   "と",   "の",   "ほ",   "も",   "よ",   "ろ",   "を",   "ご",   "ぞ",   "ど",   "ぼ",   "ぽ",   "",     "",     "",     "",     ""],
-			[0, "ア",   "カ",   "サ",   "タ",   "ナ",   "ハ",   "マ",   "ヤ",   "ラ",   "ワ",   "ガ",   "ザ",   "ダ",   "バ",   "パ",   "",     "",     "",     "",     ""],
-			[0, "イ",   "キ",   "シ",   "チ",   "ニ",   "ヒ",   "ミ",   "",     "リ",   "",     "ギ",   "ジ",   "ヂ",   "ビ",   "ピ",   "",     "",     "",     "",     ""],
-			[0, "ウ",   "ク",   "ス",   "ツ",   "ヌ",   "フ",   "ム",   "ユ",   "ル",   "",     "グ",   "ズ",   "ヅ",   "ブ",   "プ",   "",     "",     "",     "",     ""],
-			[0, "エ",   "ケ",   "セ",   "テ",   "ネ",   "ヘ",   "メ",   "",     "レ",   "",     "ゲ",   "ゼ",   "デ",   "ベ",   "ペ",   "",     "",     "",     "",     ""],
-			[0, "オ",   "コ",   "ソ",   "ト",   "ノ",   "ホ",   "モ",   "ヨ",   "ロ",   "ヲ",   "ゴ",   "ゾ",   "ド",   "ボ",   "ポ",   "",     "",     "",     "",     ""],
-			[0, "ん",   "ン",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "きゃ", "しゃ", "ちゃ", "にゃ", "ひゃ", "みゃ", "",     "りゃ", "",     "ぎゃ", "じゃ", "",     "びゃ", "ぴゃ", "",     "",     "",     "",     ""],
-			[0, "",     "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "",     "りゅ", "",     "ぎゅ", "じゅ", "",     "びゅ", "ぴゅ", "",     "",     "",     "",     ""],
-			[0, "",     "きょ", "しょ", "ちょ", "にょ", "ひょ", "みょ", "",     "りょ", "",     "ぎょ", "じょ", "",     "びょ", "ぴょ", "",     "",     "",     "",     ""],
-			[0, "",     "キャ", "シャ", "チャ", "ニャ", "ヒャ", "ミャ", "",     "リャ", "",     "ギャ", "ジャ", "",     "ビャ", "ピャ", "",     "",     "",     "",     ""],
-			[0, "",     "キュ", "シュ", "チュ", "ニュ", "ヒュ", "ミュ", "",     "リュ", "",     "ギュ", "ジュ", "",     "ビュ", "ピュ", "",     "",     "",     "",     ""],
-			[0, "",     "キョ", "ショ", "チョ", "ニョ", "ヒョ", "ミョ", "",     "リョ", "",     "ギョ", "ジョ", "",     "ビョ", "ピョ", "",     "",     "",     "",     ""],
-			[0, "ウィ", "ウェ", "ウォ", "ヴァ", "ヴィ", "ヴ",   "ヴェ", "ヴォ", "クァ", "クィ", "クォ", "シェ", "ジェ", "チェ", "ティ", "ディ", "ファ", "フィ", "フェ", "フォ"],
-			[0, "ゐ",   "ゑ",   "ヰ",   "ヱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
+			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "い",   "き",   "し",   "ち",   "に",   "ひ",   "み",   "",     "り",   "",     "ぎ",   "じ",   "ぢ",   "び",   "ぴ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "う",   "く",   "す",   "つ",   "ぬ",   "ふ",   "む",   "ゆ",   "る",   "",     "ぐ",   "ず",   "づ",   "ぶ",   "ぷ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "え",   "け",   "せ",   "て",   "ね",   "へ",   "め",   "",     "れ",   "",     "げ",   "ぜ",   "で",   "べ",   "ぺ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "お",   "こ",   "そ",   "と",   "の",   "ほ",   "も",   "よ",   "ろ",   "を",   "ご",   "ぞ",   "ど",   "ぼ",   "ぽ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "ア",   "カ",   "サ",   "タ",   "ナ",   "ハ",   "マ",   "ヤ",   "ラ",   "ワ",   "ガ",   "ザ",   "ダ",   "バ",   "パ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "イ",   "キ",   "シ",   "チ",   "ニ",   "ヒ",   "ミ",   "",     "リ",   "",     "ギ",   "ジ",   "ヂ",   "ビ",   "ピ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "ウ",   "ク",   "ス",   "ツ",   "ヌ",   "フ",   "ム",   "ユ",   "ル",   "",     "グ",   "ズ",   "ヅ",   "ブ",   "プ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "エ",   "ケ",   "セ",   "テ",   "ネ",   "ヘ",   "メ",   "",     "レ",   "",     "ゲ",   "ゼ",   "デ",   "ベ",   "ペ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "オ",   "コ",   "ソ",   "ト",   "ノ",   "ホ",   "モ",   "ヨ",   "ロ",   "ヲ",   "ゴ",   "ゾ",   "ド",   "ボ",   "ポ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "ん",   "ン",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "きゃ", "しゃ", "ちゃ", "にゃ", "ひゃ", "みゃ", "",     "りゃ", "",     "ぎゃ", "じゃ", "",     "びゃ", "ぴゃ", "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "",     "りゅ", "",     "ぎゅ", "じゅ", "",     "びゅ", "ぴゅ", "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "きょ", "しょ", "ちょ", "にょ", "ひょ", "みょ", "",     "りょ", "",     "ぎょ", "じょ", "",     "びょ", "ぴょ", "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "キャ", "シャ", "チャ", "ニャ", "ヒャ", "ミャ", "",     "リャ", "",     "ギャ", "ジャ", "",     "ビャ", "ピャ", "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "キュ", "シュ", "チュ", "ニュ", "ヒュ", "ミュ", "",     "リュ", "",     "ギュ", "ジュ", "",     "ビュ", "ピュ", "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "キョ", "ショ", "チョ", "ニョ", "ヒョ", "ミョ", "",     "リョ", "",     "ギョ", "ジョ", "",     "ビョ", "ピョ", "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "イェ", "ウィ", "ウェ", "ウォ", "ヴァ", "ヴィ", "ヴ",   "ヴェ", "ヴォ", "クァ", "クィ", "クォ", "シェ", "チェ", "ティ", "テュ", "ファ", "フィ", "フェ", "フォ", "ジェ", "ディ", "デュ"],
+			[0, "ゐ",   "ゑ",   "ヰ",   "ヱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
 		],
 		RomajiGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
-			[0, "a",    "ka",   "sa",   "ta",   "na",   "ha",   "ma",   "ya",   "ra",   "wa",   "ga",   "za",   "da",   "ba",   "pa",   "",     "",     "",     "",     ""],
-			[0, "i",    "ki",   "shi",  "chi",  "ni",   "hi",   "mi",   "",     "ri",   "",     "gi",   "ji",   "ji",   "bi",   "pi",   "",     "",     "",     "",     ""],
-			[0, "u",    "ku",   "su",   "tsu",  "nu",   "fu",   "mu",   "yu",   "ru",   "",     "gu",   "zu",   "zu",   "bu",   "pu",   "",     "",     "",     "",     ""],
-			[0, "e",    "ke",   "se",   "te",   "ne",   "he",   "me",   "",     "re",   "",     "ge",   "ze",   "de",   "be",   "pe",   "",     "",     "",     "",     ""],
-			[0, "o",    "ko",   "so",   "to",   "no",   "ho",   "mo",   "yo",   "ro",   "wo",   "go",   "zo",   "do",   "bo",   "po",   "",     "",     "",     "",     ""],
-			[0, "a",    "ka",   "sa",   "ta",   "na",   "ha",   "ma",   "ya",   "ra",   "wa",   "ga",   "za",   "da",   "ba",   "pa",   "",     "",     "",     "",     ""],
-			[0, "i",    "ki",   "shi",  "chi",  "ni",   "hi",   "mi",   "",     "ri",   "",     "gi",   "ji",   "ji",   "bi",   "pi",   "",     "",     "",     "",     ""],
-			[0, "u",    "ku",   "su",   "tsu",  "nu",   "fu",   "mu",   "yu",   "ru",   "",     "gu",   "zu",   "zu",   "bu",   "pu",   "",     "",     "",     "",     ""],
-			[0, "e",    "ke",   "se",   "te",   "ne",   "he",   "me",   "",     "re",   "",     "ge",   "ze",   "de",   "be",   "pe",   "",     "",     "",     "",     ""],
-			[0, "o",    "ko",   "so",   "to",   "no",   "ho",   "mo",   "yo",   "ro",   "wo",   "go",   "zo",   "do",   "bo",   "po",   "",     "",     "",     "",     ""],
-			[0, "n",    "n",    "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "kya",  "sha",  "cha",  "nya",  "hya",  "mya",  "",     "rya",  "",     "gya",  "ja",   "",     "bya",  "pya",  "",     "",     "",     "",     ""],
-			[0, "",     "kyu",  "shu",  "chu",  "nyu",  "hyu",  "myu",  "",     "ryu",  "",     "gyu",  "ju",   "",     "byu",  "pyu",  "",     "",     "",     "",     ""],
-			[0, "",     "kyo",  "sho",  "cho",  "nyo",  "hyo",  "myo",  "",     "ryo",  "",     "gyo",  "jo",   "",     "byo",  "pyo",  "",     "",     "",     "",     ""],
-			[0, "",     "kya",  "sha",  "cha",  "nya",  "hya",  "mya",  "",     "rya",  "",     "gya",  "ja",   "",     "bya",  "pya",  "",     "",     "",     "",     ""],
-			[0, "",     "kyu",  "shu",  "chu",  "nyu",  "hyu",  "myu",  "",     "ryu",  "",     "gyu",  "ju",   "",     "byu",  "pyu",  "",     "",     "",     "",     ""],
-			[0, "",     "kyo",  "sho",  "cho",  "nyo",  "hyo",  "myo",  "",     "ryo",  "",     "gyo",  "jo",   "",     "byo",  "pyo",  "",     "",     "",     "",     ""],
-			[0, "wi",   "we",   "wo",   "va",   "vi",   "v",    "ve",   "vo",   "kwa",  "kwi",  "kwo",  "she",  "je",   "che",  "ti",   "di",   "fa",   "fi",   "fe",   "fo"],
-			[0, "wi",   "we",   "wi",   "we",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
+			[0, "a",    "ka",   "sa",   "ta",   "na",   "ha",   "ma",   "ya",   "ra",   "wa",   "ga",   "za",   "da",   "ba",   "pa",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "i",    "ki",   "shi",  "chi",  "ni",   "hi",   "mi",   "",     "ri",   "",     "gi",   "ji",   "ji",   "bi",   "pi",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "u",    "ku",   "su",   "tsu",  "nu",   "fu",   "mu",   "yu",   "ru",   "",     "gu",   "zu",   "zu",   "bu",   "pu",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "e",    "ke",   "se",   "te",   "ne",   "he",   "me",   "",     "re",   "",     "ge",   "ze",   "de",   "be",   "pe",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "o",    "ko",   "so",   "to",   "no",   "ho",   "mo",   "yo",   "ro",   "wo",   "go",   "zo",   "do",   "bo",   "po",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "a",    "ka",   "sa",   "ta",   "na",   "ha",   "ma",   "ya",   "ra",   "wa",   "ga",   "za",   "da",   "ba",   "pa",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "i",    "ki",   "shi",  "chi",  "ni",   "hi",   "mi",   "",     "ri",   "",     "gi",   "ji",   "ji",   "bi",   "pi",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "u",    "ku",   "su",   "tsu",  "nu",   "fu",   "mu",   "yu",   "ru",   "",     "gu",   "zu",   "zu",   "bu",   "pu",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "e",    "ke",   "se",   "te",   "ne",   "he",   "me",   "",     "re",   "",     "ge",   "ze",   "de",   "be",   "pe",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "o",    "ko",   "so",   "to",   "no",   "ho",   "mo",   "yo",   "ro",   "wo",   "go",   "zo",   "do",   "bo",   "po",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "n",    "n",    "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "kya",  "sha",  "cha",  "nya",  "hya",  "mya",  "",     "rya",  "",     "gya",  "ja",   "",     "bya",  "pya",  "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "kyu",  "shu",  "chu",  "nyu",  "hyu",  "myu",  "",     "ryu",  "",     "gyu",  "ju",   "",     "byu",  "pyu",  "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "kyo",  "sho",  "cho",  "nyo",  "hyo",  "myo",  "",     "ryo",  "",     "gyo",  "jo",   "",     "byo",  "pyo",  "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "kya",  "sha",  "cha",  "nya",  "hya",  "mya",  "",     "rya",  "",     "gya",  "ja",   "",     "bya",  "pya",  "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "kyu",  "shu",  "chu",  "nyu",  "hyu",  "myu",  "",     "ryu",  "",     "gyu",  "ju",   "",     "byu",  "pyu",  "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "",     "kyo",  "sho",  "cho",  "nyo",  "hyo",  "myo",  "",     "ryo",  "",     "gyo",  "jo",   "",     "byo",  "pyo",  "",     "",     "",     "",     "",     "",     "",     ""],
+			[0, "ye",   "wi",   "we",   "wo",   "va",   "vi",   "v",    "ve",   "vo",   "kwa",  "kwi",  "kwo",  "she",  "che",  "ti",   "tyu",  "fa",   "fi",   "fe",   "fo",   "je",   "di",   "dyu"],
+			[0, "wi",   "we",   "wi",   "we",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
 		];
 		var Game0 = {
 			Stats: {
@@ -120,9 +120,10 @@
 			[0, "#6", "", "", "", "", ""]
 		];
 
-	// Load user data
+	// Load
 	window.onload = Load();
 	function Load() {
+		// User data
 		if(localStorage.System != undefined) {
 			System = JSON.parse(localStorage.getItem("System"));
 		}
@@ -179,11 +180,57 @@
 		if(localStorage.KanaMaster_Highscore != undefined) {
 			Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 		}
+
+		// Refresh
 		RefreshSystem();
 		RefreshSubsystem();
 		RefreshGame();
 		RefreshAnswerLog();
 		RefreshHighscore();
+
+		// PWA
+		navigator.serviceWorker.register("script_ServiceWorker.js").then(function(ServiceWorkerRegistration) {
+			// Detect update (https://stackoverflow.com/a/41896649)
+			ServiceWorkerRegistration.addEventListener("updatefound", function() {
+				const ServiceWorkerInstallation = ServiceWorkerRegistration.installing;
+				ServiceWorkerInstallation.addEventListener("statechange", function() {
+					if(ServiceWorkerInstallation.state == "installed" && navigator.serviceWorker.controller != null) {
+						Show("Label_HelpPWAUpdateReady");
+						ShowDialog("System_PWAUpdateReady",
+							"Info",
+							"新版本已就绪。请重新打开本网页来应用更新 (不要使用刷新按钮)。",
+							"", "", "", "确定");
+					}
+				});
+			});
+
+			// Read service worker status (https://github.com/GoogleChrome/samples/blob/gh-pages/service-worker/registration-events/index.html)
+			switch(true) {
+				case ServiceWorkerRegistration.installing != null:
+					ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待生效");
+					break;
+				case ServiceWorkerRegistration.waiting != null:
+					ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待更新");
+					Show("Label_HelpPWAUpdateReady");
+					ShowDialog("System_PWAUpdateReady",
+						"Info",
+						"新版本已就绪。请重新打开本网页来应用更新 (不要使用刷新按钮)。",
+						"", "", "", "确定");
+					break;
+				case ServiceWorkerRegistration.active != null:
+					ChangeText("Label_SettingsPWAServiceWorkerRegistration", "已生效");
+					break;
+				default:
+					break;
+			}
+			if(navigator.serviceWorker.controller != null) {
+				ChangeText("Label_SettingsPWAServiceWorkerController", "已生效");
+			} else {
+				ChangeText("Label_SettingsPWAServiceWorkerController", "未生效");
+			}
+		});
+
+		// Ready
 		setTimeout(HideToast, 0);
 	}
 
@@ -215,8 +262,42 @@
 		}
 
 // Refresh
+	// Webpage
+	function RefreshWebpage() {
+		ShowDialog("System_RefreshingWebpage",
+			"Info",
+			"正在刷新网页...",
+			"", "", "", "确定");
+		ChangeCursorOverall("wait");
+		window.location.reload();
+	}
+
 	// System
 	function RefreshSystem() {
+		// Topbar
+		if(IsMobileLayout() == false) {
+			HideHorizontally("Button_Nav");
+			ChangeInert("DropctrlGroup_Nav", false);
+		} else {
+			Show("Button_Nav");
+			ChangeInert("DropctrlGroup_Nav", true);
+		}
+
+		// Fullscreen
+		if(IsFullscreen() == false) {
+			Show("Topbar");
+			ChangeText("Button_GameToggleFullscreen",
+				"<svg class=\"Icon\" viewBox=\"0 0 16 16\">" +
+				"	<path d=\"M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707\"/>" +
+				"</svg>");
+		} else {
+			Hide("Topbar");
+			ChangeText("Button_GameToggleFullscreen",
+				"<svg class=\"Icon\" viewBox=\"0 0 16 16\">" +
+				"	<path d=\"M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z\"/>" +
+				"</svg>");
+		}
+
 		// Settings
 			// Display
 			if(window.matchMedia("(prefers-contrast: more)").matches == false) {
@@ -320,6 +401,13 @@
 				Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
 			}
 
+			// PWA
+			if(window.matchMedia("(display-mode: standalone)").matches == true) {
+				ChangeText("Label_SettingsPWAMode", "是");
+			} else {
+				ChangeText("Label_SettingsPWAMode", "否");
+			}
+
 			// Dev
 			ChangeChecked("Checkbox_SettingsTryToOptimizePerformance", System.Dev.TryToOptimizePerformance);
 			if(System.Dev.TryToOptimizePerformance == true) {
@@ -352,14 +440,14 @@
 				case "Default":
 					ChangeFont("Label_GameQuestion", "");
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, "");
+						ChangeFont("Button_GameAnswerOption" + Looper, "");
 					}
 					break;
 				case "Sans":
 				case "Serif":
 					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont.toLowerCase());
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeFont("Cmdbtn_GameAnswerOption" + Looper, Subsystem.Display.GameFont.toLowerCase());
+						ChangeFont("Button_GameAnswerOption" + Looper, Subsystem.Display.GameFont.toLowerCase());
 					}
 					break;
 				default:
@@ -495,13 +583,13 @@
 				case "Kana":
 					ChangeText("Label_GameQuestion", KanaGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeText("Cmdbtn_GameAnswerOption" + Looper, RomajiGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
+						ChangeText("Button_GameAnswerOption" + Looper, RomajiGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
 					}
 					break;
 				case "Romaji":
 					ChangeText("Label_GameQuestion", RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeText("Cmdbtn_GameAnswerOption" + Looper, KanaGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
+						ChangeText("Button_GameAnswerOption" + Looper, KanaGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
 					}
 					break;
 				default:
@@ -512,20 +600,20 @@
 			// Functionality
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 				for(let Looper = 1; Looper <= 3; Looper++) {
-					ChangeDisabled("Cmdbtn_GameAnswerOption" + Looper, false);
+					ChangeDisabled("Button_GameAnswerOption" + Looper, false);
 				}
 			} else {
 				for(let Looper = 1; Looper <= 3; Looper++) {
-					ChangeDisabled("Cmdbtn_GameAnswerOption" + Looper, true);
+					ChangeDisabled("Button_GameAnswerOption" + Looper, true);
 				}
 			}
 
 			// Cheat
 			for(let Looper = 1; Looper <= 3; Looper++) {
-				RemoveClass("Cmdbtn_GameAnswerOption" + Looper, "Active");
+				RemoveClass("Button_GameAnswerOption" + Looper, "Active");
 			}
 			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer > 0) {
-				AddClass("Cmdbtn_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Active");
+				AddClass("Button_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Active");
 			}
 
 		// Time up
@@ -545,9 +633,9 @@
 		// Victory
 		if(Game.Status.IsRunning == true && Game.Stats.Progress >= 100) {
 			Game.Stats.Progress = 100;
-			ChangeDisabled("Cmdbtn_GameStart", true);
-			RemoveClass("Cmdbtn_GameStart", "Glow");
-			ChangeDisabled("Cmdbtn_GameReset", true);
+			ChangeDisabled("Button_GameStart", true);
+			RemoveClass("Button_GameStart", "Glow");
+			ChangeDisabled("Button_GameReset", true);
 			if(Game.Status.IsPaused == false) {
 				// Freeze game
 				Game.Status.IsPaused = true;
@@ -583,9 +671,9 @@
 		// Game over
 		if(Game.Status.IsRunning == true && Game.Stats.HP <= 0) {
 			Game.Stats.HP = 0;
-			ChangeDisabled("Cmdbtn_GameStart", true);
-			RemoveClass("Cmdbtn_GameStart", "Glow");
-			ChangeDisabled("Cmdbtn_GameReset", true);
+			ChangeDisabled("Button_GameStart", true);
+			RemoveClass("Button_GameStart", "Glow");
+			ChangeDisabled("Button_GameReset", true);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
 				ShowToast("游戏结束");
@@ -598,23 +686,23 @@
 		ClockGame();
 
 		// Ctrls
-		ChangeDisabled("Cmdbtn_GameStart", false);
+		ChangeDisabled("Button_GameStart", false);
 		if(Game.Status.IsRunning == false) {
-			ChangeText("Cmdbtn_GameStart", "开始");
-			AddClass("Cmdbtn_GameStart", "Glow");
-			ChangeDisabled("Cmdbtn_GameReset", true);
+			ChangeText("Button_GameStart", "开始");
+			AddClass("Button_GameStart", "Glow");
+			ChangeDisabled("Button_GameReset", true);
 			ChangeDisabled("Fieldset_SettingsGameMode", false);
 			ChangeDisabled("Fieldset_SettingsQuestionRange", false);
 			ChangeDisabled("Fieldset_SettingsDifficulty", false);
 		} else {
 			if(Game.Status.IsPaused == false) {
-				ChangeText("Cmdbtn_GameStart", "暂停");
-				RemoveClass("Cmdbtn_GameStart", "Glow");
-				ChangeDisabled("Cmdbtn_GameReset", true);
+				ChangeText("Button_GameStart", "暂停");
+				RemoveClass("Button_GameStart", "Glow");
+				ChangeDisabled("Button_GameReset", true);
 			} else {
-				ChangeText("Cmdbtn_GameStart", "继续");
-				AddClass("Cmdbtn_GameStart", "Glow");
-				ChangeDisabled("Cmdbtn_GameReset", false);
+				ChangeText("Button_GameStart", "继续");
+				AddClass("Button_GameStart", "Glow");
+				ChangeDisabled("Button_GameReset", false);
 			}
 			ChangeDisabled("Fieldset_SettingsGameMode", true);
 			ChangeDisabled("Fieldset_SettingsQuestionRange", true);
@@ -657,25 +745,25 @@
 						"", "", "", "确定");
 				}, 0);
 			}
-			RemoveClass("Cmdbtn_SettingsQuestionRangeDefaultRange", "Active");
-			RemoveClass("Cmdbtn_SettingsQuestionRangeBasicHiragana", "Active");
-			RemoveClass("Cmdbtn_SettingsQuestionRangeBasicKatakana", "Active");
-			RemoveClass("Cmdbtn_SettingsQuestionRangeExcludeObsolete", "Active");
-			RemoveClass("Cmdbtn_SettingsQuestionRangeSelectAll", "Active");
+			RemoveClass("Button_SettingsQuestionRangeDefaultRange", "Active");
+			RemoveClass("Button_SettingsQuestionRangeBasicHiragana", "Active");
+			RemoveClass("Button_SettingsQuestionRangeBasicKatakana", "Active");
+			RemoveClass("Button_SettingsQuestionRangeExcludeObsolete", "Active");
+			RemoveClass("Button_SettingsQuestionRangeSelectAll", "Active");
 			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false]") {
-				AddClass("Cmdbtn_SettingsQuestionRangeDefaultRange", "Active");
+				AddClass("Button_SettingsQuestionRangeDefaultRange", "Active");
 			}
 			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false]") {
-				AddClass("Cmdbtn_SettingsQuestionRangeBasicHiragana", "Active");
+				AddClass("Button_SettingsQuestionRangeBasicHiragana", "Active");
 			}
 			if(JSON.stringify(Game.QuestionRange) == "[0,false,false,false,false,false,true,true,true,true,true,false,false,false,false,false,false,false,false,false]") {
-				AddClass("Cmdbtn_SettingsQuestionRangeBasicKatakana", "Active");
+				AddClass("Button_SettingsQuestionRangeBasicKatakana", "Active");
 			}
 			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false]") {
-				AddClass("Cmdbtn_SettingsQuestionRangeExcludeObsolete", "Active");
+				AddClass("Button_SettingsQuestionRangeExcludeObsolete", "Active");
 			}
 			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]") {
-				AddClass("Cmdbtn_SettingsQuestionRangeSelectAll", "Active");
+				AddClass("Button_SettingsQuestionRangeSelectAll", "Active");
 			}
 
 			// Difficulty
@@ -1146,8 +1234,7 @@
 					Object.keys(Objects).forEach(function(ObjectName) {
 						localStorage.setItem(ObjectName, JSON.stringify(Objects[ObjectName]));
 					});
-					ChangeCursorOverall("wait");
-					window.location.reload();
+					RefreshWebpage();
 				} else {
 					ShowDialog("System_JSONStringInvalid",
 						"Error",
@@ -1182,6 +1269,8 @@
 		switch(Interaction.DialogEvent) {
 			case "System_LanguageUnsupported":
 			case "System_MajorUpdateDetected":
+			case "System_PWAUpdateReady":
+			case "System_RefreshingWebpage":
 			case "System_JSONStringInvalid":
 			case "System_UserDataExported":
 			case "Game_QuestionRangeBelowMinimumRequirement":
@@ -1200,8 +1289,7 @@
 				switch(Selector) {
 					case 2:
 						localStorage.clear();
-						ChangeCursorOverall("wait");
-						window.location.reload();
+						RefreshWebpage();
 						break;
 					case 3:
 						break;
@@ -1279,19 +1367,19 @@
 				case "1":
 				case "2":
 				case "3":
-					Click("Cmdbtn_GameAnswerOption" + Hotkey.key);
+					Click("Button_GameAnswerOption" + Hotkey.key);
 					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
 					break;
 				case "S":
-					Click("Cmdbtn_GameStart");
+					Click("Button_GameStart");
 					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
 					break;
 				case "R":
-					Click("Cmdbtn_GameReset");
+					Click("Button_GameReset");
 					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
 						ShowHotkeyIndicators();
 					}
@@ -1337,7 +1425,7 @@
 	}
 	function Questioner_GenerateQuestion() {
 		do {
-			Game.Lottery.Question[1] = [0, Randomize(1, 19), Randomize(1, 20)];
+			Game.Lottery.Question[1] = [0, Randomize(1, 19), Randomize(1, 23)];
 		} while(
 			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Question[1][1]] == false ||
@@ -1349,7 +1437,7 @@
 	}
 	function Questioner_GenerateAnswer1() {
 		do {
-			Game.Lottery.Answer[1] = [0, Randomize(1, 19), Randomize(1, 20)];
+			Game.Lottery.Answer[1] = [0, Randomize(1, 19), Randomize(1, 23)];
 		} while(
 			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Answer[1][1]] == false ||
@@ -1362,7 +1450,7 @@
 	}
 	function Questioner_GenerateAnswer2() {
 		do {
-			Game.Lottery.Answer[2] = [0, Randomize(1, 19), Randomize(1, 20)];
+			Game.Lottery.Answer[2] = [0, Randomize(1, 19), Randomize(1, 23)];
 		} while(
 			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Answer[2][1]] == false ||
@@ -1375,7 +1463,7 @@
 	}
 	function Questioner_GenerateAnswer3() {
 		do {
-			Game.Lottery.Answer[3] = [0, Randomize(1, 19), Randomize(1, 20)];
+			Game.Lottery.Answer[3] = [0, Randomize(1, 19), Randomize(1, 23)];
 		} while(
 			// Prevent out of question range
 			Game.QuestionRange[Game.Lottery.Answer[3][1]] == false ||

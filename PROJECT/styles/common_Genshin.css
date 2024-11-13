@@ -72,12 +72,12 @@
 		}
 
 		/* Interactive ctrls */
-		.Linkbtn, .Cmdbtn, .Dropbtn, .Combobox {
+		.Button, .Combobox {
 			border: 1px solid #FFFFFF40; border-radius: 20px; padding: 5px 10px;
 			background-color: #EEE4D9;
 			color: #485267;
 		}
-		.Cmdbtn.ShownAsLabel {
+		.Button.ShownAsLabel {
 			border-radius: 5px;
 			color: #EEE4D9;
 		}
@@ -137,7 +137,7 @@
 			background-color: #C8EC86;
 			color: #485267;
 		}
-		.Cmdbtn.Shaped.Active .Shape {
+		.Button.Shaped.Active .Shape {
 			fill: #C8EC86;
 		}
 		.IAmHere {
@@ -162,28 +162,28 @@
 
 	/* Interactions */
 		/* Hover */
-		a:hover, label:hover, .Linkbtn:hover, .Cmdbtn:hover, .Dropbtn:hover /* .Combobox:hover, .Textbox:hover */ {
+		a:hover, label:hover, .Button:hover /* .Combobox:hover, .Textbox:hover */ {
 			background-color: #EEE4D9; box-shadow: 0 0 0 3px #DEB76C;
 			color: #485267;
 		}
 		.Active:hover {
 			background-color: #C8EC86;
 		}
-		.Cmdbtn.Shaped:hover {
+		.Button.Shaped:hover {
 			box-shadow: none;
 		}
-		.Cmdbtn.Shaped:hover .Shape {
+		.Button.Shaped:hover .Shape {
 			fill: #EEE4D9;
 			stroke: #DEB76C; stroke-width: 3px;
 		}
-		.Cmdbtn.Shaped.Active:hover .Shape {
+		.Button.Shaped.Active:hover .Shape {
 			fill: #C8EC86;
 		}
-		.Cmdbtn.ShownAsLabel:hover {
+		.Button.ShownAsLabel:hover {
 			box-shadow: none;
 			color: #DEB76C;
 		}
-		.Dropbtn:hover, .ScrollableList label:hover {
+		.Dropctrl .Button:hover, .ScrollableList label:hover {
 			box-shadow: 0 0 0 3px inset #DEB76C;
 		}
 		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
@@ -192,16 +192,16 @@
 		}
 
 		/* Click */
-		a:active, label:active, .Linkbtn:active, .Cmdbtn:active, .Dropbtn:active,
+		a:active, label:active, .Button:active,
 		.Combobox:active, .Textbox:active, .Textbox.ShownAsLabel:active,
 		.Active:active {
 			background-color: #D0C6BD;
 			color: #EEE4D9;
 		}
-		.Cmdbtn.Shaped:active .Shape, .Cmdbtn.Shaped.Active:active .Shape {
+		.Button.Shaped:active .Shape, .Button.Shaped.Active:active .Shape {
 			fill: #D0C6BD;
 		}
-		.Cmdbtn.ShownAsLabel:active {
+		.Button.ShownAsLabel:active {
 			color: #CC972E;
 		}
 
@@ -209,10 +209,10 @@
 		*:focus-visible {
 			box-shadow: 0 0 0 3px #DEB76C !important;
 		}
-		.Cmdbtn.Shaped:focus-visible .Shape {
+		.Button.Shaped:focus-visible .Shape {
 			stroke: #DEB76C !important;
 		}
-		.Dropbtn:focus-visible {
+		.Dropctrl .Button:focus-visible {
 			box-shadow: 0 0 0 3px inset #DEB76C !important;
 		}
 
@@ -228,10 +228,10 @@
 		background-color: #485267E0; box-shadow: 0 0 4px 2px #00000040;
 		color: #EEE4D9;
 	}
-	#Topbar .Cmdbtn, #Topbar .Linkbtn {
+	#Topbar .Button, #DropctrlGroup_Nav {
 		border-radius: 5px;
 	}
-	#Topbar .Cmdbtn:not(:hover):not(:active), #Topbar .Linkbtn:not(:hover):not(:active) {
+	#Topbar .Button:not(:hover):not(:active) {
 		color: #EEE4D9;
 	}
 	#Ctrl_NavUnderline {
@@ -254,12 +254,12 @@
 @media (max-width: 880px) {
 	/* Area specific */
 		/* Header */
-		#CtrlGroup_Nav {
+		#DropctrlGroup_Nav {
 			border: 1px solid #FFFFFF40;
-			background-color: #485267; box-shadow: 0 0 4px 2px #00000040;
+			background-color: #EEE4D9; box-shadow: 0 0 4px 2px #00000040;
 		}
-		#CtrlGroup_Nav .Linkbtn:hover {
-			box-shadow: 0 0 0 3px inset #DEB76C;
+		#DropctrlGroup_Nav .Button:not(:hover):not(:active) {
+			color: #485267;
 		}
 }
 

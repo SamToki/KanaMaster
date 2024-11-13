@@ -315,7 +315,7 @@
 			RemoveClass(ID, "Hidden");
 			RemoveClass(ID, "HiddenHorizontally");
 			RemoveClass(ID, "HiddenToCorner");
-			RemoveClass(ID, "HiddenOnMobileView");
+			RemoveClass(ID, "HiddenInMobileLayout");
 			RemoveClass(ID, "Faded");
 			ChangeInert(ID, false);
 			Interaction.DoNotHide[Interaction.DoNotHide.length] = ID;
@@ -327,7 +327,7 @@
 			RemoveClass(ID, "Hidden");
 			RemoveClass(ID, "HiddenHorizontally");
 			RemoveClass(ID, "HiddenToCorner");
-			RemoveClass(ID, "HiddenOnMobileView");
+			RemoveClass(ID, "HiddenInMobileLayout");
 			RemoveClass(ID, "Faded");
 			ChangeInert(ID, false);
 		}
@@ -337,7 +337,7 @@
 				Elements[Looper].classList.remove("Hidden");
 				Elements[Looper].classList.remove("HiddenHorizontally");
 				Elements[Looper].classList.remove("HiddenToCorner");
-				Elements[Looper].classList.remove("HiddenOnMobileView");
+				Elements[Looper].classList.remove("HiddenInMobileLayout");
 				Elements[Looper].classList.remove("Faded");
 				Elements[Looper].inert = false;
 			}
@@ -528,6 +528,13 @@
 			RefreshSystem();
 		}
 
+		// PWA
+		function InstallPWA() {
+			if(Document.PWAInstallation != null) {
+				Document.PWAInstallation.prompt();
+			}
+		}
+
 		// Dev
 		function SetTryToOptimizePerformance() {
 			System.Dev.TryToOptimizePerformance = IsChecked("Checkbox_SettingsTryToOptimizePerformance");
@@ -544,13 +551,6 @@
 		function SetFont() {
 			System.Dev.Font = ReadValue("Textbox_SettingsFont");
 			RefreshSystem();
-		}
-
-		// Miscellaneous
-		function InstallPWA() {
-			if(Document.PWAInstallation != null) {
-				Document.PWAInstallation.prompt();
-			}
 		}
 
 // Listeners
@@ -592,17 +592,27 @@
 		Interaction.IsInIMEComposition = false;
 	})
 
+	// On resizing window
+	window.addEventListener("resize", function() {
+		if(IsMobileLayout() == false) {
+			HideHorizontally("Button_Nav");
+			ChangeInert("DropctrlGroup_Nav", false);
+		} else {
+			Show("Button_Nav");
+			ChangeInert("DropctrlGroup_Nav", true);
+		}
+		HideDropctrlGroups();
+	});
+
 	// On toggling fullscreen
 	document.addEventListener("fullscreenchange", function() {
 		RefreshSystem();
 	});
 
 	// When PWA installation is available
-	window.addEventListener("beforeinstallprompt", function(event) { // This does not seem to work.
-		Document.PWAInstallation = event;
-		if(IsElementExisting("Cmdbtn_SettingsInstallPWA") == true) {
-			ChangeDisabled("Cmdbtn_SettingsInstallPWA", false);
-		}
+	window.addEventListener("beforeinstallprompt", function(Event) { // This does not seem to work.
+		Document.PWAInstallation = Event;
+		ChangeDisabled("Button_SettingsInstallPWA", false);
 	});
 
 // Automations
@@ -647,14 +657,18 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 
 	// Hide DropctrlGroups
 	function HideDropctrlGroups() {
-		if(Interaction.DoNotHide.includes("CtrlGroup_Nav") == false) {
-			AddClass("CtrlGroup_Nav", "HiddenOnMobileView");
-		}
 		let Elements = document.getElementsByClassName("DropctrlGroup");
 		for(let Looper = 0; Looper < Elements.length; Looper++) {
 			if(Interaction.DoNotHide.includes(Elements[Looper].id) == false) {
-				Elements[Looper].classList.add("HiddenToCorner");
-				Elements[Looper].inert = true;
+				if(Elements[Looper].id != "DropctrlGroup_Nav") {
+					Elements[Looper].classList.add("HiddenToCorner");
+					Elements[Looper].inert = true;
+				} else {
+					Elements[Looper].classList.add("HiddenInMobileLayout");
+					if(IsMobileLayout() == true) {
+						Elements[Looper].inert = true;
+					}
+				}
 			}
 		}
 	}
@@ -762,9 +776,9 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 		// Text
 		ChangeText("Label_DialogText", Text);
 		ChangeText("Label_DialogCheckboxOption", CheckboxOption);
-		ChangeText("Cmdbtn_DialogOption1", Option1);
-		ChangeText("Cmdbtn_DialogOption2", Option2);
-		ChangeText("Cmdbtn_DialogOption3", Option3); // Option 3 is the default option, will be selected when pressing Esc key. Therefore: When there is a single "OK", put it here. When there are multiple options, put "Cancel" here.
+		ChangeText("Button_DialogOption1", Option1);
+		ChangeText("Button_DialogOption2", Option2);
+		ChangeText("Button_DialogOption3", Option3); // Option 3 is the default option, will be selected when pressing Esc key. Therefore: When there is a single "OK", put it here. When there are multiple options, put "Cancel" here.
 
 		// Functionality
 		if(CheckboxOption != "") {

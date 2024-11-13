@@ -72,7 +72,7 @@
 		}
 
 		/* Interactive ctrls */
-		.Linkbtn, .Cmdbtn, .Dropbtn, .Combobox {
+		.Button, .Combobox {
 			border: 1px solid #FFFFFF;
 			background-color: #202020;
 			color: #FFFFFF;
@@ -129,7 +129,7 @@
 		.Active, .IAmHere {
 			background-color: #006000;
 		}
-		.Cmdbtn.Shaped.Active .Shape {
+		.Button.Shaped.Active .Shape {
 			fill: #006000;
 		}
 		.Shadow {
@@ -146,20 +146,20 @@
 
 	/* Interactions */
 		/* Hover */
-		a:hover, label:hover, .Linkbtn:hover, .Cmdbtn:hover, .Dropbtn:hover /* .Combobox:hover, .Textbox:hover */ {
+		a:hover, label:hover, .Button:hover /* .Combobox:hover, .Textbox:hover */ {
 			background-color: #00C0FF;
 			color: #000000;
 		}
 		.Active:hover {
 			background-color: #00D800;
 		}
-		.Cmdbtn.Shaped:hover .Shape {
+		.Button.Shaped:hover .Shape {
 			fill: #00C0FF;
 		}
-		.Cmdbtn.Shaped.Active:hover .Shape {
+		.Button.Shaped.Active:hover .Shape {
 			fill: #00D800;
 		}
-		.Cmdbtn.ShownAsLabel:hover {
+		.Button.ShownAsLabel:hover {
 			color: #00C0FF;
 		}
 		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
@@ -167,16 +167,16 @@
 		}
 
 		/* Click */
-		a:active, label:active, .Linkbtn:active, .Cmdbtn:active, .Dropbtn:active,
+		a:active, label:active, .Button:active,
 		.Combobox:active, .Textbox:active, .Textbox.ShownAsLabel:active,
 		.Active:active {
 			background-color: #00FFFF;
 			color: #000000;
 		}
-		.Cmdbtn.Shaped:active .Shape, .Cmdbtn.Shaped.Active:active .Shape {
+		.Button.Shaped:active .Shape, .Button.Shaped.Active:active .Shape {
 			fill: #00FFFF;
 		}
-		.Cmdbtn.ShownAsLabel:active {
+		.Button.ShownAsLabel:active {
 			color: #00FFFF;
 		}
 
@@ -184,10 +184,10 @@
 		*:focus-visible {
 			box-shadow: 0 0 0 2px #00FFFF !important;
 		}
-		.Cmdbtn.Shaped:focus-visible .Shape {
+		.Button.Shaped:focus-visible .Shape {
 			stroke: #00FFFF !important;
 		}
-		.Dropbtn:focus-visible {
+		.Dropctrl .Button:focus-visible {
 			box-shadow: 0 0 0 2px inset #00FFFF !important;
 		}
 
@@ -223,7 +223,7 @@
 @media (max-width: 880px) {
 	/* Area specific */
 		/* Header */
-		#CtrlGroup_Nav {
+		#DropctrlGroup_Nav {
 			border: 1px solid #FFFFFF;
 			background-color: #202020; box-shadow: none;
 		}

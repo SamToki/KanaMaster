@@ -72,7 +72,7 @@
 		}
 
 		/* Interactive ctrls */
-		.Linkbtn, .Cmdbtn, .Dropbtn, .Combobox {
+		.Button, .Combobox {
 			border: 1px solid #FFFFFF40;
 			background-color: #303030;
 			color: #FFFFFF;
@@ -136,7 +136,7 @@
 		.Active, .IAmHere {
 			background-color: #004000;
 		}
-		.Cmdbtn.Shaped.Active .Shape {
+		.Button.Shaped.Active .Shape {
 			fill: #004000;
 		}
 		.Shadow {
@@ -153,19 +153,19 @@
 
 	/* Interactions */
 		/* Hover */
-		a:hover, label:hover, .Linkbtn:hover, .Cmdbtn:hover, .Dropbtn:hover /* .Combobox:hover, .Textbox:hover */ {
+		a:hover, label:hover, .Button:hover /* .Combobox:hover, .Textbox:hover */ {
 			background-color: #583868;
 		}
 		.Active:hover {
 			background-color: #185818;
 		}
-		.Cmdbtn.Shaped:hover .Shape {
+		.Button.Shaped:hover .Shape {
 			fill: #583868;
 		}
-		.Cmdbtn.Shaped.Active:hover .Shape {
+		.Button.Shaped.Active:hover .Shape {
 			fill: #185818;
 		}
-		.Cmdbtn.ShownAsLabel:hover {
+		.Button.ShownAsLabel:hover {
 			color: #D090F0;
 		}
 		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
@@ -173,16 +173,16 @@
 		}
 
 		/* Click */
-		a:active, label:active, .Linkbtn:active, .Cmdbtn:active, .Dropbtn:active,
+		a:active, label:active, .Button:active,
 		.Combobox:active, .Textbox:active, .Textbox.ShownAsLabel:active,
 		.Active:active {
 			background-color: #D090F0;
 			color: #000000;
 		}
-		.Cmdbtn.Shaped:active .Shape, .Cmdbtn.Shaped.Active:active .Shape {
+		.Button.Shaped:active .Shape, .Button.Shaped.Active:active .Shape {
 			fill: #D090F0;
 		}
-		.Cmdbtn.ShownAsLabel:active {
+		.Button.ShownAsLabel:active {
 			color: #8040A0;
 		}
 
@@ -190,10 +190,10 @@
 		*:focus-visible {
 			box-shadow: 0 0 0 2px #D090F0 !important;
 		}
-		.Cmdbtn.Shaped:focus-visible .Shape {
+		.Button.Shaped:focus-visible .Shape {
 			stroke: #D090F0 !important;
 		}
-		.Dropbtn:focus-visible {
+		.Dropctrl .Button:focus-visible {
 			box-shadow: 0 0 0 2px inset #D090F0 !important;
 		}
 
@@ -229,7 +229,7 @@
 @media (max-width: 880px) {
 	/* Area specific */
 		/* Header */
-		#CtrlGroup_Nav {
+		#DropctrlGroup_Nav {
 			border: 1px solid #FFFFFF40;
 			background-color: #303030; box-shadow: 0 0 4px 2px #00000040;
 		}
