@@ -149,8 +149,8 @@
 		}
 		label {
 			width: 100%; height: 100%; border-radius: 5px;
-			color: #000000; text-wrap: nowrap;
-			display: flex; align-items: center; overflow: hidden;
+			color: #000000; text-wrap: nowrap; /* "text-wrap: nowrap" improves animation on hiding horizontally. */
+			display: flex; align-items: center; /* "label" cannot have "overflow: hidden" because of "Textbox". */
 		}
 		label > * {
 			margin: 0 0 0 5px;

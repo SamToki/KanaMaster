@@ -195,10 +195,10 @@
 				const ServiceWorkerInstallation = ServiceWorkerRegistration.installing;
 				ServiceWorkerInstallation.addEventListener("statechange", function() {
 					if(ServiceWorkerInstallation.state == "installed" && navigator.serviceWorker.controller != null) {
-						Show("Label_HelpPWAUpdateReady");
-						ShowDialog("System_PWAUpdateReady",
+						Show("Label_HelpPWANewVersionReady");
+						ShowDialog("System_PWANewVersionReady",
 							"Info",
-							"新版本已就绪。请重新打开本网页来应用更新 (不要使用刷新按钮)。",
+							"新版本已就绪，将在下次启动时生效。",
 							"", "", "", "确定");
 					}
 				});
@@ -211,10 +211,10 @@
 					break;
 				case ServiceWorkerRegistration.waiting != null:
 					ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待更新");
-					Show("Label_HelpPWAUpdateReady");
-					ShowDialog("System_PWAUpdateReady",
+					Show("Label_HelpPWANewVersionReady");
+					ShowDialog("System_PWANewVersionReady",
 						"Info",
-						"新版本已就绪。请重新打开本网页来应用更新 (不要使用刷新按钮)。",
+						"新版本已就绪，将在下次启动时生效。",
 						"", "", "", "确定");
 					break;
 				case ServiceWorkerRegistration.active != null:
@@ -1269,7 +1269,7 @@
 		switch(Interaction.DialogEvent) {
 			case "System_LanguageUnsupported":
 			case "System_MajorUpdateDetected":
-			case "System_PWAUpdateReady":
+			case "System_PWANewVersionReady":
 			case "System_RefreshingWebpage":
 			case "System_JSONStringInvalid":
 			case "System_UserDataExported":
