@@ -1384,6 +1384,12 @@
 						ShowHotkeyIndicators();
 					}
 					break;
+				case "F":
+					Click("Button_GameToggleFullscreen");
+					if(System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
+						ShowHotkeyIndicators();
+					}
+					break;
 				default:
 					if((System.Display.HotkeyIndicators == "ShowOnWrongKeyPress" && IsWrongKeyNegligible(Hotkey.key) == false && Hotkey.key != "F1") ||
 					System.Display.HotkeyIndicators == "ShowOnAnyKeyPress" || System.Display.HotkeyIndicators == "AlwaysShow") {
