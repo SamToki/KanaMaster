@@ -445,14 +445,14 @@
 		}
 
 	// Interact
-	function Focus(ID) {
-		if(document.getElementById(ID).closest("[inert]") == null) {
-			document.getElementById(ID).focus();
-		}
-	}
 	function Click(ID) {
 		if(document.getElementById(ID).closest("[inert]") == null) {
 			document.getElementById(ID).click();
+		}
+	}
+	function Focus(ID) {
+		if(document.getElementById(ID).closest("[inert]") == null) {
+			document.getElementById(ID).focus();
 		}
 	}
 	function SelectText(ID) {
