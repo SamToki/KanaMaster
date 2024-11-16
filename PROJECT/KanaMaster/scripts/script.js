@@ -136,7 +136,7 @@
 				window.location.replace("index_" + System.I18n.Language + ".html"); */
 				ShowDialog("System_LanguageUnsupported",
 					"Error",
-					"<span lang=\"en-US\">Sorry, this page currently does not support English (US).</span>",
+					"<span lang=\"en-US\">Sorry, this webpage currently does not support English (US).</span>",
 					"", "", "", "<span lang=\"en-US\">OK</span>");
 				break;
 			case "ja-JP":
@@ -150,7 +150,7 @@
 			case "zh-TW":
 				ShowDialog("System_LanguageUnsupported",
 					"Error",
-					"<span lang=\"zh-TW\">抱歉，本頁面暫不支援繁體中文。</span>",
+					"<span lang=\"zh-TW\">抱歉，本網頁暫不支援繁體中文。</span>",
 					"", "", "", "<span lang=\"zh-TW\">確定</span>");
 				break;
 			default:

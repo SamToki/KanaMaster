@@ -180,6 +180,13 @@
 		function ChangeRight(ID, Value) {
 			document.getElementById(ID).style.right = Value;
 		}
+		function ChangeScale(ID, Value) {
+			if(Value != "") {
+				document.getElementById(ID).style.transform = "scale(" + Value + ")";
+			} else {
+				document.getElementById(ID).style.transform = "";
+			}
+		}
 		function ChangeRotate(ID, Value) {
 			if(Value != "") {
 				document.getElementById(ID).style.transform = "rotate(" + Value + "deg)";
@@ -194,13 +201,6 @@
 		}
 		function ChangeHeight(ID, Value) {
 			document.getElementById(ID).style.height = Value;
-		}
-		function ChangeScale(ID, Value) {
-			if(Value != "") {
-				document.getElementById(ID).style.transform = "scale(" + Value + ")";
-			} else {
-				document.getElementById(ID).style.transform = "";
-			}
 		}
 
 		// Background
@@ -605,7 +605,7 @@
 	});
 
 	// On toggling fullscreen
-	document.addEventListener("fullscreenchange", function() {
+	document.addEventListener("fullscreenchange", function() { // Here an anonymous function must be used. Because the function "RefreshSystem" is defined in the "script.js" file, which is after this "common.js" file. Writing "RefreshSystem" straightforwardly will cause an error.
 		RefreshSystem();
 	});
 
