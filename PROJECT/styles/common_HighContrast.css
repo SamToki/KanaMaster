@@ -140,8 +140,11 @@
 		}
 
 		/* Foreground */
-		.EmphasizedText {
+		.RedText {
 			color: #FF8080;
+		}
+		.GreenText {
+			color: #00FF00;
 		}
 
 	/* Interactions */

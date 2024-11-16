@@ -547,11 +547,11 @@
 			}
 
 		/* Foreground */
-		.CenteredText {
-			text-align: center;
+		.RedText {
+			color: #E00000;
 		}
-		.RightAlignedText {
-			text-align: end;
+		.GreenText {
+			color: #008000;
 		}
 		.SmallerText {
 			font-size: 0.75em;
@@ -559,8 +559,11 @@
 		.LargerText {
 			font-size: 1.25em;
 		}
-		.EmphasizedText {
-			color: #E00000;
+		.CenteredText {
+			text-align: center;
+		}
+		.RightAlignedText {
+			text-align: end;
 		}
 		.TableHeader {
 			font-weight: bold;

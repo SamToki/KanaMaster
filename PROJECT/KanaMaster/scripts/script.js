@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.05,
+		const CurrentVersion = 3.06,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     ""],
@@ -554,9 +554,9 @@
 				}
 				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
 				if(Game.Status.IsRunning == true && Game.Stats.HP <= 20) {
-					AddClass("ProgringText_GameHP", "EmphasizedText");
+					AddClass("ProgringText_GameHP", "RedText");
 				} else {
-					RemoveClass("ProgringText_GameHP", "EmphasizedText");
+					RemoveClass("ProgringText_GameHP", "RedText");
 				}
 
 				// Time left
@@ -572,9 +572,9 @@
 				ChangeProgring("ProgringFg_GameTimeLeft", 298.45, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
 				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
-					AddClass("ProgringText_GameTimeLeft", "EmphasizedText");
+					AddClass("ProgringText_GameTimeLeft", "RedText");
 				} else {
-					RemoveClass("ProgringText_GameTimeLeft", "EmphasizedText");
+					RemoveClass("ProgringText_GameTimeLeft", "RedText");
 				}
 
 		// Question board & answer board
@@ -817,9 +817,9 @@
 
 		// Refresh
 		for(let Looper = 1; Looper <= 6; Looper++) {
-			RemoveClass("Item_HighscoreRow" + Looper, "Active");
+			RemoveClass("Item_HighscoreRow" + Looper, "GreenText");
 			if(Highscore[Looper][1] == "最新") {
-				AddClass("Item_HighscoreRow" + Looper, "Active");
+				AddClass("Item_HighscoreRow" + Looper, "GreenText");
 			} else {
 				Highscore[Looper][1] = "#" + Looper;
 			}
