@@ -49,7 +49,7 @@
 				font-size: 2.00em;
 			}
 			.ProgringFg {
-				stroke-dasharray: 298.45 298.45; stroke-dashoffset: 298.45;
+				stroke-dasharray: 0, calc((100px - 5px) * 3.1415926);
 			}
 			#ProgringFg_GameProgress {
 				stroke: #0080C0;

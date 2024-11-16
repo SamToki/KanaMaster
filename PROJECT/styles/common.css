@@ -245,7 +245,7 @@
 		.ProgringFg {
 			transform: rotate(-90deg);
 			fill: transparent;
-			stroke: #8040A0; stroke-width: 5;
+			stroke: #8040A0; stroke-width: 5; stroke-linecap: round;
 		}
 		.ProgringText {
 			position: absolute; top: 0; left: 0;

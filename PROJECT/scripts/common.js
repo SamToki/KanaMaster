@@ -260,8 +260,8 @@
 					break;
 			}
 		}
-		function ChangeProgring(ID, Circumference, Percentage) {
-			document.getElementById(ID).style.strokeDashoffset = Circumference * (1 - Percentage / 100);
+		function ChangeProgring(ID, Diameter, Percentage) {
+			document.getElementById(ID).style.strokeDasharray = (Diameter - 5) * Math.PI * (Percentage / 100) + "px, " + (Diameter - 5) * Math.PI * (1 - Percentage / 100) + "px";
 		}
 
 		// Layout

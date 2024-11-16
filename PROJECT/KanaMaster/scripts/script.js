@@ -533,7 +533,7 @@
 						AlertSystemError("The value of Game.Mode.Progressing \"" + Game.Mode.Progressing + "\" in function ClockGame is invalid.");
 						break;
 				}
-				ChangeProgring("ProgringFg_GameProgress", 298.45, Game.Stats.Progress);
+				ChangeProgring("ProgringFg_GameProgress", 100, Game.Stats.Progress);
 				ChangeText("ProgringText_GameProgress", Game.Stats.Progress.toFixed(0) + "%");
 
 				// HP
@@ -544,7 +544,7 @@
 				} else {
 					Game.Stats.HP = 0;
 				}
-				ChangeProgring("ProgringFg_GameHP", 298.45, Game.Stats.HP);
+				ChangeProgring("ProgringFg_GameHP", 100, Game.Stats.HP);
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
 					ChangeAnim("ProgringFg_GameHP", "100ms");
 					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
@@ -569,7 +569,7 @@
 				} else {
 					Game.Stats.TimeLeft = 0;
 				}
-				ChangeProgring("ProgringFg_GameTimeLeft", 298.45, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
+				ChangeProgring("ProgringFg_GameTimeLeft", 100, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
 				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
 					AddClass("ProgringText_GameTimeLeft", "RedText");
