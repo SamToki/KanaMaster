@@ -166,6 +166,9 @@
 		function ChangeValue(ID, Value) {
 			document.getElementById(ID).value = Value;
 		}
+		function ChangeAriaLabel(ID, Value) {
+			document.getElementById(ID).ariaLabel = Value;
+		}
 
 		// Position
 		function ChangeTop(ID, Value) {
