@@ -718,7 +718,7 @@
 		width: 0; height: 2px; border-radius: 1px;
 		background-color: #000000;
 	}
-	#Ctrl_MainPage {
+	#Ctrl_HomePage {
 		position: absolute; top: 0; right: 0;
 		width: 35px;
 	}
