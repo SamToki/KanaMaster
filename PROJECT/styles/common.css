@@ -820,10 +820,6 @@
 .DebugOutline {
 	outline: 1px solid #00C000;
 }
-#Html.DebugOutline, head.DebugOutline, body.DebugOutline, #Topbar.DebugOutline, #Main.DebugOutline, footer.DebugOutline,
-.Hidden.DebugOutline, .HiddenHorizontally.DebugOutline, .HiddenToCorner.DebugOutline, .Faded.DebugOutline {
-	outline: none;
-}
 section.DebugOutline {
 	outline: 3px dashed #000000;
 }

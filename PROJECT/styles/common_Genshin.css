@@ -83,7 +83,7 @@
 		}
 		.DropctrlGroup {
 			border: 1px solid #FFFFFF40; border-radius: 20px;
-			background-color: #EEE4D9; box-shadow: 0 0 4px 2px #00000040;
+			background-color: #EEE4D9;
 		}
 		.Textbox {
 			border: 1px solid #FFFFFF40; border-radius: 20px; padding: 5px 10px;
@@ -103,18 +103,18 @@
 			background-color: #485267E0;
 		}
 		.Window {
-			background-color: #485267E0; box-shadow: 0 0 4px 2px #00000040;
+			background-color: #485267E0;
 			color: #EEE4D9;
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
-				background-color: #FFFFFF; box-shadow: 0 0 4px 2px #00000040;
+				background-color: #FFFFFF;
 				color: #323232;
 			}
 
 			/* Toast */
 			#Toast {
-				background-color: #FFFFCDE0; box-shadow: 0 0 4px 2px #00000040;
+				background-color: #FFFFCDE0;
 				color: #A17646;
 			}
 
@@ -142,9 +142,6 @@
 		}
 		.IAmHere {
 			background-color: #618A16;
-		}
-		.Shadow {
-			box-shadow: 0 0 4px 2px #00000040;
 		}
 		.Glow {
 			box-shadow: unset; filter: drop-shadow(0 0 5px #DEB76C);
@@ -228,7 +225,7 @@
 /* Area specific */
 	/* Header */
 	#Topbar {
-		background-color: #485267E0; box-shadow: 0 0 4px 2px #00000040;
+		background-color: #485267E0;
 		color: #EEE4D9;
 	}
 	#Topbar .Button, #DropctrlGroup_Nav {
@@ -259,7 +256,7 @@
 		/* Header */
 		#DropctrlGroup_Nav {
 			border: 1px solid #FFFFFF40;
-			background-color: #EEE4D9; box-shadow: 0 0 4px 2px #00000040;
+			background-color: #EEE4D9;
 		}
 		#DropctrlGroup_Nav .Button:not(:hover):not(:active) {
 			color: #485267;

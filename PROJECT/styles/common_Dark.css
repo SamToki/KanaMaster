@@ -79,7 +79,7 @@
 		}
 		.DropctrlGroup {
 			border: 1px solid #FFFFFF40;
-			background-color: #303030; box-shadow: 0 0 4px 2px #00000040;
+			background-color: #303030;
 		}
 		.Textbox {
 			border: 1px solid #FFFFFF40;
@@ -95,17 +95,17 @@
 			background-color: #202020E0;
 		}
 		.Window {
-			background-color: #202020E0; box-shadow: 0 0 4px 2px #00000040;
+			background-color: #202020E0;
 			color: #FFFFFF;
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
-				background-color: #303030; box-shadow: 0 0 4px 2px #00000040;
+				background-color: #303030;
 			}
 
 			/* Toast */
 			#Toast {
-				background-color: #583868E0; box-shadow: 0 0 4px 2px #00000040;
+				background-color: #583868E0;
 				color: #FFFFFF;
 			}
 
@@ -138,9 +138,6 @@
 		}
 		.Button.Shaped.Active .Shape {
 			fill: #004000;
-		}
-		.Shadow {
-			box-shadow: 0 0 4px 2px #00000040;
 		}
 		.Glow {
 			box-shadow: 0 0 10px 5px #583868;
@@ -209,7 +206,7 @@
 /* Area specific */
 	/* Header */
 	#Topbar {
-		background-color: #303030E0; box-shadow: 0 0 4px 2px #00000040;
+		background-color: #303030E0;
 		color: #FFFFFF;
 	}
 	#Ctrl_NavUnderline {
@@ -234,7 +231,7 @@
 		/* Header */
 		#DropctrlGroup_Nav {
 			border: 1px solid #FFFFFF40;
-			background-color: #303030; box-shadow: 0 0 4px 2px #00000040;
+			background-color: #303030;
 		}
 }
 
