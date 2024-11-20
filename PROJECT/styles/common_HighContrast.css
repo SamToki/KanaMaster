@@ -6,6 +6,11 @@
 
 /* General */
 	/* Basics */
+		/* Overall */
+		#Html {
+			color: #FFFFFF;
+		}
+
 		/* Texts */
 		a {
 			color: #00C0FF; text-decoration: underline;
@@ -20,12 +25,6 @@
 		/* Group frameworks */
 		.Item {
 			background-color: #101010;
-		}
-		legend {
-			color: #FFFFFF;
-		}
-		label {
-			color: #FFFFFF;
 		}
 
 		/* Progress indicators */
@@ -72,14 +71,10 @@
 		}
 
 		/* Interactive ctrls */
-		.Button, .Combobox {
-			border: 1px solid #FFFFFF;
-			background-color: #202020;
-			color: #FFFFFF;
-		}
-		.DropctrlGroup {
+		.Button, .Combobox, .DropctrlGroup {
 			border: 1px solid #FFFFFF;
 			background-color: #202020; box-shadow: none;
+			color: #FFFFFF;
 		}
 		.Textbox {
 			border: 1px solid #FFFFFF;
@@ -97,7 +92,6 @@
 		.Window {
 			border: 1px solid #FFFFFF;
 			background-color: #101010; box-shadow: none;
-			color: #FFFFFF;
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
@@ -108,7 +102,6 @@
 			/* Toast */
 			#Toast {
 				background-color: #402050; box-shadow: none;
-				color: #FFFFFF;
 			}
 
 			/* Dialog */
@@ -204,7 +197,6 @@
 	/* Header */
 	#Topbar {
 		background-color: #202020; box-shadow: none;
-		color: #FFFFFF;
 	}
 	#Ctrl_NavUnderline {
 		background-color: #FFFFFF;
@@ -213,7 +205,6 @@
 	/* Main */
 	#Main {
 		background-color: #000000;
-		color: #FFFFFF;
 	}
 
 	/* Footer */

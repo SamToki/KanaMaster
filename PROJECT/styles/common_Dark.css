@@ -6,6 +6,11 @@
 
 /* General */
 	/* Basics */
+		/* Overall */
+		#Html {
+			color: #FFFFFF;
+		}
+
 		/* Texts */
 		a {
 			color: #D090F0;
@@ -20,12 +25,6 @@
 		/* Group frameworks */
 		.Item {
 			background-color: #202020E0;
-		}
-		legend {
-			color: #FFFFFF;
-		}
-		label {
-			color: #FFFFFF;
 		}
 
 		/* Progress indicators */
@@ -72,14 +71,10 @@
 		}
 
 		/* Interactive ctrls */
-		.Button, .Combobox {
+		.Button, .Combobox, .DropctrlGroup {
 			border: 1px solid #FFFFFF40;
 			background-color: #303030;
 			color: #FFFFFF;
-		}
-		.DropctrlGroup {
-			border: 1px solid #FFFFFF40;
-			background-color: #303030;
 		}
 		.Textbox {
 			border: 1px solid #FFFFFF40;
@@ -91,12 +86,8 @@
 		.ScreenFilter {
 			background-color: #000000C0;
 		}
-		.ScreenFilter.AsWindow {
+		.ScreenFilter.AsWindow, .Window {
 			background-color: #202020E0;
-		}
-		.Window {
-			background-color: #202020E0;
-			color: #FFFFFF;
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
@@ -106,7 +97,6 @@
 			/* Toast */
 			#Toast {
 				background-color: #583868E0;
-				color: #FFFFFF;
 			}
 
 			/* Dialog */
@@ -207,7 +197,6 @@
 	/* Header */
 	#Topbar {
 		background-color: #303030E0;
-		color: #FFFFFF;
 	}
 	#Ctrl_NavUnderline {
 		background-color: #FFFFFF;
@@ -216,7 +205,6 @@
 	/* Main */
 	#Main {
 		background-color: #000000E0;
-		color: #FFFFFF;
 	}
 
 	/* Footer */

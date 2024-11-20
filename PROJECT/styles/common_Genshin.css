@@ -6,6 +6,11 @@
 
 /* General */
 	/* Basics */
+		/* Overall */
+		#Html {
+			color: #EEE4D9;
+		}
+
 		/* Texts */
 		a {
 			color: #DEB76C;
@@ -20,12 +25,6 @@
 		/* Group frameworks */
 		.Item {
 			background-color: #485267E0;
-		}
-		legend {
-			color: #EEE4D9;
-		}
-		label {
-			color: #EEE4D9;
 		}
 
 		/* Progress indicators */
@@ -72,8 +71,8 @@
 		}
 
 		/* Interactive ctrls */
-		.Button, .Combobox {
-			border: 1px solid #FFFFFF40; border-radius: 20px; padding: 5px 10px;
+		.Button, .Combobox, .DropctrlGroup {
+			border: 1px solid #FFFFFF40; border-radius: 17.5px; padding: 5px 10px;
 			background-color: #EEE4D9;
 			color: #485267;
 		}
@@ -82,11 +81,10 @@
 			color: #EEE4D9;
 		}
 		.DropctrlGroup {
-			border: 1px solid #FFFFFF40; border-radius: 20px;
-			background-color: #EEE4D9;
+			padding: 0;
 		}
 		.Textbox {
-			border: 1px solid #FFFFFF40; border-radius: 20px; padding: 5px 10px;
+			border: 1px solid #FFFFFF40; border-radius: 17.5px; padding: 5px 10px;
 			background-color: #F5F5F5;
 			color: #323232;
 		}
@@ -99,12 +97,8 @@
 		.ScreenFilter {
 			background-color: #000000C0;
 		}
-		.ScreenFilter.AsWindow {
+		.ScreenFilter.AsWindow, .Window {
 			background-color: #485267E0;
-		}
-		.Window {
-			background-color: #485267E0;
-			color: #EEE4D9;
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
@@ -226,7 +220,6 @@
 	/* Header */
 	#Topbar {
 		background-color: #485267E0;
-		color: #EEE4D9;
 	}
 	#Topbar .Button, #DropctrlGroup_Nav {
 		border-radius: 5px;
@@ -241,7 +234,6 @@
 	/* Main */
 	#Main {
 		background-color: #282D38E0;
-		color: #EEE4D9;
 	}
 
 	/* Footer */

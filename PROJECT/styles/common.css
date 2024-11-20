@@ -20,14 +20,13 @@
 		* {
 			transform-origin: inherit;
 			box-sizing: inherit; padding: 0; margin: 0;
-			font-family: inherit; font-size: inherit; font-style: inherit;
+			font-family: inherit; font-size: inherit; font-style: inherit; /* These 3 properties need to be set as inherit due to buttons. */
 			transition: inherit; scroll-behavior: inherit;
 		}
 		#Html {
 			transform-origin: center center;
 			box-sizing: border-box;
-			/* font-family: Sarasa UI J, Source Han Sans, Hiragino Sans GB, PingFang SC, Microsoft YaHei UI, Helvetica, Arial, sans; */
-			font-family: ""; font-size: 14px;
+			color: #000000; font-family: ""; font-size: 14px; /* font-family: Sarasa UI J, Source Han Sans, Hiragino Sans GB, PingFang SC, Microsoft YaHei UI, Helvetica, Arial, sans; */
 			scroll-padding-top: 60px;
 			transition: 250ms, z-index 0ms; scroll-behavior: smooth;
 		}
@@ -56,15 +55,15 @@
 		}
 		h2 {
 			padding: 20px 0;
-			font-size: 2.00em; text-align: start;
+			font-size: 2.00em;
 		}
 		h3 {
 			padding: 10px 0;
-			font-size: 1.50em; text-align: start;
+			font-size: 1.50em;
 		}
 		h4 {
 			padding: 5px 0;
-			font-size: 1.25em; font-weight: normal; text-align: start;
+			font-size: 1.25em; font-weight: normal;
 		}
 		p {
 			padding: 5px 0;
@@ -157,7 +156,7 @@
 			width: 100%; border: none; padding: 15px 0 0 0;
 		}
 		legend {
-			color: #000000; font-size: 1.50em; font-weight: bold;
+			font-size: 1.50em; font-weight: bold;
 		}
 		fieldset > .CtrlGroup {
 			width: 100%;
@@ -181,7 +180,7 @@
 		}
 		label {
 			width: 100%; height: 100%; border-radius: 5px;
-			color: #000000; text-wrap: nowrap; /* "text-wrap: nowrap" improves animation on hiding horizontally. */
+			text-wrap: nowrap; /* "text-wrap: nowrap" improves animation on hiding horizontally. */
 			display: flex; align-items: center; /* "label" cannot have "overflow: hidden" because of "Textbox". */
 		}
 		label > * {
@@ -288,9 +287,6 @@
 			color: #000000; text-align: center; text-wrap: nowrap;
 			display: flex; justify-content: center; align-items: center; overflow: hidden;
 		}
-		.Combobox {
-			text-align: unset;
-		}
 		.Button.Shaped, .Button.ShownAsLabel {
 			border: none; padding: 0;
 			background-color: transparent !important;
@@ -315,6 +311,7 @@
 		}
 		.Combobox {
 			padding: 5px;
+			text-align: unset;
 		}
 		fieldset .Combobox {
 			width: 200px;
@@ -351,7 +348,6 @@
 		.Window {
 			border-radius: 5px;
 			background-color: #F0F0F0E0; backdrop-filter: blur(5px); box-shadow: 0 0 4px 2px #00000040;
-			color: #000000;
 			overflow: hidden;
 		}
 			/* Hotkey indicators */
@@ -378,7 +374,7 @@
 				position: fixed; top: calc(50vh + 5px); left: 0; z-index: 102;
 				width: 100%; height: 50px;
 				background-color: #F0D0FFE0; backdrop-filter: blur(5px); box-shadow: 0 0 4px 2px #00000040;
-				color: #000000; font-size: 2.00em; text-align: center;
+				font-size: 2.00em; text-align: center;
 				display: flex; justify-content: center; align-items: center; overflow: hidden;
 				pointer-events: none;
 			}
@@ -569,8 +565,7 @@
 			font-weight: bold;
 		}
 		.Code {
-			/* font-family: Sarasa Mono J, LXGW WenKai Mono, XHei Square Mono, Consolas, monospace; */
-			font-family: monospace;
+			font-family: monospace; /* font-family: Sarasa Mono J, LXGW WenKai Mono, XHei Square Mono, Consolas, monospace; */
 			white-space: pre; /* https://stackoverflow.com/a/13446005 */
 		}
 
@@ -682,7 +677,6 @@
 		position: fixed; top: 0; left: 0; z-index: 101;
 		width: 100%; height: 60px; padding: 12.5px 15px;
 		background-color: #FFFFFFE0; backdrop-filter: blur(5px); box-shadow: 0 0 4px 2px #00000040;
-		color: #000000;
 	}
 	#Topbar > .CtrlGroup {
 		position: relative;
@@ -727,7 +721,6 @@
 	#Main {
 		padding: 60px 0 0 0;
 		background-color: #E0E0E0E0;
-		color: #000000;
 	}
 	#Html:has(#Topbar.Hidden) #Main {
 		padding: 0;
