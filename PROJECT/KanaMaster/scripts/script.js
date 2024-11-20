@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.07,
+		const CurrentVersion = 3.08,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     ""],
@@ -547,13 +547,6 @@
 					Game.Stats.HP = 0;
 				}
 				ChangeProgring("ProgringFg_GameHP", 100, Game.Stats.HP);
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
-					ChangeAnim("ProgringFg_GameHP", "100ms");
-					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
-				} else {
-					ChangeAnim("ProgringFg_GameHP", "");
-					ChangeAnim("ProgringFg_GameTimeLeft", "");
-				}
 				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
 				if(Game.Status.IsRunning == true && Game.Stats.HP <= 20) {
 					AddClass("ProgringText_GameHP", "RedText");
@@ -572,6 +565,11 @@
 					Game.Stats.TimeLeft = 0;
 				}
 				ChangeProgring("ProgringFg_GameTimeLeft", 100, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
+				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
+					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
+				} else {
+					ChangeAnim("ProgringFg_GameTimeLeft", "");
+				}
 				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
 					AddClass("ProgringText_GameTimeLeft", "RedText");
