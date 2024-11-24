@@ -737,13 +737,12 @@
 				}
 			}
 			if(Counter < 2) {
-				setTimeout(function() {
-					SetQuestionRangeDefaultRange();
-					ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
-						"Error",
-						"出题范围过小，请至少选择两项。已恢复至默认范围。",
-						"", "", "", "确定");
-				}, 0);
+				SetQuestionRangeDefaultRange();
+				ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
+					"Error",
+					"出题范围过小，请至少选择两项。已恢复至默认范围。",
+					"", "", "", "确定");
+				return;
 			}
 			RemoveClass("Button_SettingsQuestionRangeDefaultRange", "Active");
 			RemoveClass("Button_SettingsQuestionRangeBasicHiragana", "Active");
@@ -1266,7 +1265,10 @@
 
 	// Dialog
 	function AnswerDialog(Selector) {
-		switch(Interaction.Dialog[Interaction.Dialog.length - 1].Event) {
+		let DialogEvent = Interaction.Dialog[Interaction.Dialog.length - 1].Event;
+		Interaction.Dialog.splice(Interaction.Dialog.length - 1, 1);
+		ShowDialog("Previous");
+		switch(DialogEvent) {
 			case "System_LanguageUnsupported":
 			case "System_MajorUpdateDetected":
 			case "System_PWANewVersionReady":
@@ -1280,7 +1282,7 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "System_ConfirmClearUserData":
@@ -1293,7 +1295,7 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "System_Error":
@@ -1306,7 +1308,7 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			case "Subsystem_ConfirmGoToTutorial":
@@ -1319,15 +1321,13 @@
 						break;
 					default:
 						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
-						return;
+						break;
 				}
 				break;
 			default:
-				AlertSystemError("The value of Interaction.Dialog[Interaction.Dialog.length - 1].Event \"" + Interaction.Dialog[Interaction.Dialog.length - 1].Event + "\" in function AnswerDialog is invalid.");
-				return;
+				AlertSystemError("The value of DialogEvent \"" + DialogEvent + "\" in function AnswerDialog is invalid.");
+				break;
 		}
-		Interaction.Dialog.splice(Interaction.Dialog.length - 1, 1);
-		ShowDialog("Previous");
 	}
 
 // Listeners
