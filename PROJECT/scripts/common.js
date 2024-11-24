@@ -21,7 +21,7 @@
 		Interaction = {
 			IsPointerDown: false, IsInIMEComposition: false,
 			DoNotHide: [0],
-			DialogEvent: ""
+			Dialog: [0]
 		},
 		Automation = {
 			HighlightActiveSectionInNav: null,
@@ -579,8 +579,8 @@
 	document.addEventListener("keydown", function(Hotkey) {
 		if(Hotkey.key == "Escape") {
 			HideDropctrlGroups();
-			if(Interaction.DialogEvent != "") {
-				setTimeout(function() { // Set a delay for the Esc key event listener in script.js to respond first, so it knows whether a dialog event is present, before the dialog gets dismissed.
+			if(Interaction.Dialog[Interaction.Dialog.length] >= 2) {
+				setTimeout(function() { // Set a delay for the Esc key event listener in script.js to respond first, so it knows whether a dialog is present, before that dialog gets dismissed.
 					AnswerDialog(3);
 				}, 0);
 			}
@@ -742,11 +742,34 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 
 	// Dialog
 	function ShowDialog(Event, Icon, Text, CheckboxOption, Option1, Option2, Option3) {
-		// Event name
-		Interaction.DialogEvent = Event;
+		// Dialog status
+		if(Event != "Previous") {
+			let IsDialogEventAlreadyExisting = false;
+			for(let Looper = 1; Looper < Interaction.Dialog.length; Looper++) {
+				if(Interaction.Dialog[Looper].Event == Event) {
+					IsDialogEventAlreadyExisting = true;
+				}
+			}
+			if(IsDialogEventAlreadyExisting == false) {
+				Interaction.Dialog[Interaction.Dialog.length] = {
+					Event: Event,
+					Icon: Icon,
+					Text: Text,
+					CheckboxOption: CheckboxOption, Option1: Option1, Option2: Option2, Option3: Option3
+				}
+			}
+		} else {
+			if(Interaction.Dialog.length < 2) {
+				Fade("ScreenFilter_Dialog");
+				Hide("Window_Dialog");
+				ChangeInert("Topbar", false);
+				ChangeInert("Main", false);
+				return;
+			}
+		}
 
-		// Icon
-		switch(Icon) {
+		// Icon and text
+		switch(Interaction.Dialog[Interaction.Dialog.length - 1].Icon) {
 			case "Info":
 				Show("Ctrl_DialogIconInfo");
 				HideHorizontally("Ctrl_DialogIconQuestion");
@@ -772,54 +795,38 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 				Show("Ctrl_DialogIconError");
 				break;
 			default:
-				AlertSystemError("The value of Icon \"" + Icon + "\" in function ShowDialog is invalid.");
+				AlertSystemError("The value of Interaction.Dialog[Interaction.Dialog.length - 1].Icon \"" + Interaction.Dialog[Interaction.Dialog.length - 1].Icon + "\" in function ShowDialog is invalid.");
 				break;
 		}
+		ChangeText("Label_DialogText", Interaction.Dialog[Interaction.Dialog.length - 1].Text);
 
-		// Text
-		ChangeText("Label_DialogText", Text);
-		ChangeText("Label_DialogCheckboxOption", CheckboxOption);
-		ChangeText("Button_DialogOption1", Option1);
-		ChangeText("Button_DialogOption2", Option2);
-		ChangeText("Button_DialogOption3", Option3); // Option 3 is the default option, will be selected when pressing Esc key. Therefore: When there is a single "OK", put it here. When there are multiple options, put "Cancel" here.
-
-		// Functionality
-		if(CheckboxOption != "") {
+		// Options
+		if(Interaction.Dialog[Interaction.Dialog.length - 1].CheckboxOption != "") {
 			Show("Ctrl_DialogCheckboxOption");
 			ChangeChecked("Checkbox_DialogCheckboxOption", false);
+			ChangeText("Label_DialogCheckboxOption", Interaction.Dialog[Interaction.Dialog.length - 1].CheckboxOption);
 		} else {
 			HideHorizontally("Ctrl_DialogCheckboxOption");
 		}
-		if(Option1 != "") {
+		if(Interaction.Dialog[Interaction.Dialog.length - 1].Option1 != "") {
 			Show("Ctrl_DialogOption1");
+			ChangeText("Button_DialogOption1", Interaction.Dialog[Interaction.Dialog.length - 1].Option1);
 		} else {
 			HideHorizontally("Ctrl_DialogOption1");
 		}
-		if(Option2 != "") {
+		if(Interaction.Dialog[Interaction.Dialog.length - 1].Option2 != "") {
 			Show("Ctrl_DialogOption2");
+			ChangeText("Button_DialogOption2", Interaction.Dialog[Interaction.Dialog.length - 1].Option2);
 		} else {
 			HideHorizontally("Ctrl_DialogOption2");
 		}
+		ChangeText("Button_DialogOption3", Interaction.Dialog[Interaction.Dialog.length - 1].Option3); // Option 3 is the default option, will be selected when pressing Esc key. Therefore: When there is a single "OK", put it here. When there are multiple options, put "Cancel" here.
 
-		// Show
+		// Show dialog and disable other ctrls
 		Show("ScreenFilter_Dialog");
 		Show("Window_Dialog");
-
-		// Disable other ctrls
 		ChangeInert("Topbar", true);
 		ChangeInert("Main", true);
-	}
-	function HideDialog() {
-		// Event name
-		Interaction.DialogEvent = "";
-
-		// Hide
-		Fade("ScreenFilter_Dialog");
-		Hide("Window_Dialog");
-
-		// Enable other ctrls
-		ChangeInert("Topbar", false);
-		ChangeInert("Main", false);
 	}
 
 // Error handling
