@@ -1478,8 +1478,8 @@ function AlertSystemError(Message) {
 		Message);
 	ShowDialog("System_Error",
 		"Error",
-		"抱歉，发生了系统错误。这可能是损坏了的用户数据导致的。是否前往用户数据？<br />" +
+		"抱歉，发生了系统错误。您可尝试清空用户数据来修复错误，或向我提供反馈。<br />" +
 		"<br />" +
 		"错误信息：" + Message,
-		"", "", "前往", "关闭");
+		"", "", "了解更多", "关闭");
 }
