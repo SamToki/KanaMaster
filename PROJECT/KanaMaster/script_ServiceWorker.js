@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CacheName = "KanaMaster_v3.08";
+		const CacheName = "KanaMaster_v3.09";
 
 // Listeners
 	// Service worker (https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/how-to/#step-5---add-a-service-worker)
@@ -15,7 +15,7 @@
 			const CacheContent = await caches.open(CacheName);
 			CacheContent.addAll([
 				"index.html",
-				"icons/favicon.ico",
+				"images/Favicon.png",
 				"../styles/common.css",
 				"../styles/common_Dark.css",
 				"../styles/common_Genshin.css",
@@ -28,14 +28,14 @@
 				"../scripts/common_UserDataRepairer.js",
 				"scripts/script.js",
 				"manifests/manifest.json",
-				"../cursors/BTRAhoge.cur",
-				"../cursors/Genshin.cur",
-				"../cursors/GenshinFurina.cur",
-				"../cursors/GenshinNahida.cur",
 				"images/Icon.png",
 				"images/Icon_Large.png",
 				"images/Icon_Maskable.png",
 				"images/Preview.jpg",
+				"../cursors/BTRAhoge.cur",
+				"../cursors/Genshin.cur",
+				"../cursors/GenshinFurina.cur",
+				"../cursors/GenshinNahida.cur",
 				"../images/Background.jpg",
 				"../audio/Beep.mp3",
 				"audio/Kana_a.mp3",
