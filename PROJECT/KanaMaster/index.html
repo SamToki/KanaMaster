@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Favicon.png" />
 		<title>假名征服者</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v3.09 (2024/11/25). Since 2023/11/05." />
+		<meta name="version" content="v3.10 (2024/11/29). Since 2023/11/05." />
 		<meta name="description" content="日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
 		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 假名征服者, KanaMaster, かなマスター, 日语学习, 日语入门, 五十音图" />
 		<meta name="copyright" content="(C) 2023 SAM TOKI STUDIO" />
@@ -357,6 +357,20 @@
 					<li class="Item">
 						<fieldset id="Fieldset_SettingsQuestionRange">
 							<legend>出题范围</legend>
+							<ul class="CtrlGroup">
+								<li class="Ctrl">
+									<label for="Combobox_SettingsQuestionRangePreset">
+										<span>预设：</span>
+										<select class="Combobox" id="Combobox_SettingsQuestionRangePreset" onchange="SetQuestionRangePreset()">
+											<option value="DefaultRange" selected>默认范围</option>
+											<option value="BasicHiragana">基本平假名</option>
+											<option value="BasicKatakana">基本片假名</option>
+											<option value="AllButObsoleteKana">废弃假名除外</option>
+											<option value="SelectAll">全选</option>
+										</select>
+									</label>
+								</li>
+							</ul>
 							<p>请至少选择两项。可在<a href="docs/假名征服者%20说明文档.pdf">说明文档</a>查看每项的具体内容。</p>
 							<ul class="CtrlGroup BelowParagraph">
 								<li class="Ctrl WidthDividedBy5">
@@ -472,21 +486,6 @@
 										<input class="Checkbox" id="Checkbox_SettingsQuestionRange19" type="checkbox" checked="false" onchange="SetQuestionRange(19)" />
 										<span>废弃假名</span>
 									</label>
-								</li>
-								<li class="Ctrl">
-									<button class="Button Active" id="Button_SettingsQuestionRangeDefaultRange" onclick="SetQuestionRangeDefaultRange()">默认范围</button>
-								</li>
-								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsQuestionRangeBasicHiragana" onclick="SetQuestionRangeBasicHiragana()">基本平假名</button>
-								</li>
-								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsQuestionRangeBasicKatakana" onclick="SetQuestionRangeBasicKatakana()">基本片假名</button>
-								</li>
-								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsQuestionRangeExcludeObsolete" onclick="SetQuestionRangeExcludeObsolete()">废弃假名除外</button>
-								</li>
-								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsQuestionRangeSelectAll" onclick="SetQuestionRangeSelectAll()">全选</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -764,7 +763,7 @@
 							<legend>关于</legend>
 							<p>假名征服者</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v3.09 (<time datetime="2024-11-25" pubdate="pubdate">2024/11/25</time>)<br />
+							<p>版本 v3.10 (<time datetime="2024-11-29" pubdate="pubdate">2024/11/29</time>)<br />
 								始于 2023/11/05</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">

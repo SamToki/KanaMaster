@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.09,
+		const CurrentVersion = 3.10,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     ""],
@@ -729,6 +729,26 @@
 			ChangeValue("Textbox_SettingsDuration", Game.Mode.Duration);
 
 			// Question range
+			switch(JSON.stringify(Game.QuestionRange)) {
+				case "[0,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false]":
+					ChangeValue("Combobox_SettingsQuestionRangePreset", "DefaultRange");
+					break;
+				case "[0,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false]":
+					ChangeValue("Combobox_SettingsQuestionRangePreset", "BasicHiragana");
+					break;
+				case "[0,false,false,false,false,false,true,true,true,true,true,false,false,false,false,false,false,false,false,false]":
+					ChangeValue("Combobox_SettingsQuestionRangePreset", "BasicKatakana");
+					break;
+				case "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false]":
+					ChangeValue("Combobox_SettingsQuestionRangePreset", "AllButObsoleteKana");
+					break;
+				case "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]":
+					ChangeValue("Combobox_SettingsQuestionRangePreset", "SelectAll");
+					break;
+				default:
+					ChangeValue("Combobox_SettingsQuestionRangePreset", "");
+					break;
+			}
 			let Counter = 0;
 			for(let Looper = 1; Looper <= 19; Looper++) {
 				ChangeChecked("Checkbox_SettingsQuestionRange" + Looper, Game.QuestionRange[Looper]);
@@ -737,32 +757,13 @@
 				}
 			}
 			if(Counter < 2) {
-				SetQuestionRangeDefaultRange();
+				Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false];
+				RefreshGame();
 				ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
 					"Error",
 					"出题范围过小，请至少选择两项。已恢复至默认范围。",
 					"", "", "", "确定");
 				return;
-			}
-			RemoveClass("Button_SettingsQuestionRangeDefaultRange", "Active");
-			RemoveClass("Button_SettingsQuestionRangeBasicHiragana", "Active");
-			RemoveClass("Button_SettingsQuestionRangeBasicKatakana", "Active");
-			RemoveClass("Button_SettingsQuestionRangeExcludeObsolete", "Active");
-			RemoveClass("Button_SettingsQuestionRangeSelectAll", "Active");
-			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false]") {
-				AddClass("Button_SettingsQuestionRangeDefaultRange", "Active");
-			}
-			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false]") {
-				AddClass("Button_SettingsQuestionRangeBasicHiragana", "Active");
-			}
-			if(JSON.stringify(Game.QuestionRange) == "[0,false,false,false,false,false,true,true,true,true,true,false,false,false,false,false,false,false,false,false]") {
-				AddClass("Button_SettingsQuestionRangeBasicKatakana", "Active");
-			}
-			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false]") {
-				AddClass("Button_SettingsQuestionRangeExcludeObsolete", "Active");
-			}
-			if(JSON.stringify(Game.QuestionRange) == "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]") {
-				AddClass("Button_SettingsQuestionRangeSelectAll", "Active");
 			}
 
 			// Difficulty
@@ -1121,28 +1122,31 @@
 		}
 
 		// Question range
+		function SetQuestionRangePreset() {
+			switch(ReadValue("Combobox_SettingsQuestionRangePreset")) {
+				case "DefaultRange":
+					Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false];
+					break;
+				case "BasicHiragana":
+					Game.QuestionRange = [0, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+					break;
+				case "BasicKatakana":
+					Game.QuestionRange = [0, false, false, false, false, false, true, true, true, true, true, false, false, false, false, false, false, false, false, false];
+					break;
+				case "AllButObsoleteKana":
+					Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false];
+					break;
+				case "SelectAll":
+					Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
+					break;
+				default:
+					AlertSystemError("The value of ReadValue(\"Combobox_SettingsQuestionRangePreset\") \"" + ReadValue("Combobox_SettingsQuestionRangePreset") + "\" in function SetQuestionRangePreset is invalid.");
+					break;
+			}
+			RefreshGame();
+		}
 		function SetQuestionRange(Selector) {
 			Game.QuestionRange[Selector] = IsChecked("Checkbox_SettingsQuestionRange" + Selector);
-			RefreshGame();
-		}
-		function SetQuestionRangeDefaultRange() {
-			Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false];
-			RefreshGame();
-		}
-		function SetQuestionRangeBasicHiragana() {
-			Game.QuestionRange = [0, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-			RefreshGame();
-		}
-		function SetQuestionRangeBasicKatakana() {
-			Game.QuestionRange = [0, false, false, false, false, false, true, true, true, true, true, false, false, false, false, false, false, false, false, false];
-			RefreshGame();
-		}
-		function SetQuestionRangeExcludeObsolete() {
-			Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false];
-			RefreshGame();
-		}
-		function SetQuestionRangeSelectAll() {
-			Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
 			RefreshGame();
 		}
 
