@@ -1,6 +1,6 @@
 // For SamToki.github.io/KanaMaster
 // Released under GNU GPL v3 open source license.
-// (C) 2023 SAM TOKI STUDIO
+// © 2023 SAM TOKI STUDIO
 
 // Initialization
 	// Declare variables
