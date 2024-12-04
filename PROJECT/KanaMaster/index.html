@@ -339,7 +339,7 @@
 									<label for="Radiobtn_SettingsQuantity">
 										<input class="Radiobtn" id="Radiobtn_SettingsQuantity" type="radio" checked="true" onchange="SetProgressing('Quantity')" />
 										<span>数量：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="SelectText('Textbox_SettingsQuantity')" onchange="SetQuantity()" />
+										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" title="" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="SelectText('Textbox_SettingsQuantity')" onchange="SetQuantity()" />
 									</label>
 								</li>
 								<li class="Ctrl">
@@ -496,23 +496,23 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsTimeLimitInitial">
 										<span>时限：从</span>
-										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="SelectText('Textbox_SettingsTimeLimitInitial')" onchange="SetTimeLimitInitial()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitInitial" type="number" title="" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="SelectText('Textbox_SettingsTimeLimitInitial')" onchange="SetTimeLimitInitial()" />
 										<span>至</span>
-										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitFinal" type="number" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="SelectText('Textbox_SettingsTimeLimitFinal')" onchange="SetTimeLimitFinal()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitFinal" type="number" title="" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="SelectText('Textbox_SettingsTimeLimitFinal')" onchange="SetTimeLimitFinal()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsCooldown">
 										<span>冷却：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="SelectText('Textbox_SettingsCooldown')" onchange="SetCooldown()" />
+										<input class="Textbox Width120" id="Textbox_SettingsCooldown" type="number" title="" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="SelectText('Textbox_SettingsCooldown')" onchange="SetCooldown()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsHPDrain">
 										<span>失误掉血：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsHPDrain" type="number" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="SelectText('Textbox_SettingsHPDrain')" onchange="SetHPDrain()" />
+										<input class="Textbox Width120" id="Textbox_SettingsHPDrain" type="number" title="" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="SelectText('Textbox_SettingsHPDrain')" onchange="SetHPDrain()" />
 									</label>
 								</li>
 							</ul>
