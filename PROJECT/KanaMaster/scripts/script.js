@@ -1257,7 +1257,7 @@
 				"}");
 			ShowDialog("System_UserDataExported",
 				"Info",
-				"已导出本页的用户数据至剪贴板。",
+				"已导出本网页的用户数据至剪贴板。",
 				"", "", "", "确定");
 		}
 		function ConfirmClearUserData() {
