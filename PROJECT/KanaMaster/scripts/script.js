@@ -494,13 +494,13 @@
 
 		// Stats
 			// Stats 1
-			ChangeText("Label_GameTotalCountValue", Game.Stats.TotalCount);
-			ChangeText("Label_GameMissCountValue", Game.Stats.MissCount);
-			ChangeText("Label_GameComboValue", Game.Stats.Combo);
+			ChangeText("Label_GameTotalCount", Game.Stats.TotalCount);
+			ChangeText("Label_GameMissCount", Game.Stats.MissCount);
+			ChangeText("Label_GameCombo", Game.Stats.Combo);
 			if(Game.Stats.Combo > Game.Stats.MaxCombo) {
 				Game.Stats.MaxCombo = Game.Stats.Combo;
 			}
-			ChangeText("Label_GameMaxComboValue", Game.Stats.MaxCombo);
+			ChangeText("Label_GameMaxCombo", Game.Stats.MaxCombo);
 			if(Game.Status.IsRunning == true) {
 				if(Game.Status.IsPaused == false) {
 					Game.Stats.ElapsedTime = Date.now() - Game.Stats.StartTime;
@@ -508,11 +508,11 @@
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 				}
 			}
-			ChangeText("Label_GameElapsedTimeValue", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
+			ChangeText("Label_GameElapsedTime", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
 			Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Final) * (Game.Stats.Progress / 100);
-			ChangeText("Label_GameCurrentTimeLimitValue", (Game.Stats.CurrentTimeLimit / 1000).toFixed(1) + "s");
-			ChangeText("Label_GameAccuracyValue", Game.Stats.Accuracy.toFixed(2) + "%");
-			ChangeText("Label_GameAvgReactionTimeValue", (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s");
+			ChangeText("Label_GameCurrentTimeLimit", (Game.Stats.CurrentTimeLimit / 1000).toFixed(1) + "s");
+			ChangeText("Label_GameAccuracy", Game.Stats.Accuracy.toFixed(2) + "%");
+			ChangeText("Label_GameAvgReactionTime", (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s");
 
 			// Stats 2
 				// Score

@@ -118,36 +118,36 @@
 					<div id="Ctnr_GameStats1">
 						<ul class="CtrlGroup">
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameTotalCount">总数</span>
-								<span class="GameStats1Value" id="Label_GameTotalCountValue">未知</span>
+								<span class="GameStats1Title">总数</span>
+								<span class="GameStats1Value" id="Label_GameTotalCount">未知</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameMissCount">失误</span>
-								<span class="GameStats1Value" id="Label_GameMissCountValue">未知</span>
+								<span class="GameStats1Title">失误</span>
+								<span class="GameStats1Value" id="Label_GameMissCount">未知</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameCombo">连击</span>
-								<span class="GameStats1Value" id="Label_GameComboValue">未知</span>
+								<span class="GameStats1Title">连击</span>
+								<span class="GameStats1Value" id="Label_GameCombo">未知</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameMaxCombo">最大连击</span>
-								<span class="GameStats1Value" id="Label_GameMaxComboValue">未知</span>
+								<span class="GameStats1Title">最大连击</span>
+								<span class="GameStats1Value" id="Label_GameMaxCombo">未知</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameElapsedTime">时长</span>
-								<span class="GameStats1Value" id="Label_GameElapsedTimeValue">未知</span>
+								<span class="GameStats1Title">时长</span>
+								<span class="GameStats1Value" id="Label_GameElapsedTime">未知</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameCurrentTimeLimit">当前时限</span>
-								<span class="GameStats1Value" id="Label_GameCurrentTimeLimitValue">未知</span>
+								<span class="GameStats1Title">当前时限</span>
+								<span class="GameStats1Value" id="Label_GameCurrentTimeLimit">未知</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameAccuracy">准确率</span>
-								<span class="GameStats1Value" id="Label_GameAccuracyValue">未知</span>
+								<span class="GameStats1Title">准确率</span>
+								<span class="GameStats1Value" id="Label_GameAccuracy">未知</span>
 							</li>
 							<li class="Ctrl">
-								<span class="GameStats1Title" id="Label_GameAvgReactionTime">平均反应用时</span>
-								<span class="GameStats1Value" id="Label_GameAvgReactionTimeValue">未知</span>
+								<span class="GameStats1Title">平均反应用时</span>
+								<span class="GameStats1Value" id="Label_GameAvgReactionTime">未知</span>
 							</li>
 						</ul>
 					</div>
@@ -157,22 +157,22 @@
 								<span id="Label_GameScore">总分</span>
 							</li>
 							<li class="Ctrl">
-								<svg class="Progring" id="Progring_GameProgress" viewBox="0 0 100 100" aria-label="进度">
-									<circle class="ProgringBg" id="ProgringBg_GameProgress" cx="50" cy="50" r="47.5" />
+								<svg class="Progring" viewBox="0 0 100 100" aria-label="进度">
+									<circle class="ProgringBg" cx="50" cy="50" r="47.5" />
 									<circle class="ProgringFg" id="ProgringFg_GameProgress" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameProgress">进度</span>
 							</li>
 							<li class="Ctrl">
-								<svg class="Progring" id="Progring_GameHP" viewBox="0 0 100 100" aria-label="血量">
-									<circle class="ProgringBg" id="ProgringBg_GameHP" cx="50" cy="50" r="47.5" />
+								<svg class="Progring" viewBox="0 0 100 100" aria-label="血量">
+									<circle class="ProgringBg" cx="50" cy="50" r="47.5" />
 									<circle class="ProgringFg" id="ProgringFg_GameHP" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameHP">血量</span>
 							</li>
 							<li class="Ctrl">
-								<svg class="Progring" id="Progring_GameTimeLeft" viewBox="0 0 100 100" aria-label="剩余时间">
-									<circle class="ProgringBg" id="ProgringBg_GameTimeLeft" cx="50" cy="50" r="47.5" />
+								<svg class="Progring" viewBox="0 0 100 100" aria-label="剩余时间">
+									<circle class="ProgringBg" cx="50" cy="50" r="47.5" />
 									<circle class="ProgringFg" id="ProgringFg_GameTimeLeft" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameTimeLeft">剩余时间</span>
@@ -233,7 +233,7 @@
 									<p id="Label_AnswerLogAll">记录</p>
 								</li>
 								<li class="Ctrl">
-									<button class="Button" id="Button_AnswerLogAllCopyToClipboard" onclick="AnswerLogAllCopyToClipboard()">拷贝至剪贴板</button>
+									<button class="Button" onclick="AnswerLogAllCopyToClipboard()">拷贝至剪贴板</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -246,7 +246,7 @@
 									<p id="Label_AnswerLogMissesOnly">记录</p>
 								</li>
 								<li class="Ctrl">
-									<button class="Button" id="Button_AnswerLogMissesOnlyCopyToClipboard" onclick="AnswerLogMissesOnlyCopyToClipboard()">拷贝至剪贴板</button>
+									<button class="Button" onclick="AnswerLogMissesOnlyCopyToClipboard()">拷贝至剪贴板</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -258,12 +258,12 @@
 				<h1 class="SectionTitle">高分榜</h1>
 				<ul class="ItemGroup" id="ItemGroup_Highscore">
 					<li class="Item TableHeader">
-						<span class="HighscoreSequence" id="Label_HighscoreRowHeaderSequence">名次</span>
-						<span class="HighscoreDate" id="Label_HighscoreRowHeaderDate">日期</span>
-						<span class="HighscoreScore" id="Label_HighscoreRowHeaderScore">总分</span>
-						<span class="HighscoreMaxCombo" id="Label_HighscoreRowHeaderMaxCombo">最大连击</span>
-						<span class="HighscoreAccuracy" id="Label_HighscoreRowHeaderAccuracy">准确率</span>
-						<span class="HighscoreAvgReactionTime" id="Label_HighscoreRowHeaderAvgReactionTime">平均反应用时</span>
+						<span class="HighscoreSequence">名次</span>
+						<span class="HighscoreDate">日期</span>
+						<span class="HighscoreScore">总分</span>
+						<span class="HighscoreMaxCombo">最大连击</span>
+						<span class="HighscoreAccuracy">准确率</span>
+						<span class="HighscoreAvgReactionTime">平均反应用时</span>
 					</li>
 					<li class="Item" id="Item_HighscoreRow1">
 						<span class="HighscoreSequence" id="Label_HighscoreRow1Sequence">未知</span>
@@ -677,10 +677,10 @@
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsUserDataExport" onclick="ExportUserData()">导出</button>
+									<button class="Button" onclick="ExportUserData()">导出</button>
 								</li>
 								<li class="Ctrl WidthDividedBy2">
-									<button class="Button" id="Button_SettingsUserDataClear" onclick="ConfirmClearUserData()">清空...</button>
+									<button class="Button" onclick="ConfirmClearUserData()">清空...</button>
 								</li>
 							</ul>
 						</fieldset>
@@ -764,7 +764,7 @@
 							<p>by SAM TOKI STUDIO</p>
 							<p>版本 v3.11 (<time datetime="2024-11-30" pubdate="pubdate">2024/11/30</time>)<br />
 								始于 2023/11/05</p>
-							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady">新版本已就绪，将在下次启动时生效。</p>
+							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">
 								<li class="Ctrl">
 									<a class="Button" href="https://github.com/SamToki/KanaMaster">查看 GitHub 项目</a>
