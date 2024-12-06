@@ -1216,7 +1216,7 @@
 			RefreshSubsystem();
 		}
 		function PreviewVoiceVolume() {
-			PlayAudio("Audio_Voice", "audio/Kana_a.mp3");
+			PlayAudio("Audio_Voice", "../audio/Beep.mp3");
 		}
 		function SetAlsoPlayVoiceOnMiss() {
 			Subsystem.Audio.AlsoPlayVoiceOnMiss = IsChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss");
