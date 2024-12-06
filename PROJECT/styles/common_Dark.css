@@ -230,10 +230,10 @@
 section.DebugOutline {
 	outline: 3px dashed #FFFFFF;
 }
-.ItemGroup.DebugOutline, .Viewport.DebugOutline {
+.ItemGroup.DebugOutline, .Viewport.DebugOutline, .Window.DebugOutline {
 	outline: 3px solid #C00000;
 }
-.Item.DebugOutline, div.DebugOutline {
+.Item.DebugOutline, .Ctnr.DebugOutline {
 	outline: 3px dashed #FF6060;
 }
 .CtrlGroup.DebugOutline, .DropctrlGroup.DebugOutline {

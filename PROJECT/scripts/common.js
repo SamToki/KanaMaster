@@ -209,9 +209,9 @@
 		// Background
 		function ChangeBgImage(Value) {
 			if(Value != "") {
-				document.getElementById("Ctnr_BgImage").style.backgroundImage = "url(" + Value + ")";
+				document.getElementById("BgImage").style.backgroundImage = "url(" + Value + ")";
 			} else {
-				document.getElementById("Ctnr_BgImage").style.backgroundImage = "";
+				document.getElementById("BgImage").style.backgroundImage = "";
 			}
 		}
 		function ChangeImage(ID, Value) {
