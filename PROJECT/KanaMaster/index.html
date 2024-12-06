@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Favicon.png" />
 		<title>假名征服者</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v3.12 (2024/12/06). Since 2023/11/05." />
+		<meta name="version" content="v3.13 (2024/12/06). Since 2023/11/05." />
 		<meta name="description" content="日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
 		<meta name="copyright" content="© 2023 SAM TOKI STUDIO" />
 
@@ -31,7 +31,7 @@
 	</head>
 
 	<body>
-		<div class="Blur" id="Ctnr_BgImage"></div>
+		<div class="Blur" id="BgImage"></div>
 
 		<header id="Topbar">
 			<ul class="CtrlGroup">
@@ -115,7 +115,7 @@
 			<section id="Game">
 				<h1 class="SectionTitle Hidden" inert="true">游戏</h1>
 				<div class="Viewport">
-					<div id="Ctnr_GameStats1">
+					<div class="Ctnr" id="Ctnr_GameStats1">
 						<ul class="CtrlGroup">
 							<li class="Ctrl">
 								<span class="GameStats1Title">总数</span>
@@ -151,7 +151,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="Ctnr_GameStats2">
+					<div class="Ctnr" id="Ctnr_GameStats2">
 						<ul class="CtrlGroup">
 							<li class="Ctrl" id="Ctrl_GameScore">
 								<span id="Label_GameScore">总分</span>
@@ -179,10 +179,10 @@
 							</li>
 						</ul>
 					</div>
-					<div class="Box" id="Ctnr_GameQuestion">
+					<div class="Ctnr Box" id="Ctnr_GameQuestion">
 						<span id="Label_GameQuestion" lang="ja-JP"><span lang="zh-CN">问题</span></span>
 					</div>
-					<div id="Ctnr_GameAnswer">
+					<div class="Ctnr" id="Ctnr_GameAnswer">
 						<ul class="CtrlGroup">
 							<li class="Ctrl WidthDividedBy3">
 								<button class="Button" id="Button_GameAnswerOption1" lang="ja-JP" disabled="true" onclick="AnswerGame(1)"><span lang="zh-CN">选项</span></button>
@@ -199,7 +199,7 @@
 						</ul>
 						<span class="Faded" id="Label_AnswerFeedback" inert="true">回答反馈</span>
 					</div>
-					<div id="Ctnr_GameCtrl">
+					<div class="Ctnr" id="Ctnr_GameCtrl">
 						<ul class="CtrlGroup">
 							<li class="Ctrl">
 								<button class="Button Glow" id="Button_GameStart" onclick="StartGame()">开始</button>
@@ -762,7 +762,7 @@
 							<legend>关于</legend>
 							<p>假名征服者</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v3.12 (<time datetime="2024-12-06" pubdate="pubdate">2024/12/06</time>)<br />
+							<p>版本 v3.13 (<time datetime="2024-12-06" pubdate="pubdate">2024/12/06</time>)<br />
 								始于 2023/11/05</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">

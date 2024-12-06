@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.12,
+		const CurrentVersion = 3.13,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -361,9 +361,9 @@
 			}
 			ChangeChecked("Checkbox_SettingsBlurBgImage", System.Display.BlurBgImage);
 			if(System.Display.BlurBgImage == true) {
-				AddClass("Ctnr_BgImage", "Blur");
+				AddClass("BgImage", "Blur");
 			} else {
-				RemoveClass("Ctnr_BgImage", "Blur");
+				RemoveClass("BgImage", "Blur");
 			}
 			ChangeValue("Combobox_SettingsHotkeyIndicators", System.Display.HotkeyIndicators);
 			switch(System.Display.HotkeyIndicators) {
