@@ -163,11 +163,14 @@
 		function AddText(ID, Text) {
 			document.getElementById(ID).innerHTML += Text;
 		}
-		function ChangeValue(ID, Value) {
-			document.getElementById(ID).value = Value;
+		function ChangeTooltip(ID, Value) {
+			document.getElementById(ID).title = Value;
 		}
 		function ChangeAriaLabel(ID, Value) {
 			document.getElementById(ID).ariaLabel = Value;
+		}
+		function ChangeValue(ID, Value) {
+			document.getElementById(ID).value = Value;
 		}
 
 		// Position

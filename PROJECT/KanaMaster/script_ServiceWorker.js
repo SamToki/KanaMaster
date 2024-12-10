@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CacheName = "KanaMaster_v3.13";
+		const CacheName = "KanaMaster_v3.14";
 
 // Listeners
 	// Service worker (https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/how-to/#step-5---add-a-service-worker)

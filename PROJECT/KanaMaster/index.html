@@ -10,12 +10,12 @@
 		<link rel="icon" type="image/png" href="images/Favicon.png" />
 		<title>假名征服者</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v3.13 (2024/12/06). Since 2023/11/05." />
+		<meta name="version" content="v3.14 (2024/12/10). Since 2023/11/05." />
 		<meta name="description" content="日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
 		<meta name="copyright" content="© 2023 SAM TOKI STUDIO" />
 
 		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-		<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#303030">
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#303030">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../styles/common.css" />
 		<link id="ThemeVariant_Common" rel="stylesheet" href="../styles/common_Dark.css" media="(prefers-color-scheme: dark)" />
@@ -36,12 +36,12 @@
 		<header id="Topbar">
 			<ul class="CtrlGroup">
 				<li class="Ctrl" id="Ctrl_Title">
-					<a href="https://SamToki.github.io/KanaMaster" aria-label="假名征服者">
+					<a href="https://SamToki.github.io/KanaMaster" title="假名征服者" aria-label="假名征服者">
 						<img src="images/Icon.png" alt="网页图标" />
 					</a>
 				</li>
 				<li class="Ctrl" id="Ctrl_Nav">
-					<button class="Button HiddenHorizontally" id="Button_Nav" inert="true" onclick="Show('DropctrlGroup_Nav')" aria-label="导航菜单">
+					<button class="Button HiddenHorizontally" id="Button_Nav" inert="true" onclick="Show('DropctrlGroup_Nav')" title="导航菜单" aria-label="导航菜单">
 						<svg class="Icon Larger" viewBox="0 0 16 16" aria-hidden="true">
 							<path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
 						</svg>
@@ -102,7 +102,7 @@
 					</nav>
 				</li>
 				<li class="Ctrl" id="Ctrl_HomePage">
-					<a class="Button" href=".." aria-label="主页">
+					<a class="Button" href=".." title="主页" aria-label="主页">
 						<svg class="Icon" viewBox="0 0 16 16" aria-hidden="true">
 							<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
 						</svg>
@@ -154,24 +154,24 @@
 					<div class="Ctnr" id="Ctnr_GameStats2">
 						<ul class="CtrlGroup">
 							<li class="Ctrl" id="Ctrl_GameScore">
-								<span id="Label_GameScore">总分</span>
+								<span id="Label_GameScore" title="总分" aria-label="总分">总分</span>
 							</li>
-							<li class="Ctrl">
-								<svg class="Progring" viewBox="0 0 100 100" aria-label="进度">
+							<li class="Ctrl" title="进度" aria-label="进度">
+								<svg class="Progring" viewBox="0 0 100 100" aria-hidden="true">
 									<circle class="ProgringBg" cx="50" cy="50" r="47.5" />
 									<circle class="ProgringFg" id="ProgringFg_GameProgress" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameProgress">进度</span>
 							</li>
-							<li class="Ctrl">
-								<svg class="Progring" viewBox="0 0 100 100" aria-label="血量">
+							<li class="Ctrl" title="血量" aria-label="血量">
+								<svg class="Progring" viewBox="0 0 100 100" aria-hidden="true">
 									<circle class="ProgringBg" cx="50" cy="50" r="47.5" />
 									<circle class="ProgringFg" id="ProgringFg_GameHP" cx="50" cy="50" r="47.5" />
 								</svg>
 								<span class="ProgringText" id="ProgringText_GameHP">血量</span>
 							</li>
-							<li class="Ctrl">
-								<svg class="Progring" viewBox="0 0 100 100" aria-label="剩余时间">
+							<li class="Ctrl" title="剩余时间" aria-label="剩余时间">
+								<svg class="Progring" viewBox="0 0 100 100" aria-hidden="true">
 									<circle class="ProgringBg" cx="50" cy="50" r="47.5" />
 									<circle class="ProgringFg" id="ProgringFg_GameTimeLeft" cx="50" cy="50" r="47.5" />
 								</svg>
@@ -180,20 +180,20 @@
 						</ul>
 					</div>
 					<div class="Ctnr Box" id="Ctnr_GameQuestion">
-						<span id="Label_GameQuestion" lang="ja-JP"><span lang="zh-CN">问题</span></span>
+						<span id="Label_GameQuestion" lang="ja-JP" title="问题" aria-label="问题"><span lang="zh-CN">问题</span></span>
 					</div>
 					<div class="Ctnr" id="Ctnr_GameAnswer">
 						<ul class="CtrlGroup">
 							<li class="Ctrl WidthDividedBy3">
-								<button class="Button" id="Button_GameAnswerOption1" lang="ja-JP" disabled="true" onclick="AnswerGame(1)"><span lang="zh-CN">选项</span></button>
+								<button class="Button" id="Button_GameAnswerOption1" lang="ja-JP" disabled="true" onclick="AnswerGame(1)" title="选项1" aria-label="选项1"><span lang="zh-CN">选项</span></button>
 								<span class="HotkeyIndicator Faded" inert="true">1</span>
 							</li>
 							<li class="Ctrl WidthDividedBy3">
-								<button class="Button" id="Button_GameAnswerOption2" lang="ja-JP" disabled="true" onclick="AnswerGame(2)"><span lang="zh-CN">选项</span></button>
+								<button class="Button" id="Button_GameAnswerOption2" lang="ja-JP" disabled="true" onclick="AnswerGame(2)" title="选项2" aria-label="选项2"><span lang="zh-CN">选项</span></button>
 								<span class="HotkeyIndicator Faded" inert="true">2</span>
 							</li>
 							<li class="Ctrl WidthDividedBy3">
-								<button class="Button" id="Button_GameAnswerOption3" lang="ja-JP" disabled="true" onclick="AnswerGame(3)"><span lang="zh-CN">选项</span></button>
+								<button class="Button" id="Button_GameAnswerOption3" lang="ja-JP" disabled="true" onclick="AnswerGame(3)" title="选项3" aria-label="选项3"><span lang="zh-CN">选项</span></button>
 								<span class="HotkeyIndicator Faded" inert="true">3</span>
 							</li>
 						</ul>
@@ -210,7 +210,7 @@
 								<span class="HotkeyIndicator Faded" inert="true">R</span>
 							</li>
 							<li class="Ctrl" id="Ctrl_GameToggleFullscreen">
-								<button class="Button" id="Button_GameToggleFullscreen" onclick="ToggleFullscreen()" aria-label="全屏">
+								<button class="Button" id="Button_GameToggleFullscreen" onclick="ToggleFullscreen()" title="全屏" aria-label="全屏">
 									<svg class="Icon" viewBox="0 0 16 16" aria-hidden="true">
 										<path d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
 									</svg>
@@ -339,7 +339,7 @@
 									<label for="Radiobtn_SettingsQuantity">
 										<input class="Radiobtn" id="Radiobtn_SettingsQuantity" type="radio" checked="true" onchange="SetProgressing('Quantity')" />
 										<span>数量：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" title="" min="5" max="999" step="5" value="50" placeholder="5~999" onclick="SelectText('Textbox_SettingsQuantity')" onchange="SetQuantity()" />
+										<input class="Textbox Width120" id="Textbox_SettingsQuantity" type="number" min="5" max="999" step="5" value="50" title="" placeholder="5~999" onclick="SelectText('Textbox_SettingsQuantity')" onchange="SetQuantity()" />
 									</label>
 								</li>
 								<li class="Ctrl">
@@ -496,23 +496,23 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsTimeLimitInitial">
 										<span>时限：从</span>
-										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitInitial" type="number" title="" min="1" max="10" step="0.5" value="8.0" placeholder="1~10" onclick="SelectText('Textbox_SettingsTimeLimitInitial')" onchange="SetTimeLimitInitial()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitInitial" type="number" min="1" max="10" step="0.5" value="8.0" title="" placeholder="1~10" onclick="SelectText('Textbox_SettingsTimeLimitInitial')" onchange="SetTimeLimitInitial()" />
 										<span>至</span>
-										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitFinal" type="number" title="" min="1" max="10" step="0.5" value="6.0" placeholder="1~初始时限" onclick="SelectText('Textbox_SettingsTimeLimitFinal')" onchange="SetTimeLimitFinal()" />
+										<input class="Textbox Width120" id="Textbox_SettingsTimeLimitFinal" type="number" min="1" max="10" step="0.5" value="6.0" title="" placeholder="1~初始时限" onclick="SelectText('Textbox_SettingsTimeLimitFinal')" onchange="SetTimeLimitFinal()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsCooldown">
 										<span>冷却：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsCooldown" type="number" title="" min="0.2" max="10" step="0.2" value="1.0" placeholder="0.2~10" onclick="SelectText('Textbox_SettingsCooldown')" onchange="SetCooldown()" />
+										<input class="Textbox Width120" id="Textbox_SettingsCooldown" type="number" min="0.2" max="10" step="0.2" value="1.0" title="" placeholder="0.2~10" onclick="SelectText('Textbox_SettingsCooldown')" onchange="SetCooldown()" />
 										<span>秒</span>
 									</label>
 								</li>
 								<li class="Ctrl">
 									<label for="Textbox_SettingsHPDrain">
 										<span>失误掉血：</span>
-										<input class="Textbox Width120" id="Textbox_SettingsHPDrain" type="number" title="" min="5" max="100" step="5" value="10" placeholder="5~100" onclick="SelectText('Textbox_SettingsHPDrain')" onchange="SetHPDrain()" />
+										<input class="Textbox Width120" id="Textbox_SettingsHPDrain" type="number" min="5" max="100" step="5" value="10" title="" placeholder="5~100" onclick="SelectText('Textbox_SettingsHPDrain')" onchange="SetHPDrain()" />
 									</label>
 								</li>
 							</ul>
@@ -762,7 +762,7 @@
 							<legend>关于</legend>
 							<p>假名征服者</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v3.13 (<time datetime="2024-12-06" pubdate="pubdate">2024/12/06</time>)<br />
+							<p>版本 v3.14 (<time datetime="2024-12-10" pubdate="pubdate">2024/12/10</time>)<br />
 								始于 2023/11/05</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">
@@ -788,25 +788,25 @@
 		<div class="Window Hidden" id="Window_Dialog" inert="true">
 			<ul class="CtrlGroup" id="CtrlGroup_DialogPrompt">
 				<li class="Ctrl" id="Ctrl_DialogIconInfo">
-					<svg class="DialogIcon" id="DialogIcon_Info" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Info" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
 						<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
 					</svg>
 				</li>
 				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconQuestion" inert="true">
-					<svg class="DialogIcon" id="DialogIcon_Question" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Question" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
 					</svg>
 				</li>
 				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconCaution" inert="true">
-					<svg class="DialogIcon" id="DialogIcon_Caution" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Caution" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
 					</svg>
 				</li>
 				<li class="Ctrl HiddenHorizontally" id="Ctrl_DialogIconError" inert="true">
-					<svg class="DialogIcon" id="DialogIcon_Error" viewBox="0 0 16 16">
+					<svg class="DialogIcon" id="DialogIcon_Error" viewBox="0 0 16 16" aria-hidden="true">
 						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
