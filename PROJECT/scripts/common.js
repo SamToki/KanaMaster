@@ -175,6 +175,9 @@
 		function ChangeAriaLabel(ID, Value) {
 			document.getElementById(ID).ariaLabel = Value;
 		}
+		function ChangeLanguage(ID, Value) {
+			document.getElementById(ID).lang = Value;
+		}
 
 		// Position
 		function ChangeTop(ID, Value) {
@@ -274,6 +277,41 @@
 		}
 
 		// Layout
+		function Show(ID) {
+			RemoveClass(ID, "Hidden");
+			RemoveClass(ID, "HiddenHorizontally");
+			RemoveClass(ID, "HiddenToCorner");
+			RemoveClass(ID, "HiddenInMobileLayout");
+			RemoveClass(ID, "Faded");
+			ChangeInert(ID, false);
+			Interaction.DoNotHide[Interaction.DoNotHide.length] = ID;
+			setTimeout(function() {
+				Interaction.DoNotHide.splice(1, 1);
+			}, 20);
+		}
+		function ShowWithoutProtection(ID) {
+			RemoveClass(ID, "Hidden");
+			RemoveClass(ID, "HiddenHorizontally");
+			RemoveClass(ID, "HiddenToCorner");
+			RemoveClass(ID, "HiddenInMobileLayout");
+			RemoveClass(ID, "Faded");
+			ChangeInert(ID, false);
+		}
+		function ShowByClass(Class) {
+			let Elements = document.getElementsByClassName(Class);
+			for(let Looper = 0; Looper < Elements.length; Looper++) {
+				Elements[Looper].classList.remove("Hidden");
+				Elements[Looper].classList.remove("HiddenHorizontally");
+				Elements[Looper].classList.remove("HiddenToCorner");
+				Elements[Looper].classList.remove("HiddenInMobileLayout");
+				Elements[Looper].classList.remove("Faded");
+				Elements[Looper].inert = false;
+			}
+			Interaction.DoNotHide[Interaction.DoNotHide.length] = Class;
+			setTimeout(function() {
+				Interaction.DoNotHide.splice(1, 1);
+			}, 20);
+		}
 		function Hide(ID) {
 			if(Interaction.DoNotHide.includes(ID) == false) {
 				AddClass(ID, "Hidden");
@@ -320,55 +358,11 @@
 				}
 			}
 		}
-		function Show(ID) {
-			RemoveClass(ID, "Hidden");
-			RemoveClass(ID, "HiddenHorizontally");
-			RemoveClass(ID, "HiddenToCorner");
-			RemoveClass(ID, "HiddenInMobileLayout");
-			RemoveClass(ID, "Faded");
-			ChangeInert(ID, false);
-			Interaction.DoNotHide[Interaction.DoNotHide.length] = ID;
-			setTimeout(function() {
-				Interaction.DoNotHide.splice(1, 1);
-			}, 20);
-		}
-		function ShowWithoutProtection(ID) {
-			RemoveClass(ID, "Hidden");
-			RemoveClass(ID, "HiddenHorizontally");
-			RemoveClass(ID, "HiddenToCorner");
-			RemoveClass(ID, "HiddenInMobileLayout");
-			RemoveClass(ID, "Faded");
-			ChangeInert(ID, false);
-		}
-		function ShowByClass(Class) {
-			let Elements = document.getElementsByClassName(Class);
-			for(let Looper = 0; Looper < Elements.length; Looper++) {
-				Elements[Looper].classList.remove("Hidden");
-				Elements[Looper].classList.remove("HiddenHorizontally");
-				Elements[Looper].classList.remove("HiddenToCorner");
-				Elements[Looper].classList.remove("HiddenInMobileLayout");
-				Elements[Looper].classList.remove("Faded");
-				Elements[Looper].inert = false;
-			}
-			Interaction.DoNotHide[Interaction.DoNotHide.length] = Class;
-			setTimeout(function() {
-				Interaction.DoNotHide.splice(1, 1);
-			}, 20);
-		}
 		function ScrollIntoView(ID) {
 			document.getElementById(ID).scrollIntoView();
 		}
 		function ScrollToBottom(ID) {
 			document.getElementById(ID).scrollTop = document.getElementById(ID).scrollHeight;
-		}
-		function ChangeCursor(ID, Value) {
-			document.getElementById(ID).style.cursor = Value;
-		}
-		function ChangeCursorOverall(Value) {
-			let Elements = document.getElementsByTagName("*");
-			for(let Looper = 0; Looper < Elements.length; Looper++) {
-				Elements[Looper].style.cursor = Value;
-			}
 		}
 		function ToggleFullscreen() {
 			if(IsFullscreen() == false) {
@@ -401,9 +395,6 @@
 		}
 
 		// Functionality
-		function ChangeLanguage(ID, Value) {
-			document.getElementById(ID).lang = Value;
-		}
 		function ChangeLink(ID, Value) {
 			document.getElementById(ID).href = Value;
 		}
@@ -418,6 +409,15 @@
 		}
 		function ChangeInert(ID, Value) {
 			document.getElementById(ID).inert = Value;
+		}
+		function ChangeCursor(ID, Value) {
+			document.getElementById(ID).style.cursor = Value;
+		}
+		function ChangeCursorOverall(Value) {
+			let Elements = document.getElementsByTagName("*");
+			for(let Looper = 0; Looper < Elements.length; Looper++) {
+				Elements[Looper].style.cursor = Value;
+			}
 		}
 
 		// Audio
@@ -585,7 +585,7 @@
 	document.addEventListener("keydown", function(Hotkey) {
 		if(Hotkey.key == "Escape") {
 			HideDropctrlGroups();
-			if(Interaction.Dialog.length >= 2) {
+			if(Interaction.Dialog.length > 1) {
 				setTimeout(function() { // Set a delay for the Esc key event listener in script.js to respond first, so it knows whether a dialog is present, before that dialog gets dismissed.
 					AnswerDialog(3);
 				}, 0);
@@ -765,7 +765,10 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 				}
 			}
 		} else {
-			if(Interaction.Dialog.length < 2) {
+			if(Interaction.Dialog.length > 1) {
+				Interaction.Dialog.splice(Interaction.Dialog.length - 1, 1);
+			}
+			if(Interaction.Dialog.length <= 1) {
 				Fade("ScreenFilter_Dialog");
 				Hide("Window_Dialog");
 				ChangeInert("Topbar", false);
