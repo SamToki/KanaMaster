@@ -136,7 +136,7 @@
 					Elements[Looper].classList.remove(Class2);
 				}
 			} else {
-				// When removing a class from all elements, Class1 (class to be removed) and Class2 (search elements with this class) are the same.
+				// When removing a class from all elements, Class1 (class to be removed) and Class2 (searching elements with this class) are the same.
 				// The array "Elements" will change dynamically as it is based on the removed class, so here we use "while" instead of "for" to avoid omission.
 				while(Elements.length > 0) {
 					Elements[0].classList.remove(Class2);

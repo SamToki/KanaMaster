@@ -750,14 +750,15 @@
 			}
 
 			/* Floating ctrls */
-			#Toast {
-				top: calc(50vh + 12.5px);
-				height: 35px;
-				font-size: 1.25em;
-			}
-			#Html:has(#Topbar.Hidden) #Toast {
-				top: calc(50vh - 17.5px);
-			}
+				/* Toast */
+				#Toast {
+					top: calc(50vh + 12.5px);
+					height: 35px;
+					font-size: 1.25em;
+				}
+				#Html:has(#Topbar.Hidden) #Toast {
+					top: calc(50vh - 17.5px);
+				}
 
 	/* Area specific */
 		/* Header */
