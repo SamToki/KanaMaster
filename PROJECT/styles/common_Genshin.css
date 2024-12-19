@@ -50,7 +50,10 @@
 			stroke: #96D722;
 		}
 		.NeedleFg {
-			background-color: #FFFFFF;
+			background-color: #EEE4D9;
+		}
+		.NeedleArrow {
+			background-color: #EEE4D9;
 		}
 
 		/* Indicator lights */

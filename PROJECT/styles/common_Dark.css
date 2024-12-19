@@ -52,6 +52,9 @@
 		.NeedleFg {
 			background-color: #FFFFFF;
 		}
+		.NeedleArrow {
+			background-color: #FFFFFF;
+		}
 
 		/* Indicator lights */
 		.IndicatorLight.Off {
