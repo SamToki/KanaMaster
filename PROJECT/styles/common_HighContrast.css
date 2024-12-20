@@ -129,7 +129,7 @@
 			fill: #006000;
 		}
 		.Shadow {
-			box-shadow: 0 0 4px 2px #000000;
+			box-shadow: none;
 		}
 		.Glow {
 			box-shadow: 0 0 10px 5px #00C0FF;
