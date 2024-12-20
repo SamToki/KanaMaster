@@ -145,37 +145,37 @@
 
 	/* Interactions */
 		/* Hover */
-		a:hover, label:hover, .Button:hover /* .Combobox:hover, .Textbox:hover */ {
+		a:hover, label:not(:has(:disabled)):hover, .Button:enabled:hover /* .Combobox:enabled:hover, .Textbox:enabled:hover */ {
 			background-color: #00C0FF;
 			color: #000000;
 		}
-		.Active:hover {
+		.Active:enabled:hover, .Active:not(:has(:disabled)):hover {
 			background-color: #00D800;
 		}
-		.Button.Shaped:hover .Shape {
+		.Button.Shaped:enabled:hover .Shape {
 			fill: #00C0FF;
 		}
-		.Button.Shaped.Active:hover .Shape {
+		.Button.Shaped.Active:enabled:hover .Shape {
 			fill: #00D800;
 		}
-		.Button.ShownAsLabel:hover {
+		.Button.ShownAsLabel:enabled:hover {
 			color: #00C0FF;
 		}
-		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
+		.Textbox.ShownAsLabel:enabled:hover, .Textbox.ShownAsLabel:focus-visible {
 			background-color: #202008;
 		}
 
 		/* Click */
-		a:active, label:active, .Button:active,
-		.Combobox:active, .Textbox:active, .Textbox.ShownAsLabel:active,
-		.Active:active {
+		a:active, label:not(:has(:disabled)):active, .Button:enabled:active,
+		.Combobox:enabled:active, .Textbox:enabled:active, .Textbox.ShownAsLabel:enabled:active,
+		.Active:enabled:active, .Active:not(:has(:disabled)):active {
 			background-color: #00FFFF;
 			color: #000000;
 		}
-		.Button.Shaped:active .Shape, .Button.Shaped.Active:active .Shape {
+		.Button.Shaped:enabled:active .Shape, .Button.Shaped.Active:enabled:active .Shape {
 			fill: #00FFFF;
 		}
-		.Button.ShownAsLabel:active {
+		.Button.ShownAsLabel:enabled:active {
 			color: #00FFFF;
 		}
 

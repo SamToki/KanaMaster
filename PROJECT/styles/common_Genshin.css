@@ -159,46 +159,46 @@
 
 	/* Interactions */
 		/* Hover */
-		a:hover, label:hover, .Button:hover /* .Combobox:hover, .Textbox:hover */ {
+		a:hover, label:not(:has(:disabled)):hover, .Button:enabled:hover /* .Combobox:enabled:hover, .Textbox:enabled:hover */ {
 			background-color: #EEE4D9; box-shadow: 0 0 0 3px #DEB76C;
 			color: #485267;
 		}
-		.Active:hover {
+		.Active:enabled:hover, .Active:not(:has(:disabled)):hover {
 			background-color: #C8EC86;
 		}
-		.Button.Shaped:hover {
+		.Button.Shaped:enabled:hover {
 			box-shadow: none;
 		}
-		.Button.Shaped:hover .Shape {
+		.Button.Shaped:enabled:hover .Shape {
 			fill: #EEE4D9;
 			stroke: #DEB76C; stroke-width: 3px;
 		}
-		.Button.Shaped.Active:hover .Shape {
+		.Button.Shaped.Active:enabled:hover .Shape {
 			fill: #C8EC86;
 		}
-		.Button.ShownAsLabel:hover {
+		.Button.ShownAsLabel:enabled:hover {
 			box-shadow: none;
 			color: #DEB76C;
 		}
-		.Dropctrl .Button:hover, .ScrollableList label:hover {
+		.Dropctrl .Button:enabled:hover, .ScrollableList label:not(:has(:disabled)):hover {
 			box-shadow: 0 0 0 3px inset #DEB76C;
 		}
-		.Textbox.ShownAsLabel:hover, .Textbox.ShownAsLabel:focus-visible {
+		.Textbox.ShownAsLabel:enabled:hover, .Textbox.ShownAsLabel:focus-visible {
 			background-color: #F5F5F5;
 			color: #323232;
 		}
 
 		/* Click */
-		a:active, label:active, .Button:active,
-		.Combobox:active, .Textbox:active, .Textbox.ShownAsLabel:active,
-		.Active:active {
+		a:active, label:not(:has(:disabled)):active, .Button:enabled:active,
+		.Combobox:enabled:active, .Textbox:enabled:active, .Textbox.ShownAsLabel:enabled:active,
+		.Active:enabled:active, .Active:not(:has(:disabled)):active {
 			background-color: #D0C6BD;
 			color: #EEE4D9;
 		}
-		.Button.Shaped:active .Shape, .Button.Shaped.Active:active .Shape {
+		.Button.Shaped:enabled:active .Shape, .Button.Shaped.Active:enabled:active .Shape {
 			fill: #D0C6BD;
 		}
-		.Button.ShownAsLabel:active {
+		.Button.ShownAsLabel:enabled:active {
 			color: #CC972E;
 		}
 
