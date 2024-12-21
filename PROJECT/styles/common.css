@@ -33,12 +33,6 @@
 		#Html:has(#Topbar.Hidden) {
 			scroll-padding-top: 0;
 		}
-		#Html.PerformanceOptimization * {
-			backdrop-filter: none !important;
-		}
-		#Html.Cheat {
-			font-style: oblique 15deg !important;
-		}
 		#BgImage {
 			position: fixed; top: 0; left: 0; z-index: -1;
 			width: 100%; height: 100vh;
@@ -815,21 +809,27 @@
 }
 
 /* Dev */
-.DebugOutline {
+#Html.TryToOptimizePerformance * {
+	backdrop-filter: none !important;
+}
+#Html.ShowDebugOutlines * {
 	outline: 1px solid #00C000;
 }
-section.DebugOutline {
+#Html.ShowDebugOutlines section {
 	outline: 3px dashed #000000;
 }
-.ItemGroup.DebugOutline, .Viewport.DebugOutline, .Window.DebugOutline {
+#Html.ShowDebugOutlines .ItemGroup, #Html.ShowDebugOutlines .Viewport, #Html.ShowDebugOutlines .Window {
 	outline: 3px solid #FF8080;
 }
-.Item.DebugOutline, .Ctnr.DebugOutline {
+#Html.ShowDebugOutlines .Item, #Html.ShowDebugOutlines .Ctnr {
 	outline: 3px dashed #FF0000;
 }
-.CtrlGroup.DebugOutline, .DropctrlGroup.DebugOutline {
+#Html.ShowDebugOutlines .CtrlGroup, #Html.ShowDebugOutlines .DropctrlGroup {
 	outline: 2px solid #8080FF;
 }
-.Ctrl.DebugOutline, .Dropctrl.DebugOutline {
+#Html.ShowDebugOutlines .Ctrl, #Html.ShowDebugOutlines .Dropctrl {
 	outline: 2px dashed #0000FF;
+}
+#Html.Cheat {
+	font-style: oblique 15deg !important;
 }

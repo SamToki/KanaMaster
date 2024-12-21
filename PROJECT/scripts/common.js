@@ -226,18 +226,6 @@
 		function ChangeImage(ID, Value) {
 			document.getElementById(ID).src = Value;
 		}
-		function ChangeShowDebugOutlines(Value) {
-			let Elements = document.getElementsByTagName("*");
-			if(Value == true) {
-				for(let Looper = 0; Looper < Elements.length; Looper++) {
-					Elements[Looper].classList.add("DebugOutline");
-				}
-			} else {
-				for(let Looper = 0; Looper < Elements.length; Looper++) {
-					Elements[Looper].classList.remove("DebugOutline");
-				}
-			}
-		}
 		function ChangeFilter(ID, Value) {
 			document.getElementById(ID).style.filter = Value;
 		}

@@ -227,21 +227,21 @@
 }
 
 /* Dev */
-.DebugOutline {
+#Html.ShowDebugOutlines * {
 	outline: 1px solid #008000;
 }
-section.DebugOutline {
+#Html.ShowDebugOutlines section {
 	outline: 3px dashed #FFFFFF;
 }
-.ItemGroup.DebugOutline, .Viewport.DebugOutline, .Window.DebugOutline {
+#Html.ShowDebugOutlines .ItemGroup, #Html.ShowDebugOutlines .Viewport, #Html.ShowDebugOutlines .Window {
 	outline: 3px solid #C00000;
 }
-.Item.DebugOutline, .Ctnr.DebugOutline {
+#Html.ShowDebugOutlines .Item, #Html.ShowDebugOutlines .Ctnr {
 	outline: 3px dashed #FF6060;
 }
-.CtrlGroup.DebugOutline, .DropctrlGroup.DebugOutline {
+#Html.ShowDebugOutlines .CtrlGroup, #Html.ShowDebugOutlines .DropctrlGroup {
 	outline: 2px solid #0000C0;
 }
-.Ctrl.DebugOutline, .Dropctrl.DebugOutline {
+#Html.ShowDebugOutlines .Ctrl, #Html.ShowDebugOutlines .Dropctrl {
 	outline: 2px dashed #6060FF;
 }

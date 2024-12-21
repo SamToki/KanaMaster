@@ -227,6 +227,6 @@
 }
 
 /* Dev */
-.DebugOutline {
+#Html.ShowDebugOutlines * {
 	outline: none !important; /* Disabled in high contrast theme to keep accessibility. */
 }
