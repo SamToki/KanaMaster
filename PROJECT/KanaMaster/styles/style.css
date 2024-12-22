@@ -128,10 +128,13 @@
 			flex-direction: column; align-items: center;
 		}
 		#ItemGroup_Highscore .Item {
-			width: unset; height: 35px; margin: 5px 0;
-			display: flex; justify-content: space-between;
+			width: 665px; height: 35px; padding: 5px 15px; margin: 5px 0;
 		}
-		#ItemGroup_Highscore .Item span {
+		#ItemGroup_Highscore .CtrlGroup {
+			width: 100%; height: 100%;
+		}
+		#ItemGroup_Highscore .Ctrl {
+			height: 100%;
 			text-align: center;
 			display: flex; justify-content: center; align-items: center;
 		}
@@ -224,6 +227,9 @@
 				}
 
 			/* Highscore */
+			#ItemGroup_Highscore .Item {
+				width: 335px;
+			}
 			.HighscoreAccuracy, .HighscoreMaxCombo, .HighscoreAvgReactionTime { /* .HiddenHorizontally */
 				width: 0 !important; border: none !important; padding: 0 !important; margin: 0 !important;
 				opacity: 0 !important;
