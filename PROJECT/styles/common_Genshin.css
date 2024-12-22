@@ -75,16 +75,13 @@
 
 		/* Interactive ctrls */
 		.Button, .Combobox, .DropctrlGroup {
-			border: 1px solid #FFFFFF40; border-radius: 17.5px; padding: 5px 10px;
+			border: 1px solid #FFFFFF40; border-radius: 17.5px;
 			background-color: #EEE4D9;
 			color: #485267;
 		}
 		.Button.ShownAsLabel {
 			border-radius: 5px;
 			color: #EEE4D9;
-		}
-		.DropctrlGroup {
-			padding: 0;
 		}
 		.Textbox {
 			border: 1px solid #FFFFFF40; border-radius: 17.5px; padding: 5px 10px;
