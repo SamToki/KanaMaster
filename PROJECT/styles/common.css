@@ -605,10 +605,10 @@
 
 	/* Interactions */
 		/* Hover */
-		a:hover, label:not(:has(:disabled)):hover, .Button:enabled:hover /* .Combobox:enabled:hover, .Textbox:enabled:hover */ {
+		a:hover, label:not(:has(:disabled:not(option))):hover, .Button:enabled:hover /* .Combobox:enabled:hover, .Textbox:enabled:hover */ {
 			background-color: #F0D0FF;
 		}
-		.Active:enabled:hover, .Active:not(:has(:disabled)):hover {
+		.Active:enabled:hover, .Active:not(:has(:disabled:not(option))):hover {
 			background-color: #B8E8B8;
 		}
 		.Button.Shaped:enabled:hover .Shape {
@@ -625,9 +625,9 @@
 		}
 
 		/* Click */
-		a:active, label:not(:has(:disabled)):active, .Button:enabled:active,
+		a:active, label:not(:has(:disabled:not(option))):active, .Button:enabled:active,
 		.Combobox:enabled:active, .Textbox:enabled:active, .Textbox.ShownAsLabel:enabled:active,
-		.Active:enabled:active, .Active:not(:has(:disabled)):active {
+		.Active:enabled:active, .Active:not(:has(:disabled:not(option))):active {
 			background-color: #8040A0;
 			color: #FFFFFF;
 		}
