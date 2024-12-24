@@ -15,7 +15,7 @@ https://SamToki.github.io/KanaMaster
 
 # 教程 Tutorial
 
-[快速入门](/PROJECT/docs/假名征服者%20快速入门.pdf)　|　[说明文档](/PROJECT/docs/假名征服者%20说明文档.pdf)
+[快速入门](/PROJECT/docs/假名征服者%20快速入门.pdf) ／ [说明文档](/PROJECT/docs/假名征服者%20说明文档.pdf)
 
 # 版权说明 Copyright Info
 
