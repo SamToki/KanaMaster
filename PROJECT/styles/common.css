@@ -486,6 +486,9 @@
 			animation: Anim_Spin 1000ms infinite linear;
 		}
 			@keyframes Anim_Spin {
+				0% {
+					transform: rotate(0deg);
+				}
 				100% {
 					transform: rotate(360deg);
 				}
@@ -513,7 +516,7 @@
 			animation: Anim_Blink 1000ms infinite ease-in-out;
 		}
 			@keyframes Anim_Blink {
-				20% {
+				0%, 20%, 100% {
 					opacity: 1;
 				}
 				60%, 80% { /* .Transparent */
@@ -524,6 +527,9 @@
 			animation: Anim_Breathe 1000ms infinite ease-in-out;
 		}
 			@keyframes Anim_Breathe {
+				0%, 100% {
+					opacity: 1;
+				}
 				50% { /* .Transparent.Less */
 					opacity: 0.6;
 				}
@@ -536,8 +542,11 @@
 			animation: Anim_Glow 1500ms infinite ease-in-out;
 		}
 			@keyframes Anim_Glow {
-				50% {
+				0%, 100% {
 					box-shadow: none;
+				}
+				50% {
+					box-shadow: 0 0 10px 5px #F0D0FF;
 				}
 			}
 

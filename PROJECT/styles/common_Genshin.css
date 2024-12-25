@@ -141,8 +141,11 @@
 			box-shadow: unset; filter: drop-shadow(0 0 5px #DEB76C);
 		}
 			@keyframes Anim_Glow {
-				50% {
+				0%, 100% {
 					filter: none;
+				}
+				50% {
+					filter: drop-shadow(0 0 5px #DEB76C);
 				}
 			}
 
