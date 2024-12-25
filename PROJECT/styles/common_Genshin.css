@@ -19,7 +19,7 @@
 		/* Shapes */
 		.Shape {
 			fill: #EEE4D9;
-			stroke: #FFFFFF40;
+			stroke: #EEE4D940;
 		}
 
 		/* Group frameworks */
@@ -29,10 +29,10 @@
 
 		/* Progress indicators */
 		.Progbar {
-			background-color: #FFFFFF20;
+			background-color: #EEE4D920;
 		}
 		.Progbar.Shaped .Shape {
-			fill: #FFFFFF20;
+			fill: #EEE4D920;
 		}
 		.Progbar.Shaped .ProgbarText {
 			color: #FFFFFF;
@@ -44,7 +44,7 @@
 			fill: #73A41A;
 		}
 		.ProgringBg {
-			stroke: #FFFFFF20;
+			stroke: #EEE4D920;
 		}
 		.ProgringFg {
 			stroke: #96D722;
@@ -55,7 +55,7 @@
 
 		/* Indicator lights */
 		.IndicatorLight.Off {
-			background-color: #FFFFFF40;
+			background-color: #EEE4D940;
 		}
 		.IndicatorLight.Red {
 			background-color: #FF4040;
@@ -72,7 +72,7 @@
 
 		/* Interactive ctrls */
 		.Button, .Combobox {
-			border: 1px solid #FFFFFF40; border-radius: 17.5px;
+			border: 1px solid #EEE4D940; border-radius: 17.5px;
 			background-color: #EEE4D9;
 			color: #485267;
 		}
@@ -81,14 +81,14 @@
 			color: #EEE4D9;
 		}
 		.DropctrlGroup {
-			border: 1px solid #FFFFFF40; border-radius: 17.5px;
+			border: 1px solid #EEE4D940; border-radius: 17.5px;
 			background-color: #EEE4D9;
 		}
 		.Combobox {
 			padding: 5px 10px;
 		}
 		.Textbox {
-			border: 1px solid #FFFFFF40; border-radius: 17.5px; padding: 5px 10px;
+			border: 1px solid #F5F5F540; border-radius: 17.5px; padding: 5px 10px;
 			background-color: #F5F5F5;
 			color: #323232;
 		}
@@ -123,7 +123,7 @@
 
 			/* Watermarks */
 			.Watermark {
-				color: #FFFFFF80; text-shadow: 0 0 5px #000000;
+				color: #EEE4D980; text-shadow: 0 0 5px #000000;
 			}
 
 	/* Variants */
@@ -246,7 +246,7 @@
 	/* Footer */
 	footer {
 		background-color: #282D38E0;
-		color: #FFFFFF80;
+		color: #EEE4D980;
 	}
 
 /* Responsive web design */
@@ -254,7 +254,7 @@
 	/* Area specific */
 		/* Header */
 		#DropctrlGroup_Nav {
-			border: 1px solid #FFFFFF40;
+			border: 1px solid #EEE4D940;
 			background-color: #EEE4D9;
 		}
 		#DropctrlGroup_Nav .Button:not(:hover):not(:active) {
