@@ -49,10 +49,7 @@
 		.ProgringFg {
 			stroke: #96D722;
 		}
-		.NeedleFg {
-			background-color: #EEE4D9;
-		}
-		.NeedleArrow {
+		.NeedleFg, .NeedleArrow {
 			background-color: #EEE4D9;
 		}
 
@@ -74,7 +71,7 @@
 		}
 
 		/* Interactive ctrls */
-		.Button, .Combobox, .DropctrlGroup {
+		.Button, .Combobox {
 			border: 1px solid #FFFFFF40; border-radius: 17.5px;
 			background-color: #EEE4D9;
 			color: #485267;
@@ -82,6 +79,10 @@
 		.Button.ShownAsLabel {
 			border-radius: 5px;
 			color: #EEE4D9;
+		}
+		.DropctrlGroup {
+			border: 1px solid #FFFFFF40; border-radius: 17.5px;
+			background-color: #EEE4D9;
 		}
 		.Combobox {
 			padding: 5px 10px;

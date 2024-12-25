@@ -49,10 +49,7 @@
 		.ProgringFg {
 			stroke: #D090F0;
 		}
-		.NeedleFg {
-			background-color: #FFFFFF;
-		}
-		.NeedleArrow {
+		.NeedleFg, .NeedleArrow {
 			background-color: #FFFFFF;
 		}
 
@@ -74,10 +71,14 @@
 		}
 
 		/* Interactive ctrls */
-		.Button, .Combobox, .DropctrlGroup {
+		.Button, .Combobox {
 			border: 1px solid #FFFFFF40;
 			background-color: #303030;
 			color: #FFFFFF;
+		}
+		.DropctrlGroup {
+			border: 1px solid #FFFFFF40;
+			background-color: #303030;
 		}
 		.Textbox {
 			border: 1px solid #FFFFFF40;
