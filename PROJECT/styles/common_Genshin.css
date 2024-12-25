@@ -83,6 +83,9 @@
 			border-radius: 5px;
 			color: #EEE4D9;
 		}
+		.Combobox {
+			padding: 5px 10px;
+		}
 		.Textbox {
 			border: 1px solid #FFFFFF40; border-radius: 17.5px; padding: 5px 10px;
 			background-color: #F5F5F5;
