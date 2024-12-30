@@ -184,7 +184,7 @@
 			box-shadow: none;
 			color: #DEB76C;
 		}
-		.Dropctrl .Button:enabled:hover, .ScrollableList label:not(:has(:disabled:not(option))):hover {
+		.Dropctrl a:hover, .Dropctrl .Button:enabled:hover, .ScrollableList label:not(:has(:disabled:not(option))):hover {
 			box-shadow: 0 0 0 3px inset #DEB76C;
 		}
 		.Textbox.ShownAsLabel:enabled:hover, .Textbox.ShownAsLabel:focus-visible {
