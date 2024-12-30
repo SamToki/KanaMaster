@@ -19,7 +19,6 @@
 			PWAInstallation: null
 		},
 		Interaction = {
-			IsPointerDown: false, IsInIMEComposition: false,
 			DoNotHide: [0],
 			Dialog: [0]
 		},
@@ -557,16 +556,11 @@
 	// On click (mouse left button, Enter key or Space key)
 	document.addEventListener("click", function() {
 		setTimeout(HideDropctrlGroups, 0);
-		Interaction.IsPointerDown = false;
 	});
 
 	// On mouse button
 	document.addEventListener("pointerdown", function() {
 		FadeHotkeyIndicators();
-		Interaction.IsPointerDown = true;
-	});
-	document.addEventListener("pointerup", function() {
-		Interaction.IsPointerDown = false;
 	});
 
 	// On Esc key
@@ -580,14 +574,6 @@
 			}
 		}
 	});
-
-	// On IME composition
-	document.addEventListener("compositionstart", function() {
-		Interaction.IsInIMEComposition = true;
-	})
-	document.addEventListener("compositionend", function() {
-		Interaction.IsInIMEComposition = false;
-	})
 
 	// On resizing window
 	window.addEventListener("resize", function() {
@@ -827,6 +813,6 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 	}
 
 // Error handling
-window.addEventListener("error", function() {
-	AlertSystemError("Look for the error message above or below in the console.");
+window.addEventListener("error", function(ErrorEvent) {
+	AlertSystemError(ErrorEvent.message);
 });
