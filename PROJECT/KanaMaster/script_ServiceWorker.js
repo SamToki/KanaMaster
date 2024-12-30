@@ -15,7 +15,7 @@
 			const CacheContent = await caches.open(CacheName);
 			CacheContent.addAll([
 				"index.html",
-				"images/Favicon.png",
+				"images/Icon.png",
 				"../styles/common.css",
 				"../styles/common_Dark.css",
 				"../styles/common_Genshin.css",
@@ -28,7 +28,6 @@
 				"../scripts/common_UserDataRepairer.js",
 				"scripts/script.js",
 				"manifests/manifest.json",
-				"images/Icon.png",
 				"images/Icon_Large.png",
 				"images/Icon_Maskable.png",
 				"images/Preview.jpg",
