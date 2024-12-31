@@ -462,17 +462,21 @@
 	function ShowIAmHere(ID) {
 		if(System.Display.Anim > 0) {
 			setTimeout(function() {
+				ChangeAnim(ID, "250ms");
 				AddClass(ID, "IAmHere");
 			}, 500);
 			setTimeout(function() {
 				RemoveClass(ID, "IAmHere");
-			}, 520 + System.Display.Anim);
+			}, 770);
 			setTimeout(function() {
 				AddClass(ID, "IAmHere");
-			}, 540 + System.Display.Anim * 2);
+			}, 1040);
 			setTimeout(function() {
 				RemoveClass(ID, "IAmHere");
-			}, 560 + System.Display.Anim * 3);
+			}, 1310);
+			setTimeout(function() {
+				ChangeAnim(ID, "");
+			}, 1580);
 		} else {
 			setTimeout(function() {
 				AddClass(ID, "IAmHere");
