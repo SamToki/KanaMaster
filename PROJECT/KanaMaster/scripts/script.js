@@ -823,11 +823,11 @@
 
 		// Refresh
 		for(let Looper = 1; Looper <= 6; Looper++) {
-			RemoveClass("Item_HighscoreRow" + Looper, "GreenText");
 			if(Highscore[Looper][1] == "最新") {
 				AddClass("Item_HighscoreRow" + Looper, "GreenText");
 			} else {
 				Highscore[Looper][1] = "#" + Looper;
+				RemoveClass("Item_HighscoreRow" + Looper, "GreenText");
 			}
 			ChangeText("Label_HighscoreRow" + Looper + "Sequence", Highscore[Looper][1]);
 			ChangeText("Label_HighscoreRow" + Looper + "Date", Highscore[Looper][2]);
