@@ -158,7 +158,7 @@
 				break;
 		}
 		if(System.Version.KanaMaster != undefined) {
-			if(Math.floor(CurrentVersion) - Math.floor(System.Version.KanaMaster) >= 1) {
+			if(Math.trunc(CurrentVersion) - Math.trunc(System.Version.KanaMaster) >= 1) {
 				ShowDialog("System_MajorUpdateDetected",
 					"Info",
 					"检测到大版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。",
@@ -514,7 +514,7 @@
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 				}
 			}
-			ChangeText("Label_GameElapsedTime", Math.floor(Game.Stats.ElapsedTime / 60000) + ":" + Math.floor(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
+			ChangeText("Label_GameElapsedTime", Math.trunc(Game.Stats.ElapsedTime / 60000) + ":" + Math.trunc(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
 			Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Final) * (Game.Stats.Progress / 100);
 			ChangeText("Label_GameCurrentTimeLimit", (Game.Stats.CurrentTimeLimit / 1000).toFixed(1) + "s");
 			ChangeText("Label_GameAccuracy", Game.Stats.Accuracy.toFixed(2) + "%");
@@ -812,7 +812,7 @@
 		// Sort (bubble sort)
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
-				if(parseInt(Number(Highscore[Looper2 + 1][3])) > parseInt(Number(Highscore[Looper2][3]))) {
+				if(Number(Highscore[Looper2 + 1][3]) > Number(Highscore[Looper2][3])) {
 					Highscore[0] = Highscore[Looper2];
 					Highscore[Looper2] = Highscore[Looper2 + 1];
 					Highscore[Looper2 + 1] = Highscore[0];
@@ -947,7 +947,7 @@
 							break;
 					}
 					Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
-					Game.Stats.Score += Math.floor((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
+					Game.Stats.Score += Math.trunc((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
 					if(Game.Stats.Score > 99999999) {
 						Game.Stats.Score = 99999999;
 					}
@@ -1107,7 +1107,7 @@
 			}
 		}
 		function SetQuantity() {
-			Game.Mode.Quantity = parseInt(Number(ReadValue("Textbox_SettingsQuantity"))); // Use parseInt(Number()) to force convert value to integer.
+			Game.Mode.Quantity = Math.trunc(ReadValue("Textbox_SettingsQuantity"));
 			if(Game.Mode.Quantity < 5) {
 				Game.Mode.Quantity = 5;
 			}
@@ -1117,7 +1117,7 @@
 			RefreshGame();
 		}
 		function SetDuration() {
-			Game.Mode.Duration = parseInt(Number(ReadValue("Textbox_SettingsDuration")));
+			Game.Mode.Duration = Math.trunc(ReadValue("Textbox_SettingsDuration"));
 			if(Game.Mode.Duration < 1) {
 				Game.Mode.Duration = 1;
 			}
@@ -1158,7 +1158,7 @@
 
 		// Difficulty
 		function SetTimeLimitInitial() {
-			Game.Difficulty.TimeLimit.Initial = parseInt(Number(ReadValue("Textbox_SettingsTimeLimitInitial")) * 10) / 10 * 1000;
+			Game.Difficulty.TimeLimit.Initial = Math.trunc(ReadValue("Textbox_SettingsTimeLimitInitial") * 10) / 10 * 1000;
 			if(Game.Difficulty.TimeLimit.Initial < 1000) {
 				Game.Difficulty.TimeLimit.Initial = 1000;
 			}
@@ -1174,7 +1174,7 @@
 			RefreshGame();
 		}
 		function SetTimeLimitFinal() {
-			Game.Difficulty.TimeLimit.Final = parseInt(Number(ReadValue("Textbox_SettingsTimeLimitFinal")) * 10) / 10 * 1000;
+			Game.Difficulty.TimeLimit.Final = Math.trunc(ReadValue("Textbox_SettingsTimeLimitFinal") * 10) / 10 * 1000;
 			if(Game.Difficulty.TimeLimit.Final < 1000) {
 				Game.Difficulty.TimeLimit.Final = 1000;
 			}
@@ -1190,7 +1190,7 @@
 			RefreshGame();
 		}
 		function SetCooldown() {
-			Game.Difficulty.Cooldown = parseInt(Number(ReadValue("Textbox_SettingsCooldown")) * 10) / 10 * 1000;
+			Game.Difficulty.Cooldown = Math.trunc(ReadValue("Textbox_SettingsCooldown") * 10) / 10 * 1000;
 			if(Game.Difficulty.Cooldown < 200) {
 				Game.Difficulty.Cooldown = 200;
 			}
@@ -1200,7 +1200,7 @@
 			RefreshGame();
 		}
 		function SetHPDrain() {
-			Game.Difficulty.HPDrain = parseInt(Number(ReadValue("Textbox_SettingsHPDrain")));
+			Game.Difficulty.HPDrain = Math.trunc(ReadValue("Textbox_SettingsHPDrain"));
 			if(Game.Difficulty.HPDrain < 5) {
 				Game.Difficulty.HPDrain = 5;
 			}

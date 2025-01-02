@@ -512,7 +512,7 @@
 			RefreshSystem();
 		}
 		function SetAnim() {
-			System.Display.Anim = parseInt(Number(ReadValue("Combobox_SettingsAnim")));
+			System.Display.Anim = Number(ReadValue("Combobox_SettingsAnim"));
 			RefreshSystem();
 		}
 
@@ -608,7 +608,7 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 // Features
 	// Maths
 	function Randomize(Min, Max) { // Return an integer between two integers.
-		return Min + Math.floor(Math.random() * (Max + 1 - Min));
+		return Min + Math.trunc(Math.random() * (Max + 1 - Min));
 	}
 	function CalcArrayAverage(Array) {
 		let Sum = 0;
