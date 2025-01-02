@@ -473,10 +473,10 @@
 			ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
 			if(System.Audio.PlayAudio == true && Subsystem.Audio.VoiceVolume > 0) {
 				Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+				ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
 			} else {
 				Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
 			}
-			ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
 
 			// Dev
 			ChangeChecked("Checkbox_SettingsCheat", Subsystem.Dev.Cheat);
