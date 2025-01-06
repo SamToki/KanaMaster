@@ -20,7 +20,8 @@
 		},
 		Interaction = {
 			DoNotHide: [0],
-			Dialog: [0]
+			Dialog: [0],
+			IsPointerDown: false, IsInIMEComposition: false, ScreenWakeLock: null
 		},
 		Automation = {
 			HighlightActiveSectionInNav: null,
@@ -176,6 +177,15 @@
 		}
 		function ChangeLanguage(ID, Value) {
 			document.getElementById(ID).lang = Value;
+		}
+		function ChangeMin(ID, Value) {
+			document.getElementById(ID).min = Value;
+		}
+		function ChangeMax(ID, Value) {
+			document.getElementById(ID).max = Value;
+		}
+		function ChangeStep(ID, Value) {
+			document.getElementById(ID).step = Value;
 		}
 
 		// Position
@@ -560,11 +570,16 @@
 	// On click (mouse left button, Enter key or Space key)
 	document.addEventListener("click", function() {
 		setTimeout(HideDropctrlGroups, 0);
+		Interaction.IsPointerDown = false;
 	});
 
 	// On mouse button
 	document.addEventListener("pointerdown", function() {
 		FadeHotkeyIndicators();
+		Interaction.IsPointerDown = true;
+	});
+	document.addEventListener("pointerup", function() {
+		Interaction.IsPointerDown = false;
 	});
 
 	// On Esc key
@@ -578,6 +593,14 @@
 			}
 		}
 	});
+
+	// On IME composition
+	document.addEventListener("compositionstart", function() {
+		Interaction.IsInIMEComposition = true;
+	})
+	document.addEventListener("compositionend", function() {
+		Interaction.IsInIMEComposition = false;
+	})
 
 	// On resizing window
 	window.addEventListener("resize", function() {
@@ -594,6 +617,13 @@
 	// On toggling fullscreen
 	document.addEventListener("fullscreenchange", function() { // Here an anonymous function must be used. Because the function "RefreshSystem" is defined in the "script.js" file, which is after this "common.js" file. Writing "RefreshSystem" straightforwardly will cause an error.
 		RefreshSystem();
+	});
+
+	// Screen wake lock (https://developer.chrome.com/docs/capabilities/web-apis/wake-lock)
+	document.addEventListener("visibilitychange", async() => {
+		if(Interaction.ScreenWakeLock != null && document.visibilityState == "visible") {
+			await RequestScreenWakeLock();
+		}
 	});
 
 	// When PWA installation is available
@@ -814,6 +844,19 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 		Show("Window_Dialog");
 		ChangeInert("Topbar", true);
 		ChangeInert("Main", true);
+	}
+
+	// Screen wake lock
+	const RequestScreenWakeLock = async() => {
+		if(Interaction.ScreenWakeLock == null) {
+			Interaction.ScreenWakeLock = await navigator.wakeLock.request();
+		}
+	}
+	function ReleaseScreenWakeLock() {
+		if(Interaction.ScreenWakeLock != null) {
+			Interaction.ScreenWakeLock.release();
+			Interaction.ScreenWakeLock = null;
+		}
 	}
 
 // Error handling
