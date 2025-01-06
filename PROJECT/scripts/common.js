@@ -45,7 +45,7 @@
 			Dev: {
 				TryToOptimizePerformance: false,
 				ShowDebugOutlines: false,
-				UseOldTypeface: false,
+				UseJapaneseGlyph: false,
 				Font: ""
 			},
 			Version: {}
@@ -544,8 +544,8 @@
 			System.Dev.ShowDebugOutlines = IsChecked("Checkbox_SettingsShowDebugOutlines");
 			RefreshSystem();
 		}
-		function SetUseOldTypeface() {
-			System.Dev.UseOldTypeface = IsChecked("Checkbox_SettingsUseOldTypeface");
+		function SetUseJapaneseGlyph() {
+			System.Dev.UseJapaneseGlyph = IsChecked("Checkbox_SettingsUseJapaneseGlyph");
 			RefreshSystem();
 		}
 		function SetFont() {

@@ -425,8 +425,8 @@
 			} else {
 				RemoveClass("Html", "ShowDebugOutlines");
 			}
-			ChangeChecked("Checkbox_SettingsUseOldTypeface", System.Dev.UseOldTypeface);
-			if(System.Dev.UseOldTypeface == true) {
+			ChangeChecked("Checkbox_SettingsUseJapaneseGlyph", System.Dev.UseJapaneseGlyph);
+			if(System.Dev.UseJapaneseGlyph == true) {
 				ChangeLanguage("Html", "ja-JP");
 			} else {
 				ChangeLanguage("Html", "zh-CN");
