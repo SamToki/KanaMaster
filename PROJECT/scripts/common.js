@@ -786,29 +786,21 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 		}
 
 		// Icon and text
+		HideHorizontally("Ctrl_DialogIconInfo");
+		HideHorizontally("Ctrl_DialogIconQuestion");
+		HideHorizontally("Ctrl_DialogIconCaution");
+		HideHorizontally("Ctrl_DialogIconError");
 		switch(Interaction.Dialog[Interaction.Dialog.length - 1].Icon) {
 			case "Info":
 				Show("Ctrl_DialogIconInfo");
-				HideHorizontally("Ctrl_DialogIconQuestion");
-				HideHorizontally("Ctrl_DialogIconCaution");
-				HideHorizontally("Ctrl_DialogIconError");
 				break;
 			case "Question":
-				HideHorizontally("Ctrl_DialogIconInfo");
 				Show("Ctrl_DialogIconQuestion");
-				HideHorizontally("Ctrl_DialogIconCaution");
-				HideHorizontally("Ctrl_DialogIconError");
 				break;
 			case "Caution":
-				HideHorizontally("Ctrl_DialogIconInfo");
-				HideHorizontally("Ctrl_DialogIconQuestion");
 				Show("Ctrl_DialogIconCaution");
-				HideHorizontally("Ctrl_DialogIconError");
 				break;
 			case "Error":
-				HideHorizontally("Ctrl_DialogIconInfo");
-				HideHorizontally("Ctrl_DialogIconQuestion");
-				HideHorizontally("Ctrl_DialogIconCaution");
 				Show("Ctrl_DialogIconError");
 				break;
 			default:
