@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 3.15,
+		const CurrentVersion = 4.00,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -93,16 +93,17 @@
 				StartTime2: 0, Score: 0, Progress: 0, HP: 0, TimeLeft: 0
 			},
 			Lottery: {
-				Question: [
-					0,
-					[0, 0, 0],
-					[0, 0, 0]
-				],
+				Question: {
+					Row: 0, Column: 0
+				},
+				PreviousQuestion: {
+					Row: 0, Column: 0
+				},
 				Answer: [
 					0,
-					[0, 0, 0],
-					[0, 0, 0],
-					[0, 0, 0]
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0}
 				],
 				CorrectAnswer: 0
 			}
@@ -112,12 +113,12 @@
 		},
 		Highscore = [
 			0,
-			[0, "#1", "", "", "", "", ""],
-			[0, "#2", "", "", "", "", ""],
-			[0, "#3", "", "", "", "", ""],
-			[0, "#4", "", "", "", "", ""],
-			[0, "#5", "", "", "", "", ""],
-			[0, "#6", "", "", "", "", ""]
+			{Sequence: "#1", Date: "", Score: "", MaxCombo: "", Accuracy: "", AvgReactionTime: ""},
+			{Sequence: "#2", Date: "", Score: "", MaxCombo: "", Accuracy: "", AvgReactionTime: ""},
+			{Sequence: "#3", Date: "", Score: "", MaxCombo: "", Accuracy: "", AvgReactionTime: ""},
+			{Sequence: "#4", Date: "", Score: "", MaxCombo: "", Accuracy: "", AvgReactionTime: ""},
+			{Sequence: "#5", Date: "", Score: "", MaxCombo: "", Accuracy: "", AvgReactionTime: ""},
+			{Sequence: "#6", Date: "", Score: "", MaxCombo: "", Accuracy: "", AvgReactionTime: ""}
 		];
 
 	// Load
@@ -239,12 +240,14 @@
 	function Exit() {
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 			Game.Status.IsPaused = true;
-			Game.Lottery.Question[1] = [0, 0, 2];
+			Game.Lottery.Question = {
+				Row: 0, Column: 2
+			};
 			Game.Lottery.Answer = [
 				0,
-				[0, 0, 0],
-				[0, 0, 0],
-				[0, 0, 0]
+				{Row: 0, Column: 0},
+				{Row: 0, Column: 0},
+				{Row: 0, Column: 0}
 			];
 			RefreshGame();
 		}
@@ -395,13 +398,22 @@
 			ChangeChecked("Checkbox_SettingsPlayAudio", System.Audio.PlayAudio);
 			if(System.Audio.PlayAudio == true) {
 				Show("Ctrl_SettingsVoiceVolume");
+				ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
+				if(Subsystem.Audio.VoiceVolume > 0) {
+					ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
+				} else {
+					ChangeText("Label_SettingsVoiceVolume", "禁用");
+				}
+				ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
+				if(Subsystem.Audio.VoiceVolume > 0) {
+					Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+					ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
+				} else {
+					Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+				}
 			} else {
 				StopAllAudio();
 				Hide("Ctrl_SettingsVoiceVolume");
-			}
-			if(System.Audio.PlayAudio == true && Subsystem.Audio.VoiceVolume > 0) {
-				Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
-			} else {
 				Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
 			}
 
@@ -464,18 +476,20 @@
 			}
 
 			// Audio
-			ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
-			if(Subsystem.Audio.VoiceVolume > 0) {
-				ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
-			} else {
-				ChangeText("Label_SettingsVoiceVolume", "禁用");
-			}
-			ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
-			if(System.Audio.PlayAudio == true && Subsystem.Audio.VoiceVolume > 0) {
-				Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
-				ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
-			} else {
-				Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+			if(System.Audio.PlayAudio == true) {
+				ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
+				if(Subsystem.Audio.VoiceVolume > 0) {
+					ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
+				} else {
+					ChangeText("Label_SettingsVoiceVolume", "禁用");
+				}
+				ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
+				if(Subsystem.Audio.VoiceVolume > 0) {
+					Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+					ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
+				} else {
+					Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+				}
 			}
 
 			// Dev
@@ -587,15 +601,15 @@
 			// Text
 			switch(Game.Mode.Questioning) {
 				case "Kana":
-					ChangeText("Label_GameQuestion", KanaGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
+					ChangeText("Label_GameQuestion", KanaGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column]);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeText("Button_GameAnswerOption" + Looper, RomajiGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
+						ChangeText("Button_GameAnswerOption" + Looper, RomajiGrid[Game.Lottery.Answer[Looper].Row][Game.Lottery.Answer[Looper].Column]);
 					}
 					break;
 				case "Romaji":
-					ChangeText("Label_GameQuestion", RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]]);
+					ChangeText("Label_GameQuestion", RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column]);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeText("Button_GameAnswerOption" + Looper, KanaGrid[Game.Lottery.Answer[Looper][1]][Game.Lottery.Answer[Looper][2]]);
+						ChangeText("Button_GameAnswerOption" + Looper, KanaGrid[Game.Lottery.Answer[Looper].Row][Game.Lottery.Answer[Looper].Column]);
 					}
 					break;
 				default:
@@ -650,20 +664,20 @@
 				if(Game.Stats.MissCount == 0) {
 					if(Game.Stats.Accuracy == 100) {
 						ShowToast("ALL PERFECT!");
-						Highscore[6][4] = Game.Stats.MaxCombo + " (AP)";
+						Highscore[6].MaxCombo = Game.Stats.MaxCombo + " (AP)";
 					} else {
 						ShowToast("FULL COMBO!");
-						Highscore[6][4] = Game.Stats.MaxCombo + " (FC)";
+						Highscore[6].MaxCombo = Game.Stats.MaxCombo + " (FC)";
 					}
 				} else {
 					ShowToast("胜利!");
-					Highscore[6][4] = Game.Stats.MaxCombo;
+					Highscore[6].MaxCombo = Game.Stats.MaxCombo;
 				}
-				Highscore[6][1] = "最新";
-				Highscore[6][2] = new Date(Date.now()).toLocaleDateString(ReadLanguage("Html"));
-				Highscore[6][3] = Game.Stats.Score.toString().padStart(8, "0");
-				Highscore[6][5] = Game.Stats.Accuracy.toFixed(2) + "%";
-				Highscore[6][6] = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
+				Highscore[6].Sequence = "最新";
+				Highscore[6].Date = new Date(Date.now()).toLocaleDateString(ReadLanguage("Html"));
+				Highscore[6].Score = Game.Stats.Score.toString().padStart(8, "0");
+				Highscore[6].Accuracy = Game.Stats.Accuracy.toFixed(2) + "%";
+				Highscore[6].AvgReactionTime = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
 				RefreshHighscore();
 
 				// Reset game and scroll to highscore
@@ -806,34 +820,34 @@
 	function RefreshHighscore() {
 		// Remove "Latest" from original highscore table
 		for(let Looper = 1; Looper <= 5; Looper++) {
-			Highscore[Looper][1] = "名次";
+			Highscore[Looper].Sequence = "名次";
 		}
 
 		// Sort (bubble sort)
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
-				if(Number(Highscore[Looper2 + 1][3]) > Number(Highscore[Looper2][3])) {
-					let Swapper = Highscore[Looper2];
-					Highscore[Looper2] = Highscore[Looper2 + 1];
-					Highscore[Looper2 + 1] = Swapper;
+				if(Number(Highscore[Looper2 + 1].Score) > Number(Highscore[Looper2].Score)) {
+					let Swapper = structuredClone(Highscore[Looper2]);
+					Highscore[Looper2] = structuredClone(Highscore[Looper2 + 1]);
+					Highscore[Looper2 + 1] = structuredClone(Swapper);
 				}
 			}
 		}
 
 		// Refresh
 		for(let Looper = 1; Looper <= 6; Looper++) {
-			if(Highscore[Looper][1] == "最新") {
+			if(Highscore[Looper].Sequence == "最新") {
 				AddClass("Item_HighscoreRow" + Looper, "GreenText");
 			} else {
-				Highscore[Looper][1] = "#" + Looper;
+				Highscore[Looper].Sequence = "#" + Looper;
 				RemoveClass("Item_HighscoreRow" + Looper, "GreenText");
 			}
-			ChangeText("Label_HighscoreRow" + Looper + "Sequence", Highscore[Looper][1]);
-			ChangeText("Label_HighscoreRow" + Looper + "Date", Highscore[Looper][2]);
-			ChangeText("Label_HighscoreRow" + Looper + "Score", Highscore[Looper][3]);
-			ChangeText("Label_HighscoreRow" + Looper + "MaxCombo", Highscore[Looper][4]);
-			ChangeText("Label_HighscoreRow" + Looper + "Accuracy", Highscore[Looper][5]);
-			ChangeText("Label_HighscoreRow" + Looper + "AvgReactionTime", Highscore[Looper][6]);
+			ChangeText("Label_HighscoreRow" + Looper + "Sequence", Highscore[Looper].Sequence);
+			ChangeText("Label_HighscoreRow" + Looper + "Date", Highscore[Looper].Date);
+			ChangeText("Label_HighscoreRow" + Looper + "Score", Highscore[Looper].Score);
+			ChangeText("Label_HighscoreRow" + Looper + "MaxCombo", Highscore[Looper].MaxCombo);
+			ChangeText("Label_HighscoreRow" + Looper + "Accuracy", Highscore[Looper].Accuracy);
+			ChangeText("Label_HighscoreRow" + Looper + "AvgReactionTime", Highscore[Looper].AvgReactionTime);
 		}
 
 		// Save user data
@@ -851,12 +865,14 @@
 				Game.Stats.StartTime = Date.now();
 				Game.Stats.StartTime2 = Date.now();
 				Game.Stats.HP = 100;
-				Game.Lottery.Question[1] = [0, 0, 1];
+				Game.Lottery.Question = {
+					Row: 0, Column: 1
+				};
 				Game.Lottery.Answer = [
 					0,
-					[0, 0, 0],
-					[0, 0, 0],
-					[0, 0, 0]
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0}
 				];
 				AnswerLog = {
 					All: "", MissesOnly: "", Sequence: 1
@@ -865,12 +881,14 @@
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
-					Game.Lottery.Question[1] = [0, 0, 2];
+					Game.Lottery.Question = {
+						Row: 0, Column: 2
+					};
 					Game.Lottery.Answer = [
 						0,
-						[0, 0, 0],
-						[0, 0, 0],
-						[0, 0, 0]
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0}
 					];
 					// ShowToast("游戏暂停");
 				} else {
@@ -878,12 +896,14 @@
 					Game.Status.IsCoolingDown = true;
 					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 					Game.Stats.StartTime2 = Date.now();
-					Game.Lottery.Question[1] = [0, 0, 1];
+					Game.Lottery.Question[1] = {
+						Row: 0, Column: 1
+					};
 					Game.Lottery.Answer = [
 						0,
-						[0, 0, 0],
-						[0, 0, 0],
-						[0, 0, 0]
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0}
 					];
 					ScrollIntoView("Game");
 				}
@@ -901,16 +921,17 @@
 				StartTime2: 0, Score: 0, Progress: 0, HP: 0, TimeLeft: 0
 			};
 			Game.Lottery = {
-				Question: [
-					0,
-					[0, 0, 0],
-					[0, 0, 0]
-				],
+				Question: {
+					Row: 0, Column: 0
+				},
+				PreviousQuestion: {
+					Row: 0, Column: 0
+				},
 				Answer: [
 					0,
-					[0, 0, 0],
-					[0, 0, 0],
-					[0, 0, 0]
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0}
 				],
 				CorrectAnswer: 0
 			};
@@ -1015,12 +1036,12 @@
 					let NewEntry = "#" + AnswerLog.Sequence + "　";
 					switch(Game.Mode.Questioning) {
 						case "Kana":
-							NewEntry += KanaGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] + "　" +
-								RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + "　";
+							NewEntry += KanaGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] + "　" +
+								RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Row][Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Column] + "　";
 							break;
 						case "Romaji":
-							NewEntry += RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] + "　" +
-								KanaGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + "　";
+							NewEntry += RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] + "　" +
+								KanaGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Row][Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Column] + "　";
 							break;
 						default:
 							AlertSystemError("The value of Game.Mode.Questioning \"" + Game.Mode.Questioning + "\" in function AnswerGame is invalid.");
@@ -1032,10 +1053,10 @@
 						if(Selector <= 3) {
 							switch(Game.Mode.Questioning) {
 								case "Kana":
-									NewEntry += "错答: " + RomajiGrid[Game.Lottery.Answer[Selector][1]][Game.Lottery.Answer[Selector][2]];
+									NewEntry += "错答: " + RomajiGrid[Game.Lottery.Answer[Selector].Row][Game.Lottery.Answer[Selector].Column];
 									break;
 								case "Romaji":
-									NewEntry += "错答: " + KanaGrid[Game.Lottery.Answer[Selector][1]][Game.Lottery.Answer[Selector][2]];
+									NewEntry += "错答: " + KanaGrid[Game.Lottery.Answer[Selector].Row][Game.Lottery.Answer[Selector].Column];
 									break;
 								default:
 									AlertSystemError("The value of Game.Mode.Questioning \"" + Game.Mode.Questioning + "\" in function AnswerGame is invalid.");
@@ -1056,7 +1077,7 @@
 
 				// Voice
 				if(Selector == Game.Lottery.CorrectAnswer || Subsystem.Audio.AlsoPlayVoiceOnMiss == true) {
-					PlayAudio("Audio_Voice", "audio/Kana_" + RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer][1]][Game.Lottery.Answer[Game.Lottery.CorrectAnswer][2]] + ".mp3");
+					PlayAudio("Audio_Voice", "audio/Kana_" + RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Row][Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Column] + ".mp3");
 				}
 
 				// Start cooldown
@@ -1344,12 +1365,14 @@
 		if(Hotkey.key == "F1") {
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
 				Game.Status.IsPaused = true;
-				Game.Lottery.Question[1] = [0, 0, 2];
+				Game.Lottery.Question = {
+					Row: 0, Column: 2
+				};
 				Game.Lottery.Answer = [
 					0,
-					[0, 0, 0],
-					[0, 0, 0],
-					[0, 0, 0]
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0}
 				];
 				RefreshGame();
 			}
@@ -1402,22 +1425,22 @@
 // Features
 	// Game
 	function Questioner() {
-		Game.Lottery.Question[2] = Game.Lottery.Question[1];
+		Game.Lottery.PreviousQuestion = structuredClone(Game.Lottery.Question);
 		Questioner_GenerateQuestion();
 		Game.Lottery.CorrectAnswer = Randomize(1, 3);
 		switch(Game.Lottery.CorrectAnswer) {
 			case 1:
-				Game.Lottery.Answer[1] = Game.Lottery.Question[1];
+				Game.Lottery.Answer[1] = structuredClone(Game.Lottery.Question);
 				Questioner_GenerateAnswer2();
 				Questioner_GenerateAnswer3();
 				break;
 			case 2:
-				Game.Lottery.Answer[2] = Game.Lottery.Question[1];
+				Game.Lottery.Answer[2] = structuredClone(Game.Lottery.Question);
 				Questioner_GenerateAnswer1();
 				Questioner_GenerateAnswer3();
 				break;
 			case 3:
-				Game.Lottery.Answer[3] = Game.Lottery.Question[1];
+				Game.Lottery.Answer[3] = structuredClone(Game.Lottery.Question);
 				Questioner_GenerateAnswer1();
 				Questioner_GenerateAnswer2();
 				break;
@@ -1430,53 +1453,61 @@
 	}
 	function Questioner_GenerateQuestion() {
 		do {
-			Game.Lottery.Question[1] = [0, Randomize(1, 19), Randomize(1, 27)];
+			Game.Lottery.Question = {
+				Row: Randomize(1, 19), Column: Randomize(1, 27)
+			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Question[1][1]] == false ||
+			Game.QuestionRange[Game.Lottery.Question.Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == "" ||
+			RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] == "" ||
 			// Prevent same with previous question
-			RomajiGrid[Game.Lottery.Question[1][1]][Game.Lottery.Question[1][2]] == RomajiGrid[Game.Lottery.Question[2][1]][Game.Lottery.Question[2][2]]
+			RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] == RomajiGrid[Game.Lottery.PreviousQuestion.Row][Game.Lottery.PreviousQuestion.Column]
 		);
 	}
 	function Questioner_GenerateAnswer1() {
 		do {
-			Game.Lottery.Answer[1] = [0, Randomize(1, 19), Randomize(1, 27)];
+			Game.Lottery.Answer[1] = {
+				Row: Randomize(1, 19), Column: Randomize(1, 27)
+			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Answer[1][1]] == false ||
+			Game.QuestionRange[Game.Lottery.Answer[1].Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == "" ||
+			RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] == "" ||
 			// Prevent duplication
-			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] ||
-			RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
+			RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] == RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] ||
+			RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] == RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column]
 		);
 	}
 	function Questioner_GenerateAnswer2() {
 		do {
-			Game.Lottery.Answer[2] = [0, Randomize(1, 19), Randomize(1, 27)];
+			Game.Lottery.Answer[2] = {
+				Row: Randomize(1, 19), Column: Randomize(1, 27)
+			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Answer[2][1]] == false ||
+			Game.QuestionRange[Game.Lottery.Answer[2].Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == "" ||
+			RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] == "" ||
 			// Prevent duplication
-			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
-			RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]] == RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]]
+			RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] == RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] ||
+			RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] == RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column]
 		);
 	}
 	function Questioner_GenerateAnswer3() {
 		do {
-			Game.Lottery.Answer[3] = [0, Randomize(1, 19), Randomize(1, 27)];
+			Game.Lottery.Answer[3] = {
+				Row: Randomize(1, 19), Column: Randomize(1, 27)
+			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Answer[3][1]] == false ||
+			Game.QuestionRange[Game.Lottery.Answer[3].Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == "" ||
+			RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column] == "" ||
 			// Prevent duplication
-			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[1][1]][Game.Lottery.Answer[1][2]] ||
-			RomajiGrid[Game.Lottery.Answer[3][1]][Game.Lottery.Answer[3][2]] == RomajiGrid[Game.Lottery.Answer[2][1]][Game.Lottery.Answer[2][2]]
+			RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column] == RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] ||
+			RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column] == RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column]
 		);
 	}
 
