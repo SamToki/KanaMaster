@@ -813,13 +813,12 @@
 		for(let Looper = 1; Looper <= 5; Looper++) {
 			for(let Looper2 = 5; Looper2 >= 1; Looper2--) {
 				if(Number(Highscore[Looper2 + 1][3]) > Number(Highscore[Looper2][3])) {
-					Highscore[0] = Highscore[Looper2];
+					let Swapper = Highscore[Looper2];
 					Highscore[Looper2] = Highscore[Looper2 + 1];
-					Highscore[Looper2 + 1] = Highscore[0];
+					Highscore[Looper2 + 1] = Swapper;
 				}
 			}
 		}
-		Highscore[0] = 0;
 
 		// Refresh
 		for(let Looper = 1; Looper <= 6; Looper++) {
@@ -1181,11 +1180,11 @@
 			if(Game.Difficulty.TimeLimit.Final > 10000) {
 				Game.Difficulty.TimeLimit.Final = 10000;
 			}
-			if(Game.Difficulty.TimeLimit.Final > Game.Difficulty.TimeLimit.Initial) {
-				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final;
-			}
 			if(Game.Difficulty.TimeLimit.Final < Game.Difficulty.TimeLimit.Initial - 5000) {
 				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final + 5000;
+			}
+			if(Game.Difficulty.TimeLimit.Final > Game.Difficulty.TimeLimit.Initial) {
+				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final;
 			}
 			RefreshGame();
 		}
