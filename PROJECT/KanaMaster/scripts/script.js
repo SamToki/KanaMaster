@@ -53,7 +53,7 @@
 		];
 		var Game0 = {
 			Stats: {
-				StartTime: 0, CurrentTimeLimit: 0,
+				ClockTime: 0, StartTime: 0, CurrentTimeLimit: 0,
 				ScoreDisplay: 0, Progress: 0, StartTime2: 0, TimeLeft: 0
 			},
 			Lottery: {
@@ -504,7 +504,8 @@
 			Automation.ClockGame = setInterval(ClockGame, 20);
 		}
 
-		// Update progress
+		// Update essentials
+		Game0.Stats.ClockTime = Date.now();
 		switch(Game.Mode.Progressing) {
 			case "Quantity":
 				Game0.Stats.Progress = Game.Stats.TotalCount / Game.Mode.Quantity * 100;
@@ -528,9 +529,9 @@
 			ChangeText("Label_GameMaxCombo", Game.Stats.MaxCombo);
 			if(Game.Status.IsRunning == true) {
 				if(Game.Status.IsPaused == false) {
-					Game.Stats.ElapsedTime = Date.now() - Game0.Stats.StartTime;
+					Game.Stats.ElapsedTime = Game0.Stats.ClockTime - Game0.Stats.StartTime;
 				} else {
-					Game0.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
+					Game0.Stats.StartTime = Game0.Stats.ClockTime - Game.Stats.ElapsedTime;
 				}
 			}
 			ChangeText("Label_GameElapsedTime", Math.trunc(Game.Stats.ElapsedTime / 60000) + ":" + Math.trunc(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
@@ -571,9 +572,9 @@
 				// Time left
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 					if(Game.Status.IsCoolingDown == false) {
-						Game0.Stats.TimeLeft = Game0.Stats.CurrentTimeLimit - (Date.now() - Game0.Stats.StartTime2);
+						Game0.Stats.TimeLeft = Game0.Stats.CurrentTimeLimit - (Game0.Stats.ClockTime - Game0.Stats.StartTime2);
 					} else {
-						Game0.Stats.TimeLeft = Game0.Stats.CurrentTimeLimit * ((Date.now() - Game0.Stats.StartTime2) / Game.Difficulty.Cooldown);
+						Game0.Stats.TimeLeft = Game0.Stats.CurrentTimeLimit * ((Game0.Stats.ClockTime - Game0.Stats.StartTime2) / Game.Difficulty.Cooldown);
 					}
 				} else {
 					Game0.Stats.TimeLeft = 0;
@@ -679,7 +680,7 @@
 					Highscore[6].MaxCombo = Game.Stats.MaxCombo;
 				}
 				Highscore[6].Sequence = "最新";
-				Highscore[6].Date = new Date(Date.now()).toLocaleDateString(ReadLanguage("Html"));
+				Highscore[6].Date = new Date(Game0.Stats.ClockTime).toLocaleDateString(ReadLanguage("Html"));
 				Highscore[6].Score = Game.Stats.Score.toString().padStart(8, "0");
 				Highscore[6].Accuracy = Game.Stats.Accuracy.toFixed(2) + "%";
 				Highscore[6].AvgReactionTime = (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s";
@@ -863,12 +864,13 @@
 	// Game
 		// Ctrl
 		function StartGame() {
+			Game0.Stats.ClockTime = Date.now();
 			if(Game.Status.IsRunning == false) {
 				ResetGame();
 				Game.Status.IsRunning = true;
 				Game.Status.IsCoolingDown = true;
-				Game0.Stats.StartTime = Date.now();
-				Game0.Stats.StartTime2 = Date.now();
+				Game0.Stats.StartTime = Game0.Stats.ClockTime;
+				Game0.Stats.StartTime2 = Game0.Stats.ClockTime;
 				Game.Stats.HP = 100;
 				Game0.Lottery.Question = {
 					Row: 0, Column: 1
@@ -890,8 +892,8 @@
 				} else {
 					Game.Status.IsPaused = false;
 					Game.Status.IsCoolingDown = true;
-					Game0.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
-					Game0.Stats.StartTime2 = Date.now();
+					Game0.Stats.StartTime = Game0.Stats.ClockTime - Game.Stats.ElapsedTime;
+					Game0.Stats.StartTime2 = Game0.Stats.ClockTime;
 					Game0.Lottery.Question = {
 						Row: 0, Column: 1
 					};
@@ -916,24 +918,26 @@
 				ElapsedTime: 0, Accuracy: 0, AvgReactionTime: 0,
 				Score: 0, HP: 0
 			};
-			Game0.Stats = {
-				StartTime: 0, CurrentTimeLimit: 0,
-				ScoreDisplay: 0, Progress: 0, StartTime2: 0, TimeLeft: 0
-			};
-			Game0.Lottery = {
-				Question: {
-					Row: 0, Column: 0
+			Game0 = {
+				Stats: {
+					ClockTime: 0, StartTime: 0, CurrentTimeLimit: 0,
+					ScoreDisplay: 0, Progress: 0, StartTime2: 0, TimeLeft: 0
 				},
-				PreviousQuestion: {
-					Row: 0, Column: 0
-				},
-				Answer: [
-					0,
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0}
-				],
-				CorrectAnswer: 0
+				Lottery: {
+					Question: {
+						Row: 0, Column: 0
+					},
+					PreviousQuestion: {
+						Row: 0, Column: 0
+					},
+					Answer: [
+						0,
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0}
+					],
+					CorrectAnswer: 0
+				}
 			};
 			RefreshGame();
 		}
