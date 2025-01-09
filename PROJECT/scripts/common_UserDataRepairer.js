@@ -54,30 +54,6 @@
 
 			// v4.00 (2025/01/08)
 			// Optimize user data structure
-			if(localStorage.KanaMaster_Game != undefined) {
-				let Game = JSON.parse(localStorage.getItem("KanaMaster_Game"));
-				if(Game.Lottery.PreviousQuestion == undefined) {
-					let NewObject = {
-						Question: {
-							Row: Game.Lottery.Question[1][1], Column: Game.Lottery.Question[1][2]
-						},
-						PreviousQuestion: {
-							Row: Game.Lottery.Question[2][1], Column: Game.Lottery.Question[2][2]
-						},
-						Answer: [
-							0,
-							{Row: Game.Lottery.Answer[1][1], Column: Game.Lottery.Answer[1][2]},
-							{Row: Game.Lottery.Answer[2][1], Column: Game.Lottery.Answer[2][2]},
-							{Row: Game.Lottery.Answer[3][1], Column: Game.Lottery.Answer[3][2]}
-						],
-						CorrectAnswer: Game.Lottery.CorrectAnswer
-					};
-					Game.Lottery = structuredClone(NewObject);
-					localStorage.setItem("KanaMaster_Game", JSON.stringify(Game));
-					console.info("● User Data Repairer\n" +
-						"Repaired user data \"KanaMaster Game Lottery\".");
-				}
-			}
 			if(localStorage.KanaMaster_Highscore != undefined) {
 				let Highscore = JSON.parse(localStorage.getItem("KanaMaster_Highscore"));
 				if(Highscore[1].Sequence == undefined) {

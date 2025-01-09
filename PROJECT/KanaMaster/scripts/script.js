@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 4.00,
+		const CurrentVersion = 4.01,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -53,7 +53,23 @@
 		];
 		var Game0 = {
 			Stats: {
-				ScoreDisplay: 0
+				StartTime: 0, CurrentTimeLimit: 0,
+				ScoreDisplay: 0, Progress: 0, StartTime2: 0, TimeLeft: 0
+			},
+			Lottery: {
+				Question: {
+					Row: 0, Column: 0
+				},
+				PreviousQuestion: {
+					Row: 0, Column: 0
+				},
+				Answer: [
+					0,
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0}
+				],
+				CorrectAnswer: 0
 			}
 		};
 		Automation.ClockGame = null;
@@ -89,23 +105,8 @@
 			},
 			Stats: {
 				TotalCount: 0, MissCount: 0, Combo: 0, MaxCombo: 0,
-				StartTime: 0, ElapsedTime: 0, CurrentTimeLimit: 0, Accuracy: 0, AvgReactionTime: 0,
-				StartTime2: 0, Score: 0, Progress: 0, HP: 0, TimeLeft: 0
-			},
-			Lottery: {
-				Question: {
-					Row: 0, Column: 0
-				},
-				PreviousQuestion: {
-					Row: 0, Column: 0
-				},
-				Answer: [
-					0,
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0}
-				],
-				CorrectAnswer: 0
+				ElapsedTime: 0, Accuracy: 0, AvgReactionTime: 0,
+				Score: 0, HP: 0
 			}
 		},
 		AnswerLog = {
@@ -240,15 +241,6 @@
 	function Exit() {
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 			Game.Status.IsPaused = true;
-			Game.Lottery.Question = {
-				Row: 0, Column: 2
-			};
-			Game.Lottery.Answer = [
-				0,
-				{Row: 0, Column: 0},
-				{Row: 0, Column: 0},
-				{Row: 0, Column: 0}
-			];
 			RefreshGame();
 		}
 	}
@@ -512,6 +504,19 @@
 			Automation.ClockGame = setInterval(ClockGame, 20);
 		}
 
+		// Update progress
+		switch(Game.Mode.Progressing) {
+			case "Quantity":
+				Game0.Stats.Progress = Game.Stats.TotalCount / Game.Mode.Quantity * 100;
+				break;
+			case "Duration":
+				Game0.Stats.Progress = Game.Stats.ElapsedTime / (Game.Mode.Duration * 60000) * 100;
+				break;
+			default:
+				AlertSystemError("The value of Game.Mode.Progressing \"" + Game.Mode.Progressing + "\" in function ClockGame is invalid.");
+				break;
+		}
+
 		// Stats
 			// Stats 1
 			ChangeText("Label_GameTotalCount", Game.Stats.TotalCount);
@@ -523,14 +528,14 @@
 			ChangeText("Label_GameMaxCombo", Game.Stats.MaxCombo);
 			if(Game.Status.IsRunning == true) {
 				if(Game.Status.IsPaused == false) {
-					Game.Stats.ElapsedTime = Date.now() - Game.Stats.StartTime;
+					Game.Stats.ElapsedTime = Date.now() - Game0.Stats.StartTime;
 				} else {
-					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
+					Game0.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
 				}
 			}
 			ChangeText("Label_GameElapsedTime", Math.trunc(Game.Stats.ElapsedTime / 60000) + ":" + Math.trunc(Game.Stats.ElapsedTime % 60000 / 1000).toString().padStart(2, "0"));
-			Game.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Final) * (Game.Stats.Progress / 100);
-			ChangeText("Label_GameCurrentTimeLimit", (Game.Stats.CurrentTimeLimit / 1000).toFixed(1) + "s");
+			Game0.Stats.CurrentTimeLimit = Game.Difficulty.TimeLimit.Initial - (Game.Difficulty.TimeLimit.Initial - Game.Difficulty.TimeLimit.Final) * (Game0.Stats.Progress / 100);
+			ChangeText("Label_GameCurrentTimeLimit", (Game0.Stats.CurrentTimeLimit / 1000).toFixed(1) + "s");
 			ChangeText("Label_GameAccuracy", Game.Stats.Accuracy.toFixed(2) + "%");
 			ChangeText("Label_GameAvgReactionTime", (Game.Stats.AvgReactionTime / 1000).toFixed(3) + "s");
 
@@ -543,20 +548,9 @@
 				}
 				ChangeText("Label_GameScore", Game0.Stats.ScoreDisplay.toFixed(0).toString().padStart(8, "0"));
 
-				// Progress
-				switch(Game.Mode.Progressing) {
-					case "Quantity":
-						Game.Stats.Progress = Game.Stats.TotalCount / Game.Mode.Quantity * 100;
-						break;
-					case "Duration":
-						Game.Stats.Progress = Game.Stats.ElapsedTime / (Game.Mode.Duration * 60000) * 100;
-						break;
-					default:
-						AlertSystemError("The value of Game.Mode.Progressing \"" + Game.Mode.Progressing + "\" in function ClockGame is invalid.");
-						break;
-				}
-				ChangeProgring("ProgringFg_GameProgress", 100, Game.Stats.Progress);
-				ChangeText("ProgringText_GameProgress", Game.Stats.Progress.toFixed(0) + "%");
+				// Progress (Value is updated above)
+				ChangeProgring("ProgringFg_GameProgress", 100, Game0.Stats.Progress);
+				ChangeText("ProgringText_GameProgress", Game0.Stats.Progress.toFixed(0) + "%");
 
 				// HP
 				if(Game.Status.IsRunning == true) {
@@ -577,21 +571,21 @@
 				// Time left
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 					if(Game.Status.IsCoolingDown == false) {
-						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit - (Date.now() - Game.Stats.StartTime2);
+						Game0.Stats.TimeLeft = Game0.Stats.CurrentTimeLimit - (Date.now() - Game0.Stats.StartTime2);
 					} else {
-						Game.Stats.TimeLeft = Game.Stats.CurrentTimeLimit * ((Date.now() - Game.Stats.StartTime2) / Game.Difficulty.Cooldown);
+						Game0.Stats.TimeLeft = Game0.Stats.CurrentTimeLimit * ((Date.now() - Game0.Stats.StartTime2) / Game.Difficulty.Cooldown);
 					}
 				} else {
-					Game.Stats.TimeLeft = 0;
+					Game0.Stats.TimeLeft = 0;
 				}
-				ChangeProgring("ProgringFg_GameTimeLeft", 100, Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit * 100);
+				ChangeProgring("ProgringFg_GameTimeLeft", 100, Game0.Stats.TimeLeft / Game0.Stats.CurrentTimeLimit * 100);
 				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
 					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
 				} else {
 					ChangeAnim("ProgringFg_GameTimeLeft", "");
 				}
-				ChangeText("ProgringText_GameTimeLeft", (Game.Stats.TimeLeft / 1000).toFixed(1) + "s");
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game.Stats.TimeLeft <= 1500) {
+				ChangeText("ProgringText_GameTimeLeft", (Game0.Stats.TimeLeft / 1000).toFixed(1) + "s");
+				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game0.Stats.TimeLeft <= 1500) {
 					AddClass("ProgringText_GameTimeLeft", "RedText");
 				} else {
 					RemoveClass("ProgringText_GameTimeLeft", "RedText");
@@ -599,17 +593,28 @@
 
 		// Question board & answer board
 			// Text
+			if(Game.Status.IsRunning == true && Game.Status.IsPaused == true) {
+				Game0.Lottery.Question = {
+					Row: 0, Column: 2
+				};
+				Game0.Lottery.Answer = [
+					0,
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0},
+					{Row: 0, Column: 0}
+				];
+			}
 			switch(Game.Mode.Questioning) {
 				case "Kana":
-					ChangeText("Label_GameQuestion", KanaGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column]);
+					ChangeText("Label_GameQuestion", KanaGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column]);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeText("Button_GameAnswerOption" + Looper, RomajiGrid[Game.Lottery.Answer[Looper].Row][Game.Lottery.Answer[Looper].Column]);
+						ChangeText("Button_GameAnswerOption" + Looper, RomajiGrid[Game0.Lottery.Answer[Looper].Row][Game0.Lottery.Answer[Looper].Column]);
 					}
 					break;
 				case "Romaji":
-					ChangeText("Label_GameQuestion", RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column]);
+					ChangeText("Label_GameQuestion", RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column]);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeText("Button_GameAnswerOption" + Looper, KanaGrid[Game.Lottery.Answer[Looper].Row][Game.Lottery.Answer[Looper].Column]);
+						ChangeText("Button_GameAnswerOption" + Looper, KanaGrid[Game0.Lottery.Answer[Looper].Row][Game0.Lottery.Answer[Looper].Column]);
 					}
 					break;
 				default:
@@ -632,18 +637,18 @@
 			for(let Looper = 1; Looper <= 3; Looper++) {
 				RemoveClass("Button_GameAnswerOption" + Looper, "Active");
 			}
-			if(Subsystem.Dev.Cheat == true && Game.Lottery.CorrectAnswer > 0) {
-				AddClass("Button_GameAnswerOption" + Game.Lottery.CorrectAnswer, "Active");
+			if(Subsystem.Dev.Cheat == true && Game0.Lottery.CorrectAnswer > 0) {
+				AddClass("Button_GameAnswerOption" + Game0.Lottery.CorrectAnswer, "Active");
 			}
 
 		// Time up
 		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
 			if(Game.Status.IsCoolingDown == false) {
-				if(Game.Stats.TimeLeft <= 0) {
+				if(Game0.Stats.TimeLeft <= 0) {
 					AnswerGame(4);
 				}
 			} else {
-				if(Game.Stats.TimeLeft >= Game.Stats.CurrentTimeLimit) {
+				if(Game0.Stats.TimeLeft >= Game0.Stats.CurrentTimeLimit) {
 					HideToast();
 					Questioner();
 				}
@@ -651,8 +656,8 @@
 		}
 
 		// Victory
-		if(Game.Status.IsRunning == true && Game.Stats.Progress >= 100) {
-			Game.Stats.Progress = 100;
+		if(Game.Status.IsRunning == true && Game0.Stats.Progress >= 100) {
+			Game0.Stats.Progress = 100;
 			ChangeDisabled("Button_GameStart", true);
 			RemoveClass("Button_GameStart", "Glow");
 			ChangeDisabled("Button_GameReset", true);
@@ -862,13 +867,13 @@
 				ResetGame();
 				Game.Status.IsRunning = true;
 				Game.Status.IsCoolingDown = true;
-				Game.Stats.StartTime = Date.now();
-				Game.Stats.StartTime2 = Date.now();
+				Game0.Stats.StartTime = Date.now();
+				Game0.Stats.StartTime2 = Date.now();
 				Game.Stats.HP = 100;
-				Game.Lottery.Question = {
+				Game0.Lottery.Question = {
 					Row: 0, Column: 1
 				};
-				Game.Lottery.Answer = [
+				Game0.Lottery.Answer = [
 					0,
 					{Row: 0, Column: 0},
 					{Row: 0, Column: 0},
@@ -881,25 +886,16 @@
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
-					Game.Lottery.Question = {
-						Row: 0, Column: 2
-					};
-					Game.Lottery.Answer = [
-						0,
-						{Row: 0, Column: 0},
-						{Row: 0, Column: 0},
-						{Row: 0, Column: 0}
-					];
 					// ShowToast("游戏暂停");
 				} else {
 					Game.Status.IsPaused = false;
 					Game.Status.IsCoolingDown = true;
-					Game.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
-					Game.Stats.StartTime2 = Date.now();
-					Game.Lottery.Question[1] = {
+					Game0.Stats.StartTime = Date.now() - Game.Stats.ElapsedTime;
+					Game0.Stats.StartTime2 = Date.now();
+					Game0.Lottery.Question = {
 						Row: 0, Column: 1
 					};
-					Game.Lottery.Answer = [
+					Game0.Lottery.Answer = [
 						0,
 						{Row: 0, Column: 0},
 						{Row: 0, Column: 0},
@@ -917,10 +913,14 @@
 			};
 			Game.Stats = {
 				TotalCount: 0, MissCount: 0, Combo: 0, MaxCombo: 0,
-				StartTime: 0, ElapsedTime: 0, CurrentTimeLimit: 0, Accuracy: 0, AvgReactionTime: 0,
-				StartTime2: 0, Score: 0, Progress: 0, HP: 0, TimeLeft: 0
+				ElapsedTime: 0, Accuracy: 0, AvgReactionTime: 0,
+				Score: 0, HP: 0
 			};
-			Game.Lottery = {
+			Game0.Stats = {
+				StartTime: 0, CurrentTimeLimit: 0,
+				ScoreDisplay: 0, Progress: 0, StartTime2: 0, TimeLeft: 0
+			};
+			Game0.Lottery = {
 				Question: {
 					Row: 0, Column: 0
 				},
@@ -935,7 +935,6 @@
 				],
 				CorrectAnswer: 0
 			};
-			Game0.Stats.ScoreDisplay = 0;
 			RefreshGame();
 		}
 
@@ -943,31 +942,31 @@
 		function AnswerGame(Selector) {
 			if(Game.Status.IsCoolingDown == false) {
 				// Stats
-				if(Selector == Game.Lottery.CorrectAnswer) {
+				if(Selector == Game0.Lottery.CorrectAnswer) {
 					Game.Stats.TotalCount++;
 					Game.Stats.Combo++;
 					switch(true) {
-						case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.5:
+						case Game0.Stats.TimeLeft / Game0.Stats.CurrentTimeLimit >= 0.5:
 							Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 100) / (Game.Stats.TotalCount + Game.Stats.MissCount);
 							ChangeText("Label_AnswerFeedback", "Perfect");
 							ChangeAnswerFeedbackColor("Perfect");
 							break;
-						case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0.2:
+						case Game0.Stats.TimeLeft / Game0.Stats.CurrentTimeLimit >= 0.2:
 							Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 80) / (Game.Stats.TotalCount + Game.Stats.MissCount);
 							ChangeText("Label_AnswerFeedback", "Great");
 							ChangeAnswerFeedbackColor("Great");
 							break;
-						case Game.Stats.TimeLeft / Game.Stats.CurrentTimeLimit >= 0:
+						case Game0.Stats.TimeLeft / Game0.Stats.CurrentTimeLimit >= 0:
 							Game.Stats.Accuracy = (Game.Stats.Accuracy * (Game.Stats.TotalCount + Game.Stats.MissCount - 1) + 60) / (Game.Stats.TotalCount + Game.Stats.MissCount);
 							ChangeText("Label_AnswerFeedback", "Good");
 							ChangeAnswerFeedbackColor("Good");
 							break;
 						default:
-							AlertSystemError("The value of Game.Stats.TimeLeft \"" + Game.Stats.TimeLeft + "\" in function AnswerGame is invalid.");
+							AlertSystemError("The value of Game0.Stats.TimeLeft \"" + Game0.Stats.TimeLeft + "\" in function AnswerGame is invalid.");
 							break;
 					}
-					Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / Game.Stats.TotalCount;
-					Game.Stats.Score += Math.trunc((10000 - (Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
+					Game.Stats.AvgReactionTime = (Game.Stats.AvgReactionTime * (Game.Stats.TotalCount - 1) + (Game0.Stats.CurrentTimeLimit - Game0.Stats.TimeLeft)) / Game.Stats.TotalCount;
+					Game.Stats.Score += Math.trunc((10000 - (Game0.Stats.CurrentTimeLimit - Game0.Stats.TimeLeft)) / 100 * Game.Stats.Combo);
 					if(Game.Stats.Score > 99999999) {
 						Game.Stats.Score = 99999999;
 					}
@@ -993,7 +992,7 @@
 					ChangeAnim("Label_AnswerFeedback", "none");
 					Fade("Label_AnswerFeedback");
 					ChangeTop("Label_AnswerFeedback", "-30px");
-					switch(Game.Lottery.CorrectAnswer) {
+					switch(Game0.Lottery.CorrectAnswer) {
 						case 1:
 							ChangeLeft("Label_AnswerFeedback", ReadWidth("Label_AnswerFeedback") / 4 + "px");
 							break;
@@ -1004,7 +1003,7 @@
 							ChangeLeft("Label_AnswerFeedback", "calc(100% - " + ReadWidth("Label_AnswerFeedback") / 4 * 5 + "px)");
 							break;
 						default:
-							AlertSystemError("The value of Game.Lottery.CorrectAnswer \"" + Game.Lottery.CorrectAnswer + "\" in function AnswerGame is invalid.");
+							AlertSystemError("The value of Game0.Lottery.CorrectAnswer \"" + Game0.Lottery.CorrectAnswer + "\" in function AnswerGame is invalid.");
 							break;
 					}
 					ChangeScale("Label_AnswerFeedback", 1.5);
@@ -1036,27 +1035,27 @@
 					let NewEntry = "#" + AnswerLog.Sequence + "　";
 					switch(Game.Mode.Questioning) {
 						case "Kana":
-							NewEntry += KanaGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] + "　" +
-								RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Row][Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Column] + "　";
+							NewEntry += KanaGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] + "　" +
+								RomajiGrid[Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Row][Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Column] + "　";
 							break;
 						case "Romaji":
-							NewEntry += RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] + "　" +
-								KanaGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Row][Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Column] + "　";
+							NewEntry += RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] + "　" +
+								KanaGrid[Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Row][Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Column] + "　";
 							break;
 						default:
 							AlertSystemError("The value of Game.Mode.Questioning \"" + Game.Mode.Questioning + "\" in function AnswerGame is invalid.");
 							break;
 					}
-					if(Selector == Game.Lottery.CorrectAnswer) {
-						NewEntry += "正答　" + ((Game.Stats.CurrentTimeLimit - Game.Stats.TimeLeft) / 1000).toFixed(3) + "s";
+					if(Selector == Game0.Lottery.CorrectAnswer) {
+						NewEntry += "正答　" + ((Game0.Stats.CurrentTimeLimit - Game0.Stats.TimeLeft) / 1000).toFixed(3) + "s";
 					} else {
 						if(Selector <= 3) {
 							switch(Game.Mode.Questioning) {
 								case "Kana":
-									NewEntry += "错答: " + RomajiGrid[Game.Lottery.Answer[Selector].Row][Game.Lottery.Answer[Selector].Column];
+									NewEntry += "错答: " + RomajiGrid[Game0.Lottery.Answer[Selector].Row][Game0.Lottery.Answer[Selector].Column];
 									break;
 								case "Romaji":
-									NewEntry += "错答: " + KanaGrid[Game.Lottery.Answer[Selector].Row][Game.Lottery.Answer[Selector].Column];
+									NewEntry += "错答: " + KanaGrid[Game0.Lottery.Answer[Selector].Row][Game0.Lottery.Answer[Selector].Column];
 									break;
 								default:
 									AlertSystemError("The value of Game.Mode.Questioning \"" + Game.Mode.Questioning + "\" in function AnswerGame is invalid.");
@@ -1070,19 +1069,19 @@
 
 					// Write
 					AnswerLog.All += NewEntry;
-					if(Selector != Game.Lottery.CorrectAnswer) {
+					if(Selector != Game0.Lottery.CorrectAnswer) {
 						AnswerLog.MissesOnly += NewEntry;
 					}
 					AnswerLog.Sequence++;
 
 				// Voice
-				if(Selector == Game.Lottery.CorrectAnswer || Subsystem.Audio.AlsoPlayVoiceOnMiss == true) {
-					PlayAudio("Audio_Voice", "audio/Kana_" + RomajiGrid[Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Row][Game.Lottery.Answer[Game.Lottery.CorrectAnswer].Column] + ".mp3");
+				if(Selector == Game0.Lottery.CorrectAnswer || Subsystem.Audio.AlsoPlayVoiceOnMiss == true) {
+					PlayAudio("Audio_Voice", "audio/Kana_" + RomajiGrid[Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Row][Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Column] + ".mp3");
 				}
 
 				// Start cooldown
 				Game.Status.IsCoolingDown = true;
-				Game.Stats.StartTime2 = Date.now();
+				Game0.Stats.StartTime2 = Date.now();
 
 				// Refresh
 				RefreshGame();
@@ -1365,15 +1364,6 @@
 		if(Hotkey.key == "F1") {
 			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
 				Game.Status.IsPaused = true;
-				Game.Lottery.Question = {
-					Row: 0, Column: 2
-				};
-				Game.Lottery.Answer = [
-					0,
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0}
-				];
 				RefreshGame();
 			}
 			ShowDialog("System_ConfirmGoToTutorial",
@@ -1425,89 +1415,89 @@
 // Features
 	// Game
 	function Questioner() {
-		Game.Lottery.PreviousQuestion = structuredClone(Game.Lottery.Question);
+		Game0.Lottery.PreviousQuestion = structuredClone(Game0.Lottery.Question);
 		Questioner_GenerateQuestion();
-		Game.Lottery.CorrectAnswer = Randomize(1, 3);
-		switch(Game.Lottery.CorrectAnswer) {
+		Game0.Lottery.CorrectAnswer = Randomize(1, 3);
+		switch(Game0.Lottery.CorrectAnswer) {
 			case 1:
-				Game.Lottery.Answer[1] = structuredClone(Game.Lottery.Question);
+				Game0.Lottery.Answer[1] = structuredClone(Game0.Lottery.Question);
 				Questioner_GenerateAnswer2();
 				Questioner_GenerateAnswer3();
 				break;
 			case 2:
-				Game.Lottery.Answer[2] = structuredClone(Game.Lottery.Question);
+				Game0.Lottery.Answer[2] = structuredClone(Game0.Lottery.Question);
 				Questioner_GenerateAnswer1();
 				Questioner_GenerateAnswer3();
 				break;
 			case 3:
-				Game.Lottery.Answer[3] = structuredClone(Game.Lottery.Question);
+				Game0.Lottery.Answer[3] = structuredClone(Game0.Lottery.Question);
 				Questioner_GenerateAnswer1();
 				Questioner_GenerateAnswer2();
 				break;
 			default:
-				AlertSystemError("The value of Game.Lottery.CorrectAnswer \"" + Game.Lottery.CorrectAnswer + "\" in function Questioner is invalid.");
+				AlertSystemError("The value of Game0.Lottery.CorrectAnswer \"" + Game0.Lottery.CorrectAnswer + "\" in function Questioner is invalid.");
 				break;
 		}
 		Game.Status.IsCoolingDown = false;
-		Game.Stats.StartTime2 = Date.now();
+		Game0.Stats.StartTime2 = Date.now();
 	}
 	function Questioner_GenerateQuestion() {
 		do {
-			Game.Lottery.Question = {
+			Game0.Lottery.Question = {
 				Row: Randomize(1, 19), Column: Randomize(1, 27)
 			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Question.Row] == false ||
+			Game.QuestionRange[Game0.Lottery.Question.Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] == "" ||
+			RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] == "" ||
 			// Prevent same with previous question
-			RomajiGrid[Game.Lottery.Question.Row][Game.Lottery.Question.Column] == RomajiGrid[Game.Lottery.PreviousQuestion.Row][Game.Lottery.PreviousQuestion.Column]
+			RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] == RomajiGrid[Game0.Lottery.PreviousQuestion.Row][Game0.Lottery.PreviousQuestion.Column]
 		);
 	}
 	function Questioner_GenerateAnswer1() {
 		do {
-			Game.Lottery.Answer[1] = {
+			Game0.Lottery.Answer[1] = {
 				Row: Randomize(1, 19), Column: Randomize(1, 27)
 			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Answer[1].Row] == false ||
+			Game.QuestionRange[Game0.Lottery.Answer[1].Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] == "" ||
+			RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == "" ||
 			// Prevent duplication
-			RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] == RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] ||
-			RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] == RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column]
+			RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] ||
+			RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column]
 		);
 	}
 	function Questioner_GenerateAnswer2() {
 		do {
-			Game.Lottery.Answer[2] = {
+			Game0.Lottery.Answer[2] = {
 				Row: Randomize(1, 19), Column: Randomize(1, 27)
 			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Answer[2].Row] == false ||
+			Game.QuestionRange[Game0.Lottery.Answer[2].Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] == "" ||
+			RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == "" ||
 			// Prevent duplication
-			RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] == RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] ||
-			RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column] == RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column]
+			RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] ||
+			RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column]
 		);
 	}
 	function Questioner_GenerateAnswer3() {
 		do {
-			Game.Lottery.Answer[3] = {
+			Game0.Lottery.Answer[3] = {
 				Row: Randomize(1, 19), Column: Randomize(1, 27)
 			};
 		} while(
 			// Prevent out of question range
-			Game.QuestionRange[Game.Lottery.Answer[3].Row] == false ||
+			Game.QuestionRange[Game0.Lottery.Answer[3].Row] == false ||
 			// Prevent blank entry
-			RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column] == "" ||
+			RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == "" ||
 			// Prevent duplication
-			RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column] == RomajiGrid[Game.Lottery.Answer[1].Row][Game.Lottery.Answer[1].Column] ||
-			RomajiGrid[Game.Lottery.Answer[3].Row][Game.Lottery.Answer[3].Column] == RomajiGrid[Game.Lottery.Answer[2].Row][Game.Lottery.Answer[2].Column]
+			RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] ||
+			RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column]
 		);
 	}
 
