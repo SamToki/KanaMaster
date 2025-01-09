@@ -66,8 +66,7 @@
 						{Sequence: Highscore[5][1], Date: Highscore[5][2], Score: Highscore[5][3], MaxCombo: Highscore[5][4], Accuracy: Highscore[5][5], AvgReactionTime: Highscore[5][6]},
 						{Sequence: Highscore[6][1], Date: Highscore[6][2], Score: Highscore[6][3], MaxCombo: Highscore[6][4], Accuracy: Highscore[6][5], AvgReactionTime: Highscore[6][6]}
 					];
-					Highscore = structuredClone(NewObject);
-					localStorage.setItem("KanaMaster_Highscore", JSON.stringify(Highscore));
+					localStorage.setItem("KanaMaster_Highscore", JSON.stringify(NewObject));
 					console.info("● User Data Repairer\n" +
 						"Repaired user data \"KanaMaster Highscore\".");
 				}
@@ -106,10 +105,26 @@
 						{Sequence: Highscore[5][1], Date: Highscore[5][2], Score: Highscore[5][3], AvgSpeed: Highscore[5][4], AvgKeystrokeSpeed: Highscore[5][5], Accuracy: Highscore[5][6]},
 						{Sequence: Highscore[6][1], Date: Highscore[6][2], Score: Highscore[6][3], AvgSpeed: Highscore[6][4], AvgKeystrokeSpeed: Highscore[6][5], Accuracy: Highscore[6][6]}
 					];
-					Highscore = structuredClone(NewObject);
-					localStorage.setItem("YamanoboRyou_Highscore", JSON.stringify(Highscore));
+					localStorage.setItem("YamanoboRyou_Highscore", JSON.stringify(NewObject));
 					console.info("● User Data Repairer\n" +
 						"Repaired user data \"YamanoboRyou Highscore\".");
+				}
+			}
+
+			// v2.02 (2025/01/09)
+			// Optimize user data structure
+			if(localStorage.YamanoboRyou_Game != undefined) {
+				let Game = JSON.parse(localStorage.getItem("YamanoboRyou_Game"));
+				if(Game.Stats.Keystroke == undefined) {
+					Game.Stats.Keystroke = {
+						Count: Game.Stats.KeystrokeCount,
+						Timestamp: Game.Stats.KeystrokeTimestamp
+					};
+					delete Game.Stats.KeystrokeCount;
+					delete Game.Stats.KeystrokeTimestamp;
+					localStorage.setItem("YamanoboRyou_Game", JSON.stringify(Game));
+					console.info("● User Data Repairer\n" +
+						"Repaired user data \"YamanoboRyou Game Stats Keystroke\".");
 				}
 			}
 	}
