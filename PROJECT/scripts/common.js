@@ -270,7 +270,7 @@
 			}
 		}
 		function ChangeProgring(ID, Diameter, Percentage) {
-			document.getElementById(ID).style.strokeDasharray = (Diameter - 5) * Math.PI * (Percentage / 100) + "px, " + (Diameter - 5) * Math.PI * (1 - Percentage / 100) + "px";
+			document.getElementById(ID).style.strokeDasharray = (Math.PI * (Diameter - 5)) * (Percentage / 100) + "px, " + (Math.PI * (Diameter - 5)) * (1 - Percentage / 100) + "px";
 		}
 
 		// Layout
@@ -638,7 +638,7 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 // Features
 	// Maths
 	function Randomize(Min, Max) { // Return an integer between two integers.
-		return Min + Math.trunc(Math.random() * (Max + 1 - Min));
+		return Min + Math.trunc(Math.random() * (Max - Min + 1));
 	}
 
 	// Highlight active section in nav
