@@ -640,13 +640,6 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 	function Randomize(Min, Max) { // Return an integer between two integers.
 		return Min + Math.trunc(Math.random() * (Max + 1 - Min));
 	}
-	function CalcArrayAverage(Array) {
-		let Sum = 0;
-		for(let Looper = 1; Looper < Array.length; Looper++) {
-			Sum += Array[Looper];
-		}
-		return Sum / (Array.length - 1);
-	}
 
 	// Highlight active section in nav
 	function HighlightActiveSectionInNav() {

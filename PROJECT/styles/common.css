@@ -808,9 +808,12 @@
 	// These should be configured in style.css.
 } */
 /* @media (max-aspect-ratio: 0.999) {
-	#BgImage {
-		background-image: url(../images/Background_Narrow.jpg);
-	}
+	/ General /
+		/ Basics /
+			/ Overall /
+			#BgImage {
+				background-image: url(../images/Background_Narrow.jpg);
+			}
 } */
 
 /* Accessibility */
