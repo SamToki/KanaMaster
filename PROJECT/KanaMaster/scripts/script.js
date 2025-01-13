@@ -784,12 +784,13 @@
 			}
 			if(Counter < 2) {
 				Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false];
-				RefreshGame();
-				ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
-					"Error",
-					"出题范围过小，请至少选择两项。已恢复至默认范围。",
-					"", "", "", "确定");
-				return;
+				setTimeout(function() {
+					RefreshGame();
+					ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
+						"Error",
+						"出题范围过小，请至少选择两项。已恢复至默认范围。",
+						"", "", "", "确定");
+				}, 0);
 			}
 
 			// Difficulty
