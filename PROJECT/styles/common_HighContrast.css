@@ -38,7 +38,7 @@
 			color: #FFFFFF;
 		}
 		.ProgbarFg {
-			background-color: #00FF00;
+			background-color: #00E000;
 		}
 		.ProgbarFg.Shaped .Shape {
 			fill: #00A000;
@@ -47,7 +47,7 @@
 			stroke: #404040;
 		}
 		.ProgringFg {
-			stroke: #00FF00;
+			stroke: #00E000;
 		}
 		.NeedleFg, .NeedleArrow {
 			background-color: #FFFFFF;
@@ -58,13 +58,13 @@
 			background-color: #404040;
 		}
 		.IndicatorLight.Red {
-			background-color: #FF4040;
+			background-color: #FF6060;
 		}
 		.IndicatorLight.Orange {
-			background-color: #FF8000;
+			background-color: #FFA000;
 		}
 		.IndicatorLight.Green {
-			background-color: #00FF00;
+			background-color: #00E000;
 		}
 		.IndicatorLight.Blue {
 			background-color: #00C0FF;
@@ -148,6 +148,9 @@
 		.RedText {
 			color: #FF8080;
 		}
+		.OrangeText {
+			color: #FFC000;
+		}
 		.GreenText {
 			color: #00FF00;
 		}
@@ -159,13 +162,13 @@
 			color: #000000;
 		}
 		.Active:enabled:hover, .Active:not(:has(:disabled:not(option))):hover {
-			background-color: #00D800;
+			background-color: #00E000;
 		}
 		.Button.Shaped:enabled:hover .Shape {
 			fill: #00C0FF;
 		}
 		.Button.Shaped.Active:enabled:hover .Shape {
-			fill: #00D800;
+			fill: #00E000;
 		}
 		.Button.ShownAsLabel:enabled:hover {
 			color: #00C0FF;

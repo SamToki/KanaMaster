@@ -24,14 +24,14 @@
 					text-shadow: 0 0 5px #000000;
 				}
 				#Label_AnswerFeedback.Perfect {
-					color: #00A0E0;
+					color: #00C0FF;
 				}
 				#Label_AnswerFeedback.Great {
-					color: #00C000;
+					color: #00E000;
 				}
 				#Label_AnswerFeedback.Good {
-					color: #FF8000;
+					color: #FFA000;
 				}
 				#Label_AnswerFeedback.Miss {
-					color: #FF4040;
+					color: #FF6060;
 				}

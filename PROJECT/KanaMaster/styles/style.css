@@ -95,16 +95,16 @@
 					pointer-events: none;
 				}
 				#Label_AnswerFeedback.Perfect {
-					color: #0090D0;
+					color: #0080C0;
 				}
 				#Label_AnswerFeedback.Great {
-					color: #00A000;
+					color: #008000;
 				}
 				#Label_AnswerFeedback.Good {
-					color: #E06000;
+					color: #D05000;
 				}
 				#Label_AnswerFeedback.Miss {
-					color: #FF0000;
+					color: #E00000;
 				}
 
 			/* Game ctrl */
