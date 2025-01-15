@@ -1346,9 +1346,14 @@
 				break;
 			case "System_Error":
 				switch(Selector) {
-					case 2:
+					case 1:
 						ScrollIntoView("Item_SettingsUserData");
 						ShowIAmHere("Item_SettingsUserData");
+						break;
+					case 2:
+						Object.keys(Automation).forEach(function(AutomationName) {
+							clearInterval(Automation[AutomationName]);
+						});
 						break;
 					case 3:
 						break;
@@ -1512,8 +1517,8 @@ function AlertSystemError(Message) {
 		Message);
 	ShowDialog("System_Error",
 		"Error",
-		"抱歉，发生了系统错误。您可尝试清空用户数据来修复错误，或向我提供反馈。<br />" +
+		"抱歉，发生了系统错误。您可尝试清空用户数据来修复错误，或向我提供反馈。若无法关闭对话框，请点击「强制停止」。<br />" +
 		"<br />" +
 		"错误信息：" + Message,
-		"", "", "了解更多", "关闭");
+		"", "了解更多", "强制停止", "关闭");
 }
