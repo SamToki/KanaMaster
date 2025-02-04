@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 4.01,
+		const CurrentVersion = 4.02,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -595,7 +595,7 @@
 
 		// Question board & answer board
 			// Text
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == true) {
+			if(Game.Status.IsRunning == true && Game.Status.IsPaused == true && Game0.Stats.Progress < 100) {
 				Game0.Lottery.Question = {
 					Row: 0, Column: 2
 				};
