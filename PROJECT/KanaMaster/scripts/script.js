@@ -184,6 +184,7 @@
 		}
 
 		// Refresh
+		HighlightActiveSectionInNav();
 		RefreshSystem();
 		RefreshSubsystem();
 		RefreshGame();
@@ -498,10 +499,10 @@
 
 	// Game
 	function ClockGame() {
-		// Change self update freq
-		clearInterval(Automation.ClockGame);
+		// Automation
+		clearTimeout(Automation.ClockGame);
 		if(Game.Status.IsRunning == true) {
-			Automation.ClockGame = setInterval(ClockGame, 20);
+			Automation.ClockGame = setTimeout(ClockGame, 20);
 		}
 
 		// Update essentials
@@ -1352,7 +1353,7 @@
 						break;
 					case 2:
 						Object.keys(Automation).forEach(function(AutomationName) {
-							clearInterval(Automation[AutomationName]);
+							clearTimeout(Automation[AutomationName]);
 						});
 						break;
 					case 3:

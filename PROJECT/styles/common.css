@@ -20,7 +20,7 @@
 		* {
 			transform-origin: inherit;
 			box-sizing: inherit; padding: 0; margin: 0;
-			font-family: inherit; font-size: inherit; font-style: inherit; /* These 3 properties need to be set as inherit due to buttons. */
+			color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; /* "Color" needs to be set as inherit for Google Chrome compatibility. The latter 3 properties need to be set as inherit due to buttons. */
 			transition: inherit; scroll-behavior: inherit;
 		}
 		#Html {
@@ -318,7 +318,6 @@
 		.Textbox {
 			width: 100%; height: 100%; border: 1px solid #00000040; border-radius: 5px; padding: 5px;
 			background-color: #FFFFE8;
-			color: #000000;
 		}
 		.Textbox.ShownAsLabel {
 			border: none;

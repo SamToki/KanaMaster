@@ -632,9 +632,6 @@
 		ChangeDisabled("Button_SettingsInstallPWA", false);
 	});
 
-// Automations
-Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav, 500);
-
 // Features
 	// Maths
 	function Randomize(Min, Max) { // Return an integer between two integers.
@@ -643,6 +640,11 @@ Automation.HighlightActiveSectionInNav = setInterval(HighlightActiveSectionInNav
 
 	// Highlight active section in nav
 	function HighlightActiveSectionInNav() {
+		// Automation
+		clearTimeout(Automation.HighlightActiveSectionInNav);
+		Automation.HighlightActiveSectionInNav = setTimeout(HighlightActiveSectionInNav, 500);
+
+		// Main
 		for(let Looper = 0; Looper < Document.Sections.length; Looper++) {
 			if(scrollY >= Document.Sections[Looper].offsetTop - 200) {
 				Document.ActiveSectionID = Document.Sections[Looper].getAttribute("id");
