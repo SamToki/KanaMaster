@@ -106,11 +106,11 @@
 		}
 		.ScrollableLog {
 			height: unset; max-height: 180px;
-			overflow: scroll;
+			overflow: auto;
 		}
 		.ScrollableList {
 			height: 280px;
-			overflow: scroll;
+			overflow: auto;
 		}
 		.ScrollableList .Ctrl {
 			width: 100%;
@@ -414,7 +414,7 @@
 			}
 			#Ctrl_DialogText {
 				width: calc(100% - 35px); height: 100%; padding: 9px 5px 0 10px;
-				overflow: scroll;
+				overflow: auto;
 			}
 			#CtrlGroup_DialogCheckboxOption {
 				width: 100%; height: 55px; padding: 10px 15px;
