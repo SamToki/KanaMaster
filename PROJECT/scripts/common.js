@@ -355,10 +355,13 @@
 				}
 			}
 		}
-		function ScrollIntoView(ID) {
+		function ScrollIntoView(ID) { // The object is the child element.
 			document.getElementById(ID).scrollIntoView();
 		}
-		function ScrollToBottom(ID) {
+		function ScrollToTop(ID) { // The object is the container.
+			document.getElementById(ID).scrollTop = 0;
+		}
+		function ScrollToBottom(ID) { // The object is the container.
 			document.getElementById(ID).scrollTop = document.getElementById(ID).scrollHeight;
 		}
 		function ToggleFullscreen() {
@@ -829,6 +832,7 @@
 		// Show dialog and disable other ctrls
 		Show("ScreenFilter_Dialog");
 		Show("Window_Dialog");
+		ScrollToTop("Ctrl_DialogText");
 		ChangeInert("Topbar", true);
 		ChangeInert("Main", true);
 	}
