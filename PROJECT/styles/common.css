@@ -827,6 +827,9 @@
 }
 
 /* Dev */
+#Html.TryToOptimizePerformance {
+	transition: none;
+}
 #Html.TryToOptimizePerformance * {
 	backdrop-filter: none !important;
 }
