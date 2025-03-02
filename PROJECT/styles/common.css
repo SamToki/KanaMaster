@@ -827,11 +827,9 @@
 }
 
 /* Dev */
-#Html.TryToOptimizePerformance {
-	transition: none;
-}
 #Html.TryToOptimizePerformance * {
 	backdrop-filter: none !important;
+	transition: unset;
 }
 #Html.ShowDebugOutlines * {
 	outline: 1px solid #00C000;
