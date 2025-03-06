@@ -637,6 +637,15 @@
 
 // Features
 	// Maths
+	function CheckRangeAndCorrect(Number, Min, Max) {
+		if(Number < Min) {
+			Number = Min;
+		}
+		if(Number > Max) {
+			Number = Max;
+		}
+		return Number;
+	}
 	function Randomize(Min, Max) { // Return an integer between two integers.
 		return Min + Math.trunc(Math.random() * (Max - Min + 1));
 	}

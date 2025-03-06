@@ -1137,23 +1137,11 @@
 			}
 		}
 		function SetQuantity() {
-			Game.Mode.Quantity = Math.trunc(ReadValue("Textbox_SettingsQuantity"));
-			if(Game.Mode.Quantity < 5) {
-				Game.Mode.Quantity = 5;
-			}
-			if(Game.Mode.Quantity > 999) {
-				Game.Mode.Quantity = 999;
-			}
+			Game.Mode.Quantity = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsQuantity")), 5, 999);
 			RefreshGame();
 		}
 		function SetDuration() {
-			Game.Mode.Duration = Math.trunc(ReadValue("Textbox_SettingsDuration"));
-			if(Game.Mode.Duration < 1) {
-				Game.Mode.Duration = 1;
-			}
-			if(Game.Mode.Duration > 60) {
-				Game.Mode.Duration = 60;
-			}
+			Game.Mode.Duration = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsDuration")), 1, 60);
 			RefreshGame();
 		}
 
@@ -1188,13 +1176,7 @@
 
 		// Difficulty
 		function SetTimeLimitInitial() {
-			Game.Difficulty.TimeLimit.Initial = Math.trunc(ReadValue("Textbox_SettingsTimeLimitInitial") * 10) / 10 * 1000;
-			if(Game.Difficulty.TimeLimit.Initial < 1000) {
-				Game.Difficulty.TimeLimit.Initial = 1000;
-			}
-			if(Game.Difficulty.TimeLimit.Initial > 10000) {
-				Game.Difficulty.TimeLimit.Initial = 10000;
-			}
+			Game.Difficulty.TimeLimit.Initial = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsTimeLimitInitial") * 10) / 10 * 1000, 1000, 10000);
 			if(Game.Difficulty.TimeLimit.Initial < Game.Difficulty.TimeLimit.Final) {
 				Game.Difficulty.TimeLimit.Final = Game.Difficulty.TimeLimit.Initial;
 			}
@@ -1204,13 +1186,7 @@
 			RefreshGame();
 		}
 		function SetTimeLimitFinal() {
-			Game.Difficulty.TimeLimit.Final = Math.trunc(ReadValue("Textbox_SettingsTimeLimitFinal") * 10) / 10 * 1000;
-			if(Game.Difficulty.TimeLimit.Final < 1000) {
-				Game.Difficulty.TimeLimit.Final = 1000;
-			}
-			if(Game.Difficulty.TimeLimit.Final > 10000) {
-				Game.Difficulty.TimeLimit.Final = 10000;
-			}
+			Game.Difficulty.TimeLimit.Final = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsTimeLimitFinal") * 10) / 10 * 1000, 1000, 10000);
 			if(Game.Difficulty.TimeLimit.Final < Game.Difficulty.TimeLimit.Initial - 5000) {
 				Game.Difficulty.TimeLimit.Initial = Game.Difficulty.TimeLimit.Final + 5000;
 			}
@@ -1220,23 +1196,11 @@
 			RefreshGame();
 		}
 		function SetCooldown() {
-			Game.Difficulty.Cooldown = Math.trunc(ReadValue("Textbox_SettingsCooldown") * 10) / 10 * 1000;
-			if(Game.Difficulty.Cooldown < 200) {
-				Game.Difficulty.Cooldown = 200;
-			}
-			if(Game.Difficulty.Cooldown > 10000) {
-				Game.Difficulty.Cooldown = 10000;
-			}
+			Game.Difficulty.Cooldown = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsCooldown") * 10) / 10 * 1000, 200, 10000);
 			RefreshGame();
 		}
 		function SetHPDrain() {
-			Game.Difficulty.HPDrain = Math.trunc(ReadValue("Textbox_SettingsHPDrain"));
-			if(Game.Difficulty.HPDrain < 5) {
-				Game.Difficulty.HPDrain = 5;
-			}
-			if(Game.Difficulty.HPDrain > 100) {
-				Game.Difficulty.HPDrain = 100;
-			}
+			Game.Difficulty.HPDrain = CheckRangeAndCorrect(Math.trunc(ReadValue("Textbox_SettingsHPDrain")), 5, 100);
 			RefreshGame();
 		}
 
