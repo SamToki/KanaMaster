@@ -104,10 +104,7 @@
 			}
 
 			/* Dialog */
-			#DialogIcon_Info {
-				fill: #00C000;
-			}
-			#DialogIcon_Question {
+			#DialogIcon_Info, #DialogIcon_Question {
 				fill: #00A0E0;
 			}
 			#DialogIcon_Caution {

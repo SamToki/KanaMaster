@@ -400,10 +400,7 @@
 			.DialogIcon {
 				width: 35px; height: 35px;
 			}
-			#DialogIcon_Info {
-				fill: #00A000;
-			}
-			#DialogIcon_Question {
+			#DialogIcon_Info, #DialogIcon_Question {
 				fill: #0090D0;
 			}
 			#DialogIcon_Caution {
