@@ -127,4 +127,19 @@
 						"Repaired user data \"YamanoboRyou Game Stats Keystroke\".");
 				}
 			}
+
+		// GPS-PFD
+			// v0.29 (2025/05/25) Beta Test
+			// New feature (Video footage mode)
+			if(localStorage.GPSPFD_Subsystem != undefined) {
+				let Subsystem = JSON.parse(localStorage.getItem("GPSPFD_Subsystem"));
+				if(Subsystem.Dev == undefined) {
+					Subsystem.Dev = {
+						VideoFootageMode: false
+					};
+					localStorage.setItem("GPSPFD_Subsystem", JSON.stringify(Subsystem));
+					console.info("● User Data Repairer\n" +
+						"Repaired user data \"GPSPFD Subsystem Dev\".");
+				}
+			}
 	}
