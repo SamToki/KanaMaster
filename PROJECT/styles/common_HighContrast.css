@@ -20,6 +20,9 @@
 		a {
 			color: #00C0FF; text-decoration: underline;
 		}
+		label:not(:has(:disabled:not(option))):hover a, label:not(:has(:disabled:not(option))):active a {
+			color: #000000;
+		}
 
 		/* Shapes */
 		.Shape {

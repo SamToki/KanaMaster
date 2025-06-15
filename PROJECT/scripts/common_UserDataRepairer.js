@@ -129,17 +129,31 @@
 			}
 
 		// GPS-PFD
-			// v0.29 (2025/05/25) Beta Test
-			// New feature (Video footage mode)
-			if(localStorage.GPSPFD_Subsystem != undefined) {
-				let Subsystem = JSON.parse(localStorage.getItem("GPSPFD_Subsystem"));
-				if(Subsystem.Dev == undefined) {
-					Subsystem.Dev = {
-						VideoFootageMode: false
+			// v0.31 (2025/06/08) Beta Test
+			// New feature
+			if(localStorage.GPSPFD_PFD != undefined) {
+				let PFD = JSON.parse(localStorage.getItem("GPSPFD_PFD"));
+				if(PFD.Speed.TakeOff == undefined) {
+					PFD.Speed.TakeOff = {
+						V1: 72.016, VR: 74.588
 					};
-					localStorage.setItem("GPSPFD_Subsystem", JSON.stringify(Subsystem));
+					PFD.Heading = {
+						Mode: "GPS"
+					};
+					PFD.MCP = {
+						Speed: {
+							IsEnabled: false, Value: 0
+						},
+						Altitude: {
+							IsEnabled: false, Value: 0
+						},
+						Heading: {
+							IsEnabled: false, Value: 0
+						}
+					};
+					localStorage.setItem("GPSPFD_PFD", JSON.stringify(PFD));
 					console.info("● User Data Repairer\n" +
-						"Repaired user data \"GPSPFD Subsystem Dev\".");
+						"Repaired user data \"GPSPFD PFD\".");
 				}
 			}
 	}
