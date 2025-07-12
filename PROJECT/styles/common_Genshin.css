@@ -27,7 +27,7 @@
 		/* Shapes */
 		.Shape {
 			fill: #EEE4D9;
-			stroke: #EEE4D940;
+			stroke: none;
 		}
 
 		/* Progress indicators */
@@ -75,7 +75,7 @@
 
 		/* Interactive ctrls */
 		.Button, .Combobox {
-			border: 1px solid #EEE4D940; border-radius: 17.5px;
+			border: none; border-radius: 17.5px;
 			background-color: #EEE4D9;
 			color: #485267;
 		}
@@ -84,14 +84,14 @@
 			color: #EEE4D9;
 		}
 		.DropctrlGroup {
-			border: 1px solid #EEE4D940; border-radius: 17.5px;
+			border: none; border-radius: 17.5px;
 			background-color: #EEE4D9;
 		}
 		.Combobox {
 			padding: 5px 10px;
 		}
 		.Textbox {
-			border: 1px solid #F5F5F540; border-radius: 17.5px; padding: 5px 10px;
+			border: none; border-radius: 17.5px; padding: 5px 10px;
 			background-color: #F5F5F5;
 			color: #323232;
 		}
@@ -260,7 +260,7 @@
 	/* Area specific */
 		/* Header */
 		#DropctrlGroup_Nav {
-			border: 1px solid #EEE4D940;
+			border: none;
 			background-color: #EEE4D9;
 		}
 		#DropctrlGroup_Nav .Button:not(:hover):not(:active) {

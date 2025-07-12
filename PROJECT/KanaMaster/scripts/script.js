@@ -331,6 +331,12 @@
 					ChangeLink("ThemeVariant_Style", "styles/style_Dark.css");
 					ChangeMediaCondition("ThemeVariant_Style", "");
 					break;
+				case "AtelierSophie2":
+					ChangeLink("ThemeVariant_Common", "../styles/common_AtelierSophie2.css");
+					ChangeMediaCondition("ThemeVariant_Common", "");
+					ChangeLink("ThemeVariant_Style", "styles/style_AtelierSophie2.css");
+					ChangeMediaCondition("ThemeVariant_Style", "");
+					break;
 				case "Genshin":
 					ChangeLink("ThemeVariant_Common", "../styles/common_Genshin.css");
 					ChangeMediaCondition("ThemeVariant_Common", "");
