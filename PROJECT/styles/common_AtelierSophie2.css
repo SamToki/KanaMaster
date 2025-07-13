@@ -38,7 +38,7 @@
 			color: #291900;
 		}
 		.ProgbarFg {
-			background-color: #544539;
+			background-color: #685546;
 		}
 		.ProgbarFg.Shaped .Shape {
 			fill: #AC9684;
@@ -47,7 +47,7 @@
 			stroke: #29190020;
 		}
 		.ProgringFg {
-			stroke: #544539;
+			stroke: #685546;
 		}
 		.NeedleFg, .NeedleArrow {
 			background-color: #291900;
@@ -95,7 +95,7 @@
 		}
 			/* Hotkey indicators */
 			.HotkeyIndicator {
-				background-color: #100C08;
+				background-color: #424242;
 				color: #FBF3E9;
 			}
 
