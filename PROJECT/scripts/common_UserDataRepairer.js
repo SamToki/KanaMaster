@@ -156,4 +156,19 @@
 						"Repaired user data \"GPSPFD PFD\".");
 				}
 			}
+
+			// v0.35 (2025/07/17) Beta Test
+			// New feature
+			if(localStorage.GPSPFD_PFD != undefined) {
+				let PFD = JSON.parse(localStorage.getItem("GPSPFD_PFD"));
+				if(PFD.MCP.Speed.Mode == undefined) {
+					PFD.MCP.Speed.Mode = "IAS";
+					PFD.MCP.Speed.IAS = PFD.MCP.Speed.Value;
+					PFD.MCP.Speed.MachNumber = 0;
+					delete PFD.MCP.Speed.Value;
+					localStorage.setItem("GPSPFD_PFD", JSON.stringify(PFD));
+					console.info("● User Data Repairer\n" +
+						"Repaired user data \"GPSPFD PFD\".");
+				}
+			}
 	}
