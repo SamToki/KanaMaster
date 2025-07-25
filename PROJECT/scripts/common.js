@@ -12,7 +12,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		var Document = {
+		var TheDocument = {
 			NavCtrls: document.getElementsByClassName("Nav"),
 			Sections: document.getElementsByTagName("section"),
 			ActiveSectionID: "",
@@ -543,8 +543,8 @@
 
 		// PWA
 		function InstallPWA() {
-			if(Document.PWAInstallation != null) {
-				Document.PWAInstallation.prompt();
+			if(TheDocument.PWAInstallation != null) {
+				TheDocument.PWAInstallation.prompt();
 			}
 		}
 
@@ -631,11 +631,16 @@
 
 	// When PWA installation is available
 	window.addEventListener("beforeinstallprompt", function(Event) { // This does not seem to work.
-		Document.PWAInstallation = Event;
+		TheDocument.PWAInstallation = Event;
 		ChangeDisabled("Button_SettingsInstallPWA", false);
 	});
 
 // Features
+	// Object checking
+	function IsNullInObject(TheObject) {
+		return Object.values(TheObject).includes(null);
+	}
+
 	// Maths
 	function CheckRangeAndCorrect(Number, Min, Max) {
 		if(Number < Min) {
@@ -649,6 +654,12 @@
 	function Randomize(Min, Max) { // Return an integer between two integers.
 		return Min + Math.trunc(Math.random() * (Max - Min + 1));
 	}
+	function DegToRad(Number) {
+		return Number * (Math.PI / 180);
+	}
+	function RadToDeg(Number) {
+		return Number / (Math.PI / 180);
+	}
 
 	// Highlight active section in nav
 	function HighlightActiveSectionInNav() {
@@ -657,23 +668,23 @@
 		Automation.HighlightActiveSectionInNav = setTimeout(HighlightActiveSectionInNav, 500);
 
 		// Main
-		for(let Looper = 0; Looper < Document.Sections.length; Looper++) {
-			if(scrollY >= Document.Sections[Looper].offsetTop - 200) {
-				Document.ActiveSectionID = Document.Sections[Looper].getAttribute("id");
+		for(let Looper = 0; Looper < TheDocument.Sections.length; Looper++) {
+			if(scrollY >= TheDocument.Sections[Looper].offsetTop - 200) {
+				TheDocument.ActiveSectionID = TheDocument.Sections[Looper].getAttribute("id");
 			}
 		}
-		for(let Looper = 0; Looper < Document.NavCtrls.length; Looper++) {
-			if(Document.NavCtrls[Looper].getAttribute("id") == "Nav_" + Document.ActiveSectionID) {
+		for(let Looper = 0; Looper < TheDocument.NavCtrls.length; Looper++) {
+			if(TheDocument.NavCtrls[Looper].getAttribute("id") == "Nav_" + TheDocument.ActiveSectionID) {
 				if(IsMobileLayout() == false) {
 					ChangeTop("Ctrl_NavUnderline", "calc(100% - 2px)");
-					ChangeLeft("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetLeft + 4 + "px");
-					ChangeWidth("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetWidth - 8 + "px");
+					ChangeLeft("Ctrl_NavUnderline", TheDocument.NavCtrls[Looper].offsetLeft + 4 + "px");
+					ChangeWidth("Ctrl_NavUnderline", TheDocument.NavCtrls[Looper].offsetWidth - 8 + "px");
 					ChangeHeight("Ctrl_NavUnderline", "2px");
 				} else {
-					ChangeTop("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetTop + 4 + "px");
+					ChangeTop("Ctrl_NavUnderline", TheDocument.NavCtrls[Looper].offsetTop + 4 + "px");
 					ChangeLeft("Ctrl_NavUnderline", "0");
 					ChangeWidth("Ctrl_NavUnderline", "2px");
-					ChangeHeight("Ctrl_NavUnderline", Document.NavCtrls[Looper].offsetHeight - 8 + "px");
+					ChangeHeight("Ctrl_NavUnderline", TheDocument.NavCtrls[Looper].offsetHeight - 8 + "px");
 				}
 			}
 		}

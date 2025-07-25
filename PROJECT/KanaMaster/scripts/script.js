@@ -1239,9 +1239,9 @@
 		function ImportUserData() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != "") {
 				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\":{\"Display\":{\"Theme\":") == true) {
-					let Objects = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
-					Object.keys(Objects).forEach(function(ObjectName) {
-						localStorage.setItem(ObjectName, JSON.stringify(Objects[ObjectName]));
+					let UserData = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
+					Object.keys(UserData).forEach(function(SubobjectName) {
+						localStorage.setItem(SubobjectName, JSON.stringify(UserData[SubobjectName]));
 					});
 					RefreshWebpage();
 				} else {
@@ -1327,8 +1327,8 @@
 						ShowIAmHere("Item_SettingsUserData");
 						break;
 					case 2:
-						Object.keys(Automation).forEach(function(AutomationName) {
-							clearTimeout(Automation[AutomationName]);
+						Object.keys(Automation).forEach(function(SubobjectName) {
+							clearTimeout(Automation[SubobjectName]);
 						});
 						break;
 					case 3:
