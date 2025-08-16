@@ -171,4 +171,18 @@
 						"Repaired user data \"GPSPFD PFD\".");
 				}
 			}
+
+			// v0.41 (2025/08/12) Beta Test
+			// New feature
+			if(localStorage.GPSPFD_PFD != undefined) {
+				let PFD = JSON.parse(localStorage.getItem("GPSPFD_PFD"));
+				if(PFD.MCP.VerticalSpeed == undefined) {
+					PFD.MCP.VerticalSpeed = {
+						IsEnabled: false, Value: 0
+					};
+					localStorage.setItem("GPSPFD_PFD", JSON.stringify(PFD));
+					console.info("● User Data Repairer\n" +
+						"Repaired user data \"GPSPFD PFD\".");
+				}
+			}
 	}
