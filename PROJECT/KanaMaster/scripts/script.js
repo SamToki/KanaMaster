@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 4.04,
+		const CurrentVersion = 4.05,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -50,7 +50,74 @@
 			[0, "",     "kyo",  "sho",  "cho",  "nyo",  "hyo",  "myo",  "",     "ryo",  "",     "gyo",  "jo",   "",     "byo",  "pyo",  "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
 			[0, "ye",   "wi",   "we",   "wo",   "va",   "vi",   "v",    "ve",   "vo",   "kwa",  "kwi",  "kwe",  "kwo",  "she",  "si",   "che",  "ti",   "tyu",  "tu",   "fa",   "fi",   "fe",   "fo",   "je",   "di",   "dyu",  "du"],
 			[0, "wi",   "we",   "wi",   "we",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
-		];
+		],
+		Preset = {
+			Game: {
+				QuestionRange: [
+					0,
+					{
+						Name: "DefaultRange",
+						Content: [
+							0,
+							true, true, true, true, true,
+							true, true, true, true, true,
+							true,
+							false, false, false,
+							false, false, false,
+							false, false
+						]
+					},
+					{
+						Name: "BasicHiragana",
+						Content: [
+							0,
+							true, true, true, true, true,
+							false, false, false, false, false,
+							false,
+							false, false, false,
+							false, false, false,
+							false, false
+						]
+					},
+					{
+						Name: "BasicKatakana",
+						Content: [
+							0,
+							false, false, false, false, false,
+							true, true, true, true, true,
+							false,
+							false, false, false,
+							false, false, false,
+							false, false
+						]
+					},
+					{
+						Name: "AllButObsoleteKana",
+						Content: [
+							0,
+							true, true, true, true, true,
+							true, true, true, true, true,
+							true,
+							true, true, true,
+							true, true, true,
+							true, false
+						]
+					},
+					{
+						Name: "SelectAll",
+						Content: [
+							0,
+							true, true, true, true, true,
+							true, true, true, true, true,
+							true,
+							true, true, true,
+							true, true, true,
+							true, true
+						]
+					}
+				]
+			}
+		};
 		var Game0 = {
 			Stats: {
 				ClockTime: 0, StartTime: 0, CurrentTimeLimit: 0,
@@ -92,7 +159,7 @@
 				Questioning: "Kana",
 				Progressing: "Quantity", Quantity: 50, Duration: 3
 			},
-			QuestionRange: [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false],
+			QuestionRange: structuredClone(Preset.Game.QuestionRange[1].Content),
 			Difficulty: {
 				TimeLimit: {
 					Initial: 8000, Final: 6000
@@ -770,25 +837,11 @@
 			ChangeValue("Textbox_SettingsDuration", Game.Mode.Duration);
 
 			// Question range
-			switch(JSON.stringify(Game.QuestionRange)) {
-				case "[0,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false]":
-					ChangeValue("Combobox_SettingsQuestionRangePreset", "DefaultRange");
-					break;
-				case "[0,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false]":
-					ChangeValue("Combobox_SettingsQuestionRangePreset", "BasicHiragana");
-					break;
-				case "[0,false,false,false,false,false,true,true,true,true,true,false,false,false,false,false,false,false,false,false]":
-					ChangeValue("Combobox_SettingsQuestionRangePreset", "BasicKatakana");
-					break;
-				case "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false]":
-					ChangeValue("Combobox_SettingsQuestionRangePreset", "AllButObsoleteKana");
-					break;
-				case "[0,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]":
-					ChangeValue("Combobox_SettingsQuestionRangePreset", "SelectAll");
-					break;
-				default:
-					ChangeValue("Combobox_SettingsQuestionRangePreset", "");
-					break;
+			ChangeValue("Combobox_SettingsQuestionRangePreset", "");
+			for(let Looper = 1; Looper < Preset.Game.QuestionRange.length; Looper++) {
+				if(JSON.stringify(Game.QuestionRange) == JSON.stringify(Preset.Game.QuestionRange[Looper].Content)) {
+					ChangeValue("Combobox_SettingsQuestionRangePreset", Preset.Game.QuestionRange[Looper].Name);
+				}
 			}
 			let Counter = 0;
 			for(let Looper = 1; Looper <= 19; Looper++) {
@@ -798,7 +851,7 @@
 				}
 			}
 			if(Counter < 2) {
-				Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false];
+				Game.QuestionRange = structuredClone(Preset.Game.QuestionRange[1].Content);
 				setTimeout(function() {
 					RefreshGame();
 					ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
@@ -1156,25 +1209,10 @@
 
 		// Question range
 		function SetQuestionRangePreset() {
-			switch(ReadValue("Combobox_SettingsQuestionRangePreset")) {
-				case "DefaultRange":
-					Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false, false, false];
-					break;
-				case "BasicHiragana":
-					Game.QuestionRange = [0, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-					break;
-				case "BasicKatakana":
-					Game.QuestionRange = [0, false, false, false, false, false, true, true, true, true, true, false, false, false, false, false, false, false, false, false];
-					break;
-				case "AllButObsoleteKana":
-					Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false];
-					break;
-				case "SelectAll":
-					Game.QuestionRange = [0, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
-					break;
-				default:
-					AlertSystemError("The value of ReadValue(\"Combobox_SettingsQuestionRangePreset\") \"" + ReadValue("Combobox_SettingsQuestionRangePreset") + "\" in function SetQuestionRangePreset is invalid.");
-					break;
+			for(let Looper = 1; Looper < Preset.Game.QuestionRange.length; Looper++) {
+				if(ReadValue("Combobox_SettingsQuestionRangePreset") == Preset.Game.QuestionRange[Looper].Name) {
+					Game.QuestionRange = structuredClone(Preset.Game.QuestionRange[Looper].Content);
+				}
 			}
 			RefreshGame();
 		}
