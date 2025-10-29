@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CacheName = "KanaMaster_v4.05";
+		const CacheName = "KanaMaster_v4.06";
 
 // Listeners
 	// Service worker (https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/how-to/#step-5---add-a-service-worker)
@@ -33,11 +33,17 @@
 				"images/Icon_Large.png",
 				"images/Icon_Maskable.png",
 				"images/Preview.jpg",
+				"../fonts/Inter-Regular.woff2",
+				"../fonts/Inter-Italic.woff2",
+				"../fonts/Inter-Bold.woff2",
+				"../fonts/Inter-BoldItalic.woff2",
+				// "../fonts/Iosevka-Regular.woff2",
+				"../images/Background.jpg",
 				"../cursors/BTRAhoge.cur",
 				"../cursors/Genshin.cur",
 				"../cursors/GenshinFurina.cur",
 				"../cursors/GenshinNahida.cur",
-				"../images/Background.jpg",
+				"../cursors/SilentWitch.cur",
 				"../audio/Beep.mp3",
 				"audio/Kana_a.mp3",
 				"audio/Kana_ba.mp3",

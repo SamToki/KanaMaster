@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 4.05,
+		const CurrentVersion = 4.06,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -144,7 +144,7 @@
 		// Saved
 		var Subsystem = {
 			Display: {
-				GameFont: "Default"
+				GameFont: "Inherit"
 			},
 			Audio: {
 				VoiceVolume: 0,
@@ -518,7 +518,7 @@
 				ChangeLanguage("Html", "zh-CN");
 			}
 			ChangeValue("Textbox_SettingsFont", System.Dev.Font);
-			ChangeFont("Html", System.Dev.Font);
+			ChangeFontOverall(System.Dev.Font);
 
 			// User data
 			ChangeValue("Textbox_SettingsUserDataImport", "");
@@ -531,17 +531,17 @@
 			// Display
 			ChangeValue("Combobox_SettingsGameFont", Subsystem.Display.GameFont);
 			switch(Subsystem.Display.GameFont) {
-				case "Default":
-					ChangeFont("Label_GameQuestion", "");
+				case "Inherit":
+					ChangeFont("Label_GameQuestion", System.Dev.Font);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeFont("Button_GameAnswerOption" + Looper, "");
+						ChangeFont("Button_GameAnswerOption" + Looper, System.Dev.Font);
 					}
 					break;
-				case "Sans":
+				case "Sans-serif":
 				case "Serif":
-					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont.toLowerCase());
+					ChangeFont("Label_GameQuestion", Subsystem.Display.GameFont);
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeFont("Button_GameAnswerOption" + Looper, Subsystem.Display.GameFont.toLowerCase());
+						ChangeFont("Button_GameAnswerOption" + Looper, Subsystem.Display.GameFont);
 					}
 					break;
 				default:
