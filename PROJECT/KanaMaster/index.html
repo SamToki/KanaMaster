@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Icon.png" />
 		<title>假名征服者</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v4.06 (2025/10/29). Since 2023/11/05." />
+		<meta name="version" content="v5.00 (2025/11/12). Since 2023/11/05." />
 		<meta name="description" content="日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
 		<meta name="copyright" content="© 2023 SAM TOKI STUDIO" />
 
@@ -451,136 +451,186 @@
 							</ul>
 						</fieldset>
 					</li>
-					<li class="Item">
+					<li class="Item" id="Item_SettingsQuestionRange">
 						<fieldset id="Fieldset_SettingsQuestionRange">
 							<legend>出题范围</legend>
-							<ul class="CtrlGroup">
+							<p>请至少选择6个假名。您可在<a href="docs/假名征服者%20说明文档.pdf">说明文档</a>查看每项的具体内容。</p>
+							<p id="Label_SettingsKanaSelectionCount">已选数</p>
+							<ul class="CtrlGroup BelowParagraph">
 								<li class="Ctrl">
 									<label for="Combobox_SettingsQuestionRangePreset">
 										<span>预设：</span>
 										<select class="Combobox" id="Combobox_SettingsQuestionRangePreset" onchange="SetQuestionRangePreset()">
 											<option value="DefaultRange" selected>默认范围</option>
-											<option value="BasicHiragana">基本平假名</option>
+											<option value="Beginner">入门</option>
+											<option value="BasicHiragana">基本平假名 (五十音)</option>
 											<option value="BasicKatakana">基本片假名</option>
+											<option value="Dakuon">浊音</option>
+											<option value="Youon">拗音</option>
 											<option value="AllButObsoleteKana">废弃假名除外</option>
 											<option value="SelectAll">全选</option>
 										</select>
 									</label>
 								</li>
-							</ul>
-							<p>请至少选择两项。您可在<a href="docs/假名征服者%20说明文档.pdf">说明文档</a>查看每项的具体内容。</p>
-							<ul class="CtrlGroup BelowParagraph">
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange1" title="平假名 a 段" aria-label="平假名 a 段">
+									<label for="Checkbox_SettingsQuestionRange1" title="平假名 a 行" aria-label="平假名 a 行">
 										<input class="Checkbox" id="Checkbox_SettingsQuestionRange1" type="checkbox" checked="true" onchange="SetQuestionRange(1)" />
 										<span lang="ja-JP">あ</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange2" title="平假名 i 段" aria-label="平假名 i 段">
+									<label for="Checkbox_SettingsQuestionRange2" title="平假名 ka 行" aria-label="平假名 ka 行">
 										<input class="Checkbox" id="Checkbox_SettingsQuestionRange2" type="checkbox" checked="true" onchange="SetQuestionRange(2)" />
-										<span lang="ja-JP">い</span>
+										<span lang="ja-JP">か</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange3" title="平假名 u 段" aria-label="平假名 u 段">
+									<label for="Checkbox_SettingsQuestionRange3" title="平假名 sa 行" aria-label="平假名 sa 行">
 										<input class="Checkbox" id="Checkbox_SettingsQuestionRange3" type="checkbox" checked="true" onchange="SetQuestionRange(3)" />
-										<span lang="ja-JP">う</span>
+										<span lang="ja-JP">さ</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange4" title="平假名 e 段" aria-label="平假名 e 段">
+									<label for="Checkbox_SettingsQuestionRange4" title="平假名 ta 行" aria-label="平假名 ta 行">
 										<input class="Checkbox" id="Checkbox_SettingsQuestionRange4" type="checkbox" checked="true" onchange="SetQuestionRange(4)" />
-										<span lang="ja-JP">え</span>
+										<span lang="ja-JP">た</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange5" title="平假名 o 段" aria-label="平假名 o 段">
+									<label for="Checkbox_SettingsQuestionRange5" title="平假名 na 行" aria-label="平假名 na 行">
 										<input class="Checkbox" id="Checkbox_SettingsQuestionRange5" type="checkbox" checked="true" onchange="SetQuestionRange(5)" />
-										<span lang="ja-JP">お</span>
+										<span lang="ja-JP">な</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange6" title="片假名 a 段" aria-label="片假名 a 段">
+									<label for="Checkbox_SettingsQuestionRange6" title="平假名 ha 行" aria-label="平假名 ha 行">
 										<input class="Checkbox" id="Checkbox_SettingsQuestionRange6" type="checkbox" checked="true" onchange="SetQuestionRange(6)" />
+										<span lang="ja-JP">は</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange7" title="平假名 ma 行" aria-label="平假名 ma 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange7" type="checkbox" checked="true" onchange="SetQuestionRange(7)" />
+										<span lang="ja-JP">ま</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange8" title="平假名 ya 行" aria-label="平假名 ya 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange8" type="checkbox" checked="true" onchange="SetQuestionRange(8)" />
+										<span lang="ja-JP">や</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange9" title="平假名 ra 行" aria-label="平假名 ra 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange9" type="checkbox" checked="true" onchange="SetQuestionRange(9)" />
+										<span lang="ja-JP">ら</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange10" title="平假名 wa 行" aria-label="平假名 wa 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange10" type="checkbox" checked="true" onchange="SetQuestionRange(10)" />
+										<span lang="ja-JP">わ</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange11" title="片假名 a 行" aria-label="片假名 a 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange11" type="checkbox" checked="true" onchange="SetQuestionRange(11)" />
 										<span lang="ja-JP">ア</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange7" title="片假名 i 段" aria-label="片假名 i 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange7" type="checkbox" checked="true" onchange="SetQuestionRange(7)" />
-										<span lang="ja-JP">イ</span>
+									<label for="Checkbox_SettingsQuestionRange12" title="片假名 ka 行" aria-label="片假名 ka 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange12" type="checkbox" checked="true" onchange="SetQuestionRange(12)" />
+										<span lang="ja-JP">カ</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange8" title="片假名 u 段" aria-label="片假名 u 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange8" type="checkbox" checked="true" onchange="SetQuestionRange(8)" />
-										<span lang="ja-JP">ウ</span>
+									<label for="Checkbox_SettingsQuestionRange13" title="片假名 sa 行" aria-label="片假名 sa 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange13" type="checkbox" checked="true" onchange="SetQuestionRange(13)" />
+										<span lang="ja-JP">サ</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange9" title="片假名 e 段" aria-label="片假名 e 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange9" type="checkbox" checked="true" onchange="SetQuestionRange(9)" />
-										<span lang="ja-JP">エ</span>
+									<label for="Checkbox_SettingsQuestionRange14" title="片假名 ta 行" aria-label="片假名 ta 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange14" type="checkbox" checked="true" onchange="SetQuestionRange(14)" />
+										<span lang="ja-JP">タ</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy5">
-									<label for="Checkbox_SettingsQuestionRange10" title="片假名 o 段" aria-label="片假名 o 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange10" type="checkbox" checked="true" onchange="SetQuestionRange(10)" />
-										<span lang="ja-JP">オ</span>
+									<label for="Checkbox_SettingsQuestionRange15" title="片假名 na 行" aria-label="片假名 na 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange15" type="checkbox" checked="true" onchange="SetQuestionRange(15)" />
+										<span lang="ja-JP">ナ</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange16" title="片假名 ha 行" aria-label="片假名 ha 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange16" type="checkbox" checked="true" onchange="SetQuestionRange(16)" />
+										<span lang="ja-JP">ハ</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange17" title="片假名 ma 行" aria-label="片假名 ma 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange17" type="checkbox" checked="true" onchange="SetQuestionRange(17)" />
+										<span lang="ja-JP">マ</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange18" title="片假名 ya 行" aria-label="片假名 ya 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange18" type="checkbox" checked="true" onchange="SetQuestionRange(18)" />
+										<span lang="ja-JP">ヤ</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange19" title="片假名 ra 行" aria-label="片假名 ra 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange19" type="checkbox" checked="true" onchange="SetQuestionRange(19)" />
+										<span lang="ja-JP">ラ</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy5">
+									<label for="Checkbox_SettingsQuestionRange20" title="片假名 wa 行" aria-label="片假名 wa 行">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange20" type="checkbox" checked="true" onchange="SetQuestionRange(20)" />
+										<span lang="ja-JP">ワ</span>
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Checkbox_SettingsQuestionRange11" title="平假名与片假名拨音 n" aria-label="平假名与片假名拨音 n">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange11" type="checkbox" checked="true" onchange="SetQuestionRange(11)" />
+									<label for="Checkbox_SettingsQuestionRange21" title="平假名与片假名拨音 n" aria-label="平假名与片假名拨音 n">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange21" type="checkbox" checked="true" onchange="SetQuestionRange(21)" />
 										<span>拨音 (<span lang="ja-JP">ん ン</span>)</span>
 									</label>
 								</li>
-								<li class="Ctrl WidthDividedBy3">
-									<label for="Checkbox_SettingsQuestionRange12" title="平假名拗音 kya 段" aria-label="平假名拗音 kya 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange12" type="checkbox" checked="false" onchange="SetQuestionRange(12)" />
-										<span lang="ja-JP">きゃ</span>
-									</label>
-								</li>
-								<li class="Ctrl WidthDividedBy3">
-									<label for="Checkbox_SettingsQuestionRange13" title="平假名拗音 kyu 段" aria-label="平假名拗音 kyu 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange13" type="checkbox" checked="false" onchange="SetQuestionRange(13)" />
-										<span lang="ja-JP">きゅ</span>
-									</label>
-								</li>
-								<li class="Ctrl WidthDividedBy3">
-									<label for="Checkbox_SettingsQuestionRange14" title="平假名拗音 kyo 段" aria-label="平假名拗音 kyo 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange14" type="checkbox" checked="false" onchange="SetQuestionRange(14)" />
-										<span lang="ja-JP">きょ</span>
-									</label>
-								</li>
-								<li class="Ctrl WidthDividedBy3">
-									<label for="Checkbox_SettingsQuestionRange15" title="片假名拗音 kya 段" aria-label="片假名拗音 kya 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange15" type="checkbox" checked="false" onchange="SetQuestionRange(15)" />
-										<span lang="ja-JP">キャ</span>
-									</label>
-								</li>
-								<li class="Ctrl WidthDividedBy3">
-									<label for="Checkbox_SettingsQuestionRange16" title="片假名拗音 kyu 段" aria-label="片假名拗音 kyu 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange16" type="checkbox" checked="false" onchange="SetQuestionRange(16)" />
-										<span lang="ja-JP">キュ</span>
-									</label>
-								</li>
-								<li class="Ctrl WidthDividedBy3">
-									<label for="Checkbox_SettingsQuestionRange17" title="片假名拗音 kyo 段" aria-label="片假名拗音 kyo 段">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange17" type="checkbox" checked="false" onchange="SetQuestionRange(17)" />
-										<span lang="ja-JP">キョ</span>
+								<li class="Ctrl WidthDividedBy2">
+									<label for="Checkbox_SettingsQuestionRange22">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange22" type="checkbox" checked="false" onchange="SetQuestionRange(22)" />
+										<span>平假名浊音</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy2">
-									<label for="Checkbox_SettingsQuestionRange18">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange18" type="checkbox" checked="false" onchange="SetQuestionRange(18)" />
+									<label for="Checkbox_SettingsQuestionRange23">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange23" type="checkbox" checked="false" onchange="SetQuestionRange(23)" />
+										<span>片假名浊音</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<label for="Checkbox_SettingsQuestionRange24">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange24" type="checkbox" checked="false" onchange="SetQuestionRange(24)" />
+										<span>平假名拗音</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<label for="Checkbox_SettingsQuestionRange25">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange25" type="checkbox" checked="false" onchange="SetQuestionRange(25)" />
+										<span>片假名拗音</span>
+									</label>
+								</li>
+								<li class="Ctrl WidthDividedBy2">
+									<label for="Checkbox_SettingsQuestionRange26">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange26" type="checkbox" checked="false" onchange="SetQuestionRange(26)" />
 										<span>外来语新拗音</span>
 									</label>
 								</li>
 								<li class="Ctrl WidthDividedBy2">
-									<label for="Checkbox_SettingsQuestionRange19">
-										<input class="Checkbox" id="Checkbox_SettingsQuestionRange19" type="checkbox" checked="false" onchange="SetQuestionRange(19)" />
+									<label for="Checkbox_SettingsQuestionRange27">
+										<input class="Checkbox" id="Checkbox_SettingsQuestionRange27" type="checkbox" checked="false" onchange="SetQuestionRange(27)" />
 										<span>废弃假名</span>
 									</label>
 								</li>
@@ -768,7 +818,7 @@
 					<li class="Item" id="Item_SettingsUserData">
 						<fieldset>
 							<legend>用户数据</legend>
-							<p>本功能可快速更改整个网站的用户数据。若要分享导出的数据，请注意其中是否包含个人信息。若您遇到系统错误，可尝试清空用户数据。若错误仍会发生，请向我<a href="#Item_HelpGetInvolved" onclick="ShowIAmHere('Item_HelpGetInvolved')">提供反馈</a>。</p>
+							<p>本功能可快速更改整个网站的用户数据。若要分享导出的数据，请注意其中是否包含个人信息。</p>
 							<ul class="CtrlGroup BelowParagraph">
 								<li class="Ctrl">
 									<label for="Textbox_SettingsUserDataImport">
@@ -800,7 +850,7 @@
 					<li class="Item" id="Item_HelpTutorial">
 						<fieldset>
 							<legend>教程</legend>
-							<p>本游戏的教程以 PDF 文档的形式提供。这方便您保存至本地，还可以打印出来备用。</p>
+							<p>本游戏的教程以 <a href="https://zh.wikipedia.org/wiki/PDF">PDF</a> 文档的形式提供。这方便您保存至本地，还可以打印出来备用。</p>
 							<ul class="CtrlGroup BelowParagraph">
 								<li class="Ctrl WidthDividedBy2">
 									<a class="Button" href="docs/假名征服者%20快速入门.pdf">快速入门</a>
@@ -868,7 +918,7 @@
 							<legend>关于</legend>
 							<p>假名征服者</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v4.06 (<time datetime="2025-10-29" pubdate="pubdate">2025/10/29</time>)<br />
+							<p>版本 v5.00 (<time datetime="2025-11-12" pubdate="pubdate">2025/11/12</time>)<br />
 								始于 2023/11/05</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">

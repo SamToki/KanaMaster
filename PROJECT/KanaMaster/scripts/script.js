@@ -6,50 +6,66 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 4.06,
+		const CurrentVersion = 5.00,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
-			[0, "あ",   "か",   "さ",   "た",   "な",   "は",   "ま",   "や",   "ら",   "わ",   "が",   "ざ",   "だ",   "ば",   "ぱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "い",   "き",   "し",   "ち",   "に",   "ひ",   "み",   "",     "り",   "",     "ぎ",   "じ",   "ぢ",   "び",   "ぴ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "う",   "く",   "す",   "つ",   "ぬ",   "ふ",   "む",   "ゆ",   "る",   "",     "ぐ",   "ず",   "づ",   "ぶ",   "ぷ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "え",   "け",   "せ",   "て",   "ね",   "へ",   "め",   "",     "れ",   "",     "げ",   "ぜ",   "で",   "べ",   "ぺ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "お",   "こ",   "そ",   "と",   "の",   "ほ",   "も",   "よ",   "ろ",   "を",   "ご",   "ぞ",   "ど",   "ぼ",   "ぽ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "ア",   "カ",   "サ",   "タ",   "ナ",   "ハ",   "マ",   "ヤ",   "ラ",   "ワ",   "ガ",   "ザ",   "ダ",   "バ",   "パ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "イ",   "キ",   "シ",   "チ",   "ニ",   "ヒ",   "ミ",   "",     "リ",   "",     "ギ",   "ジ",   "ヂ",   "ビ",   "ピ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "ウ",   "ク",   "ス",   "ツ",   "ヌ",   "フ",   "ム",   "ユ",   "ル",   "",     "グ",   "ズ",   "ヅ",   "ブ",   "プ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "エ",   "ケ",   "セ",   "テ",   "ネ",   "ヘ",   "メ",   "",     "レ",   "",     "ゲ",   "ゼ",   "デ",   "ベ",   "ペ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "オ",   "コ",   "ソ",   "ト",   "ノ",   "ホ",   "モ",   "ヨ",   "ロ",   "ヲ",   "ゴ",   "ゾ",   "ド",   "ボ",   "ポ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "ん",   "ン",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "きゃ", "しゃ", "ちゃ", "にゃ", "ひゃ", "みゃ", "",     "りゃ", "",     "ぎゃ", "じゃ", "",     "びゃ", "ぴゃ", "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "",     "りゅ", "",     "ぎゅ", "じゅ", "",     "びゅ", "ぴゅ", "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "きょ", "しょ", "ちょ", "にょ", "ひょ", "みょ", "",     "りょ", "",     "ぎょ", "じょ", "",     "びょ", "ぴょ", "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "キャ", "シャ", "チャ", "ニャ", "ヒャ", "ミャ", "",     "リャ", "",     "ギャ", "ジャ", "",     "ビャ", "ピャ", "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "キュ", "シュ", "チュ", "ニュ", "ヒュ", "ミュ", "",     "リュ", "",     "ギュ", "ジュ", "",     "ビュ", "ピュ", "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "キョ", "ショ", "チョ", "ニョ", "ヒョ", "ミョ", "",     "リョ", "",     "ギョ", "ジョ", "",     "ビョ", "ピョ", "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "イェ", "ウィ", "ウェ", "ウォ", "ヴァ", "ヴィ", "ヴ",   "ヴェ", "ヴォ", "クァ", "クィ", "クェ", "クォ", "シェ", "スィ", "チェ", "ティ", "テュ", "トゥ", "ファ", "フィ", "フェ", "フォ", "ジェ", "ディ", "デュ", "ドゥ"],
-			[0, "ゐ",   "ゑ",   "ヰ",   "ヱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
+			[5,  "あ",   "い",   "う",   "え",   "お",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "か",   "き",   "く",   "け",   "こ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "さ",   "し",   "す",   "せ",   "そ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "た",   "ち",   "つ",   "て",   "と",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "な",   "に",   "ぬ",   "ね",   "の",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "は",   "ひ",   "ふ",   "へ",   "ほ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ま",   "み",   "む",   "め",   "も",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[3,  "や",   "",     "ゆ",   "",     "よ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ら",   "り",   "る",   "れ",   "ろ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[2,  "わ",   "",     "",     "",     "を",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ア",   "イ",   "ウ",   "エ",   "オ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "カ",   "キ",   "ク",   "ケ",   "コ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "サ",   "シ",   "ス",   "セ",   "ソ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "タ",   "チ",   "ツ",   "テ",   "ト",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ナ",   "ニ",   "ヌ",   "ネ",   "ノ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ハ",   "ヒ",   "フ",   "ヘ",   "ホ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "マ",   "ミ",   "ム",   "メ",   "モ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[3,  "ヤ",   "",     "ユ",   "",     "ヨ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ラ",   "リ",   "ル",   "レ",   "ロ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[2,  "ワ",   "",     "",     "",     "ヲ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[2,  "ん",   "ン",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[25, "が",   "ぎ",   "ぐ",   "げ",   "ご",   "ざ",   "じ",   "ず",   "ぜ",   "ぞ",   "だ",   "ぢ",   "づ",   "で",   "ど",   "ば",   "び",   "ぶ",   "べ",   "ぼ",   "ぱ",   "ぴ",   "ぷ",   "ぺ",   "ぽ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[25, "ガ",   "ギ",   "グ",   "ゲ",   "ゴ",   "ザ",   "ジ",   "ズ",   "ゼ",   "ゾ",   "ダ",   "ヂ",   "ヅ",   "デ",   "ド",   "バ",   "ビ",   "ブ",   "ベ",   "ボ",   "パ",   "ピ",   "プ",   "ペ",   "ポ",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[33, "きゃ", "きゅ", "きょ", "しゃ", "しゅ", "しょ", "ちゃ", "ちゅ", "ちょ", "にゃ", "にゅ", "にょ", "ひゃ", "ひゅ", "ひょ", "みゃ", "みゅ", "みょ", "りゃ", "りゅ", "りょ", "ぎゃ", "ぎゅ", "ぎょ", "じゃ", "じゅ", "じょ", "びゃ", "びゅ", "びょ", "ぴゃ", "ぴゅ", "ぴょ"],
+			[33, "キャ", "キュ", "キョ", "シャ", "シュ", "ショ", "チャ", "チュ", "チョ", "ニャ", "ニュ", "ニョ", "ヒャ", "ヒュ", "ヒョ", "ミャ", "ミュ", "ミョ", "リャ", "リュ", "リョ", "ギャ", "ギュ", "ギョ", "ジャ", "ジュ", "ジョ", "ビャ", "ビュ", "ビョ", "ピャ", "ピュ", "ピョ"],
+			[27, "イェ", "ウィ", "ウェ", "ウォ", "ヴァ", "ヴィ", "ヴ",   "ヴェ", "ヴォ", "クァ", "クィ", "クェ", "クォ", "シェ", "スィ", "チェ", "ティ", "テュ", "トゥ", "ファ", "フィ", "フェ", "フォ", "ジェ", "ディ", "デュ", "ドゥ", "",     "",     "",     "",     "",     ""],
+			[4,  "ゐ",   "ゑ",   "ヰ",   "ヱ",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
 		],
 		RomajiGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
-			[0, "a",    "ka",   "sa",   "ta",   "na",   "ha",   "ma",   "ya",   "ra",   "wa",   "ga",   "za",   "da",   "ba",   "pa",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "i",    "ki",   "shi",  "chi",  "ni",   "hi",   "mi",   "",     "ri",   "",     "gi",   "ji",   "ji",   "bi",   "pi",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "u",    "ku",   "su",   "tsu",  "nu",   "fu",   "mu",   "yu",   "ru",   "",     "gu",   "zu",   "zu",   "bu",   "pu",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "e",    "ke",   "se",   "te",   "ne",   "he",   "me",   "",     "re",   "",     "ge",   "ze",   "de",   "be",   "pe",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "o",    "ko",   "so",   "to",   "no",   "ho",   "mo",   "yo",   "ro",   "wo",   "go",   "zo",   "do",   "bo",   "po",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "a",    "ka",   "sa",   "ta",   "na",   "ha",   "ma",   "ya",   "ra",   "wa",   "ga",   "za",   "da",   "ba",   "pa",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "i",    "ki",   "shi",  "chi",  "ni",   "hi",   "mi",   "",     "ri",   "",     "gi",   "ji",   "ji",   "bi",   "pi",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "u",    "ku",   "su",   "tsu",  "nu",   "fu",   "mu",   "yu",   "ru",   "",     "gu",   "zu",   "zu",   "bu",   "pu",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "e",    "ke",   "se",   "te",   "ne",   "he",   "me",   "",     "re",   "",     "ge",   "ze",   "de",   "be",   "pe",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "o",    "ko",   "so",   "to",   "no",   "ho",   "mo",   "yo",   "ro",   "wo",   "go",   "zo",   "do",   "bo",   "po",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "n",    "n",    "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "kya",  "sha",  "cha",  "nya",  "hya",  "mya",  "",     "rya",  "",     "gya",  "ja",   "",     "bya",  "pya",  "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "kyu",  "shu",  "chu",  "nyu",  "hyu",  "myu",  "",     "ryu",  "",     "gyu",  "ju",   "",     "byu",  "pyu",  "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "kyo",  "sho",  "cho",  "nyo",  "hyo",  "myo",  "",     "ryo",  "",     "gyo",  "jo",   "",     "byo",  "pyo",  "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "kya",  "sha",  "cha",  "nya",  "hya",  "mya",  "",     "rya",  "",     "gya",  "ja",   "",     "bya",  "pya",  "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "kyu",  "shu",  "chu",  "nyu",  "hyu",  "myu",  "",     "ryu",  "",     "gyu",  "ju",   "",     "byu",  "pyu",  "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "",     "kyo",  "sho",  "cho",  "nyo",  "hyo",  "myo",  "",     "ryo",  "",     "gyo",  "jo",   "",     "byo",  "pyo",  "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
-			[0, "ye",   "wi",   "we",   "wo",   "va",   "vi",   "v",    "ve",   "vo",   "kwa",  "kwi",  "kwe",  "kwo",  "she",  "si",   "che",  "ti",   "tyu",  "tu",   "fa",   "fi",   "fe",   "fo",   "je",   "di",   "dyu",  "du"],
-			[0, "wi",   "we",   "wi",   "we",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
+			[5,  "a",    "i",    "u",    "e",    "o",    "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ka",   "ki",   "ku",   "ke",   "ko",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "sa",   "shi",  "su",   "se",   "so",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ta",   "chi",  "tsu",  "te",   "to",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "na",   "ni",   "nu",   "ne",   "no",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ha",   "hi",   "fu",   "he",   "ho",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ma",   "mi",   "mu",   "me",   "mo",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[3,  "ya",   "",     "yu",   "",     "yo",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ra",   "ri",   "ru",   "re",   "ro",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[2,  "wa",   "",     "",     "",     "wo",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "a",    "i",    "u",    "e",    "o",    "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ka",   "ki",   "ku",   "ke",   "ko",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "sa",   "shi",  "su",   "se",   "so",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ta",   "chi",  "tsu",  "te",   "to",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "na",   "ni",   "nu",   "ne",   "no",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ha",   "hi",   "fu",   "he",   "ho",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ma",   "mi",   "mu",   "me",   "mo",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[3,  "ya",   "",     "yu",   "",     "yo",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[5,  "ra",   "ri",   "ru",   "re",   "ro",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[2,  "wa",   "",     "",     "",     "wo",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[2,  "n",    "n",    "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
+			[25, "ga",   "gi",   "gu",   "ge",   "go",   "za",   "ji",   "zu",   "ze",   "zo",   "da",   "ji",   "zu",   "de",   "do",   "ba",   "bi",   "bu",   "be",   "bo",   "pa",   "pi",   "pu",   "pe",   "po",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[25, "ga",   "gi",   "gu",   "ge",   "go",   "za",   "ji",   "zu",   "ze",   "zo",   "da",   "ji",   "zu",   "de",   "do",   "ba",   "bi",   "bu",   "be",   "bo",   "pa",   "pi",   "pu",   "pe",   "po",   "",     "",     "",     "",     "",     "",     "",     ""],
+			[33, "kya",  "kyu",  "kyo",  "sha",  "shu",  "sho",  "cha",  "chu",  "cho",  "nya",  "nyu",  "nyo",  "hya",  "hyu",  "hyo",  "mya",  "myu",  "myo",  "rya",  "ryu",  "ryo",  "gya",  "gyu",  "gyo",  "ja",   "ju",   "jo",   "bya",  "byu",  "byo",  "pya",  "pyu",  "pyo"],
+			[33, "kya",  "kyu",  "kyo",  "sha",  "shu",  "sho",  "cha",  "chu",  "cho",  "nya",  "nyu",  "nyo",  "hya",  "hyu",  "hyo",  "mya",  "myu",  "myo",  "rya",  "ryu",  "ryo",  "gya",  "gyu",  "gyo",  "ja",   "ju",   "jo",   "bya",  "byu",  "byo",  "pya",  "pyu",  "pyo"],
+			[27, "ye",   "wi",   "we",   "wo",   "va",   "vi",   "v",    "ve",   "vo",   "kwa",  "kwi",  "kwe",  "kwo",  "she",  "si",   "che",  "ti",   "tyu",  "tu",   "fa",   "fi",   "fe",   "fo",   "je",   "di",   "dyu",  "du",   "",     "",     "",     "",     "",     ""],
+			[4,  "wi",   "we",   "wi",   "we",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""]
 		],
 		Preset = {
 			Game: {
@@ -59,11 +75,23 @@
 						Name: "DefaultRange",
 						Content: [
 							0,
-							true, true, true, true, true,
-							true, true, true, true, true,
+							true, true, true, true, true, true, true, true, true, true,
+							true, true, true, true, true, true, true, true, true, true,
 							true,
-							false, false, false,
-							false, false, false,
+							false, false,
+							false, false,
+							false, false
+						]
+					},
+					{
+						Name: "Beginner",
+						Content: [
+							0,
+							true, true, false, false, false, false, false, false, false, false,
+							false, false, false, false, false, false, false, false, false, false,
+							false,
+							false, false,
+							false, false,
 							false, false
 						]
 					},
@@ -71,11 +99,11 @@
 						Name: "BasicHiragana",
 						Content: [
 							0,
-							true, true, true, true, true,
-							false, false, false, false, false,
+							true, true, true, true, true, true, true, true, true, true,
+							false, false, false, false, false, false, false, false, false, false,
 							false,
-							false, false, false,
-							false, false, false,
+							false, false,
+							false, false,
 							false, false
 						]
 					},
@@ -83,23 +111,47 @@
 						Name: "BasicKatakana",
 						Content: [
 							0,
-							false, false, false, false, false,
-							true, true, true, true, true,
+							false, false, false, false, false, false, false, false, false, false,
+							true, true, true, true, true, true, true, true, true, true,
 							false,
-							false, false, false,
-							false, false, false,
+							false, false,
+							false, false,
 							false, false
+						]
+					},
+					{
+						Name: "Dakuon",
+						Content: [
+							0,
+							false, false, false, false, false, false, false, false, false, false,
+							false, false, false, false, false, false, false, false, false, false,
+							false,
+							true, true,
+							false, false,
+							false, false
+						]
+					},
+					{
+						Name: "Youon",
+						Content: [
+							0,
+							false, false, false, false, false, false, false, false, false, false,
+							false, false, false, false, false, false, false, false, false, false,
+							false,
+							false, false,
+							true, true,
+							true, false
 						]
 					},
 					{
 						Name: "AllButObsoleteKana",
 						Content: [
 							0,
-							true, true, true, true, true,
-							true, true, true, true, true,
+							true, true, true, true, true, true, true, true, true, true,
+							true, true, true, true, true, true, true, true, true, true,
 							true,
-							true, true, true,
-							true, true, true,
+							true, true,
+							true, true,
 							true, false
 						]
 					},
@@ -107,11 +159,11 @@
 						Name: "SelectAll",
 						Content: [
 							0,
-							true, true, true, true, true,
-							true, true, true, true, true,
+							true, true, true, true, true, true, true, true, true, true,
+							true, true, true, true, true, true, true, true, true, true,
 							true,
-							true, true, true,
-							true, true, true,
+							true, true,
+							true, true,
 							true, true
 						]
 					}
@@ -119,6 +171,7 @@
 			}
 		};
 		var Game0 = {
+			QuestionRangeKanaCount: 0,
 			Stats: {
 				ClockTime: 0, StartTime: 0, CurrentTimeLimit: 0,
 				ScoreDisplay: 0, Progress: 0, StartTime2: 0, TimeLeft: 0
@@ -279,9 +332,11 @@
 				switch(true) {
 					case ServiceWorkerRegistration.installing != null:
 						ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待生效");
+						AddClass("Label_SettingsPWAServiceWorkerRegistration", "GreenText");
 						break;
 					case ServiceWorkerRegistration.waiting != null:
 						ChangeText("Label_SettingsPWAServiceWorkerRegistration", "等待更新");
+						AddClass("Label_SettingsPWAServiceWorkerRegistration", "GreenText");
 						Show("Label_HelpPWANewVersionReady");
 						ShowDialog("System_PWANewVersionReady",
 							"Info",
@@ -843,22 +898,18 @@
 					ChangeValue("Combobox_SettingsQuestionRangePreset", Preset.Game.QuestionRange[Looper].Name);
 				}
 			}
-			let Counter = 0;
-			for(let Looper = 1; Looper <= 19; Looper++) {
+			Game0.QuestionRangeKanaCount = 0;
+			for(let Looper = 1; Looper < Game.QuestionRange.length; Looper++) {
 				ChangeChecked("Checkbox_SettingsQuestionRange" + Looper, Game.QuestionRange[Looper]);
 				if(Game.QuestionRange[Looper] == true) {
-					Counter++;
+					Game0.QuestionRangeKanaCount += KanaGrid[Looper][0];
 				}
 			}
-			if(Counter < 2) {
-				Game.QuestionRange = structuredClone(Preset.Game.QuestionRange[1].Content);
-				setTimeout(function() {
-					RefreshGame();
-					ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
-						"Error",
-						"出题范围过小，请至少选择两项。已恢复至默认范围。",
-						"", "", "", "确定");
-				}, 0);
+			ChangeText("Label_SettingsKanaSelectionCount", "已选 " + Game0.QuestionRangeKanaCount);
+			if(Game0.QuestionRangeKanaCount < 6) {
+				AddClass("Label_SettingsKanaSelectionCount", "RedText");
+			} else {
+				RemoveClass("Label_SettingsKanaSelectionCount", "RedText");
 			}
 
 			// Difficulty
@@ -935,25 +986,32 @@
 		function StartGame() {
 			Game0.Stats.ClockTime = Date.now();
 			if(Game.Status.IsRunning == false) {
-				ResetGame();
-				Game.Status.IsRunning = true;
-				Game.Status.IsCoolingDown = true;
-				Game0.Stats.StartTime = Game0.Stats.ClockTime;
-				Game0.Stats.StartTime2 = Game0.Stats.ClockTime;
-				Game.Stats.HP = 100;
-				Game0.Lottery.Question = {
-					Row: 0, Column: 1
-				};
-				Game0.Lottery.Answer = [
-					0,
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0},
-					{Row: 0, Column: 0}
-				];
-				AnswerLog = {
-					All: "", MissesOnly: "", Sequence: 1
-				};
-				ScrollIntoView("Game");
+				if(Game0.QuestionRangeKanaCount >= 6) {
+					ResetGame();
+					Game.Status.IsRunning = true;
+					Game.Status.IsCoolingDown = true;
+					Game0.Stats.StartTime = Game0.Stats.ClockTime;
+					Game0.Stats.StartTime2 = Game0.Stats.ClockTime;
+					Game.Stats.HP = 100;
+					Game0.Lottery.Question = {
+						Row: 0, Column: 1
+					};
+					Game0.Lottery.Answer = [
+						0,
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0},
+						{Row: 0, Column: 0}
+					];
+					AnswerLog = {
+						All: "", MissesOnly: "", Sequence: 1
+					};
+					ScrollIntoView("Game");
+				} else {
+					ShowDialog("Game_QuestionRangeBelowMinimumRequirement",
+						"Error",
+						"出题范围过小。请前往调整出题范围。",
+						"", "", "前往", "取消");
+				}
 			} else {
 				if(Game.Status.IsPaused == false) {
 					Game.Status.IsPaused = true;
@@ -1325,9 +1383,21 @@
 			case "System_RefreshingWebpage":
 			case "System_JSONStringInvalid":
 			case "System_UserDataExported":
-			case "Game_QuestionRangeBelowMinimumRequirement":
 			case "AnswerLog_Copied":
 				switch(Selector) {
+					case 3:
+						break;
+					default:
+						AlertSystemError("The value of Selector \"" + Selector + "\" in function AnswerDialog is invalid.");
+						break;
+				}
+				break;
+			case "Game_QuestionRangeBelowMinimumRequirement":
+				switch(Selector) {
+					case 2:
+						ScrollIntoView("Item_SettingsQuestionRange");
+						ShowIAmHere("Item_SettingsQuestionRange");
+						break;
 					case 3:
 						break;
 					default:
@@ -1364,8 +1434,8 @@
 			case "System_Error":
 				switch(Selector) {
 					case 1:
-						ScrollIntoView("Item_SettingsUserData");
-						ShowIAmHere("Item_SettingsUserData");
+						ScrollIntoView("Item_HelpGetInvolved");
+						ShowIAmHere("Item_HelpGetInvolved");
 						break;
 					case 2:
 						ForceStop();
@@ -1441,23 +1511,23 @@
 	// Game
 	function Questioner() {
 		Game0.Lottery.PreviousQuestion = structuredClone(Game0.Lottery.Question);
-		Questioner_GenerateQuestion();
+		GenerateQuestion();
 		Game0.Lottery.CorrectAnswer = Randomize(1, 3);
 		switch(Game0.Lottery.CorrectAnswer) {
 			case 1:
 				Game0.Lottery.Answer[1] = structuredClone(Game0.Lottery.Question);
-				Questioner_GenerateAnswer2();
-				Questioner_GenerateAnswer3();
+				GenerateAnswer2();
+				GenerateAnswer3();
 				break;
 			case 2:
 				Game0.Lottery.Answer[2] = structuredClone(Game0.Lottery.Question);
-				Questioner_GenerateAnswer1();
-				Questioner_GenerateAnswer3();
+				GenerateAnswer1();
+				GenerateAnswer3();
 				break;
 			case 3:
 				Game0.Lottery.Answer[3] = structuredClone(Game0.Lottery.Question);
-				Questioner_GenerateAnswer1();
-				Questioner_GenerateAnswer2();
+				GenerateAnswer1();
+				GenerateAnswer2();
 				break;
 			default:
 				AlertSystemError("The value of Game0.Lottery.CorrectAnswer \"" + Game0.Lottery.CorrectAnswer + "\" in function Questioner is invalid.");
@@ -1466,65 +1536,66 @@
 		Game.Status.IsCoolingDown = false;
 		Game0.Stats.StartTime2 = Date.now();
 	}
-	function Questioner_GenerateQuestion() {
-		do {
-			Game0.Lottery.Question = {
-				Row: Randomize(1, 19), Column: Randomize(1, 27)
-			};
-		} while(
-			// Prevent out of question range
-			Game.QuestionRange[Game0.Lottery.Question.Row] == false ||
-			// Prevent blank entry
-			RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] == "" ||
-			// Prevent same with previous question
-			RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] == RomajiGrid[Game0.Lottery.PreviousQuestion.Row][Game0.Lottery.PreviousQuestion.Column]
-		);
-	}
-	function Questioner_GenerateAnswer1() {
-		do {
-			Game0.Lottery.Answer[1] = {
-				Row: Randomize(1, 19), Column: Randomize(1, 27)
-			};
-		} while(
-			// Prevent out of question range
-			Game.QuestionRange[Game0.Lottery.Answer[1].Row] == false ||
-			// Prevent blank entry
-			RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == "" ||
-			// Prevent duplication
-			RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] ||
-			RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column]
-		);
-	}
-	function Questioner_GenerateAnswer2() {
-		do {
-			Game0.Lottery.Answer[2] = {
-				Row: Randomize(1, 19), Column: Randomize(1, 27)
-			};
-		} while(
-			// Prevent out of question range
-			Game.QuestionRange[Game0.Lottery.Answer[2].Row] == false ||
-			// Prevent blank entry
-			RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == "" ||
-			// Prevent duplication
-			RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] ||
-			RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column]
-		);
-	}
-	function Questioner_GenerateAnswer3() {
-		do {
-			Game0.Lottery.Answer[3] = {
-				Row: Randomize(1, 19), Column: Randomize(1, 27)
-			};
-		} while(
-			// Prevent out of question range
-			Game.QuestionRange[Game0.Lottery.Answer[3].Row] == false ||
-			// Prevent blank entry
-			RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == "" ||
-			// Prevent duplication
-			RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] ||
-			RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column]
-		);
-	}
+		// Sub-functions
+		function GenerateQuestion() {
+			do {
+				Game0.Lottery.Question = {
+					Row: Randomize(1, 27), Column: Randomize(1, 33)
+				};
+			} while(
+				// Prevent out of question range
+				Game.QuestionRange[Game0.Lottery.Question.Row] == false ||
+				// Prevent blank entry
+				RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] == "" ||
+				// Prevent same with previous question
+				RomajiGrid[Game0.Lottery.Question.Row][Game0.Lottery.Question.Column] == RomajiGrid[Game0.Lottery.PreviousQuestion.Row][Game0.Lottery.PreviousQuestion.Column]
+			);
+		}
+		function GenerateAnswer1() {
+			do {
+				Game0.Lottery.Answer[1] = {
+					Row: Randomize(1, 27), Column: Randomize(1, 33)
+				};
+			} while(
+				// Prevent out of question range
+				Game.QuestionRange[Game0.Lottery.Answer[1].Row] == false ||
+				// Prevent blank entry
+				RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == "" ||
+				// Prevent duplication
+				RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] ||
+				RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] == RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column]
+			);
+		}
+		function GenerateAnswer2() {
+			do {
+				Game0.Lottery.Answer[2] = {
+					Row: Randomize(1, 27), Column: Randomize(1, 33)
+				};
+			} while(
+				// Prevent out of question range
+				Game.QuestionRange[Game0.Lottery.Answer[2].Row] == false ||
+				// Prevent blank entry
+				RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == "" ||
+				// Prevent duplication
+				RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] ||
+				RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column] == RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column]
+			);
+		}
+		function GenerateAnswer3() {
+			do {
+				Game0.Lottery.Answer[3] = {
+					Row: Randomize(1, 27), Column: Randomize(1, 33)
+				};
+			} while(
+				// Prevent out of question range
+				Game.QuestionRange[Game0.Lottery.Answer[3].Row] == false ||
+				// Prevent blank entry
+				RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == "" ||
+				// Prevent duplication
+				RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == RomajiGrid[Game0.Lottery.Answer[1].Row][Game0.Lottery.Answer[1].Column] ||
+				RomajiGrid[Game0.Lottery.Answer[3].Row][Game0.Lottery.Answer[3].Column] == RomajiGrid[Game0.Lottery.Answer[2].Row][Game0.Lottery.Answer[2].Column]
+			);
+		}
 
 // Error handling
 function AlertSystemError(Message) {
@@ -1532,8 +1603,8 @@ function AlertSystemError(Message) {
 		Message);
 	ShowDialog("System_Error",
 		"Error",
-		"抱歉，发生了系统错误。您可尝试清空用户数据来修复错误，或向我提供反馈。若无法关闭对话框，请点击「强制停止」。<br />" +
+		"抱歉，发生了系统错误。若错误持续发生，请前往提供反馈。若无法关闭对话框，请点击「强制停止」。<br />" +
 		"<br />" +
 		"错误信息：" + Message,
-		"", "了解更多", "强制停止", "关闭");
+		"", "前往", "强制停止", "关闭");
 }
