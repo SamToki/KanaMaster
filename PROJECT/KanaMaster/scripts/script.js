@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 5.00,
+		const CurrentVersion = 5.01,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[5,  "あ",   "い",   "う",   "え",   "お",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -306,6 +306,7 @@
 		// Refresh
 		HighlightActiveSectionInNav();
 		RefreshSystem();
+		RefreshSubsystem();
 		RefreshGame();
 		RefreshAnswerLog();
 		RefreshHighscore();
@@ -476,7 +477,7 @@
 			}
 			ChangeValue("Combobox_SettingsCursor", System.Display.Cursor);
 			switch(System.Display.Cursor) {
-				case "Default":
+				case "None":
 					ChangeCursorOverall("");
 					break;
 				case "BTRAhoge":
@@ -565,23 +566,12 @@
 			} else {
 				RemoveClass("Html", "ShowDebugOutlines");
 			}
-			ChangeChecked("Checkbox_SettingsUseJapaneseOrthography", System.Dev.UseJapaneseOrthography);
-			if(System.Dev.UseJapaneseOrthography == true) {
-				ChangeLanguage("Html", "ja-JP");
-			} else {
-				ChangeLanguage("Html", "zh-CN");
-			}
-			ChangeValue("Textbox_SettingsFont", System.Dev.Font);
-			ChangeFontOverall(System.Dev.Font);
 
 			// User data
 			ChangeValue("Textbox_SettingsUserDataImport", "");
 
 		// Save user data
 		localStorage.setItem("System", JSON.stringify(System));
-
-		// Call
-		RefreshSubsystem();
 	}
 	function RefreshSubsystem() {
 		// Settings
@@ -589,9 +579,9 @@
 			ChangeValue("Combobox_SettingsGameFont", Subsystem.Display.GameFont);
 			switch(Subsystem.Display.GameFont) {
 				case "Inherit":
-					ChangeFont("Label_GameQuestion", System.Dev.Font); // Not set as "Inherit" because that would cause wrong display when with specified language like Japanese.
+					ChangeFont("Label_GameQuestion", ""); // Not set as "Inherit" because that would cause wrong display when with specified language like Japanese.
 					for(let Looper = 1; Looper <= 3; Looper++) {
-						ChangeFont("Button_GameAnswerOption" + Looper, System.Dev.Font);
+						ChangeFont("Button_GameAnswerOption" + Looper, "");
 					}
 					break;
 				case "Sans-serif":

@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="images/Icon.png" />
 		<title>假名征服者</title>
 		<meta name="author" content="SAM TOKI STUDIO" />
-		<meta name="version" content="v5.00 (2025/11/12). Since 2023/11/05." />
+		<meta name="version" content="v5.01 (2025/12/14). Since 2023/11/05." />
 		<meta name="description" content="日文假名记忆训练游戏，结合了音游的元素。本游戏针对日语初学者，也欢迎 N1 大佬来挑战高难度。" />
 		<meta name="copyright" content="© 2023 SAM TOKI STUDIO" />
 
@@ -674,12 +674,12 @@
 									<label for="Combobox_SettingsTheme">
 										<span>主题：</span>
 										<select class="Combobox" id="Combobox_SettingsTheme" onchange="SetTheme()">
-											<option value="Auto" selected>自动 (跟随系统)</option>
+											<option value="Auto" selected>自动</option>
 											<option value="Light">浅色</option>
 											<option value="Dark">深色</option>
 											<option value="AtelierSophie2">苏菲的炼金工房2</option>
 											<option value="Genshin">原神</option>
-											<option value="HighContrast">高对比度 (无障碍)</option>
+											<option value="HighContrast">高对比度</option>
 										</select>
 									</label>
 								</li>
@@ -687,11 +687,11 @@
 									<label for="Combobox_SettingsCursor">
 										<span>鼠标指针：</span>
 										<select class="Combobox Width240" id="Combobox_SettingsCursor" onchange="SetCursor()">
-											<option value="Default" selected>默认</option>
+											<option value="None" selected>无</option>
 											<option value="BTRAhoge">孤独摇滚！</option>
 											<option value="Genshin">原神</option>
-											<option value="GenshinFurina">原神-芙宁娜</option>
-											<option value="GenshinNahida">原神-纳西妲</option>
+											<option value="GenshinFurina">原神 芙宁娜</option>
+											<option value="GenshinNahida">原神 纳西妲</option>
 											<option value="SilentWitch">Silent Witch 沉默魔女的秘密</option>
 										</select>
 									</label>
@@ -717,7 +717,7 @@
 									<label for="Combobox_SettingsAnim">
 										<span>动画：</span>
 										<select class="Combobox" id="Combobox_SettingsAnim" onchange="SetAnim()">
-											<option value="0">禁用 (无障碍)</option>
+											<option value="0">禁用</option>
 											<option value="100">快速 (100ms)</option>
 											<option value="250" selected>中速 (250ms)</option>
 											<option value="500">慢速 (500ms)</option>
@@ -792,18 +792,6 @@
 									<label for="Checkbox_SettingsShowDebugOutlines">
 										<input class="Checkbox" id="Checkbox_SettingsShowDebugOutlines" type="checkbox" checked="false" onchange="SetShowDebugOutlines()" />
 										<span>显示调试用描边</span>
-									</label>
-								</li>
-								<li class="Ctrl">
-									<label for="Checkbox_SettingsUseJapaneseOrthography">
-										<input class="Checkbox" id="Checkbox_SettingsUseJapaneseOrthography" type="checkbox" checked="false" onchange="SetUseJapaneseOrthography()" />
-										<span>使用日文字形</span>
-									</label>
-								</li>
-								<li class="Ctrl">
-									<label for="Textbox_SettingsFont">
-										<span>字体：</span>
-										<input class="Textbox" id="Textbox_SettingsFont" type="text" onchange="SetFont()" />
 									</label>
 								</li>
 								<li class="Ctrl">
@@ -918,7 +906,7 @@
 							<legend>关于</legend>
 							<p>假名征服者</p>
 							<p>by SAM TOKI STUDIO</p>
-							<p>版本 v5.00 (<time datetime="2025-11-12" pubdate="pubdate">2025/11/12</time>)<br />
+							<p>版本 v5.01 (<time datetime="2025-12-14" pubdate="pubdate">2025/12/14</time>)<br />
 								始于 2023/11/05</p>
 							<p class="GreenText Hidden" id="Label_HelpPWANewVersionReady" inert="true">新版本已就绪，将在下次启动时生效。</p>
 							<ul class="CtrlGroup BelowParagraph">
