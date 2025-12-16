@@ -246,6 +246,7 @@
 	window.onload = Load();
 	function Load() {
 		// User data
+		RepairUserData();
 		if(localStorage.System != undefined) {
 			System = JSON.parse(localStorage.getItem("System"));
 		}
@@ -279,17 +280,16 @@
 				AlertSystemError("The value of System.I18n.Language \"" + System.I18n.Language + "\" in function Load is invalid.");
 				break;
 		}
-		if(System.Version.KanaMaster != undefined) {
-			if(Math.trunc(CurrentVersion) - Math.trunc(System.Version.KanaMaster) >= 1) {
-				ShowDialog("System_MajorUpdateDetected",
-					"Info",
-					"检测到大版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。",
-					"", "", "", "确定");
-				System.Version.KanaMaster = CurrentVersion;
-			}
-		} else {
-			System.Version.KanaMaster = CurrentVersion;
+		if(System.Version.KanaMaster != undefined && System0.RepairedUserData != "") {
+			ShowDialog("System_MajorUpdateDetected",
+				"Info",
+				"检测到影响用户数据的版本更新。若您继续使用旧版本的用户数据，则有可能发生兼容性问题。敬请留意。<br />" +
+				"<br />" +
+				"版本：v" + System.Version.KanaMaster.toFixed(2) + " → v" + CurrentVersion.toFixed(2) + "<br />" +
+				"已修复用户数据：" + System0.RepairedUserData,
+				"", "", "", "确定");
 		}
+		System.Version.KanaMaster = CurrentVersion;
 		if(localStorage.KanaMaster_Subsystem != undefined) {
 			Subsystem = JSON.parse(localStorage.getItem("KanaMaster_Subsystem"));
 		}
@@ -1366,7 +1366,7 @@
 
 	// Dialog
 	function AnswerDialog(Selector) {
-		let DialogEvent = Interaction.Dialog[Interaction.Dialog.length - 1].Event;
+		let DialogEvent = System0.Dialog[System0.Dialog.length - 1].Event;
 		ShowDialog("Previous");
 		switch(DialogEvent) {
 			case "System_LanguageUnsupported":
