@@ -6,7 +6,7 @@
 	// Declare variables
 	"use strict";
 		// Unsaved
-		const CurrentVersion = 5.01,
+		const CurrentVersion = 5.02,
 		KanaGrid = [
 			["", "<span lang=\"zh-CN\">准备</span>", "<span lang=\"zh-CN\">暂停</span>"],
 			[5,  "あ",   "い",   "う",   "え",   "お",   "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     ""],
@@ -1496,6 +1496,14 @@
 					}
 					break;
 			}
+		}
+	});
+
+	// On visibility change
+	window.addEventListener("visibilitychange", function() {
+		if(document.visibilityState == "hidden" && Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+			Game.Status.IsPaused = true;
+			RefreshGame();
 		}
 	});
 
