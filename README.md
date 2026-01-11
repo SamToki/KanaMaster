@@ -13,13 +13,11 @@ KanaMaster is a quiz game helping you memorize Japanese [Kana](https://en.wikipe
 
 https://SamToki.github.io/KanaMaster
 
-# 教程 Tutorial
+# 了解更多 Learn More
 
-[快速入门](/PROJECT/KanaMaster/docs/假名征服者%20快速入门.pdf)<br>
-[Quick Guide](/PROJECT/KanaMaster/docs/假名征服者%20快速入门.pdf) (in simplified Chinese)
+[快速入门](/PROJECT/KanaMaster/docs/假名征服者%20快速入门.pdf)
 
-「教程」「使用方式」「常见问题与解答」与「隐私权声明」记载于[说明文档](/PROJECT/KanaMaster/docs/假名征服者%20说明文档.pdf)。<br>
-"Tutorial", "Ways of Usage", "FAQ" and "Privacy Statement" are written in the [documentation](/PROJECT/KanaMaster/docs/假名征服者%20说明文档.pdf) (in simplified Chinese).
+[说明文档](/PROJECT/KanaMaster/docs/假名征服者%20说明文档.pdf)
 
 # 版权说明 Copyright Info
 
