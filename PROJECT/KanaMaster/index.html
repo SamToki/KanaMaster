@@ -684,6 +684,16 @@
 									</label>
 								</li>
 								<li class="Ctrl">
+									<label for="Combobox_SettingsGameFont">
+										<span>游戏字体：</span>
+										<select class="Combobox" id="Combobox_SettingsGameFont" onchange="SetGameFont()">
+											<option value="Inherit" selected>继承</option>
+											<option value="Sans-serif">黑体 (Sans-serif)</option>
+											<option value="Serif">明朝体 (Serif)</option>
+										</select>
+									</label>
+								</li>
+								<li class="Ctrl">
 									<label for="Combobox_SettingsCursor">
 										<span>鼠标指针：</span>
 										<select class="Combobox Width240" id="Combobox_SettingsCursor" onchange="SetCursor()">
@@ -721,16 +731,6 @@
 											<option value="100">快速 (100ms)</option>
 											<option value="250" selected>中速 (250ms)</option>
 											<option value="500">慢速 (500ms)</option>
-										</select>
-									</label>
-								</li>
-								<li class="Ctrl">
-									<label for="Combobox_SettingsGameFont">
-										<span>游戏字体：</span>
-										<select class="Combobox" id="Combobox_SettingsGameFont" onchange="SetGameFont()">
-											<option value="Inherit" selected>继承</option>
-											<option value="Sans-serif">黑体 (Sans-serif)</option>
-											<option value="Serif">明朝体 (Serif)</option>
 										</select>
 									</label>
 								</li>
