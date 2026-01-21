@@ -367,7 +367,7 @@
 	// Pause the game before exiting
 	window.onbeforeunload = Exit();
 	function Exit() {
-		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+		if(Game.Status.IsRunning && Game.Status.IsPaused == false) {
 			Game.Status.IsPaused = true;
 			RefreshGame();
 		}
@@ -492,7 +492,7 @@
 					break;
 			}
 			ChangeChecked("Checkbox_SettingsBlurBgImage", System.Display.BlurBgImage);
-			if(System.Display.BlurBgImage == true) {
+			if(System.Display.BlurBgImage) {
 				AddClass("BgImage", "Blur");
 			} else {
 				RemoveClass("BgImage", "Blur");
@@ -523,7 +523,7 @@
 
 			// Audio
 			ChangeChecked("Checkbox_SettingsPlayAudio", System.Audio.PlayAudio);
-			if(System.Audio.PlayAudio == true) {
+			if(System.Audio.PlayAudio) {
 				Show("Ctrl_SettingsVoiceVolume");
 				ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
 				if(Subsystem.Audio.VoiceVolume > 0) {
@@ -545,7 +545,7 @@
 			}
 
 			// PWA
-			if(window.matchMedia("(display-mode: standalone)").matches == true) {
+			if(window.matchMedia("(display-mode: standalone)").matches) {
 				ChangeText("Label_SettingsPWAStandaloneDisplay", "是");
 			} else {
 				ChangeText("Label_SettingsPWAStandaloneDisplay", "否");
@@ -553,7 +553,7 @@
 
 			// Dev
 			ChangeChecked("Checkbox_SettingsTryToOptimizePerformance", System.Dev.TryToOptimizePerformance);
-			if(System.Dev.TryToOptimizePerformance == true) {
+			if(System.Dev.TryToOptimizePerformance) {
 				AddClass("Html", "TryToOptimizePerformance");
 				Automation.ClockRate = 40;
 			} else {
@@ -561,7 +561,7 @@
 				Automation.ClockRate = 20;
 			}
 			ChangeChecked("Checkbox_SettingsShowDebugOutlines", System.Dev.ShowDebugOutlines);
-			if(System.Dev.ShowDebugOutlines == true) {
+			if(System.Dev.ShowDebugOutlines) {
 				AddClass("Html", "ShowDebugOutlines");
 			} else {
 				RemoveClass("Html", "ShowDebugOutlines");
@@ -597,7 +597,7 @@
 			}
 
 			// Audio
-			if(System.Audio.PlayAudio == true) {
+			if(System.Audio.PlayAudio) {
 				ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
 				if(Subsystem.Audio.VoiceVolume > 0) {
 					ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
@@ -615,7 +615,7 @@
 
 			// Dev
 			ChangeChecked("Checkbox_SettingsCheat", Subsystem.Dev.Cheat);
-			if(Subsystem.Dev.Cheat == true) {
+			if(Subsystem.Dev.Cheat) {
 				AddClass("Html", "Cheat");
 			} else {
 				RemoveClass("Html", "Cheat");
@@ -629,7 +629,7 @@
 	function ClockGame() {
 		// Automation
 		clearTimeout(Automation.ClockGame);
-		if(Game.Status.IsRunning == true) {
+		if(Game.Status.IsRunning) {
 			Automation.ClockGame = setTimeout(ClockGame, Automation.ClockRate);
 		}
 
@@ -656,7 +656,7 @@
 				Game.Stats.MaxCombo = Game.Stats.Combo;
 			}
 			ChangeText("Label_GameMaxCombo", Game.Stats.MaxCombo);
-			if(Game.Status.IsRunning == true) {
+			if(Game.Status.IsRunning) {
 				if(Game.Status.IsPaused == false) {
 					Game.Stats.ElapsedTime = Game0.Stats.ClockTime - Game0.Stats.StartTime;
 				} else {
@@ -683,7 +683,7 @@
 				ChangeText("ProgringText_GameProgress", Game0.Stats.Progress.toFixed(0) + "%");
 
 				// HP
-				if(Game.Status.IsRunning == true) {
+				if(Game.Status.IsRunning) {
 					if(Game.Status.IsPaused == false) {
 						Game.Stats.HP -= 0.02; // Approximately lose 1 HP every second.
 					}
@@ -692,14 +692,14 @@
 				}
 				ChangeProgring("ProgringFg_GameHP", 100, Game.Stats.HP);
 				ChangeText("ProgringText_GameHP", Game.Stats.HP.toFixed(0));
-				if(Game.Status.IsRunning == true && Game.Stats.HP <= 20) {
+				if(Game.Status.IsRunning && Game.Stats.HP <= 20) {
 					AddClass("ProgringText_GameHP", "RedText");
 				} else {
 					RemoveClass("ProgringText_GameHP", "RedText");
 				}
 
 				// Time left
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+				if(Game.Status.IsRunning && Game.Status.IsPaused == false) {
 					if(Game.Status.IsCoolingDown == false) {
 						Game0.Stats.TimeLeft = Game0.Stats.CurrentTimeLimit - (Game0.Stats.ClockTime - Game0.Stats.StartTime2);
 					} else {
@@ -709,13 +709,13 @@
 					Game0.Stats.TimeLeft = 0;
 				}
 				ChangeProgring("ProgringFg_GameTimeLeft", 100, Game0.Stats.TimeLeft / Game0.Stats.CurrentTimeLimit * 100);
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && System.Display.Anim > 0) {
+				if(Game.Status.IsRunning && Game.Status.IsPaused == false && System.Display.Anim > 0) {
 					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
 				} else {
 					ChangeAnim("ProgringFg_GameTimeLeft", "");
 				}
 				ChangeText("ProgringText_GameTimeLeft", (Game0.Stats.TimeLeft / 1000).toFixed(1) + "s");
-				if(Game.Status.IsRunning == true && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game0.Stats.TimeLeft <= 1500) {
+				if(Game.Status.IsRunning && Game.Status.IsPaused == false && Game.Status.IsCoolingDown == false && Game0.Stats.TimeLeft <= 1500) {
 					AddClass("ProgringText_GameTimeLeft", "RedText");
 				} else {
 					RemoveClass("ProgringText_GameTimeLeft", "RedText");
@@ -723,7 +723,7 @@
 
 		// Question board & answer board
 			// Text
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == true && Game0.Stats.Progress < 100) {
+			if(Game.Status.IsRunning && Game.Status.IsPaused && Game0.Stats.Progress < 100) {
 				Game0.Lottery.Question = {
 					Row: 0, Column: 2
 				};
@@ -753,7 +753,7 @@
 			}
 
 			// Functionality
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+			if(Game.Status.IsRunning && Game.Status.IsPaused == false) {
 				for(let Looper = 1; Looper <= 3; Looper++) {
 					ChangeDisabled("Button_GameAnswerOption" + Looper, false);
 				}
@@ -767,12 +767,12 @@
 			for(let Looper = 1; Looper <= 3; Looper++) {
 				RemoveClass("Button_GameAnswerOption" + Looper, "Active");
 			}
-			if(Subsystem.Dev.Cheat == true && Game0.Lottery.CorrectAnswer > 0) {
+			if(Subsystem.Dev.Cheat && Game0.Lottery.CorrectAnswer > 0) {
 				AddClass("Button_GameAnswerOption" + Game0.Lottery.CorrectAnswer, "Active");
 			}
 
 		// Time up
-		if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+		if(Game.Status.IsRunning && Game.Status.IsPaused == false) {
 			if(Game.Status.IsCoolingDown == false) {
 				if(Game0.Stats.TimeLeft <= 0) {
 					AnswerGame(4);
@@ -786,7 +786,7 @@
 		}
 
 		// Victory
-		if(Game.Status.IsRunning == true && Game0.Stats.Progress >= 100) {
+		if(Game.Status.IsRunning && Game0.Stats.Progress >= 100) {
 			Game0.Stats.Progress = 100;
 			ChangeDisabled("Button_GameStart", true);
 			RemoveClass("Button_GameStart", "Glow");
@@ -824,7 +824,7 @@
 		}
 
 		// Game over
-		if(Game.Status.IsRunning == true && Game.Stats.HP <= 0) {
+		if(Game.Status.IsRunning && Game.Stats.HP <= 0) {
 			Game.Stats.HP = 0;
 			ChangeDisabled("Button_GameStart", true);
 			RemoveClass("Button_GameStart", "Glow");
@@ -1198,7 +1198,7 @@
 					AnswerLog.Sequence++;
 
 				// Voice
-				if(Selector == Game0.Lottery.CorrectAnswer || Subsystem.Audio.AlsoPlayVoiceOnMiss == true) {
+				if(Selector == Game0.Lottery.CorrectAnswer || Subsystem.Audio.AlsoPlayVoiceOnMiss) {
 					PlayAudio("Audio_Voice", "audio/Kana_" + RomajiGrid[Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Row][Game0.Lottery.Answer[Game0.Lottery.CorrectAnswer].Column] + ".mp3");
 				}
 
@@ -1329,7 +1329,7 @@
 		// User data
 		function ImportUserData() {
 			if(ReadValue("Textbox_SettingsUserDataImport") != "") {
-				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\":{\"Display\":{\"Theme\":") == true) {
+				if(ReadValue("Textbox_SettingsUserDataImport").startsWith("{\"System\":{\"Display\":{\"Theme\":")) {
 					let UserData = JSON.parse(ReadValue("Textbox_SettingsUserDataImport"));
 					Object.keys(UserData).forEach(function(SubobjectName) {
 						localStorage.setItem(SubobjectName, JSON.stringify(UserData[SubobjectName]));
@@ -1449,7 +1449,7 @@
 	// On keyboard
 	document.addEventListener("keydown", function(Hotkey) {
 		if(Hotkey.key == "F1") {
-			if(Game.Status.IsRunning == true && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
+			if(Game.Status.IsRunning && Game.Status.IsPaused == false) { // Make sure the game is paused before showing the dialog.
 				Game.Status.IsPaused = true;
 				RefreshGame();
 			}
@@ -1501,7 +1501,7 @@
 
 	// On visibility change
 	window.addEventListener("visibilitychange", function() {
-		if(document.visibilityState == "hidden" && Game.Status.IsRunning == true && Game.Status.IsPaused == false) {
+		if(document.visibilityState == "hidden" && Game.Status.IsRunning && Game.Status.IsPaused == false) {
 			Game.Status.IsPaused = true;
 			RefreshGame();
 		}
