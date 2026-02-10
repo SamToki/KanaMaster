@@ -158,7 +158,7 @@
 		}
 
 /* Responsive web design */
-@media (max-width: 880px) {
+@media (max-width: 920px) {
 	/* Area specific */
 		/* Header */
 		#DropctrlGroup_Nav {
@@ -231,7 +231,7 @@
 				width: 335px;
 			}
 			.HighscoreAccuracy, .HighscoreMaxCombo, .HighscoreAvgReactionTime { /* .HiddenHorizontally */
-				width: 0 !important; border: none !important; padding: 0 !important; margin: 0 !important;
+				width: 0 !important; border-left: none !important; border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; margin: 0 !important;
 				opacity: 0 !important;
 				overflow: hidden !important;
 				pointer-events: none !important;
