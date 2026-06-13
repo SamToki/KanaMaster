@@ -37,7 +37,7 @@
 				"../fonts/Inter-Italic.woff2",
 				"../fonts/Inter-Bold.woff2",
 				"../fonts/Inter-BoldItalic.woff2",
-				// "../fonts/Iosevka-Regular.woff2",
+				// "../fonts/VictorMono-Medium.woff2",
 				"../images/Background.jpg",
 				"../cursors/BTRAhoge.cur",
 				"../cursors/Genshin.cur",
