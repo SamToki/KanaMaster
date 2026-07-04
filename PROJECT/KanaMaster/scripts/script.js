@@ -898,7 +898,7 @@
 					Game0.QuestionRangeKanaCount += KanaGrid[Looper][0];
 				}
 			}
-			ChangeText("Label_SettingsKanaSelectionCount", "已选 " + Game0.QuestionRangeKanaCount);
+			ChangeText("Label_SettingsKanaSelectionCount", "已选" + Game0.QuestionRangeKanaCount);
 			if(Game0.QuestionRangeKanaCount < 6) {
 				AddClass("Label_SettingsKanaSelectionCount", "RedText");
 			} else {
