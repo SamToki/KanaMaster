@@ -1211,7 +1211,7 @@
 				RefreshGame();
 				RefreshAnswerLog();
 			} else {
-				ShowToast("正在冷却...");
+				ShowToast("请等待冷却");
 			}
 		}
 
