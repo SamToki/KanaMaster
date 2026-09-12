@@ -428,12 +428,7 @@
 
 		// Settings
 			// Display
-			if(window.matchMedia("(prefers-contrast: more)").matches == false) {
-				ChangeDisabled("Combobox_SettingsTheme", false);
-			} else {
-				System.Display.Theme = "HighContrast";
-				ChangeDisabled("Combobox_SettingsTheme", true);
-			}
+			ChangeEnabled("Combobox_SettingsTheme", !IsOSHighContrast());
 			ChangeValue("Combobox_SettingsTheme", System.Display.Theme);
 			switch(System.Display.Theme) {
 				case "Auto":
@@ -513,37 +508,32 @@
 					AlertSystemError("The value of System.Display.HotkeyIndicators \"" + System.Display.HotkeyIndicators + "\" in function RefreshSystem is invalid.");
 					break;
 			}
-			if(window.matchMedia("(prefers-reduced-motion: reduce)").matches == false) {
-				ChangeDisabled("Combobox_SettingsAnim", false);
-			} else {
-				System.Display.Anim = 0;
-				ChangeDisabled("Combobox_SettingsAnim", true);
-			}
+			ChangeEnabled("Combobox_SettingsAnim", IsOSAnimEnabled());
 			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
 			ChangeAnimOverall(System.Display.Anim);
 
 			// Audio
 			ChangeChecked("Checkbox_SettingsPlayAudio", System.Audio.PlayAudio);
 			if(System.Audio.PlayAudio) {
-				Show("Ctrl_SettingsVoiceVolume");
-				ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
+				ChangeEnabled("Slider_SettingsVoiceVolume", true);
 				if(Subsystem.Audio.VoiceVolume > 0) {
-					ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
+					ChangeEnabled("Checkbox_SettingsAlsoPlayVoiceOnMiss", true);
 				} else {
-					ChangeText("Label_SettingsVoiceVolume", "禁用");
-				}
-				ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
-				if(Subsystem.Audio.VoiceVolume > 0) {
-					Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
-					ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
-				} else {
-					Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+					ChangeEnabled("Checkbox_SettingsAlsoPlayVoiceOnMiss", false);
 				}
 			} else {
 				StopAllAudio();
-				Hide("Ctrl_SettingsVoiceVolume");
-				Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
+				ChangeEnabled("Slider_SettingsVoiceVolume", false);
+				ChangeEnabled("Checkbox_SettingsAlsoPlayVoiceOnMiss", false);
 			}
+			ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
+			if(Subsystem.Audio.VoiceVolume > 0) {
+				ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
+			} else {
+				ChangeText("Label_SettingsVoiceVolume", "禁用");
+			}
+			ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
+			ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
 
 			// PWA
 			if(window.matchMedia("(display-mode: standalone)").matches) {
@@ -560,6 +550,11 @@
 			} else {
 				RemoveClass("Html", "TryToOptimizePerformance");
 				Automation.ClockRate = 20;
+			}
+			if(IsOSHighContrast() == false && System.Display.Theme != "HighContrast") {
+				ChangeEnabled("Checkbox_SettingsShowDebugOutlines", true);
+			} else {
+				ChangeEnabled("Checkbox_SettingsShowDebugOutlines", false);
 			}
 			ChangeChecked("Checkbox_SettingsShowDebugOutlines", System.Dev.ShowDebugOutlines);
 			if(System.Dev.ShowDebugOutlines) {
@@ -598,21 +593,19 @@
 			}
 
 			// Audio
-			if(System.Audio.PlayAudio) {
-				ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
-				if(Subsystem.Audio.VoiceVolume > 0) {
-					ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
-				} else {
-					ChangeText("Label_SettingsVoiceVolume", "禁用");
-				}
-				ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
-				if(Subsystem.Audio.VoiceVolume > 0) {
-					Show("Ctrl_SettingsAlsoPlayVoiceOnMiss");
-					ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
-				} else {
-					Hide("Ctrl_SettingsAlsoPlayVoiceOnMiss");
-				}
+			if(System.Audio.PlayAudio && Subsystem.Audio.VoiceVolume > 0) {
+				ChangeEnabled("Checkbox_SettingsAlsoPlayVoiceOnMiss", true);
+			} else {
+				ChangeEnabled("Checkbox_SettingsAlsoPlayVoiceOnMiss", false);
 			}
+			ChangeValue("Slider_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume);
+			if(Subsystem.Audio.VoiceVolume > 0) {
+				ChangeText("Label_SettingsVoiceVolume", Subsystem.Audio.VoiceVolume + "%");
+			} else {
+				ChangeText("Label_SettingsVoiceVolume", "禁用");
+			}
+			ChangeVolume("Audio_Voice", Subsystem.Audio.VoiceVolume);
+			ChangeChecked("Checkbox_SettingsAlsoPlayVoiceOnMiss", Subsystem.Audio.AlsoPlayVoiceOnMiss);
 
 			// Dev
 			ChangeChecked("Checkbox_SettingsCheat", Subsystem.Dev.Cheat);
@@ -672,7 +665,7 @@
 
 			// Stats 2
 				// Score
-				if(System.Display.Anim > 0) {
+				if(IsOSAnimEnabled() && System.Display.Anim > 0) {
 					Game0.Stats.ScoreDisplay += (Game.Stats.Score - Game0.Stats.ScoreDisplay) / 5;
 				} else {
 					Game0.Stats.ScoreDisplay = Game.Stats.Score;
@@ -710,7 +703,7 @@
 					Game0.Stats.TimeLeft = 0;
 				}
 				ChangeProgring("ProgringFg_GameTimeLeft", 100, Game0.Stats.TimeLeft / Game0.Stats.CurrentTimeLimit * 100);
-				if(Game.Status.IsRunning && Game.Status.IsPaused == false && System.Display.Anim > 0) {
+				if(Game.Status.IsRunning && Game.Status.IsPaused == false && IsOSAnimEnabled() && System.Display.Anim > 0) {
 					ChangeAnim("ProgringFg_GameTimeLeft", "100ms");
 				} else {
 					ChangeAnim("ProgringFg_GameTimeLeft", "");
@@ -756,11 +749,11 @@
 			// Functionality
 			if(Game.Status.IsRunning && Game.Status.IsPaused == false) {
 				for(let Looper = 1; Looper <= 3; Looper++) {
-					ChangeDisabled("Button_GameAnswerOption" + Looper, false);
+					ChangeEnabled("Button_GameAnswerOption" + Looper, true);
 				}
 			} else {
 				for(let Looper = 1; Looper <= 3; Looper++) {
-					ChangeDisabled("Button_GameAnswerOption" + Looper, true);
+					ChangeEnabled("Button_GameAnswerOption" + Looper, false);
 				}
 			}
 
@@ -789,9 +782,9 @@
 		// Victory
 		if(Game.Status.IsRunning && Game0.Stats.Progress >= 100) {
 			Game0.Stats.Progress = 100;
-			ChangeDisabled("Button_GameStart", true);
+			ChangeEnabled("Button_GameStart", false);
 			RemoveClass("Button_GameStart", "Glow");
-			ChangeDisabled("Button_GameReset", true);
+			ChangeEnabled("Button_GameReset", false);
 			if(Game.Status.IsPaused == false) {
 				// Freeze game
 				Game.Status.IsPaused = true;
@@ -827,9 +820,9 @@
 		// Game over
 		if(Game.Status.IsRunning && Game.Stats.HP <= 0) {
 			Game.Stats.HP = 0;
-			ChangeDisabled("Button_GameStart", true);
+			ChangeEnabled("Button_GameStart", false);
 			RemoveClass("Button_GameStart", "Glow");
-			ChangeDisabled("Button_GameReset", true);
+			ChangeEnabled("Button_GameReset", false);
 			if(Game.Status.IsPaused == false) {
 				Game.Status.IsPaused = true;
 				ShowToast("游戏结束");
@@ -842,27 +835,27 @@
 		ClockGame();
 
 		// Ctrls
-		ChangeDisabled("Button_GameStart", false);
+		ChangeEnabled("Button_GameStart", true);
 		if(Game.Status.IsRunning == false) {
 			ChangeText("Button_GameStart", "开始");
 			AddClass("Button_GameStart", "Glow");
-			ChangeDisabled("Button_GameReset", true);
-			ChangeDisabled("Fieldset_SettingsGameMode", false);
-			ChangeDisabled("Fieldset_SettingsQuestionRange", false);
-			ChangeDisabled("Fieldset_SettingsDifficulty", false);
+			ChangeEnabled("Button_GameReset", false);
+			ChangeEnabled("Fieldset_SettingsGameMode", true);
+			ChangeEnabled("Fieldset_SettingsQuestionRange", true);
+			ChangeEnabled("Fieldset_SettingsDifficulty", true);
 		} else {
 			if(Game.Status.IsPaused == false) {
 				ChangeText("Button_GameStart", "暂停");
 				RemoveClass("Button_GameStart", "Glow");
-				ChangeDisabled("Button_GameReset", true);
+				ChangeEnabled("Button_GameReset", false);
 			} else {
 				ChangeText("Button_GameStart", "继续");
 				AddClass("Button_GameStart", "Glow");
-				ChangeDisabled("Button_GameReset", false);
+				ChangeEnabled("Button_GameReset", true);
 			}
-			ChangeDisabled("Fieldset_SettingsGameMode", true);
-			ChangeDisabled("Fieldset_SettingsQuestionRange", true);
-			ChangeDisabled("Fieldset_SettingsDifficulty", true);
+			ChangeEnabled("Fieldset_SettingsGameMode", false);
+			ChangeEnabled("Fieldset_SettingsQuestionRange", false);
+			ChangeEnabled("Fieldset_SettingsDifficulty", false);
 		}
 
 		// Settings
@@ -1140,7 +1133,7 @@
 					}, 20);
 
 					// Phase 3
-					if(System.Display.Anim > 0) {
+					if(IsOSAnimEnabled() && System.Display.Anim > 0) {
 						setTimeout(function() {
 							ChangeAnim("Label_AnswerFeedback", "750ms");
 							Fade("Label_AnswerFeedback");
