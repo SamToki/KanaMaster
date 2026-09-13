@@ -399,7 +399,7 @@
 		let Elements = document.getElementsByTagName("fieldset");
 		for(let Looper = 0; Looper < Elements.length; Looper++) {
 			if(Elements[Looper].id != "") {
-				if(System.CollapsedFieldset.includes(Elements[Looper].id.replace("Fieldset_", "")) == false) {
+				if(System.Display.CollapsedFieldset.includes(Elements[Looper].id.replace("Fieldset_", "")) == false) {
 					Show(Elements[Looper].id);
 				} else {
 					Hide(Elements[Looper].id);
@@ -493,6 +493,9 @@
 			} else {
 				RemoveClass("BgImage", "Blur");
 			}
+			ChangeEnabled("Combobox_SettingsAnim", IsOSAnimEnabled());
+			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
+			ChangeAnimOverall(System.Display.Anim);
 			ChangeValue("Combobox_SettingsHotkeyIndicators", System.Display.HotkeyIndicators);
 			switch(System.Display.HotkeyIndicators) {
 				case "Disabled":
@@ -508,9 +511,6 @@
 					AlertSystemError("The value of System.Display.HotkeyIndicators \"" + System.Display.HotkeyIndicators + "\" in function RefreshSystem is invalid.");
 					break;
 			}
-			ChangeEnabled("Combobox_SettingsAnim", IsOSAnimEnabled());
-			ChangeValue("Combobox_SettingsAnim", System.Display.Anim);
-			ChangeAnimOverall(System.Display.Anim);
 
 			// Audio
 			ChangeChecked("Checkbox_SettingsPlayAudio", System.Audio.PlayAudio);
